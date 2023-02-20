@@ -1,7 +1,7 @@
 <template>
   <div>
     Nuxt module playground!
-    <n-button type="primary">Click me</n-button>
+    <n-button type="primary" >Click me</n-button>
   </div>
 </template>
 

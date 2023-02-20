@@ -7,7 +7,7 @@ import {
 import Components from "unplugin-vue-components/vite";
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 import AutoImport from "unplugin-auto-import/vite";
-
+import { defu } from "defu";
 // Module options TypeScript inteface definition
 export interface ModuleOptions {}
 
@@ -24,6 +24,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
     addPlugin(resolver.resolve("./runtime/naive.server"));
 
+    // Add auto import for components & composables
     extendViteConfig((config) => {
       config.plugins?.push(
         AutoImport({
@@ -45,6 +46,11 @@ export default defineNuxtModule<ModuleOptions>({
           resolvers: [NaiveUiResolver()],
         })
       );
+    });
+
+    // Add types for volar auto suggestion
+    nuxt.hook("prepare:types", (options) => {
+      options.tsConfig.compilerOptions?.types?.push("naive-ui/volar");
     });
   },
 });
