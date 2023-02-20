@@ -3,13 +3,17 @@ import {
   addPlugin,
   createResolver,
   extendViteConfig,
+  addImportsDir,
 } from "@nuxt/kit";
+import { fileURLToPath } from "url";
 import Components from "unplugin-vue-components/vite";
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 import AutoImport from "unplugin-auto-import/vite";
 
 // Module options TypeScript inteface definition
-export interface ModuleOptions {}
+export interface ModuleOptions {
+  defaultColorMode: "light" | "dark" | "system";
+}
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
@@ -17,12 +21,21 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: "naiveui",
   },
   // Default configuration options of the Nuxt module
-  defaults: {},
+  defaults: {
+    defaultColorMode: "system",
+  },
   setup(options, nuxt) {
-    const resolver = createResolver(import.meta.url);
+    const { resolve } = createResolver(import.meta.url);
+    const runtimeDir = fileURLToPath(new URL("./runtime", import.meta.url));
 
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
-    addPlugin(resolver.resolve("./runtime/naive.server"));
+    addPlugin(resolve(runtimeDir, "naive.server"));
+
+    //Add composables directory
+    addImportsDir(resolve(runtimeDir, "composables"));
+
+    // Pass module options to runtimeConfig object
+    nuxt.options.runtimeConfig.public.naiveui = options;
 
     // Add auto import for components & composables
     extendViteConfig((config) => {

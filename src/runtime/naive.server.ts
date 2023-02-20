@@ -1,5 +1,5 @@
 import { setup } from "@css-render/vue3-ssr";
-import { defineNuxtPlugin } from "#imports";
+import { defineNuxtPlugin } from "#app";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const { collect } = setup(nuxtApp.vueApp);
