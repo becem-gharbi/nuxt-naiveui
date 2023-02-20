@@ -7,7 +7,7 @@ import {
 import Components from "unplugin-vue-components/vite";
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 import AutoImport from "unplugin-auto-import/vite";
-import { defu } from "defu";
+
 // Module options TypeScript inteface definition
 export interface ModuleOptions {}
 
@@ -52,5 +52,15 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.hook("prepare:types", (options) => {
       options.tsConfig.compilerOptions?.types?.push("naive-ui/volar");
     });
+
+    // Transpile naive modules for production
+    if (process.env.NODE_ENV === "production") {
+      nuxt.options.build.transpile.push(
+        "naive-ui",
+        "vueuc",
+        "@css-render/vue3-ssr",
+        "@juggle/resize-observer"
+      );
+    }
   },
 });

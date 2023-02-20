@@ -1,9 +1,17 @@
 <template>
-  <div>
-    Nuxt module playground!
-    <n-button type="primary" >Click me</n-button>
-  </div>
+  <n-notification-provider>
+    <div class="container">
+      <NotificationTest></NotificationTest>
+    </div>
+  </n-notification-provider>
 </template>
 
-<script setup>
+
+<script setup lang="ts">
 </script>
+
+<style scoped>
+.container {
+  margin: 10px;
+}
+</style>

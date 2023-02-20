@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.2.2",
-    "defu": "^6.1.2",
     "naive-ui": "^2.34.3",
     "unplugin-auto-import": "^0.14.3",
     "unplugin-vue-components": "^0.24.0"
