@@ -1,20 +1,22 @@
 <template>
-  <div class="container">
-    <n-text>{{ colorMode }}</n-text>
-    <n-text>{{ isMobileOrTablet }}</n-text>
-    <n-button @click="toggleColorMode">Toggle color mode</n-button>
-  </div>
+  <NaiveConfig>
+    <div class="container">
+      <n-text>{{ colorMode }}</n-text>
+      <n-button @click="toggleColorMode">Toggle color mode</n-button>
+    </div>
+  </NaiveConfig>
 </template>
 
 
 <script setup lang="ts">
-import { useNaiveTheme } from "#imports"
+import { useNaiveColorMode } from "#imports"
 
-const { colorMode, isMobileOrTablet } = useNaiveTheme()
+const { colorMode } = useNaiveColorMode()
 
 function toggleColorMode() {
   colorMode.value = colorMode.value === "light" ? "dark" : "light"
 }
+
 </script>
 
 <style scoped>

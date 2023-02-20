@@ -4,6 +4,8 @@ import {
   createResolver,
   extendViteConfig,
   addImportsDir,
+  addComponent,
+  addComponentsDir,
 } from "@nuxt/kit";
 import { fileURLToPath } from "url";
 import Components from "unplugin-vue-components/vite";
@@ -31,8 +33,11 @@ export default defineNuxtModule<ModuleOptions>({
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
     addPlugin(resolve(runtimeDir, "naive.server"));
 
-    //Add composables directory
+    // Add composables directory
     addImportsDir(resolve(runtimeDir, "composables"));
+
+    // Add components directory
+    addComponentsDir({ path: resolve(runtimeDir, "components") });
 
     // Pass module options to runtimeConfig object
     nuxt.options.runtimeConfig.public.naiveui = options;

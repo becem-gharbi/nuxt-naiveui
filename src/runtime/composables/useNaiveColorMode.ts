@@ -1,5 +1,6 @@
-import { useCookie, useRuntimeConfig } from "#app";
+import { useCookie, useRuntimeConfig, useState, watch } from "#imports";
 import type { CookieRef } from "#app";
+import type { Ref } from "vue";
 
 export default function useNaiveColorMode() {
   const config = useRuntimeConfig().public.naiveui;
@@ -12,13 +13,21 @@ export default function useNaiveColorMode() {
       : "light";
   }
 
-  const colorMode: CookieRef<"light" | "dark"> = useCookie<"light" | "dark">(
+  const colorModeCookie: CookieRef<"light" | "dark"> = useCookie<
+    "light" | "dark"
+  >("naive_color_mode", {
+    sameSite: "lax",
+    secure: true,
+  });
+
+  const colorMode: Ref<"light" | "dark"> = useState<"light" | "dark">(
     "naive_color_mode",
-    {
-      sameSite: "lax",
-      secure: true,
-    }
+    () => colorModeCookie.value
   );
+
+  watch(colorMode, (value) => {
+    colorModeCookie.value = value;
+  });
 
   if (!colorMode.value) {
     if (config.defaultColorMode === "system") {

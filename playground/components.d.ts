@@ -10,6 +10,9 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     NButton: typeof import('naive-ui')['NButton']
+    NConfigProvider: typeof import('naive-ui')['NConfigProvider']
+    NConfigProviderWrapper: typeof import('naive-ui')['NConfigProviderWrapper']
+    NDynamicConfigProvider: typeof import('naive-ui')['NDynamicConfigProvider']
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
     NText: typeof import('naive-ui')['NText']
     RouterLink: typeof import('vue-router')['RouterLink']
