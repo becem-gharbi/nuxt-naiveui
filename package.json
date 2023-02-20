@@ -1,7 +1,7 @@
 {
-  "name": "my-module",
+  "name": "@bg-dev/nuxt-naiveui",
   "version": "1.0.0",
-  "description": "My new Nuxt module",
+  "description": "A nuxt 3 naive-ui module",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -27,7 +27,10 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.2.2"
+    "@nuxt/kit": "^3.2.2",
+    "naive-ui": "^2.34.3",
+    "unplugin-auto-import": "^0.14.3",
+    "unplugin-vue-components": "^0.24.0"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.1.1",
@@ -36,10 +39,7 @@
     "@nuxt/test-utils": "^3.2.2",
     "changelogen": "^0.4.1",
     "eslint": "^8.34.0",
-    "naive-ui": "^2.34.3",
     "nuxt": "^3.2.2",
-    "unplugin-auto-import": "^0.14.3",
-    "unplugin-vue-components": "^0.24.0",
     "vitest": "^0.28.5"
   }
 }
