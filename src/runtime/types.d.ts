@@ -1,8 +1,8 @@
 import type { GlobalThemeOverrides } from "naive-ui";
 
-export type ThemeConfig = {
+export interface ThemeConfig {
   shared?: GlobalThemeOverrides;
   light?: GlobalThemeOverrides;
   dark?: GlobalThemeOverrides;
   mobileOrTablet?: GlobalThemeOverrides;
-};
+}

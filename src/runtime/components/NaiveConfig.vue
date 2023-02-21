@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { useHead, computed } from "#imports"
-import { NConfigProvider, GlobalThemeOverrides } from "naive-ui"
+import { NConfigProvider, GlobalThemeOverrides, ConfigProviderProps } from "naive-ui"
 import { defu } from 'defu'
 import useNaiveColorMode from "../composables/useNaiveColorMode"
 import useNaiveDevice from "../composables/useNaiveDevice"
@@ -105,12 +105,12 @@ const defaultDarkTheme: GlobalThemeOverrides = {
     },
 };
 
-const props = defineProps({
-    themeConfig: {
-        type: Object as () => ThemeConfig,
-        default: () => ({})
-    },
-})
+interface NaiveConfigProps
+    extends Omit<ConfigProviderProps, "themeOverrides" | "theme"> {
+    themeConfig?: ThemeConfig;
+}
+
+const props = defineProps<NaiveConfigProps>()
 
 const { colorMode } = useNaiveColorMode()
 const { isMobileOrTablet } = useNaiveDevice()
