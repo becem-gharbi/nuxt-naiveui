@@ -1,5 +1,5 @@
 <template>
-    <n-config-provider :theme-overrides="themeOverrides">
+    <n-config-provider :theme-overrides="themeOverrides" :inline-theme-disabled="true">
         <slot></slot>
     </n-config-provider>
 </template>
@@ -10,6 +10,7 @@ import { NConfigProvider, GlobalThemeOverrides } from "naive-ui"
 import { defu } from 'defu'
 import useNaiveColorMode from "../composables/useNaiveColorMode"
 import useNaiveDevice from "../composables/useNaiveDevice"
+import type { ThemeConfig } from "../types"
 
 const defaultDarkTheme: GlobalThemeOverrides = {
     common: {
@@ -104,14 +105,12 @@ const defaultDarkTheme: GlobalThemeOverrides = {
     },
 };
 
-interface ThemeConfig {
-    shared?: GlobalThemeOverrides;
-    light?: GlobalThemeOverrides;
-    dark?: GlobalThemeOverrides;
-    mobileOrTablet?: GlobalThemeOverrides;
-}
-
-const props = defineProps<{ themeConfig?: ThemeConfig }>()
+const props = defineProps({
+    themeConfig: {
+        type: Object as () => ThemeConfig,
+        default: () => ({})
+    },
+})
 
 const { colorMode } = useNaiveColorMode()
 const { isMobileOrTablet } = useNaiveDevice()

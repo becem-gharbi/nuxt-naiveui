@@ -1,7 +1,9 @@
 <template>
-  <NaiveConfig>
+  <NaiveConfig :themeConfig="themeConfig">
     <div class="container">
       <n-text>{{ colorMode }}</n-text>
+      <n-text>heelllow</n-text>
+      <n-text>heelllow again</n-text>
       <n-button @click="toggleColorMode">Toggle color mode</n-button>
     </div>
   </NaiveConfig>
@@ -17,6 +19,13 @@ function toggleColorMode() {
   colorMode.value = colorMode.value === "light" ? "dark" : "light"
 }
 
+const themeConfig = {
+  dark: {
+    common: {
+      bodyColor: "red"
+    }
+  }
+}
 </script>
 
 <style scoped>

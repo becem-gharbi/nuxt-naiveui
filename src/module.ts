@@ -5,12 +5,13 @@ import {
   extendViteConfig,
   addImportsDir,
   addComponent,
-  addComponentsDir,
 } from "@nuxt/kit";
 import { fileURLToPath } from "url";
 import Components from "unplugin-vue-components/vite";
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 import AutoImport from "unplugin-auto-import/vite";
+
+export type { ThemeConfig } from "./runtime/types";
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions {
@@ -22,10 +23,12 @@ export default defineNuxtModule<ModuleOptions>({
     name: "@bg-dev/nuxt-naiveui",
     configKey: "naiveui",
   },
+
   // Default configuration options of the Nuxt module
   defaults: {
     defaultColorMode: "system",
   },
+
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url);
     const runtimeDir = fileURLToPath(new URL("./runtime", import.meta.url));
@@ -36,13 +39,21 @@ export default defineNuxtModule<ModuleOptions>({
     // Add composables directory
     addImportsDir(resolve(runtimeDir, "composables"));
 
-    // Add components directory
-    addComponentsDir({ path: resolve(runtimeDir, "components") });
+    // Add components
+    addComponent({
+      name: "NaiveConfig",
+      filePath: resolve(runtimeDir, "components", "NaiveConfig.vue"),
+    });
 
     // Pass module options to runtimeConfig object
     nuxt.options.runtimeConfig.public.naiveui = options;
 
-    // Add auto import for components & composables
+    // Add types for volar
+    nuxt.hook("prepare:types", (options) => {
+      options.tsConfig.compilerOptions?.types?.push("naive-ui/volar");
+    });
+
+    // Add auto import for naive components & composables
     extendViteConfig((config) => {
       config.plugins?.push(
         AutoImport({
@@ -66,12 +77,7 @@ export default defineNuxtModule<ModuleOptions>({
       );
     });
 
-    // Add types for volar auto suggestion
-    nuxt.hook("prepare:types", (options) => {
-      options.tsConfig.compilerOptions?.types?.push("naive-ui/volar");
-    });
-
-    // Transpile naive modules for production
+    // Transpile naive modules
     if (process.env.NODE_ENV === "production") {
       nuxt.options.build.transpile.push(
         "naive-ui",
