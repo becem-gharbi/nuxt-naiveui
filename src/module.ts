@@ -11,6 +11,7 @@ import Components from "unplugin-vue-components/vite";
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 import AutoImport from "unplugin-auto-import/vite";
 
+export type { MenuOption } from "naive-ui";
 export type { ThemeConfig } from "./runtime/types";
 
 // Module options TypeScript inteface definition
@@ -43,6 +44,14 @@ export default defineNuxtModule<ModuleOptions>({
     addComponent({
       name: "NaiveConfig",
       filePath: resolve(runtimeDir, "components", "NaiveConfig.vue"),
+    });
+    addComponent({
+      name: "NaiveNavbar",
+      filePath: resolve(runtimeDir, "components", "NaiveNavbar.vue"),
+    });
+    addComponent({
+      name: "Icon",
+      filePath: resolve(runtimeDir, "components", "Icon.vue"),
     });
 
     // Pass module options to runtimeConfig object
