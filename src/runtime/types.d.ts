@@ -10,6 +10,6 @@ export interface ThemeConfig {
 export interface NavbarRoute {
   label: string;
   icon?: string;
-  to?: string;
+  path?: string;
   children?: NavbarRoute[];
 }

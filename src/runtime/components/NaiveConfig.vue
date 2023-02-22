@@ -107,15 +107,40 @@ const defaultDarkTheme: GlobalThemeOverrides = {
 
     IconWrapper: {
         color: "transparent",
-        iconColor: "rgba(255, 255, 255, 0.9)"
+        iconColor: "inherited"
     },
 };
 
 const defaultLightTheme: GlobalThemeOverrides = {
+    common: {
+        bodyColor: "white",
+        textColor1: "#171717",
+        textColor2: "#262626",
+        textColor3: "#a3a3a3",
+    },
     IconWrapper: {
         color: "transparent",
-        iconColor: "rgb(16, 16, 20)"
+        iconColor: "inherited"
     },
+    Menu: {
+        itemIconColorHoverHorizontalInverted: "black",
+        itemTextColorHoverHorizontalInverted: "black",
+
+        itemTextColorActiveHorizontalInverted: "black",
+        itemIconColorActiveHorizontalInverted: "black",
+
+        itemTextColorActiveHoverHorizontalInverted: "black",
+        itemIconColorActiveHoverHorizontalInverted: "black",
+
+        itemTextColorInverted: "#a3a3a3",
+        itemIconColorInverted: "#a3a3a3",
+
+        itemTextColorChildActiveHorizontalInverted: "black",
+        itemIconColorChildActiveHorizontalInverted: "black",
+
+        itemIconColorChildActiveHoverHorizontalInverted: "black",
+        itemTextColorChildActiveHoverHorizontalInverted: "black",
+    }
 }
 
 interface NaiveConfigProps

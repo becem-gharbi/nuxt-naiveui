@@ -10,11 +10,13 @@
                     <template #header>
                         <slot name="brand"></slot>
                     </template>
-                    <n-menu mode="vertical" :options="menuOptions" @click="() => drawerActive = false" />
+                    <n-menu mode="vertical" :default-value="$route.path" inverted :options="menuOptions"
+                        @click="() => drawerActive = false" />
                 </n-drawer-content>
             </n-drawer>
 
-            <n-menu v-if="!isMobileOrTablet" mode="horizontal" :options="menuOptions" />
+            <n-menu v-if="!isMobileOrTablet" :default-value="$route.path" inverted mode="horizontal"
+                :options="menuOptions" />
         </div>
 
         <slot name="extra"></slot>
@@ -53,9 +55,9 @@ const menuOptions = computed<MenuOption[]>(() => {
 
         const menuOption: MenuOption =
         {
-            label: route.to ? () => h(NuxtLink, { to: route.to }, { default: () => route.label }) : route.label,
+            label: route.path ? () => h(NuxtLink, { to: route.path }, { default: () => route.label }) : route.label,
             icon: route.icon ? () => h(NaiveIcon, { name: route.icon }) : undefined,
-            key: route.label,
+            key: route.path || route.label,
         }
 
         if (route.children) {
@@ -74,7 +76,7 @@ const menuOptions = computed<MenuOption[]>(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 10px;
+    padding: 10px 15px;
     gap: 1em;
 }
 

@@ -20,12 +20,12 @@ const navbarRoutes: NavbarRoute[] = [
   {
     label: "Home",
     icon: "ri:home-4-line",
-    to: "/"
+    path: "/"
   },
   {
     label: "Blogs",
     icon: "icomoon-free:blog",
-    to: "blogs"
+    path: "/blogs"
   },
   {
     label: "Categories",
@@ -34,12 +34,12 @@ const navbarRoutes: NavbarRoute[] = [
       {
         label: "Books",
         icon: "material-symbols:menu-book-outline-rounded",
-        to: "books"
+        path: "/books"
       },
       {
         label: "Computers",
         icon: "material-symbols:computer-outline",
-        to: "computers"
+        path: "/computers"
       }
     ]
   }
