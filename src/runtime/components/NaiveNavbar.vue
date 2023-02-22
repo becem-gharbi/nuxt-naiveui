@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <slot name="brand"></slot>
+        <slot name="start"></slot>
 
         <div class="navigation" :style="{ textAlign: menuPlacement }">
             <n-drawer v-if="isMobileOrTablet" v-model:show="drawerActive" :placement="drawerPlacement">
@@ -8,7 +8,7 @@
                     padding: '15px'
                 }">
                     <template #header>
-                        <slot name="brand"></slot>
+                        <slot name="start"></slot>
                     </template>
                     <n-menu mode="vertical" :default-value="$route.path" :inverted="menuInverted" :options="menuOptions" />
                 </n-drawer-content>
@@ -18,7 +18,7 @@
                 :options="menuOptions" />
         </div>
 
-        <slot name="extra"></slot>
+        <slot name="end"></slot>
 
         <n-button v-if="isMobileOrTablet" text @click="() => drawerActive = true">
             <NaiveIcon :name="menuToggleIcon" :size="menuIconSize"></NaiveIcon>
@@ -87,6 +87,7 @@ const menuOptions = computed<MenuOption[]>(() => {
     align-items: center;
     padding: 10px 15px;
     gap: 1em;
+    box-shadow: 0px 0px 2px 0px #a3a3a3;
 }
 
 .navigation {

@@ -125,23 +125,35 @@ const defaultLightTheme: GlobalThemeOverrides = {
         iconColor: "inherited"
     },
     Menu: {
-        itemIconColorHoverHorizontalInverted: "black",
-        itemTextColorHoverHorizontalInverted: "black",
+        itemIconColor: "#262626",
+        itemTextColor: "#262626",
 
-        itemTextColorActiveHorizontalInverted: "black",
-        itemIconColorActiveHorizontalInverted: "black",
+        itemTextColorHorizontal: "#262626",
+        itemIconColorHorizontal: "#262626",
 
-        itemTextColorActiveHoverHorizontalInverted: "black",
-        itemIconColorActiveHoverHorizontalInverted: "black",
+        itemTextColorActiveHorizontal: "#262626",
+        itemTextColorChildActiveHorizontal: "#262626",
+
+        itemIconColorHoverHorizontalInverted: "#262626",
+        itemTextColorHoverHorizontalInverted: "#262626",
+
+        itemTextColorActiveHorizontalInverted: "#262626",
+        itemIconColorActiveHorizontalInverted: "#262626",
+
+        itemTextColorActiveHoverHorizontalInverted: "#262626",
+        itemIconColorActiveHoverHorizontalInverted: "#262626",
 
         itemTextColorInverted: "#a3a3a3",
         itemIconColorInverted: "#a3a3a3",
 
-        itemTextColorChildActiveHorizontalInverted: "black",
-        itemIconColorChildActiveHorizontalInverted: "black",
+        itemTextColorHoverInverted: "#a3a3a3",
+        itemIconColorHoverInverted: "#a3a3a3",
 
-        itemIconColorChildActiveHoverHorizontalInverted: "black",
-        itemTextColorChildActiveHoverHorizontalInverted: "black",
+        itemTextColorChildActiveHorizontalInverted: "#262626",
+        itemIconColorChildActiveHorizontalInverted: "#262626",
+
+        itemIconColorChildActiveHoverHorizontalInverted: "#262626",
+        itemTextColorChildActiveHoverHorizontalInverted: "#262626",
     }
 }
 

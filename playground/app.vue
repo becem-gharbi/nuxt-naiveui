@@ -2,12 +2,12 @@
   <NaiveConfig :theme-config="themeConfig">
     <NaiveNavbar :routes="navbarRoutes">
 
-      <template #brand>
+      <template #start>
         <NaiveIcon name="logos:naiveui"></NaiveIcon>
         <n-text strong>nuxt-naiveui</n-text>
       </template>
 
-      <template #extra>
+      <template #end>
         <NuxtLink to="https://github.com/becem-gharbi/nuxt-naiveui" target="_">
           <n-button text>
             <NaiveIcon name="fontisto:github" />
@@ -64,8 +64,8 @@ const themeConfig: ThemeConfig = {
   },
   mobileOrTablet: {
     common: {
-      fontSize: "17px",
-      heightMedium: "50px"
+      fontSize: "15px",
+      heightMedium: "40px"
     }
   }
 }
