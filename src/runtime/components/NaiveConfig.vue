@@ -5,6 +5,7 @@
 </template>
 
 <script setup lang="ts">
+//@ts-ignore
 import { useHead, computed } from "#imports"
 import { NConfigProvider, GlobalThemeOverrides, ConfigProviderProps } from "naive-ui"
 import { defu } from 'defu'

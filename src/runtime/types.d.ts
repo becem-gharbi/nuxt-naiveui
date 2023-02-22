@@ -6,3 +6,10 @@ export interface ThemeConfig {
   dark?: GlobalThemeOverrides;
   mobileOrTablet?: GlobalThemeOverrides;
 }
+
+export interface NavbarRoute {
+  label: string;
+  icon?: string;
+  to?: string;
+  children?: NavbarRoute[];
+}

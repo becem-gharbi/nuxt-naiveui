@@ -1,7 +1,6 @@
 <template>
   <NaiveConfig :themeConfig="themeConfig">
-    <Icon name="uil:github" size="30"></Icon>
-    <NaiveNavbar :menuOptions="menuOptions"></NaiveNavbar>
+    <NaiveNavbar :routes="routes"></NaiveNavbar>
     <div class="container">
       <n-text>{{ colorMode }}</n-text>
       <n-text>heelllow</n-text>
@@ -13,25 +12,14 @@
 
 
 <script setup lang="ts">
-import { useNaiveColorMode, h } from "#imports"
-import { MenuOption } from "naive-ui"
+import { useNaiveColorMode } from "#imports"
 
-const menuOptions: MenuOption[] = [
-  // {
-  //   label: "Pre-trained",
-  //   icon: () => h(Icon, { name: "ic:baseline-check" }),
-  //   children: [
-  //     {
-  //       label: () => h(NuxtLink, { to: "/object-detection" }, { default: () => "Object detection" }),
-  //       key: "/object-detection",
-  //       icon: () => h(Icon, { name: "material-symbols:detection-and-zone" }),
-  //     }
-  //   ]
-  // },
-  // {
-  //   label: "Re-trained",
-  //   icon: () => h(Icon, { name: "material-symbols:autorenew" }),
-  // }
+const routes = [
+  {
+    label: "Route 1",
+    icon: "material-symbols:menu-rounded",
+    to: "/home"
+  }
 ]
 
 const { colorMode } = useNaiveColorMode()
@@ -43,7 +31,6 @@ function toggleColorMode() {
 const themeConfig = {
   dark: {
     common: {
-      bodyColor: "red"
     }
   }
 }

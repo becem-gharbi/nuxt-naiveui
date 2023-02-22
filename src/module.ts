@@ -11,12 +11,12 @@ import Components from "unplugin-vue-components/vite";
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 import AutoImport from "unplugin-auto-import/vite";
 
-export type { MenuOption } from "naive-ui";
-export type { ThemeConfig } from "./runtime/types";
+export type { ThemeConfig, NavbarRoute } from "./runtime/types";
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions {
-  defaultColorMode: "light" | "dark" | "system";
+  defaultColorMode?: "light" | "dark" | "system";
+  defaultIconSize?: string;
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -28,6 +28,7 @@ export default defineNuxtModule<ModuleOptions>({
   // Default configuration options of the Nuxt module
   defaults: {
     defaultColorMode: "system",
+    defaultIconSize: "1em",
   },
 
   setup(options, nuxt) {
@@ -50,8 +51,8 @@ export default defineNuxtModule<ModuleOptions>({
       filePath: resolve(runtimeDir, "components", "NaiveNavbar.vue"),
     });
     addComponent({
-      name: "Icon",
-      filePath: resolve(runtimeDir, "components", "Icon.vue"),
+      name: "NaiveIcon",
+      filePath: resolve(runtimeDir, "components", "NaiveIcon.vue"),
     });
 
     // Pass module options to runtimeConfig object
