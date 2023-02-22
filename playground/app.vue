@@ -1,5 +1,11 @@
 <template>
   <NaiveConfig :themeConfig="themeConfig">
+    <NuxtLink to="/">
+      <NaiveIcon name="uil:github" color="yellow"></NaiveIcon>
+    </NuxtLink>
+    <NaiveIcon name="logos:aix"></NaiveIcon>
+    <NaiveIcon name="logos:amp"></NaiveIcon>
+    <NaiveIcon name="logos:arm"></NaiveIcon>
     <NaiveNavbar :routes="routes"></NaiveNavbar>
     <div class="container">
       <n-text>{{ colorMode }}</n-text>
@@ -31,7 +37,6 @@ function toggleColorMode() {
 const themeConfig = {
   dark: {
     common: {
-      bodyColor: "gray"
     }
   }
 }
