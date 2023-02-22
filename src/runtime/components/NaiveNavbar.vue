@@ -2,7 +2,7 @@
     <div class="container">
         <n-text>Brand</n-text>
 
-        <div class="navigation">
+        <div class="navigation" :style="{ textAlign: navigationPlace }">
             <n-drawer v-if="isMobileOrTablet" v-model:show="drawerActive" placement="left">
                 <n-drawer-content title="Menu" closable :body-content-style="{ padding: 0 }">
                     <n-menu mode="vertical" :options="menuOptions" @click="() => drawerActive = false" />
@@ -15,7 +15,7 @@
         <n-text>Extra</n-text>
 
         <n-button v-if="isMobileOrTablet" text @click="() => drawerActive = true">
-            <NaiveIcon name="material-symbols:menu-rounded" :size="10"></NaiveIcon>
+            <NaiveIcon :name="menuIcon" :size="10"></NaiveIcon>
         </n-button>
 
     </div>
@@ -35,7 +35,10 @@ const { isMobileOrTablet } = useNaiveDevice()
 
 const drawerActive = ref(false)
 
-const props = defineProps<{ routes: NavbarRoute[] }>()
+const props = withDefaults(defineProps<{ routes: NavbarRoute[], menuIcon?: string, navigationPlace?: "right" | "left" }>(), {
+    menuIcon: "material-symbols:menu-rounded",
+    navigationPlace: "left"
+})
 
 const menuOptions = computed<MenuOption[]>(() => {
     const result: MenuOption[] = []

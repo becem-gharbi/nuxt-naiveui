@@ -55,6 +55,10 @@ export default defineNuxtModule<ModuleOptions>({
       name: "NaiveIcon",
       filePath: resolve(runtimeDir, "components", "NaiveIcon.vue"),
     });
+    addComponent({
+      name: "NaiveColorModeSwitch",
+      filePath: resolve(runtimeDir, "components", "NaiveColorModeSwitch.vue"),
+    });
 
     // Pass module options to runtimeConfig object
     nuxt.options.runtimeConfig.public.naiveui = options;

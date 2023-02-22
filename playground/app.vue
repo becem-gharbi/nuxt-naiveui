@@ -4,7 +4,8 @@
     <NaiveIcon name="logos:aix"></NaiveIcon>
     <NaiveIcon name="logos:amp"></NaiveIcon>
     <NaiveIcon name="logos:arm"></NaiveIcon>
-    <NaiveNavbar :routes="routes"></NaiveNavbar>
+    <NaiveColorModeSwitch></NaiveColorModeSwitch>
+    <NaiveNavbar :routes="routes" navigation-place="right"></NaiveNavbar>
     <div class="container">
       <n-text>{{ colorMode }}</n-text>
       <n-text>heelllow</n-text>
