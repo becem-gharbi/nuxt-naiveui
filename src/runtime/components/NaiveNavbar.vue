@@ -10,8 +10,7 @@
                     <template #header>
                         <slot name="brand"></slot>
                     </template>
-                    <n-menu mode="vertical" :default-value="$route.path" inverted :options="menuOptions"
-                        @click="() => drawerActive = false" />
+                    <n-menu mode="vertical" :default-value="$route.path" inverted :options="menuOptions" />
                 </n-drawer-content>
             </n-drawer>
 
@@ -30,7 +29,7 @@
 
 <script setup lang = "ts" >
 //@ts-ignore
-import { ref, computed, h } from "#imports"
+import { ref, computed, h, useRoute, watch } from "#imports"
 //@ts-ignore
 import { NuxtLink } from "#components"
 import type { MenuOption } from "naive-ui"
@@ -42,6 +41,8 @@ import { NDrawer, NMenu, NDrawerContent, NButton } from "naive-ui"
 const { isMobileOrTablet } = useNaiveDevice()
 
 const drawerActive = ref(false)
+const route = useRoute()
+watch(route, () => drawerActive.value = false)
 
 const props = withDefaults(defineProps<{ routes: NavbarRoute[], menuIcon?: string, menuIconSize?: number, navigationPlace?: "right" | "left" | "center", drawerPlace?: "top" | "right" | "bottom" | "left" }>(), {
     menuIcon: "material-symbols:menu-rounded",
