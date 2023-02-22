@@ -31,6 +31,7 @@ function toggleColorMode() {
 const themeConfig = {
   dark: {
     common: {
+      bodyColor: "gray"
     }
   }
 }

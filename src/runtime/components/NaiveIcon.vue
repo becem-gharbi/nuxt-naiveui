@@ -7,6 +7,7 @@ import { Icon as Iconify } from '@iconify/vue/dist/offline'
 import { loadIcon } from '@iconify/vue'
 
 const nuxtApp = useNuxtApp()
+
 const config = useRuntimeConfig().public.naiveui
 
 const props = defineProps<{ name: string; size?: string | number }>()

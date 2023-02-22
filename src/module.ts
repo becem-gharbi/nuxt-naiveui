@@ -10,11 +10,13 @@ import { fileURLToPath } from "url";
 import Components from "unplugin-vue-components/vite";
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 import AutoImport from "unplugin-auto-import/vite";
+import { ThemeConfig } from "../package/dist/module";
 
 export type { ThemeConfig, NavbarRoute } from "./runtime/types";
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions {
+  defaultThemeConfig?: ThemeConfig;
   defaultColorMode?: "light" | "dark" | "system";
   defaultIconSize?: string;
 }
@@ -27,6 +29,7 @@ export default defineNuxtModule<ModuleOptions>({
 
   // Default configuration options of the Nuxt module
   defaults: {
+    defaultThemeConfig: {},
     defaultColorMode: "system",
     defaultIconSize: "1em",
   },

@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 //@ts-ignore
-import { useHead, computed } from "#imports"
+import { useHead, computed, useRuntimeConfig } from "#imports"
 import { NConfigProvider, GlobalThemeOverrides, ConfigProviderProps } from "naive-ui"
 import { defu } from 'defu'
 import useNaiveColorMode from "../composables/useNaiveColorMode"
@@ -110,6 +110,7 @@ interface NaiveConfigProps
     extends Omit<ConfigProviderProps, "themeOverrides" | "theme"> {
     themeConfig?: ThemeConfig;
 }
+const config = useRuntimeConfig().public.naiveui
 
 const props = defineProps<NaiveConfigProps>()
 
@@ -117,21 +118,23 @@ const { colorMode } = useNaiveColorMode()
 const { isMobileOrTablet } = useNaiveDevice()
 
 const themeOverrides = computed<GlobalThemeOverrides>(() => {
+    const themeConfig = props.themeConfig || config.defaultThemeConfig
+
     const darkTheme: GlobalThemeOverrides = defu(
-        props.themeConfig?.dark,
+        themeConfig?.dark,
         defaultDarkTheme
     );
 
     const deviceTheme: GlobalThemeOverrides | undefined = isMobileOrTablet
-        ? props.themeConfig?.mobileOrTablet
+        ? themeConfig?.mobileOrTablet
         : {};
 
     const colorModeTheme: GlobalThemeOverrides =
         colorMode.value === "dark" ? darkTheme
-            : props.themeConfig?.light || {}
+            : themeConfig?.light
 
     return defu(
-        props.themeConfig?.shared,
+        themeConfig?.shared,
         deviceTheme,
         colorModeTheme
     );
