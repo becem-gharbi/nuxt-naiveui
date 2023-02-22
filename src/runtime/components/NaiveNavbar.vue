@@ -15,7 +15,7 @@
         <n-text>Extra</n-text>
 
         <n-button v-if="isMobileOrTablet" text @click="() => drawerActive = true">
-            <NaiveIcon name="material-symbols:menu-rounded" size="24"></NaiveIcon>
+            <NaiveIcon name="material-symbols:menu-rounded" :size="10"></NaiveIcon>
         </n-button>
 
     </div>

@@ -17,7 +17,7 @@ export type { NavbarRoute, ThemeConfig } from "./runtime/types";
 export interface ModuleOptions {
   defaultThemeConfig?: ThemeConfig;
   defaultColorMode: "light" | "dark" | "system";
-  defaultIconSize: string;
+  defaultIconSize: number;
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -29,7 +29,7 @@ export default defineNuxtModule<ModuleOptions>({
   // Default configuration options of the Nuxt module
   defaults: {
     defaultColorMode: "system",
-    defaultIconSize: "32px",
+    defaultIconSize: 30,
   },
 
   setup(options, nuxt) {

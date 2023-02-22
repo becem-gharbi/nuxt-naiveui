@@ -43,7 +43,7 @@ const defaultDarkTheme: GlobalThemeOverrides = {
         textColorDisabled: "rgba(255, 255, 255, 0.38)",
         placeholderColor: "rgba(255, 255, 255, 0.38)",
         placeholderColorDisabled: "rgba(255, 255, 255, 0.28)",
-        iconColor: "rgba(255, 255, 255, 0.38)",
+        iconColor: "white",//"rgba(255, 255, 255, 0.38)",
         iconColorDisabled: "rgba(255, 255, 255, 0.28)",
         iconColorHover: "rgba(255, 255, 255, 0.475)",
         iconColorPressed: "rgba(255, 255, 255, 0.30400000000000005)",
@@ -104,7 +104,19 @@ const defaultDarkTheme: GlobalThemeOverrides = {
     Tag: {
         colorBordered: "#00000000",
     },
+
+    IconWrapper: {
+        color: "transparent",
+        iconColor: "rgba(255, 255, 255, 0.9)"
+    },
 };
+
+const defaultLightTheme: GlobalThemeOverrides = {
+    IconWrapper: {
+        color: "transparent",
+        iconColor: "rgb(16, 16, 20)"
+    },
+}
 
 interface NaiveConfigProps
     extends Omit<ConfigProviderProps, "themeOverrides" | "theme"> {
@@ -125,13 +137,17 @@ const themeOverrides = computed<GlobalThemeOverrides>(() => {
         defaultDarkTheme
     );
 
+    const lightTheme: GlobalThemeOverrides = defu(
+        themeConfig?.light,
+        defaultLightTheme
+    );
+
+    const colorModeTheme: GlobalThemeOverrides =
+        colorMode.value === "dark" ? darkTheme : lightTheme
+
     const deviceTheme: GlobalThemeOverrides | undefined = isMobileOrTablet
         ? themeConfig?.mobileOrTablet
         : {};
-
-    const colorModeTheme: GlobalThemeOverrides =
-        colorMode.value === "dark" ? darkTheme
-            : themeConfig?.light
 
     return defu(
         themeConfig?.shared,

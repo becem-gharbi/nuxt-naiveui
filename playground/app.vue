@@ -1,8 +1,6 @@
 <template>
   <NaiveConfig :themeConfig="themeConfig">
-    <NuxtLink to="/">
-      <NaiveIcon name="uil:github" color="yellow"></NaiveIcon>
-    </NuxtLink>
+    <NaiveIcon name="uil:github"></NaiveIcon>
     <NaiveIcon name="logos:aix"></NaiveIcon>
     <NaiveIcon name="logos:amp"></NaiveIcon>
     <NaiveIcon name="logos:arm"></NaiveIcon>
@@ -36,8 +34,6 @@ function toggleColorMode() {
 
 const themeConfig = {
   dark: {
-    common: {
-    }
   }
 }
 </script>
