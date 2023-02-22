@@ -21,7 +21,7 @@
         <slot name="end"></slot>
 
         <n-button v-if="isMobileOrTablet" text @click="() => drawerActive = true">
-            <NaiveIcon :name="menuToggleIcon" :size="menuIconSize"></NaiveIcon>
+            <NaiveIcon :name="menuToggleIcon" :size="24"></NaiveIcon>
         </n-button>
 
     </div>
@@ -55,7 +55,6 @@ const props = withDefaults(defineProps<{
     menuToggleIcon: "material-symbols:menu-rounded",
     menuPlacement: "left",
     drawerPlacement: "left",
-    menuIconSize: 20,
     menuInverted: false
 })
 

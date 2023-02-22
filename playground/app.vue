@@ -3,8 +3,10 @@
     <NaiveNavbar :routes="navbarRoutes">
 
       <template #start>
-        <NaiveIcon name="logos:naiveui"></NaiveIcon>
-        <n-text strong>nuxt-naiveui</n-text>
+        <div class="brand">
+          <NaiveIcon name="logos:naiveui"></NaiveIcon>
+          <n-text strong>nuxt-naiveui</n-text>
+        </div>
       </template>
 
       <template #end>
@@ -70,3 +72,12 @@ const themeConfig: ThemeConfig = {
   }
 }
 </script>
+
+
+<style scoped>
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1em
+}
+</style>

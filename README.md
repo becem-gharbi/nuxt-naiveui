@@ -1,89 +1,67 @@
-<!--
-Get your module up and running quickly.
+# Nuxt Naive ui
 
-Find and replace all on all files (CMD+SHIFT+F):
-- Name: My Module
-- Package name: my-module
-- Description: My new Nuxt module
--->
-
-# My Module
-
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![License][license-src]][license-href]
-
-> My new Nuxt module
-
-- [✨ &nbsp;Release Notes](/CHANGELOG.md)
-<!-- - [📖 &nbsp;Documentation](https://example.com) -->
+A Nuxt 3 module for Naive-ui component library
 
 ## Features
 
-<!-- Highlight some of the features your module provide here -->
-- ⛰ &nbsp;Foo
-- 🚠 &nbsp;Bar
-- 🌲 &nbsp;Baz
+✔️ SSR friendly<br>
+✔️ Auto imported and tree-shakable components & composables<br>
+✔️ Highly customizable for color mode and device type<br>
+✔️ Large collection of 100k icons from Iconify<br>
+✔️ Implements custom components :
 
-## Quick Setup
+- `NaiveNavbar` : an adaptive navbar component for app navigation
 
-1. Add `my-module` dependency to your project
-
-```bash
-# Using pnpm
-pnpm add -D my-module
-
-# Using yarn
-yarn add --dev my-module
-
-# Using npm
-npm install --save-dev my-module
-```
-
-2. Add `my-module` to the `modules` section of `nuxt.config.ts`
-
-```js
-export default defineNuxtConfig({
-  modules: [
-    'my-module'
-  ]
-})
-```
-
-That's it! You can now use My Module in your Nuxt app ✨
-
-## Development
+## Installation
 
 ```bash
-# Install dependencies
-npm install
-
-# Generate type stubs
-npm run dev:prepare
-
-# Develop with the playground
-npm run dev
-
-# Build the playground
-npm run dev:build
-
-# Run ESLint
-npm run lint
-
-# Run Vitest
-npm run test
-npm run test:watch
-
-# Release new version
-npm run release
+npm i @bg-dev/nuxt-naiveui
 ```
 
-<!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/my-module/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-version-href]: https://npmjs.com/package/my-module
+## Setup
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/my-module.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-downloads-href]: https://npmjs.com/package/my-module
+```ts
+defineNuxtConfig({
+  modules: ["@bg-dev/nuxt-naiveui"],
 
-[license-src]: https://img.shields.io/npm/l/my-module.svg?style=flat&colorA=18181B&colorB=28CF8D
-[license-href]: https://npmjs.com/package/my-module
+  naiveui: {
+    defaultColorMode: "system",
+    defaultIconSize: 20,
+    defaultThemeConfig: {},
+  },
+
+  devServer: {
+    host: "127.0.0.1", // Fix ofetch body unusable error on Nuxt v-3.2.2,
+  },
+});
+```
+
+## Usage
+
+**For theme customization**, use `NaiveConfig` component in `app.vue` and set `themeConfig` property or set `defaultThemeConfig` in the module options.
+
+```javascript
+<template>
+  <NaiveConfig :theme-config="themeConfig">
+    <NuxtPage></NuxtPage>
+  </NaiveConfig>
+</template>
+
+
+<script setup lang="ts">
+import { ThemeConfig} from "@bg-dev/nuxt-naiveui"
+
+const themeConfig: ThemeConfig = {
+  shared: {}, // Common theme options (highest priority)
+  mobileOrTablet: {} // Theme options applied on mobile/tablet (second highest priority)
+  light: {}, // Theme options applied on light mode (lowest priority)
+  dark: {}, // Theme options applied on dark mode (lowest priority)
+}
+</script>
+```
+
+**For color mode control**, use `useNaiveColorMode` composable or `NaiveColorModeSwitch` component.
+
+**For icons usage**, use `NaiveIcon` component and set `name` property from Iconify [dataset](https://icones.js.org/).
+
+**For documentation**, refer to [Naive-ui website](https://www.naiveui.com/en-US/os-theme/docs/introduction)

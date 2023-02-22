@@ -101,7 +101,5 @@ export default defineNuxtModule<ModuleOptions>({
         "@juggle/resize-observer"
       );
     }
-
-    nuxt.options.devServer.host = "127.0.0.1";
   },
 });
