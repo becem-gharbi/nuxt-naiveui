@@ -1,10 +1,15 @@
 <template>
     <div class="container">
-        <n-text>Brand</n-text>
+        <slot name="brand"></slot>
 
         <div class="navigation" :style="{ textAlign: navigationPlace }">
-            <n-drawer v-if="isMobileOrTablet" v-model:show="drawerActive" placement="left">
-                <n-drawer-content title="Menu" closable :body-content-style="{ padding: 0 }">
+            <n-drawer v-if="isMobileOrTablet" v-model:show="drawerActive" :placement="drawerPlace">
+                <n-drawer-content title="Menu" closable :body-content-style="{ padding: 0 }" :header-style="{
+                    padding: '15px'
+                }">
+                    <template #header>
+                        <slot name="brand"></slot>
+                    </template>
                     <n-menu mode="vertical" :options="menuOptions" @click="() => drawerActive = false" />
                 </n-drawer-content>
             </n-drawer>
@@ -12,10 +17,10 @@
             <n-menu v-if="!isMobileOrTablet" mode="horizontal" :options="menuOptions" />
         </div>
 
-        <n-text>Extra</n-text>
+        <slot name="extra"></slot>
 
         <n-button v-if="isMobileOrTablet" text @click="() => drawerActive = true">
-            <NaiveIcon :name="menuIcon" :size="10"></NaiveIcon>
+            <NaiveIcon :name="menuIcon" :size="menuIconSize"></NaiveIcon>
         </n-button>
 
     </div>
@@ -30,28 +35,37 @@ import type { MenuOption } from "naive-ui"
 import NaiveIcon from "./NaiveIcon.vue"
 import useNaiveDevice from "../composables/useNaiveDevice"
 import type { NavbarRoute } from "../types"
+import { NDrawer, NMenu, NDrawerContent, NButton } from "naive-ui"
 
 const { isMobileOrTablet } = useNaiveDevice()
 
 const drawerActive = ref(false)
 
-const props = withDefaults(defineProps<{ routes: NavbarRoute[], menuIcon?: string, navigationPlace?: "right" | "left" }>(), {
+const props = withDefaults(defineProps<{ routes: NavbarRoute[], menuIcon?: string, menuIconSize?: number, navigationPlace?: "right" | "left" | "center", drawerPlace?: "top" | "right" | "bottom" | "left" }>(), {
     menuIcon: "material-symbols:menu-rounded",
-    navigationPlace: "left"
+    navigationPlace: "left",
+    drawerPlace: "left",
+    menuIconSize: 20
 })
 
 const menuOptions = computed<MenuOption[]>(() => {
-    const result: MenuOption[] = []
-    const cb = (e: NavbarRoute) => {
-        result.push({
-            label: e.to ? () => h(NuxtLink, { to: e.to }, { default: () => e.label }) : e.label,
-            icon: e.icon ? () => h(NaiveIcon, { name: e.icon }) : undefined,
-            key: e.label,
-        });
-        e.children && e.children.forEach(cb);
-    }
-    props.routes?.forEach(cb);
-    return result
+    const cb = (routes: NavbarRoute[]) => routes.map(route => {
+
+        const menuOption: MenuOption =
+        {
+            label: route.to ? () => h(NuxtLink, { to: route.to }, { default: () => route.label }) : route.label,
+            icon: route.icon ? () => h(NaiveIcon, { name: route.icon }) : undefined,
+            key: route.label,
+        }
+
+        if (route.children) {
+            menuOption.children = cb(route.children);
+        }
+
+        return menuOption;
+    });
+
+    return cb(props.routes)
 })
 </script>
 
@@ -60,8 +74,7 @@ const menuOptions = computed<MenuOption[]>(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    border: 2px red solid;
+    padding: 15px 10px;
     gap: 1em;
 }
 

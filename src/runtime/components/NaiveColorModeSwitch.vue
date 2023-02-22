@@ -8,6 +8,7 @@
 <script setup>
 import NaiveIcon from "./NaiveIcon.vue"
 import useNaiveColorMode from "../composables/useNaiveColorMode";
+import { NButton } from "naive-ui"
 
 const { colorMode } = useNaiveColorMode()
 

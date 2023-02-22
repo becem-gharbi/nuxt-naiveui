@@ -1,46 +1,65 @@
 <template>
-  <NaiveConfig :themeConfig="themeConfig">
-    <NaiveIcon name="uil:github"></NaiveIcon>
-    <NaiveIcon name="logos:aix"></NaiveIcon>
-    <NaiveIcon name="logos:amp"></NaiveIcon>
-    <NaiveIcon name="logos:arm"></NaiveIcon>
-    <NaiveColorModeSwitch></NaiveColorModeSwitch>
-    <NaiveNavbar :routes="routes" navigation-place="right"></NaiveNavbar>
-    <div class="container">
-      <n-text>{{ colorMode }}</n-text>
-      <n-text>heelllow</n-text>
-      <n-text>heelllow again</n-text>
-      <n-button @click="toggleColorMode">Toggle color mode</n-button>
-    </div>
+  <NaiveConfig :theme-config="themeConfig">
+    <NaiveNavbar :routes="navbarRoutes">
+      <template #brand>
+        <n-text>My Website</n-text>
+      </template>
+      <template #extra>
+        <NaiveColorModeSwitch />
+      </template>
+    </NaiveNavbar>
+    <NuxtPage></NuxtPage>
   </NaiveConfig>
 </template>
 
 
 <script setup lang="ts">
-import { useNaiveColorMode } from "#imports"
+import { ThemeConfig, NavbarRoute } from "@bg-dev/nuxt-naiveui"
 
-const routes = [
+const navbarRoutes: NavbarRoute[] = [
   {
-    label: "Route 1",
-    icon: "material-symbols:menu-rounded",
-    to: "/home"
+    label: "Home",
+    icon: "ri:home-4-line",
+    to: "/"
+  },
+  {
+    label: "Blogs",
+    icon: "icomoon-free:blog",
+    to: "blogs"
+  },
+  {
+    label: "Categories",
+    icon: "mdi:bookmark-multiple-outline",
+    children: [
+      {
+        label: "Books",
+        icon: "material-symbols:menu-book-outline-rounded",
+        to: "books"
+      },
+      {
+        label: "Computers",
+        icon: "material-symbols:computer-outline",
+        to: "computers"
+      }
+    ]
   }
 ]
 
-const { colorMode } = useNaiveColorMode()
-
-function toggleColorMode() {
-  colorMode.value = colorMode.value === "light" ? "dark" : "light"
-}
-
-const themeConfig = {
+const themeConfig: ThemeConfig = {
+  shared: {
+    common: {
+      fontFamily: "Gellix",
+    }
+  },
   dark: {
+    common: {
+    },
+  },
+  mobileOrTablet: {
+    common: {
+      fontSize: "17px",
+      heightMedium: "50px"
+    }
   }
 }
 </script>
-
-<style scoped>
-.container {
-  margin: 10px;
-}
-</style>
