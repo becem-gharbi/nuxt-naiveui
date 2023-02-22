@@ -1,14 +1,25 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
     <NaiveNavbar :routes="navbarRoutes">
+
       <template #brand>
-        <n-text>My Website</n-text>
+        <NaiveIcon name="logos:naiveui"></NaiveIcon>
+        <n-text strong>nuxt-naiveui</n-text>
       </template>
+
       <template #extra>
+        <NuxtLink to="https://github.com/becem-gharbi/nuxt-naiveui" target="_">
+          <n-button text>
+            <NaiveIcon name="fontisto:github" />
+          </n-button>
+        </NuxtLink>
         <NaiveColorModeSwitch />
       </template>
+
     </NaiveNavbar>
+
     <NuxtPage></NuxtPage>
+
   </NaiveConfig>
 </template>
 
@@ -50,10 +61,6 @@ const themeConfig: ThemeConfig = {
     common: {
       fontFamily: "Gellix",
     }
-  },
-  dark: {
-    common: {
-    },
   },
   mobileOrTablet: {
     common: {

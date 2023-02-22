@@ -15,6 +15,7 @@ import type { ThemeConfig } from "../types"
 
 const defaultDarkTheme: GlobalThemeOverrides = {
     common: {
+        lineHeight: "0px",
         baseColor: "#000",
         primaryColor: "#63e2b7",
         primaryColorHover: "#7fe7c4",
@@ -113,6 +114,7 @@ const defaultDarkTheme: GlobalThemeOverrides = {
 
 const defaultLightTheme: GlobalThemeOverrides = {
     common: {
+        lineHeight: "0px",
         bodyColor: "white",
         textColor1: "#171717",
         textColor2: "#262626",

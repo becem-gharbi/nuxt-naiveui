@@ -2,26 +2,26 @@
     <div class="container">
         <slot name="brand"></slot>
 
-        <div class="navigation" :style="{ textAlign: navigationPlace }">
-            <n-drawer v-if="isMobileOrTablet" v-model:show="drawerActive" :placement="drawerPlace">
+        <div class="navigation" :style="{ textAlign: menuPlacement }">
+            <n-drawer v-if="isMobileOrTablet" v-model:show="drawerActive" :placement="drawerPlacement">
                 <n-drawer-content title="Menu" closable :body-content-style="{ padding: 0 }" :header-style="{
                     padding: '15px'
                 }">
                     <template #header>
                         <slot name="brand"></slot>
                     </template>
-                    <n-menu mode="vertical" :default-value="$route.path" inverted :options="menuOptions" />
+                    <n-menu mode="vertical" :default-value="$route.path" :inverted="menuInverted" :options="menuOptions" />
                 </n-drawer-content>
             </n-drawer>
 
-            <n-menu v-if="!isMobileOrTablet" :default-value="$route.path" inverted mode="horizontal"
+            <n-menu v-if="!isMobileOrTablet" :default-value="$route.path" :inverted="menuInverted" mode="horizontal"
                 :options="menuOptions" />
         </div>
 
         <slot name="extra"></slot>
 
         <n-button v-if="isMobileOrTablet" text @click="() => drawerActive = true">
-            <NaiveIcon :name="menuIcon" :size="menuIconSize"></NaiveIcon>
+            <NaiveIcon :name="menuToggleIcon" :size="menuIconSize"></NaiveIcon>
         </n-button>
 
     </div>
@@ -44,11 +44,19 @@ const drawerActive = ref(false)
 const route = useRoute()
 watch(route, () => drawerActive.value = false)
 
-const props = withDefaults(defineProps<{ routes: NavbarRoute[], menuIcon?: string, menuIconSize?: number, navigationPlace?: "right" | "left" | "center", drawerPlace?: "top" | "right" | "bottom" | "left" }>(), {
-    menuIcon: "material-symbols:menu-rounded",
-    navigationPlace: "left",
-    drawerPlace: "left",
-    menuIconSize: 20
+const props = withDefaults(defineProps<{
+    routes: NavbarRoute[],
+    menuToggleIcon?: string,
+    menuIconSize?: number,
+    menuInverted?: boolean,
+    menuPlacement?: "right" | "left" | "center",
+    drawerPlacement?: "top" | "right" | "bottom" | "left"
+}>(), {
+    menuToggleIcon: "material-symbols:menu-rounded",
+    menuPlacement: "left",
+    drawerPlacement: "left",
+    menuIconSize: 20,
+    menuInverted: false
 })
 
 const menuOptions = computed<MenuOption[]>(() => {
@@ -57,7 +65,7 @@ const menuOptions = computed<MenuOption[]>(() => {
         const menuOption: MenuOption =
         {
             label: route.path ? () => h(NuxtLink, { to: route.path }, { default: () => route.label }) : route.label,
-            icon: route.icon ? () => h(NaiveIcon, { name: route.icon }) : undefined,
+            icon: route.icon ? () => h(NaiveIcon, { name: route.icon, size: props.menuIconSize }) : undefined,
             key: route.path || route.label,
         }
 
