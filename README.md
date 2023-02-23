@@ -26,12 +26,8 @@ defineNuxtConfig({
 
   naiveui: {
     defaultColorMode: "system",
-    defaultIconSize: 20,
+    defaultIconSize: 18,
     defaultThemeConfig: {},
-  },
-
-  devServer: {
-    host: "127.0.0.1", // Fix ofetch body unusable error on Nuxt v-3.2.2,
   },
 });
 ```

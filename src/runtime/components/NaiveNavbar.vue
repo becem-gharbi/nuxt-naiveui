@@ -21,7 +21,7 @@
         <slot name="end"></slot>
 
         <n-button v-if="isMobileOrTablet" text @click="() => drawerActive = true">
-            <NaiveIcon :name="menuToggleIcon" :size="24"></NaiveIcon>
+            <NaiveIcon :name="menuToggleIcon" :size="26"></NaiveIcon>
         </n-button>
 
     </div>
@@ -84,9 +84,9 @@ const menuOptions = computed<MenuOption[]>(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
+    padding: 15px;
     gap: 1em;
-    box-shadow: 0px 0px 2px 0px #a3a3a3;
+    /* box-shadow: 0px 0px 2px 0px #a3a3a3; */
 }
 
 .navigation {

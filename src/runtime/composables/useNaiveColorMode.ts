@@ -18,6 +18,7 @@ export default function useNaiveColorMode() {
   >("naive_color_mode", {
     sameSite: "lax",
     secure: true,
+    default: () => "light",
   });
 
   const colorMode: Ref<"light" | "dark"> = useState<"light" | "dark">(
