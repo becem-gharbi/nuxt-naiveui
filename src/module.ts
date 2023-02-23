@@ -28,7 +28,6 @@ export default defineNuxtModule<ModuleOptions>({
 
   // Default configuration options of the Nuxt module
   defaults: {
-    defaultThemeConfig: {},
     defaultColorMode: "system",
     defaultIconSize: 18,
   },
@@ -70,6 +69,7 @@ export default defineNuxtModule<ModuleOptions>({
     });
 
     // Add auto import for naive components & composables
+    // https://www.naiveui.com/en-US/os-theme/docs/ssr
     extendViteConfig((config) => {
       config.plugins?.push(
         AutoImport({
@@ -91,6 +91,16 @@ export default defineNuxtModule<ModuleOptions>({
           resolvers: [NaiveUiResolver()],
         })
       );
+
+      if (process.env.NODE_ENV === "development") {
+        config.optimizeDeps = config.optimizeDeps || {};
+        config.optimizeDeps.include = config.optimizeDeps.include || [];
+        config.optimizeDeps.include.push(
+          "naive-ui",
+          "vueuc",
+          "date-fns-tz/esm/formatInTimeZone"
+        );
+      }
     });
 
     // Transpile naive modules
@@ -101,6 +111,8 @@ export default defineNuxtModule<ModuleOptions>({
         "@css-render/vue3-ssr",
         "@juggle/resize-observer"
       );
+    } else {
+      nuxt.options.build.transpile.push("@juggle/resize-observer");
     }
   },
 });
