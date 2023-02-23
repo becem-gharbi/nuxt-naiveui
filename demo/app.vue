@@ -1,6 +1,6 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar :routes="navbarRoutes">
+    <NaiveNavbar :routes="navbarRoutes" menu-inverted>
 
       <template #start>
         <div class="brand">
@@ -31,14 +31,9 @@ import { ThemeConfig, NavbarRoute } from "@bg-dev/nuxt-naiveui"
 
 const navbarRoutes: NavbarRoute[] = [
   {
-    label: "Home",
+    label: "Sample",
     icon: "ri:home-4-line",
     path: "/"
-  },
-  {
-    label: "Blogs",
-    icon: "icomoon-free:blog",
-    path: "/blogs"
   },
   {
     label: "Categories",
@@ -67,7 +62,7 @@ const themeConfig: ThemeConfig = {
   mobileOrTablet: {
     common: {
       fontSize: "15px",
-      heightMedium: "40px"
+      heightMedium: "35px"
     }
   }
 }

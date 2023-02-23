@@ -28,6 +28,7 @@ export default defineNuxtModule<ModuleOptions>({
 
   // Default configuration options of the Nuxt module
   defaults: {
+    defaultThemeConfig: {},
     defaultColorMode: "system",
     defaultIconSize: 18,
   },

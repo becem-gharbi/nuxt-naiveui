@@ -31,14 +31,9 @@ import { ThemeConfig, NavbarRoute } from "@bg-dev/nuxt-naiveui"
 
 const navbarRoutes: NavbarRoute[] = [
   {
-    label: "Home",
+    label: "Sample",
     icon: "ri:home-4-line",
     path: "/"
-  },
-  {
-    label: "Blogs",
-    icon: "icomoon-free:blog",
-    path: "/blogs"
   },
   {
     label: "Categories",
@@ -62,12 +57,17 @@ const themeConfig: ThemeConfig = {
   shared: {
     common: {
       fontFamily: "Gellix",
+
+    }
+  },
+  dark: {
+    common: {
     }
   },
   mobileOrTablet: {
     common: {
       fontSize: "15px",
-      heightMedium: "40px"
+      heightMedium: "35px",
     }
   }
 }
