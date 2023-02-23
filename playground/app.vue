@@ -1,6 +1,6 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar :routes="navbarRoutes" menu-inverted>
+    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false">
 
       <template #start>
         <div class="brand">

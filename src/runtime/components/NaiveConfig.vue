@@ -130,10 +130,7 @@ const defaultLightTheme: GlobalThemeOverrides = {
 
         itemTextColorHorizontal: "#262626",
         itemIconColorHorizontal: "#262626",
-
-        itemTextColorActiveHorizontal: "#262626",
-        itemTextColorChildActiveHorizontal: "#262626",
-
+        
         itemIconColorHoverHorizontalInverted: "#262626",
         itemTextColorHoverHorizontalInverted: "#262626",
 
@@ -154,6 +151,11 @@ const defaultLightTheme: GlobalThemeOverrides = {
 
         itemIconColorChildActiveHoverHorizontalInverted: "#262626",
         itemTextColorChildActiveHoverHorizontalInverted: "#262626",
+
+        itemTextColorChildActiveHoverInverted: "#262626",
+        itemTextColorChildActiveInverted: "#262626",
+        itemIconColorChildActiveHoverInverted: "#262626",
+        itemIconColorChildActiveInverted: "#262626",
     }
 }
 
