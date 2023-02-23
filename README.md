@@ -4,13 +4,13 @@ A Nuxt 3 module for Naive-ui component library
 
 ## Features
 
-✔️ SSR friendly<br>
-✔️ Auto imported and tree-shakable components & composables<br>
-✔️ Highly customizable for color mode and device type<br>
-✔️ Large collection of 100k icons from Iconify<br>
-✔️ Implements custom components :
-
-- `NaiveNavbar` : an adaptive navbar component for app navigation
+- ✔️ SSR friendly
+- ✔️ Auto imported and tree-shakable components & composables
+- ✔️ Highly customizable for color mode and device type
+- ✔️ Implements custom components
+  - ✔️ `NaiveNavbar` an adaptive navbar for app navigation
+  - ✔️ `NaiveIcon` a wrapper based on iconify/vue with large collection of [icons](https://icones.js.org/)
+  - ✔️ `NaiveColorModeSwitch` light/dark modes switch based on `useNaiveColorMode` composable
 
 ## Installation
 
@@ -34,7 +34,7 @@ defineNuxtConfig({
 
 ## Usage
 
-**For theme customization**, use `NaiveConfig` component in `app.vue` and set `themeConfig` property or set `defaultThemeConfig` in the module options.
+**For theme customization**, use `NaiveConfig` component in `app.vue` and set `themeConfig` property, alternatively set `defaultThemeConfig` in the module options.
 
 ```javascript
 <template>
@@ -55,9 +55,5 @@ const themeConfig: ThemeConfig = {
 }
 </script>
 ```
-
-**For color mode control**, use `useNaiveColorMode` composable or `NaiveColorModeSwitch` component.
-
-**For icons usage**, use `NaiveIcon` component and set `name` property from Iconify [dataset](https://icones.js.org/).
 
 **For documentation**, refer to [Naive-ui website](https://www.naiveui.com/en-US/os-theme/docs/introduction)
