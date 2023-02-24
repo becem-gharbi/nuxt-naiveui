@@ -1,5 +1,5 @@
 <template>
-    <n-config-provider :theme-overrides="themeOverrides" :inline-theme-disabled="false">
+    <n-config-provider :theme-overrides="themeOverrides" :inline-theme-disabled="true">
         <slot></slot>
     </n-config-provider>
 </template>

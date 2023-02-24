@@ -92,15 +92,15 @@ export default defineNuxtModule<ModuleOptions>({
         })
       );
 
-      if (process.env.NODE_ENV === "development") {
-        config.optimizeDeps = config.optimizeDeps || {};
-        config.optimizeDeps.include = config.optimizeDeps.include || [];
-        config.optimizeDeps.include.push(
-          "naive-ui",
-          "vueuc",
-          "date-fns-tz/esm/formatInTimeZone"
-        );
-      }
+      // if (process.env.NODE_ENV === "development") {
+      //   config.optimizeDeps = config.optimizeDeps || {};
+      //   config.optimizeDeps.include = config.optimizeDeps.include || [];
+      //   config.optimizeDeps.include.push(
+      //     "naive-ui",
+      //     "vueuc",
+      //     "date-fns-tz/esm/formatInTimeZone"
+      //   );
+      // }
     });
 
     // Transpile naive modules
