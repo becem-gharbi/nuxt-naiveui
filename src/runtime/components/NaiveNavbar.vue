@@ -1,6 +1,6 @@
 <template>
     <div class="container"
-        :style="{ position: 'sticky', top: 0, zIndex: 100, backgroundColor: naiveTheme?.common?.bodyColor }">
+        :style="{ position: sticky ? 'sticky' : 'static', top: 0, zIndex: 100, backgroundColor: naiveTheme?.common?.bodyColor }">
         <slot name="start"></slot>
 
         <div class="navigation" :style="{ textAlign: menuPlacement }">
@@ -59,7 +59,7 @@ const props = withDefaults(defineProps<{
     menuPlacement: "left",
     drawerPlacement: "left",
     menuInverted: false,
-    sticky: true
+    sticky: false
 })
 
 const menuOptions = computed<MenuOption[]>(() => {
