@@ -71,7 +71,7 @@
         <n-divider />
 
         <n-h3>Form</n-h3>
-        <n-form inline>
+        <n-form>
             <n-form-item label="Email">
                 <n-input />
             </n-form-item>

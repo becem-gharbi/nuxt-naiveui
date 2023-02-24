@@ -1,11 +1,10 @@
 <template>
-    <div class="container"
-        :style="{ position: sticky ? 'sticky' : 'static', top: 0, zIndex: 100, backgroundColor: naiveTheme?.common?.bodyColor }">
+    <div :style="navbarStyle">
         <slot name="start"></slot>
 
-        <div class="navigation" :style="{ textAlign: menuPlacement }">
+        <div :style="{ textAlign: menuPlacement, flex: 1 }">
             <n-drawer v-if="isMobileOrTablet" v-model:show="drawerActive" :placement="drawerPlacement">
-                <n-drawer-content title="Menu" closable :body-content-style="{ padding: 0 }" :header-style="{
+                <n-drawer-content title="Menu" :body-content-style="{ padding: 0 }" :header-style="{
                     padding: '15px'
                 }">
                     <template #header>
@@ -22,7 +21,7 @@
         <slot name="end"></slot>
 
         <n-button v-if="isMobileOrTablet" text @click="() => drawerActive = true">
-            <NaiveIcon :name="menuToggleIcon" :size="26"></NaiveIcon>
+            <NaiveIcon :name="menuToggleIcon" :size="menuToggleIconSize"></NaiveIcon>
         </n-button>
 
     </div>
@@ -33,6 +32,7 @@
 import { ref, computed, h, useRoute, watch } from "#imports"
 //@ts-ignore
 import { NuxtLink } from "#components"
+import type { StyleValue } from "vue"
 import type { MenuOption } from "naive-ui"
 import NaiveIcon from "./NaiveIcon.vue"
 import useNaiveDevice from "../composables/useNaiveDevice"
@@ -49,18 +49,35 @@ watch(route, () => drawerActive.value = false)
 const props = withDefaults(defineProps<{
     routes: NavbarRoute[],
     menuToggleIcon?: string,
-    menuIconSize?: number,
+    menuToggleIconSize?: number,
     menuInverted?: boolean,
     menuPlacement?: "right" | "left" | "center",
     drawerPlacement?: "top" | "right" | "bottom" | "left",
-    sticky?: boolean
+    sticky?: boolean,
 }>(), {
     menuToggleIcon: "material-symbols:menu-rounded",
     menuPlacement: "left",
     drawerPlacement: "left",
     menuInverted: false,
-    sticky: false
+    sticky: true,
+    menuToggleIconSize: 26
 })
+
+const naiveTheme = useNaiveTheme()
+
+const navbarStyle = computed<StyleValue>(() => ({
+    position: props.sticky ? 'sticky' : 'static',
+    backgroundColor: naiveTheme.value?.common?.bodyColor,
+    top: "0px",
+    zIndex: 100,
+    padding: isMobileOrTablet ? "15px" : "10px 15px",
+    boxShadow: '0px 0px 2px 0px #a3a3a3',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: '1em',
+}))
+
 
 const menuOptions = computed<MenuOption[]>(() => {
     const cb = (routes: NavbarRoute[]) => routes.map(route => {
@@ -68,7 +85,7 @@ const menuOptions = computed<MenuOption[]>(() => {
         const menuOption: MenuOption =
         {
             label: route.path ? () => h(NuxtLink, { to: route.path }, { default: () => route.label }) : route.label,
-            icon: route.icon ? () => h(NaiveIcon, { name: route.icon, size: props.menuIconSize }) : undefined,
+            icon: route.icon ? () => h(NaiveIcon, { name: route.icon }) : undefined,
             key: route.path || route.label,
         }
 
@@ -81,21 +98,4 @@ const menuOptions = computed<MenuOption[]>(() => {
 
     return cb(props.routes)
 })
-
-const naiveTheme = useNaiveTheme()
 </script>
-
-<style scoped>
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8em;
-    gap: 1em;
-    box-shadow: 0px 0px 2px 0px #a3a3a3;
-}
-
-.navigation {
-    flex: 1;
-}
-</style>

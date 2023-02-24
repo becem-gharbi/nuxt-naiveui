@@ -11,7 +11,7 @@ const config = useRuntimeConfig().public.naiveui
 
 const props = defineProps<{ name: string; size?: number, color?: string, borderRadius?: number, iconColor?: string }>()
 
-const state = useState<Record<string, IconifyIcon | undefined>>('icons', () => ({}))
+const state = useState<Record<string, IconifyIcon | undefined>>('naive_icons', () => ({}))
 const iconName = computed(() => props.name)
 const icon = computed<IconifyIcon | undefined>(() => state.value?.[iconName.value])
 const sSize = computed(() => props.size || config.defaultIconSize)
