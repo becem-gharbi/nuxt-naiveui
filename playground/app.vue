@@ -12,7 +12,7 @@
       <template #end>
         <NuxtLink to="https://github.com/becem-gharbi/nuxt-naiveui" target="_">
           <n-button text>
-            <NaiveIcon name="fontisto:github" />
+            <NaiveIcon name="cib:github" />
           </n-button>
         </NuxtLink>
         <NaiveColorModeSwitch />
@@ -20,6 +20,7 @@
 
     </NaiveNavbar>
 
+    <n-result title="OK" description="bla bla bla"></n-result>
     <NuxtPage></NuxtPage>
 
   </NaiveConfig>

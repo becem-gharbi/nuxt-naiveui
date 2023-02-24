@@ -16,6 +16,7 @@ import { defu } from "defu"
 
 const defaultDarkTheme: GlobalThemeOverrides = {
     common: {
+        lineHeight: "normal",
         baseColor: "#000",
         primaryColor: "#63e2b7",
         primaryColorHover: "#7fe7c4",
@@ -114,6 +115,7 @@ const defaultDarkTheme: GlobalThemeOverrides = {
 
 const defaultLightTheme: GlobalThemeOverrides = {
     common: {
+        lineHeight: "normal",
         bodyColor: "white",
         textColor1: "#171717",
         textColor2: "#262626",
@@ -257,6 +259,7 @@ useHead(() => ({
            background-color: ${themeOverrides.value?.common?.bodyColor} !important;
            font-family: ${themeOverrides.value?.common?.fontFamily} !important;
            font-size: ${themeOverrides.value?.common?.fontSize} !important;
+           line-height: ${themeOverrides.value?.common?.lineHeight} !important;
         `,
         },
     ],
