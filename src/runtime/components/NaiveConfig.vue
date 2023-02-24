@@ -1,5 +1,5 @@
 <template>
-    <n-config-provider :theme-overrides="themeOverrides" :inline-theme-disabled="true">
+    <n-config-provider :theme-overrides="themeOverrides" :inline-theme-disabled="false">
         <slot></slot>
     </n-config-provider>
 </template>
@@ -15,7 +15,6 @@ import { defu } from "defu"
 
 const defaultDarkTheme: GlobalThemeOverrides = {
     common: {
-        lineHeight: "0px",
         baseColor: "#000",
         primaryColor: "#63e2b7",
         primaryColorHover: "#7fe7c4",
@@ -114,7 +113,6 @@ const defaultDarkTheme: GlobalThemeOverrides = {
 
 const defaultLightTheme: GlobalThemeOverrides = {
     common: {
-        lineHeight: "0px",
         bodyColor: "white",
         textColor1: "#171717",
         textColor2: "#262626",
@@ -130,7 +128,7 @@ const defaultLightTheme: GlobalThemeOverrides = {
 
         itemTextColorHorizontal: "#262626",
         itemIconColorHorizontal: "#262626",
-        
+
         itemIconColorHoverHorizontalInverted: "#262626",
         itemTextColorHoverHorizontalInverted: "#262626",
 
@@ -159,6 +157,54 @@ const defaultLightTheme: GlobalThemeOverrides = {
     }
 }
 
+const defaultMobileOrTabletTheme: GlobalThemeOverrides = {
+    common: {
+        fontSize: "15px",
+        heightMedium: "40px",
+        fontSizeMedium: "15px"
+    },
+    Form: {
+        labelFontSizeTopMedium: "15px"
+    },
+    Input: {
+        heightMedium: "40px",
+        fontSizeMedium: "15px",
+    },
+    Button: {
+        heightMedium: "40px",
+        fontSizeMedium: "15px"
+    },
+    Card: {
+        fontSizeMedium: "15px"
+    },
+    Avatar: {
+        heightMedium: "40px",
+        fontSize: "15px"
+    },
+    ColorPicker: {
+        heightMedium: "40px",
+        fontSizeMedium: "15px"
+    },
+    Dropdown: {
+        optionHeightMedium: "40px",
+        fontSizeMedium: "15px"
+    },
+    Radio: {
+        buttonHeightMedium: "40px",
+        fontSizeMedium: "15px"
+    },
+    Skeleton: {
+        heightMedium: "40px",
+    },
+    Tag: {
+        heightMedium: "34px",
+        fontSizeMedium: "15px"
+    },
+    Result: {
+        fontSizeMedium: "15px",
+    }
+}
+
 interface NaiveConfigProps
     extends Omit<ConfigProviderProps, "themeOverrides" | "theme"> {
     themeConfig?: ThemeConfig;
@@ -172,19 +218,26 @@ const { isMobileOrTablet } = useNaiveDevice()
 
 const themeOverrides = computed<GlobalThemeOverrides>(() => {
     const themeConfig = props.themeConfig || config.defaultThemeConfig
+
     const darkTheme: GlobalThemeOverrides = defu(
         themeConfig?.dark,
         defaultDarkTheme
     );
+
     const lightTheme: GlobalThemeOverrides = defu(
         themeConfig?.light,
         defaultLightTheme
     );
+
     const colorModeTheme: GlobalThemeOverrides =
         colorMode.value === "dark" ? darkTheme : lightTheme
+
+    const mobileOrTabletTheme = defu(themeConfig?.mobileOrTablet, defaultMobileOrTabletTheme)
+
     const deviceTheme: GlobalThemeOverrides | undefined = isMobileOrTablet
-        ? themeConfig?.mobileOrTablet
+        ? mobileOrTabletTheme
         : {};
+
     return defu(
         themeConfig?.shared,
         deviceTheme,

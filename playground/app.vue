@@ -60,16 +60,6 @@ const themeConfig: ThemeConfig = {
 
     }
   },
-  dark: {
-    common: {
-    }
-  },
-  mobileOrTablet: {
-    common: {
-      fontSize: "15px",
-      heightMedium: "35px",
-    }
-  }
 }
 </script>
 
