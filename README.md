@@ -34,7 +34,7 @@ defineNuxtConfig({
 
 ## Usage
 
-**For theme customization**, use `NaiveConfig` component in `app.vue` and set `themeConfig` property, alternatively set `defaultThemeConfig` in the module options.
+**For theme customization**, use `NaiveConfig` component in `app.vue` and set `themeConfig` property, alternatively set `defaultThemeConfig` in the module options. The compiled themeConfig is shared globally via `useNaiveTheme` composable.
 
 ```javascript
 <template>

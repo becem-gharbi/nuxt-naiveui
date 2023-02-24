@@ -1,5 +1,6 @@
 <template>
-    <div class="container">
+    <div class="container"
+        :style="{ position: 'sticky', top: 0, zIndex: 100, backgroundColor: naiveTheme?.common?.bodyColor }">
         <slot name="start"></slot>
 
         <div class="navigation" :style="{ textAlign: menuPlacement }">
@@ -35,6 +36,7 @@ import { NuxtLink } from "#components"
 import type { MenuOption } from "naive-ui"
 import NaiveIcon from "./NaiveIcon.vue"
 import useNaiveDevice from "../composables/useNaiveDevice"
+import useNaiveTheme from "../composables/useNaiveTheme"
 import type { NavbarRoute } from "../types"
 import { NDrawer, NMenu, NDrawerContent, NButton } from "naive-ui"
 
@@ -50,12 +52,14 @@ const props = withDefaults(defineProps<{
     menuIconSize?: number,
     menuInverted?: boolean,
     menuPlacement?: "right" | "left" | "center",
-    drawerPlacement?: "top" | "right" | "bottom" | "left"
+    drawerPlacement?: "top" | "right" | "bottom" | "left",
+    sticky?: boolean
 }>(), {
     menuToggleIcon: "material-symbols:menu-rounded",
     menuPlacement: "left",
     drawerPlacement: "left",
-    menuInverted: false
+    menuInverted: false,
+    sticky: true
 })
 
 const menuOptions = computed<MenuOption[]>(() => {
@@ -77,6 +81,8 @@ const menuOptions = computed<MenuOption[]>(() => {
 
     return cb(props.routes)
 })
+
+const naiveTheme = useNaiveTheme()
 </script>
 
 <style scoped>
@@ -84,9 +90,9 @@ const menuOptions = computed<MenuOption[]>(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 0.8em;
     gap: 1em;
-    /* box-shadow: 0px 0px 2px 0px #a3a3a3; */
+    box-shadow: 0px 0px 2px 0px #a3a3a3;
 }
 
 .navigation {

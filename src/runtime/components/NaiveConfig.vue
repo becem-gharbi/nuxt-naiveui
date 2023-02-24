@@ -6,10 +6,11 @@
 
 <script setup lang="ts">
 //@ts-ignore
-import { useHead, computed, useRuntimeConfig } from "#imports"
+import { useHead, computed, useRuntimeConfig, watch } from "#imports"
 import { NConfigProvider, GlobalThemeOverrides, ConfigProviderProps } from "naive-ui"
 import useNaiveColorMode from "../composables/useNaiveColorMode"
 import useNaiveDevice from "../composables/useNaiveDevice"
+import useNaiveTheme from "../composables/useNaiveTheme"
 import type { ThemeConfig } from "../types"
 import { defu } from "defu"
 
@@ -244,6 +245,10 @@ const themeOverrides = computed<GlobalThemeOverrides>(() => {
         colorModeTheme
     );
 })
+
+const naiveTheme = useNaiveTheme()
+
+watch(themeOverrides, (value) => naiveTheme.value = value, { immediate: true })
 
 useHead(() => ({
     style: [
