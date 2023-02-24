@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     NH1: typeof import('naive-ui')['NH1']
     NH3: typeof import('naive-ui')['NH3']
     NInput: typeof import('naive-ui')['NInput']
+    NResult: typeof import('naive-ui')['NResult']
     NSpace: typeof import('naive-ui')['NSpace']
     NTag: typeof import('naive-ui')['NTag']
     NText: typeof import('naive-ui')['NText']

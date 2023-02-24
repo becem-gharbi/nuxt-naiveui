@@ -1,6 +1,6 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar :routes="navbarRoutes" menu-inverted>
+    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false">
 
       <template #start>
         <div class="brand">
@@ -12,7 +12,7 @@
       <template #end>
         <NuxtLink to="https://github.com/becem-gharbi/nuxt-naiveui" target="_">
           <n-button text>
-            <NaiveIcon name="fontisto:github" />
+            <NaiveIcon name="cib:github" />
           </n-button>
         </NuxtLink>
         <NaiveColorModeSwitch />
@@ -57,14 +57,9 @@ const themeConfig: ThemeConfig = {
   shared: {
     common: {
       fontFamily: "Gellix",
+
     }
   },
-  mobileOrTablet: {
-    common: {
-      fontSize: "15px",
-      heightMedium: "35px"
-    }
-  }
 }
 </script>
 
