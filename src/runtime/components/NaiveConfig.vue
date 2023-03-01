@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 //@ts-ignore
-import { useHead, computed, useRuntimeConfig, watch, onBeforeMount } from "#imports"
+import { useHead, computed, useRuntimeConfig, watch } from "#imports"
 import { NConfigProvider, GlobalThemeOverrides, ConfigProviderProps } from "naive-ui"
 import useNaiveColorMode from "../composables/useNaiveColorMode"
 import useNaiveDevice from "../composables/useNaiveDevice"
@@ -218,30 +218,29 @@ const props = defineProps<NaiveConfigProps>()
 
 const { colorMode } = useNaiveColorMode()
 
-const { isMobileOrTablet } = useNaiveDevice()
+const { isMobileOrTablet, isMobile } = useNaiveDevice()
 
 const themeOverrides = computed<GlobalThemeOverrides>(() => {
 
     const themeConfig = props.themeConfig || config.defaultThemeConfig
 
-    const darkTheme: GlobalThemeOverrides = defu(
-        themeConfig?.dark,
-        defaultDarkTheme
-    );
+    let colorModeTheme: GlobalThemeOverrides | undefined = undefined
 
-    const lightTheme: GlobalThemeOverrides = defu(
-        themeConfig?.light,
-        defaultLightTheme
-    );
+    if (colorMode.value === "dark") {
+        colorModeTheme = defu(themeConfig?.dark, defaultDarkTheme);
+    }
+    else {
+        colorModeTheme = defu(themeConfig?.light, defaultLightTheme);
+    }
 
-    const colorModeTheme: GlobalThemeOverrides =
-        colorMode.value === "dark" ? darkTheme : lightTheme
+    let deviceTheme: GlobalThemeOverrides | undefined = undefined
 
-    const mobileOrTabletTheme = defu(themeConfig?.mobileOrTablet, defaultMobileOrTabletTheme)
-
-    const deviceTheme: GlobalThemeOverrides | undefined = isMobileOrTablet
-        ? mobileOrTabletTheme
-        : {};
+    if (isMobileOrTablet) {
+        deviceTheme = defu(themeConfig?.mobileOrTablet, defaultMobileOrTabletTheme)
+    }
+    else if (isMobile) {
+        deviceTheme = defu(themeConfig?.mobile, defaultMobileOrTabletTheme)
+    }
 
     return defu(
         themeConfig?.shared,

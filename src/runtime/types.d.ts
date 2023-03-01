@@ -5,6 +5,7 @@ export interface ThemeConfig {
   light?: GlobalThemeOverrides;
   dark?: GlobalThemeOverrides;
   mobileOrTablet?: GlobalThemeOverrides;
+  mobile?: GlobalThemeOverrides;
 }
 
 export interface NavbarRoute {

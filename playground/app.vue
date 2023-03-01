@@ -21,6 +21,7 @@
     </NaiveNavbar>
 
     <n-result title="OK" description="bla bla bla"></n-result>
+
     <NuxtPage></NuxtPage>
 
   </NaiveConfig>
