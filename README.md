@@ -49,7 +49,8 @@ import { ThemeConfig} from "@bg-dev/nuxt-naiveui"
 
 const themeConfig: ThemeConfig = {
   shared: {}, // Common theme options (highest priority)
-  mobileOrTablet: {} // Theme options applied on mobile/tablet (second highest priority)
+  mobileOrTablet: {}, // Theme options applied on mobile and tablet (second highest priority)
+  mobile: {}, // Theme options applied on mobile only (second highest priority)
   light: {}, // Theme options applied on light mode (lowest priority)
   dark: {}, // Theme options applied on dark mode (lowest priority)
 }
