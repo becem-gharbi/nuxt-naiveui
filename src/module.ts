@@ -32,6 +32,16 @@ export default defineNuxtModule<ModuleOptions>({
     defaultIconSize: 20,
   },
 
+  // Add types for volar
+  hooks: {
+    "prepare:types": ({ tsConfig, references }) => {
+      tsConfig.compilerOptions!.types.push("naive-ui/volar")
+      references.push({
+        types: "naive-ui/volar",
+      })
+    },
+  },
+
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url);
     const runtimeDir = fileURLToPath(new URL("./runtime", import.meta.url));
@@ -62,11 +72,6 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Pass module options to runtimeConfig object
     nuxt.options.runtimeConfig.public.naiveui = options;
-
-    // Add types for volar
-    nuxt.hook("prepare:types", (options) => {
-      options.tsConfig.compilerOptions?.types?.push("naive-ui/volar");
-    });
 
     // Add auto import for naive components & composables
     // https://www.naiveui.com/en-US/os-theme/docs/ssr
