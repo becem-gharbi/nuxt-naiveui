@@ -44,7 +44,7 @@ export default defineNuxtModule<ModuleOptions>({
     const { resolve } = createResolver(import.meta.url);
     const runtimeDir = fileURLToPath(new URL("./runtime", import.meta.url));
 
-    // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
+    // Add plugins
     addPlugin(resolve(runtimeDir, "naive.server"));
 
     // Add composables directory
@@ -71,7 +71,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Pass module options to runtimeConfig object
     nuxt.options.runtimeConfig.public.naiveui = options;
 
-    // add imports for naive-ui components
+    // Add imports for naive-ui components
     const naiveComponents = Object.keys(naive).filter((name) =>
       /^(N[A-Z]|n-[a-z])/.test(name)
     );
@@ -84,7 +84,7 @@ export default defineNuxtModule<ModuleOptions>({
       });
     });
 
-    // add imports for naive-ui composables
+    // Add imports for naive-ui composables
     const naiveComposables = [
       "useDialog",
       "useMessage",
