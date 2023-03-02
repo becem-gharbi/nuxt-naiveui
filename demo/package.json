@@ -12,6 +12,6 @@
     "nuxt": "^3.2.2"
   },
   "dependencies": {
-    "@bg-dev/nuxt-naiveui": "^1.0.0-beta.4"
+    "@bg-dev/nuxt-naiveui": "^1.0.0-beta.5"
   }
 }
