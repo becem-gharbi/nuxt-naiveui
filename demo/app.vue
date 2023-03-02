@@ -28,6 +28,7 @@
 
 <script setup lang="ts">
 import { ThemeConfig, NavbarRoute } from "@bg-dev/nuxt-naiveui"
+import { useDialog } from "naive-ui";
 
 const navbarRoutes: NavbarRoute[] = [
   {

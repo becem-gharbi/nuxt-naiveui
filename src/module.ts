@@ -2,16 +2,14 @@ import {
   defineNuxtModule,
   addPlugin,
   createResolver,
-  extendViteConfig,
   addImportsDir,
   addComponent,
+  addImports,
 } from "@nuxt/kit";
 import { fileURLToPath } from "url";
-import Components from "unplugin-vue-components/vite";
-import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
-import AutoImport from "unplugin-auto-import/vite";
 import type { ThemeConfig } from "./runtime/types";
 export type { NavbarRoute, ThemeConfig } from "./runtime/types";
+import naive from "naive-ui";
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions {
@@ -30,6 +28,16 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: {
     defaultColorMode: "system",
     defaultIconSize: 20,
+  },
+
+  // Add types for volar
+  hooks: {
+    "prepare:types": ({ tsConfig, references }) => {
+      tsConfig.compilerOptions!.types.push("naive-ui/volar");
+      references.push({
+        types: "naive-ui/volar",
+      });
+    },
   },
 
   setup(options, nuxt) {
@@ -63,44 +71,36 @@ export default defineNuxtModule<ModuleOptions>({
     // Pass module options to runtimeConfig object
     nuxt.options.runtimeConfig.public.naiveui = options;
 
-    // Add types for volar
-    nuxt.hook("prepare:types", (options) => {
-      options.tsConfig.compilerOptions?.types?.push("naive-ui/volar");
+    // add imports for naive-ui components
+    const naiveComponents = Object.keys(naive).filter((name) =>
+      /^(N[A-Z]|n-[a-z])/.test(name)
+    );
+
+    naiveComponents.forEach((name) => {
+      addComponent({
+        export: name,
+        name: name,
+        filePath: "naive-ui",
+      });
     });
 
-    // Add auto import for naive components & composables
-    // https://www.naiveui.com/en-US/os-theme/docs/ssr
-    extendViteConfig((config) => {
-      config.plugins?.push(
-        AutoImport({
-          imports: [
-            {
-              "naive-ui": [
-                "useDialog",
-                "useMessage",
-                "useNotification",
-                "useLoadingBar",
-                "useThemeVars",
-                "useDialogReactiveList",
-                "useOsTheme",
-              ],
-            },
-          ],
-        }),
-        Components({
-          resolvers: [NaiveUiResolver()],
-        })
-      );
+    // add imports for naive-ui composables
+    const naiveComposables = [
+      "useDialog",
+      "useMessage",
+      "useNotification",
+      "useLoadingBar",
+      "useThemeVars",
+      "useDialogReactiveList",
+      "useOsTheme",
+    ];
 
-      // if (process.env.NODE_ENV === "development") {
-      //   config.optimizeDeps = config.optimizeDeps || {};
-      //   config.optimizeDeps.include = config.optimizeDeps.include || [];
-      //   config.optimizeDeps.include.push(
-      //     "naive-ui",
-      //     "vueuc",
-      //     "date-fns-tz/esm/formatInTimeZone"
-      //   );
-      // }
+    naiveComposables.forEach((name) => {
+      addImports({
+        name: name,
+        as: name,
+        from: "naive-ui",
+      });
     });
 
     // Transpile naive modules
