@@ -19,9 +19,12 @@ export default function useNaiveColorMode() {
   });
 
   const colorMode: Ref<"light" | "dark"> = useState<"light" | "dark">(
-    "naive_color_mode",
-    () => colorModeCookie.value
+    "naive_color_mode"
   );
+
+  watch(colorMode, (value) => {
+    colorModeCookie.value = value;
+  });
 
   function detectPreferedColorMode() {
     return window.matchMedia &&
@@ -31,22 +34,23 @@ export default function useNaiveColorMode() {
   }
 
   onMounted(() => {
-    if (!colorMode.value && config.defaultColorMode === "system") {
+    colorMode.value = colorModeCookie.value;
+    if (colorMode.value) return;
+
+    if (config.defaultColorMode === "system") {
       colorMode.value = detectPreferedColorMode();
+    } else {
+      colorMode.value = config.defaultColorMode === "dark" ? "dark" : "light";
     }
   });
 
-  if (!colorMode.value && config.defaultColorMode !== "system") {
-    colorMode.value = config.defaultColorMode === "dark" ? "dark" : "light";
+  if (process.server) {
+    colorMode.value = colorModeCookie.value;
+
+    if (!colorMode.value && config.defaultColorMode !== "system") {
+      colorMode.value = config.defaultColorMode === "dark" ? "dark" : "light";
+    }
   }
 
-  watch(
-    colorMode,
-    (value) => {
-      colorModeCookie.value = value;
-    },
-    { immediate: true }
-  );
-
-  return { colorMode };
+  return { colorMode: colorMode };
 }
