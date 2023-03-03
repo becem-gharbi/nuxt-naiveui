@@ -1,7 +1,9 @@
 import { useRequestHeaders } from "#app";
 
 export default function useNaiveDevice() {
-  const userAgent = useRequestHeaders()["user-agent"] || navigator.userAgent;
+  const userAgent =
+    useRequestHeaders()["user-agent"] ||
+    (process.client ? navigator.userAgent : "");
 
   // Source http://detectmobilebrowsers.com/
   const isMobileOrTablet: boolean =
