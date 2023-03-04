@@ -8,10 +8,9 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.2.5",
     "nuxt": "^3.2.3"
   },
   "dependencies": {
-    "@bg-dev/nuxt-naiveui": "^1.0.0-beta.6"
+    "@bg-dev/nuxt-naiveui": "^1.0.0-beta.7"
   }
 }
