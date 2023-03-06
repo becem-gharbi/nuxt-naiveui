@@ -117,8 +117,8 @@ const defaultLightTheme: GlobalThemeOverrides = {
     common: {
         lineHeight: "normal",
         bodyColor: "white",
-        textColor1: "#171717",
-        textColor2: "#262626",
+        textColor1: "#262626",
+        textColor2: "#525252",
         textColor3: "#a3a3a3",
     },
     IconWrapper: {
@@ -126,20 +126,20 @@ const defaultLightTheme: GlobalThemeOverrides = {
         iconColor: "inherited"
     },
     Menu: {
-        itemIconColor: "#262626",
-        itemTextColor: "#262626",
+        itemIconColor: "#525252",
+        itemTextColor: "#525252",
 
-        itemTextColorHorizontal: "#262626",
-        itemIconColorHorizontal: "#262626",
+        itemTextColorHorizontal: "#525252",
+        itemIconColorHorizontal: "#525252",
 
-        itemIconColorHoverHorizontalInverted: "#262626",
-        itemTextColorHoverHorizontalInverted: "#262626",
+        itemIconColorHoverHorizontalInverted: "#525252",
+        itemTextColorHoverHorizontalInverted: "#525252",
 
-        itemTextColorActiveHorizontalInverted: "#262626",
-        itemIconColorActiveHorizontalInverted: "#262626",
+        itemTextColorActiveHorizontalInverted: "#525252",
+        itemIconColorActiveHorizontalInverted: "#525252",
 
-        itemTextColorActiveHoverHorizontalInverted: "#262626",
-        itemIconColorActiveHoverHorizontalInverted: "#262626",
+        itemTextColorActiveHoverHorizontalInverted: "#525252",
+        itemIconColorActiveHoverHorizontalInverted: "#525252",
 
         itemTextColorInverted: "#a3a3a3",
         itemIconColorInverted: "#a3a3a3",
@@ -147,16 +147,16 @@ const defaultLightTheme: GlobalThemeOverrides = {
         itemTextColorHoverInverted: "#a3a3a3",
         itemIconColorHoverInverted: "#a3a3a3",
 
-        itemTextColorChildActiveHorizontalInverted: "#262626",
-        itemIconColorChildActiveHorizontalInverted: "#262626",
+        itemTextColorChildActiveHorizontalInverted: "#525252",
+        itemIconColorChildActiveHorizontalInverted: "#525252",
 
-        itemIconColorChildActiveHoverHorizontalInverted: "#262626",
-        itemTextColorChildActiveHoverHorizontalInverted: "#262626",
+        itemIconColorChildActiveHoverHorizontalInverted: "#525252",
+        itemTextColorChildActiveHoverHorizontalInverted: "#525252",
 
-        itemTextColorChildActiveHoverInverted: "#262626",
-        itemTextColorChildActiveInverted: "#262626",
-        itemIconColorChildActiveHoverInverted: "#262626",
-        itemIconColorChildActiveInverted: "#262626",
+        itemTextColorChildActiveHoverInverted: "#525252",
+        itemTextColorChildActiveInverted: "#525252",
+        itemIconColorChildActiveHoverInverted: "#525252",
+        itemIconColorChildActiveInverted: "#525252",
     }
 }
 
