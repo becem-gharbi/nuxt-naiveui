@@ -27,7 +27,9 @@
         <slot name="end"></slot>
 
         <n-button v-if="isMobileOrTablet" text @click="() => drawerActive = true">
-            <NaiveIcon :name="menuToggleIcon" :size="menuToggleIconSize"></NaiveIcon>
+            <template #icon>
+                <NaiveIcon :name="menuToggleIcon" :size="menuToggleIconSize"></NaiveIcon>
+            </template>
         </n-button>
 
     </div>
@@ -44,7 +46,7 @@ import NaiveIcon from "./NaiveIcon.vue"
 import useNaiveDevice from "../composables/useNaiveDevice"
 import useNaiveTheme from "../composables/useNaiveTheme"
 import type { NavbarRoute } from "../types"
-import { NDrawer, NMenu, NDrawerContent, NButton, DrawerProps } from "naive-ui"
+import { NDrawer, NMenu, NDrawerContent, NButton } from "naive-ui"
 
 const { isMobileOrTablet } = useNaiveDevice()
 

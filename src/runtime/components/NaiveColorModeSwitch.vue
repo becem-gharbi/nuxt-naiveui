@@ -1,7 +1,9 @@
 <template>
     <n-button text @click="toggleColorMode">
-        <NaiveIcon v-if="colorMode === 'dark'" name="material-symbols:light-mode-outline-sharp"></NaiveIcon>
-        <NaiveIcon v-else name="material-symbols:dark-mode-outline-rounded"></NaiveIcon>
+        <template #icon>
+            <NaiveIcon v-if="colorMode === 'dark'" name="material-symbols:light-mode-outline-sharp"></NaiveIcon>
+            <NaiveIcon v-else name="material-symbols:dark-mode-outline-rounded"></NaiveIcon>
+        </template>
     </n-button>
 </template>
 
