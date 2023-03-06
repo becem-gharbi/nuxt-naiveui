@@ -1,5 +1,11 @@
 <template>
     <div :style="navbarStyle">
+        <n-button text v-if="backIcon && isMobileOrTablet" @click="() => $router.back()">
+            <template #icon>
+                <NaiveIcon :name="backIcon as string" :size="backIconSize" />
+            </template>
+        </n-button>
+
         <slot name="start"></slot>
 
         <div :style="{ textAlign: menuPlacement, flex: 1 }">
@@ -50,6 +56,8 @@ const props = withDefaults(defineProps<{
     routes: NavbarRoute[],
     menuToggleIcon?: string,
     menuToggleIconSize?: number,
+    backIcon?: boolean | string,
+    backIconSize?: number,
     menuInverted?: boolean,
     menuPlacement?: "right" | "left" | "center",
     drawerPlacement?: "top" | "right" | "bottom" | "left",
@@ -60,7 +68,9 @@ const props = withDefaults(defineProps<{
     drawerPlacement: "left",
     menuInverted: false,
     sticky: true,
-    menuToggleIconSize: 26
+    menuToggleIconSize: 26,
+    backIcon: "material-symbols:arrow-back-sharp",
+    backIconSize: 26
 })
 
 const naiveTheme = useNaiveTheme()
