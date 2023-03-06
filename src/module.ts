@@ -8,7 +8,7 @@ import {
 } from "@nuxt/kit";
 import { fileURLToPath } from "url";
 import type { ThemeConfig } from "./runtime/types";
-export type { NavbarRoute, ThemeConfig } from "./runtime/types";
+export type { NavbarRoute, ThemeConfig, TabbarRoute } from "./runtime/types";
 import naive from "naive-ui";
 
 // Module options TypeScript inteface definition
@@ -66,6 +66,10 @@ export default defineNuxtModule<ModuleOptions>({
     addComponent({
       name: "NaiveColorModeSwitch",
       filePath: resolve(runtimeDir, "components", "NaiveColorModeSwitch.vue"),
+    });
+    addComponent({
+      name: "NaiveTabbar",
+      filePath: resolve(runtimeDir, "components", "NaiveTabbar.vue"),
     });
 
     // Pass module options to runtimeConfig object

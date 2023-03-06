@@ -14,3 +14,10 @@ export interface NavbarRoute {
   path?: string;
   children?: NavbarRoute[];
 }
+
+export interface TabbarRoute {
+  label: string;
+  iconSelected: string;
+  iconUnselected: string;
+  path: string;
+}
