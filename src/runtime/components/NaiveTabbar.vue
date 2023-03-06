@@ -1,13 +1,14 @@
 <template>
     <div :style="tabBarStyle">
-        <NuxtLink v-for="route of routes" :to="route.path" :style="{ textDecoration: 'none' }">
+        <NuxtLink v-for="tabbarRoute of routes" :to="tabbarRoute.path" :style="{ textDecoration: 'none' }">
 
-            <n-button quaternary :focusable="false" :type="route.path === $route.path ? 'primary' : 'default'">
+            <n-button quaternary :focusable="false" :type="tabbarRoute.path === route.path ? 'primary' : 'default'">
                 <div class="tab-bar-item">
-                    <NaiveIcon :name="route.path === $route.path ? route.iconSelected : route.iconUnselected"
+                    <NaiveIcon
+                        :name="tabbarRoute.path === route.path ? tabbarRoute.iconSelected : tabbarRoute.iconUnselected"
                         :size="iconSize" />
-                    <n-text :type="route.path === $route.path ? 'primary' : 'default'">{{
-                        route.label }}</n-text>
+                    <n-text :type="tabbarRoute.path === route.path ? 'primary' : 'default'">{{
+                        tabbarRoute.label }}</n-text>
                 </div>
             </n-button>
 
@@ -17,7 +18,7 @@
 
 <script setup lang="ts">
 //@ts-ignore
-import { computed } from "#imports"
+import { computed, useRoute } from "#imports"
 //@ts-ignore
 import { NuxtLink } from "#components"
 import type { StyleValue } from "vue"
@@ -33,6 +34,7 @@ withDefaults(defineProps<{
 })
 
 const naiveTheme = useNaiveTheme()
+const route = useRoute()
 
 const tabBarStyle = computed<StyleValue>(() => ({
     position: "fixed",

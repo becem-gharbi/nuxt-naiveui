@@ -1,6 +1,6 @@
 <template>
     <div :style="navbarStyle">
-        <n-button text v-if="backIcon && isMobileOrTablet" @click="() => $router.back()">
+        <n-button text v-if="backIcon && isMobileOrTablet" @click="() => router.back()">
             <template #icon>
                 <NaiveIcon :name="backIcon as string" :size="backIconSize" />
             </template>
@@ -16,11 +16,11 @@
                     <template #header>
                         <slot name="start"></slot>
                     </template>
-                    <n-menu mode="vertical" :default-value="$route.path" :inverted="menuInverted" :options="menuOptions" />
+                    <n-menu mode="vertical" :default-value="route.path" :inverted="menuInverted" :options="menuOptions" />
                 </n-drawer-content>
             </n-drawer>
 
-            <n-menu v-if="!isMobileOrTablet" :default-value="$route.path" :inverted="menuInverted" mode="horizontal"
+            <n-menu v-if="!isMobileOrTablet" :default-value="route.path" :inverted="menuInverted" mode="horizontal"
                 :options="menuOptions" />
         </div>
 
@@ -35,7 +35,7 @@
 
 <script setup lang = "ts" >
 //@ts-ignore
-import { ref, computed, h, useRoute, watch } from "#imports"
+import { ref, computed, h, useRoute, watch, useRouter } from "#imports"
 //@ts-ignore
 import { NuxtLink } from "#components"
 import type { StyleValue } from "vue"
@@ -50,6 +50,7 @@ const { isMobileOrTablet } = useNaiveDevice()
 
 const drawerActive = ref(false)
 const route = useRoute()
+const router = useRouter()
 watch(route, () => drawerActive.value = false)
 
 const props = withDefaults(defineProps<{
