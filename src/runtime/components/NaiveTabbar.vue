@@ -2,8 +2,7 @@
     <div :style="tabBarStyle">
         <NuxtLink v-for="route of routes" :to="route.path" :style="{ textDecoration: 'none' }">
 
-            <n-button quaternary block :focusable="false" :type="route.path === $route.path ? 'primary' : 'default'"
-                :style="{ height: '40px !important' }">
+            <n-button quaternary :focusable="false" :type="route.path === $route.path ? 'primary' : 'default'">
                 <div class="tab-bar-item">
                     <NaiveIcon :name="route.path === $route.path ? route.iconSelected : route.iconUnselected"
                         :size="iconSize" />
@@ -30,7 +29,7 @@ withDefaults(defineProps<{
     routes: TabbarRoute[],
     iconSize?: number
 }>(), {
-    iconSize: 22
+    iconSize: 24
 })
 
 const naiveTheme = useNaiveTheme()
@@ -46,7 +45,7 @@ const tabBarStyle = computed<StyleValue>(() => ({
     alignItems: 'center',
     gap: '0px',
     width: "100vw",
-    height: '46px',
+    height: '56px',
     boxSizing: 'border-box',
 }))
 
@@ -66,6 +65,6 @@ const tabBarStyle = computed<StyleValue>(() => ({
 <style>
 body {
     min-height: 100% !important;
-    padding-bottom: 46px;
+    padding-bottom: 56px;
 }
 </style>
