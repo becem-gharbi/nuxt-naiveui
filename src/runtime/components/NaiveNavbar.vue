@@ -9,10 +9,10 @@
         <slot name="start"></slot>
 
         <div :style="{ textAlign: menuPlacement, flex: 1 }">
-            <n-drawer v-if="isMobileOrTablet" v-model:show="drawerActive" :placement="drawerPlacement">
+            <n-drawer v-if="isMobileOrTablet" v-model:show="drawerActive" :placement="drawerPlacement" :width="drawerWidth">
                 <n-drawer-content title="Menu" :body-content-style="{ padding: 0 }" :header-style="{
                     padding: '15px'
-                }">
+                }" :closable="drawerClosable">
                     <template #header>
                         <slot name="start"></slot>
                     </template>
@@ -44,7 +44,7 @@ import NaiveIcon from "./NaiveIcon.vue"
 import useNaiveDevice from "../composables/useNaiveDevice"
 import useNaiveTheme from "../composables/useNaiveTheme"
 import type { NavbarRoute } from "../types"
-import { NDrawer, NMenu, NDrawerContent, NButton } from "naive-ui"
+import { NDrawer, NMenu, NDrawerContent, NButton, DrawerProps } from "naive-ui"
 
 const { isMobileOrTablet } = useNaiveDevice()
 
@@ -63,6 +63,8 @@ const props = withDefaults(defineProps<{
     menuPlacement?: "right" | "left" | "center",
     drawerPlacement?: "top" | "right" | "bottom" | "left",
     sticky?: boolean,
+    drawerClosable?: boolean,
+    drawerWidth?: string | number
 }>(), {
     menuToggleIcon: "material-symbols:menu-rounded",
     menuPlacement: "left",
@@ -71,7 +73,7 @@ const props = withDefaults(defineProps<{
     sticky: true,
     menuToggleIconSize: 26,
     backIcon: "material-symbols:arrow-back-sharp",
-    backIconSize: 26
+    backIconSize: 26,
 })
 
 const naiveTheme = useNaiveTheme()

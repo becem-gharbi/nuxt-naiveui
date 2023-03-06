@@ -1,6 +1,6 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false">
+    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false" drawer-closable drawer-width="100%">
 
       <template #start>
         <div class="brand">
@@ -33,7 +33,7 @@ import { ThemeConfig, NavbarRoute, TabbarRoute } from "@bg-dev/nuxt-naiveui"
 
 const navbarRoutes: NavbarRoute[] = [
   {
-    label: "Sample",
+    label: "Sample, this is a long long lable",
     icon: "ri:home-4-line",
     path: "/"
   },
