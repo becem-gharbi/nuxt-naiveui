@@ -22,13 +22,14 @@
 
     <NuxtPage></NuxtPage>
 
+    <NaiveTabbar :routes="tabBarRoutes" />
+
   </NaiveConfig>
 </template>
 
 
 <script setup lang="ts">
-import { ThemeConfig, NavbarRoute } from "@bg-dev/nuxt-naiveui"
-import { useDialog } from "naive-ui";
+import { ThemeConfig, NavbarRoute, TabbarRoute } from "@bg-dev/nuxt-naiveui"
 
 const navbarRoutes: NavbarRoute[] = [
   {
@@ -51,6 +52,27 @@ const navbarRoutes: NavbarRoute[] = [
         path: "/computers"
       }
     ]
+  }
+]
+
+const tabBarRoutes: TabbarRoute = [
+  {
+    label: "Sample",
+    iconUnselected: "ri:home-4-line",
+    iconSelected: "material-symbols:home-sharp",
+    path: "/"
+  },
+  {
+    label: "Books",
+    iconUnselected: "material-symbols:menu-book-outline-rounded",
+    iconSelected: "material-symbols:menu-book-sharp",
+    path: "/books"
+  },
+  {
+    label: "Computers",
+    iconUnselected: "material-symbols:computer-outline",
+    iconSelected: "material-symbols:computer",
+    path: "/computers"
   }
 ]
 
