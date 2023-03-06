@@ -55,7 +55,7 @@ const navbarRoutes: NavbarRoute[] = [
   }
 ]
 
-const tabBarRoutes: TabbarRoute = [
+const tabBarRoutes: TabbarRoute[] = [
   {
     label: "Sample",
     iconUnselected: "ri:home-4-line",

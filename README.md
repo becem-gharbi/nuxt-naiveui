@@ -11,6 +11,7 @@ A Nuxt 3 module for Naive-ui component library
   - ✔️ `NaiveNavbar` an adaptive navbar for app navigation
   - ✔️ `NaiveIcon` a wrapper based on iconify/vue with large collection of [icons](https://icones.js.org/)
   - ✔️ `NaiveColorModeSwitch` light/dark modes switch based on `useNaiveColorMode` composable
+  - ✔️ `NaiveTabbar` a tabBar for mobile/tablet navigation
 
 ## Installation
 
