@@ -29,7 +29,7 @@ withDefaults(defineProps<{
     routes: TabbarRoute[],
     iconSize?: number
 }>(), {
-    iconSize: 24
+    iconSize: 26
 })
 
 const naiveTheme = useNaiveTheme()
