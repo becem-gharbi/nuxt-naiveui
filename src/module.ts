@@ -10,6 +10,7 @@ import { fileURLToPath } from "url";
 import type { ThemeConfig } from "./runtime/types";
 export type { NavbarRoute, ThemeConfig, TabbarRoute } from "./runtime/types";
 import naive from "naive-ui";
+import { name, version } from "../package.json";
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions {
@@ -20,8 +21,12 @@ export interface ModuleOptions {
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: "@bg-dev/nuxt-naiveui",
+    name,
+    version,
     configKey: "naiveui",
+    compatibility: {
+      nuxt: "^3.0.0",
+    },
   },
 
   // Default configuration options of the Nuxt module
@@ -94,9 +99,7 @@ export default defineNuxtModule<ModuleOptions>({
       "useMessage",
       "useNotification",
       "useLoadingBar",
-      "useThemeVars",
       "useDialogReactiveList",
-      "useOsTheme",
     ];
 
     naiveComposables.forEach((name) => {
