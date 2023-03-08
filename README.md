@@ -5,7 +5,7 @@
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-A Nuxt 3 module for integrating the Naive UI component library into your Nuxt 3 project.
+A Nuxt 3 module for integrating the Naive UI component library into your Nuxt 3 project
 
 ## Features
 
@@ -43,7 +43,7 @@ export default defineNuxtConfig({
   },
 });
 ```
-That's it! You can now use My Module in your Nuxt app ✨
+That's it! You can now use `@bg-dev/nuxt-naiveui` in your Nuxt app ✨
 
 ## Usage
 
