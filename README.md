@@ -1,6 +1,11 @@
-# Nuxt Naive ui
+# Nuxt Naive UI
 
-A Nuxt 3 module for Naive-ui component library
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![License][license-src]][license-href]
+[![Nuxt][nuxt-src]][nuxt-href]
+
+A Nuxt 3 module for integrating the Naive UI component library into your Nuxt 3 project.
 
 ## Features
 
@@ -15,14 +20,20 @@ A Nuxt 3 module for Naive-ui component library
 
 ## Installation
 
+Add `@bg-dev/nuxt-naiveui` dependency to your project
+
 ```bash
-npm i @bg-dev/nuxt-naiveui
+# Using npm
+npm install --save-dev @bg-dev/nuxt-naiveui
+
+# Using yarn
+yarn add --dev @bg-dev/nuxt-naiveui
 ```
 
 ## Setup
-
-```ts
-defineNuxtConfig({
+Add `@bg-dev/nuxt-naiveui` to the `modules` section of `nuxt.config.ts` and define the default settings.
+```js
+export default defineNuxtConfig({
   modules: ["@bg-dev/nuxt-naiveui"],
 
   naiveui: {
@@ -32,6 +43,7 @@ defineNuxtConfig({
   },
 });
 ```
+That's it! You can now use My Module in your Nuxt app ✨
 
 ## Usage
 
@@ -59,3 +71,29 @@ const themeConfig: ThemeConfig = {
 ```
 
 **For documentation**, refer to [Naive-ui website](https://www.naiveui.com/en-US/os-theme/docs/introduction)
+
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+[MIT License](./LICENSE)
+
+<!-- Badges -->
+
+[npm-version-src]: https://img.shields.io/npm/v/@bg-dev/nuxt-naiveui/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-href]: https://npmjs.com/package/@bg-dev/nuxt-naiveui
+[npm-downloads-src]: https://img.shields.io/npm/dm/@bg-dev/nuxt-naiveui.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-href]: https://npmjs.com/package/@bg-dev/nuxt-naiveui
+[license-src]: https://img.shields.io/npm/l/@bg-dev/nuxt-naiveui.svg?style=flat&colorA=18181B&colorB=28CF8D
+[license-href]: https://npmjs.com/package/@bg-dev/nuxt-naiveui
+[nuxt-src]: https://img.shields.io/badge/Nuxt-18181B?logo=nuxt.js
+[nuxt-href]: https://nuxt.com
