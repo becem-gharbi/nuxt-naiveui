@@ -256,12 +256,19 @@ watch(themeOverrides, (value) => naiveTheme.value = value, { immediate: true })
 useHead(() => ({
     style: [
         {
-            children: `body {
-           background-color: ${themeOverrides.value?.common?.bodyColor} !important;
-           font-family: ${themeOverrides.value?.common?.fontFamily} !important;
-           font-size: ${themeOverrides.value?.common?.fontSize} !important;
-           line-height: ${themeOverrides.value?.common?.lineHeight} !important;
-        `,
+            children: `
+                body {
+                    background-color: ${themeOverrides.value?.common?.bodyColor} !important;
+                    font-family: ${themeOverrides.value?.common?.fontFamily} !important;
+                    font-size: ${themeOverrides.value?.common?.fontSize} !important;
+                    line-height: ${themeOverrides.value?.common?.lineHeight} !important;
+                    }\n`
+                +
+                `
+                button, [type='button'],[type='reset'],[type='submit'] {
+                   background-color: var(--n-color) !important;
+                    }
+            `,
         },
     ],
 }));

@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   ssr: true,
   css: ["~/assets/fonts/gellix/style.css"],
-  modules: ["../src/module"],
+  modules: ["@nuxtjs/tailwindcss", "../src/module"],
   naiveui: {
     defaultColorMode: "system",
   },
