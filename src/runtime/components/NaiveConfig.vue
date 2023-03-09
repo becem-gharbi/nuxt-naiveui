@@ -222,7 +222,7 @@ const { isMobileOrTablet, isMobile } = useNaiveDevice()
 
 const themeOverrides = computed<GlobalThemeOverrides>(() => {
 
-    const themeConfig = props.themeConfig || config.defaultThemeConfig
+    const themeConfig = props.themeConfig || config.themeConfig
 
     let colorModeTheme: GlobalThemeOverrides | undefined = undefined
 

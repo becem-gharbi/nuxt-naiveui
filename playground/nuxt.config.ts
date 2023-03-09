@@ -3,6 +3,6 @@ export default defineNuxtConfig({
   css: ["~/assets/fonts/gellix/style.css"],
   modules: ["../src/module"],
   naiveui: {
-    defaultColorMode: "system",
+    colorMode: "system",
   },
 });

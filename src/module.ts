@@ -14,9 +14,9 @@ import { name, version } from "../package.json";
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions {
-  defaultThemeConfig?: ThemeConfig;
-  defaultColorMode: "light" | "dark" | "system";
-  defaultIconSize: number;
+  themeConfig?: ThemeConfig;
+  colorMode: "light" | "dark" | "system";
+  iconSize: number;
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -31,8 +31,8 @@ export default defineNuxtModule<ModuleOptions>({
 
   // Default configuration options of the Nuxt module
   defaults: {
-    defaultColorMode: "system",
-    defaultIconSize: 20,
+    colorMode: "system",
+    iconSize: 20,
   },
 
   // Add types for volar

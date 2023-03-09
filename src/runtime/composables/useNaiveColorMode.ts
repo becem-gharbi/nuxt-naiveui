@@ -37,18 +37,18 @@ export default function useNaiveColorMode() {
     colorMode.value = colorModeCookie.value;
     if (colorMode.value) return;
 
-    if (config.defaultColorMode === "system") {
+    if (config.colorMode === "system") {
       colorMode.value = detectPreferedColorMode();
     } else {
-      colorMode.value = config.defaultColorMode === "dark" ? "dark" : "light";
+      colorMode.value = config.colorMode === "dark" ? "dark" : "light";
     }
   });
 
   if (process.server) {
     colorMode.value = colorModeCookie.value;
 
-    if (!colorMode.value && config.defaultColorMode !== "system") {
-      colorMode.value = config.defaultColorMode === "dark" ? "dark" : "light";
+    if (!colorMode.value && config.colorMode !== "system") {
+      colorMode.value = config.colorMode === "dark" ? "dark" : "light";
     }
   }
 

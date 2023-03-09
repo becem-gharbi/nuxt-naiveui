@@ -14,7 +14,7 @@ const props = defineProps<{ name: string; size?: number, color?: string, borderR
 const state = useState<Record<string, IconifyIcon | undefined>>('naive_icons', () => ({}))
 const iconName = computed(() => props.name)
 const icon = computed<IconifyIcon | undefined>(() => state.value?.[iconName.value])
-const sSize = computed(() => props.size || config.defaultIconSize)
+const sSize = computed(() => props.size || config.iconSize)
 
 async function loadIconComponent() {
     if (!state.value?.[iconName.value]) {
