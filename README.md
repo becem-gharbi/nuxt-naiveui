@@ -37,9 +37,9 @@ export default defineNuxtConfig({
   modules: ["@bg-dev/nuxt-naiveui"],
 
   naiveui: {
-    defaultColorMode: "system",
-    defaultIconSize: 18,
-    defaultThemeConfig: {},
+    colorMode: "system",
+    iconSize: 18,
+    themeConfig: {},
   },
 });
 ```
