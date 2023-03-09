@@ -5,7 +5,7 @@
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-A Nuxt 3 module for integrating the Naive UI component library into your Nuxt 3 project
+A Nuxt 3 module for integrating Naive UI component library into your Nuxt 3 project
 
 ## Features
 
