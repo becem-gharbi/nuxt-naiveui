@@ -47,7 +47,8 @@ That's it! You can now use `@bg-dev/nuxt-naiveui` in your Nuxt app ✨
 
 ## Usage
 
-**For theme customization**, use `NaiveConfig` component in `app.vue` and set `themeConfig` property, alternatively set `defaultThemeConfig` in the module options. The compiled themeConfig is shared globally via `useNaiveTheme` composable.
+### Theme customization
+Use `NaiveConfig` component in `app.vue` and set `themeConfig` property, alternatively set `themeConfig` in the module options. The compiled themeConfig is shared globally via `useNaiveTheme` composable.
 
 ```javascript
 <template>
@@ -70,7 +71,8 @@ const themeConfig: ThemeConfig = {
 </script>
 ```
 
-**For documentation**, refer to [Naive-ui website](https://www.naiveui.com/en-US/os-theme/docs/introduction)
+### Documentation
+Refer to [Naive-ui website](https://www.naiveui.com/en-US/os-theme/docs/introduction)
 
 
 ## Development
