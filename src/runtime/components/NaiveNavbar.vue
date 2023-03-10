@@ -6,7 +6,7 @@
 
         <slot name="start"></slot>
 
-        <div :style="{ textAlign: menuPlacement, flex: 1 }">
+        <nav :style="{ textAlign: menuPlacement, flex: 1 }">
             <n-drawer v-if="isMobileOrTablet" v-model:show="drawerActive" :placement="drawerPlacement" :width="drawerWidth">
                 <n-drawer-content title="Menu" :body-content-style="{ padding: 0 }" :header-style="{
                     padding: '15px'
@@ -20,7 +20,7 @@
 
             <n-menu v-if="!isMobileOrTablet" :default-value="route.path" :inverted="menuInverted" mode="horizontal"
                 :options="menuOptions" />
-        </div>
+        </nav>
 
         <slot name="end"></slot>
 

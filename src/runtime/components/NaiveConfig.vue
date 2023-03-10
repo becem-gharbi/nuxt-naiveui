@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 //@ts-ignore
-import { useHead, computed, useRuntimeConfig, watch } from "#imports"
+import { useHead, computed, useRuntimeConfig, watch, onMounted } from "#imports"
 import { NConfigProvider, GlobalThemeOverrides, ConfigProviderProps } from "naive-ui"
 import useNaiveColorMode from "../composables/useNaiveColorMode"
 import useNaiveDevice from "../composables/useNaiveDevice"
@@ -272,4 +272,10 @@ useHead(() => ({
         },
     ],
 }));
+
+onMounted(() => {
+    document.querySelectorAll(".n-submenu").forEach(subMenu => {
+        subMenu?.firstElementChild?.setAttribute("role", "none")
+    })
+})
 </script>

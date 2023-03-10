@@ -10,7 +10,7 @@
       </template>
 
       <template #end>
-        <NuxtLink to="https://github.com/becem-gharbi/nuxt-naiveui" target="_">
+        <NuxtLink to="https://github.com/becem-gharbi/nuxt-naiveui" target="_" aria-label="source-code">
           <n-button text tag="span">
             <NaiveIcon name="cib:github" />
           </n-button>
