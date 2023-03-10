@@ -31,7 +31,9 @@ yarn add --dev @bg-dev/nuxt-naiveui
 ```
 
 ## Setup
+
 Add `@bg-dev/nuxt-naiveui` to the `modules` section of `nuxt.config.ts` and define the default settings.
+
 ```js
 export default defineNuxtConfig({
   modules: ["@bg-dev/nuxt-naiveui"],
@@ -43,11 +45,13 @@ export default defineNuxtConfig({
   },
 });
 ```
+
 That's it! You can now use `@bg-dev/nuxt-naiveui` in your Nuxt app ✨
 
 ## Usage
 
 ### Theme customization
+
 Use `NaiveConfig` component in `app.vue` and set `themeConfig` property, alternatively set `themeConfig` in the module options. The compiled themeConfig is shared globally via `useNaiveTheme` composable.
 
 ```javascript
@@ -62,18 +66,20 @@ Use `NaiveConfig` component in `app.vue` and set `themeConfig` property, alterna
 import { ThemeConfig} from "@bg-dev/nuxt-naiveui"
 
 const themeConfig: ThemeConfig = {
-  shared: {}, // Common theme options (highest priority)
-  mobileOrTablet: {}, // Theme options applied on mobile and tablet (second highest priority)
-  mobile: {}, // Theme options applied on mobile only (second highest priority)
-  light: {}, // Theme options applied on light mode (lowest priority)
-  dark: {}, // Theme options applied on dark mode (lowest priority)
+  shared: {}, // Common theme options
+  mobileOrTablet: {}, // Theme options applied on mobile and tablet
+  mobile: {}, // Theme options applied on mobile only
+  light: {}, // Theme options applied on light mode
+  dark: {}, // Theme options applied on dark mode
 }
 </script>
 ```
 
-### Documentation
-Refer to [Naive-ui website](https://www.naiveui.com/en-US/os-theme/docs/introduction)
+It's **highly recommended** to include `NaiveConfig` even without theme configuration as it fixes global styles and accessibility issues.
 
+### Documentation
+
+Refer to [Naive-ui website](https://www.naiveui.com/en-US/os-theme/docs/introduction)
 
 ## Development
 
