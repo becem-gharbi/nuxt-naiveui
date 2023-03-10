@@ -1,6 +1,6 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false" :back-icon="false">
+    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false" drawer-closable drawer-width="100%" :back-icon="false">
 
       <template #start>
         <div class="brand">
@@ -10,8 +10,8 @@
       </template>
 
       <template #end>
-        <NuxtLink to="https://github.com/becem-gharbi/nuxt-naiveui" target="_">
-          <n-button text>
+        <NuxtLink to="https://github.com/becem-gharbi/nuxt-naiveui" target="_" aria-label="source-code">
+          <n-button text tag="span">
             <NaiveIcon name="cib:github" />
           </n-button>
         </NuxtLink>
@@ -33,7 +33,7 @@ import { ThemeConfig, NavbarRoute, TabbarRoute } from "@bg-dev/nuxt-naiveui"
 
 const navbarRoutes: NavbarRoute[] = [
   {
-    label: "Sample",
+    label: "Sample, this is a long long lable",
     icon: "ri:home-4-line",
     path: "/"
   },

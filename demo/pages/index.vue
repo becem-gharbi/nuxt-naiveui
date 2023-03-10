@@ -26,17 +26,6 @@
         </n-space>
 
         <n-space align="center">
-            <n-text>Dashed</n-text>
-            <n-button dashed>Default</n-button>
-            <n-button type="error" dashed>Error</n-button>
-            <n-button type="info" dashed>Info</n-button>
-            <n-button type="primary" dashed>Primary</n-button>
-            <n-button type="success" dashed>Success</n-button>
-            <n-button type="tertiary" dashed>Tertiary</n-button>
-            <n-button type="warning" dashed>Warning</n-button>
-        </n-space>
-
-        <n-space align="center">
             <n-text>Quaternary</n-text>
             <n-button quaternary>Default</n-button>
             <n-button type="error" quaternary>Error</n-button>
@@ -73,10 +62,10 @@
         <n-h3>Form</n-h3>
         <n-form>
             <n-form-item label="Email">
-                <n-input />
+                <n-input v-model:value="formModel.email" />
             </n-form-item>
             <n-form-item label="Password">
-                <n-input type="password" />
+                <n-input type="password" v-model:value="formModel.password" />
             </n-form-item>
             <n-form-item>
                 <n-button>Submit</n-button>
@@ -84,3 +73,13 @@
         </n-form>
     </n-space>
 </template>
+
+
+<script setup lang="ts">
+import { ref } from "#imports"
+
+const formModel = ref({
+    email: "",
+    password: ""
+})
+</script>
