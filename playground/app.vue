@@ -11,7 +11,7 @@
 
       <template #end>
         <NuxtLink to="https://github.com/becem-gharbi/nuxt-naiveui" target="_">
-          <n-button text>
+          <n-button text tag="span">
             <NaiveIcon name="cib:github" />
           </n-button>
         </NuxtLink>

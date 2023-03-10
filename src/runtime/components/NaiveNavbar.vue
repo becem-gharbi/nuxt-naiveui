@@ -1,9 +1,7 @@
 <template>
     <div :style="navbarStyle">
-        <n-button text v-if="backIcon && isMobileOrTablet" @click="() => router.back()">
-            <template #icon>
-                <NaiveIcon :name="backIcon as string" :size="backIconSize" />
-            </template>
+        <n-button text v-if="backIcon && isMobileOrTablet" @click="() => router.back()" tag="span">
+            <NaiveIcon :name="backIcon as string" :size="backIconSize" />
         </n-button>
 
         <slot name="start"></slot>
@@ -26,10 +24,8 @@
 
         <slot name="end"></slot>
 
-        <n-button v-if="isMobileOrTablet" text @click="() => drawerActive = true">
-            <template #icon>
-                <NaiveIcon :name="menuToggleIcon" :size="menuToggleIconSize"></NaiveIcon>
-            </template>
+        <n-button v-if="isMobileOrTablet" text @click="() => drawerActive = true" tag="span">
+            <NaiveIcon :name="menuToggleIcon" :size="menuToggleIconSize"></NaiveIcon>
         </n-button>
 
     </div>
