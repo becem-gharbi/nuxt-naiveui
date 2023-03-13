@@ -52,7 +52,7 @@ const router = useRouter()
 watch(route, () => drawerActive.value = false)
 
 const props = withDefaults(defineProps<{
-    routes: NavbarRoute[],
+    routes?: NavbarRoute[],
     menuToggleIcon?: string,
     menuToggleIconSize?: number,
     backIcon?: boolean | string,
@@ -64,6 +64,7 @@ const props = withDefaults(defineProps<{
     drawerClosable?: boolean,
     drawerWidth?: string | number
 }>(), {
+    routes: [],
     menuToggleIcon: "material-symbols:menu-rounded",
     menuPlacement: "left",
     drawerPlacement: "left",
