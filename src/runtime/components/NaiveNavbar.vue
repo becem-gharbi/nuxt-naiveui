@@ -7,7 +7,8 @@
         <slot name="start"></slot>
 
         <nav :style="{ textAlign: menuPlacement, flex: 1 }">
-            <n-drawer v-if="isMobileOrTablet" v-model:show="drawerActive" :placement="drawerPlacement" :width="drawerWidth">
+            <n-drawer v-if="menuOptions.length > 0 && isMobileOrTablet" v-model:show="drawerActive"
+                :placement="drawerPlacement" :width="drawerWidth">
                 <n-drawer-content title="Menu" :body-content-style="{ padding: 0 }" :header-style="{
                     padding: '15px'
                 }" :closable="drawerClosable">
@@ -24,7 +25,8 @@
 
         <slot name="end"></slot>
 
-        <n-button v-if="isMobileOrTablet" text @click="() => drawerActive = true" tag="span" :focusable="false">
+        <n-button v-if="menuOptions.length > 0 && isMobileOrTablet" text @click="() => drawerActive = true" tag="span"
+            :focusable="false">
             <NaiveIcon :name="menuToggleIcon" :size="menuToggleIconSize"></NaiveIcon>
         </n-button>
 
