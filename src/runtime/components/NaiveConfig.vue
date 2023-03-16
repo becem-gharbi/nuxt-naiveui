@@ -263,12 +263,6 @@ useHead(() => ({
                     font-size: ${themeOverrides.value?.common?.fontSize} !important;
                     line-height: ${themeOverrides.value?.common?.lineHeight} !important;
                     }\n`
-                +
-                `
-                button, [type='button'],[type='reset'],[type='submit'] {
-                   background-color: var(--n-color) !important;
-                    }
-            `,
         },
     ],
 }));
@@ -279,3 +273,9 @@ onMounted(() => {
     })
 })
 </script>
+
+<style>
+.n-button {
+    background-color: var(--n-color);
+}
+</style>

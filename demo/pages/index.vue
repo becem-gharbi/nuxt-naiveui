@@ -1,12 +1,12 @@
 <template>
     <n-space vertical :style="{ margin: '1em' }" size="large">
 
-        <n-h3>Buttons</n-h3>
+        <n-h3 class="m-5">Buttons</n-h3>
 
         <n-space align="center">
             <n-text>Basic</n-text>
             <n-button>Default</n-button>
-            <n-button type="error">Error</n-button>
+            <n-button type="error" tag="span" attr-type="reset">Error</n-button>
             <n-button type="info">Info</n-button>
             <n-button type="primary">Primary</n-button>
             <n-button type="success">Success</n-button>
