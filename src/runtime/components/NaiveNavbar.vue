@@ -9,14 +9,22 @@
         <nav :style="{ textAlign: menuPlacement, flex: 1 }">
             <n-drawer v-if="menuOptions.length > 0 && isMobileOrTablet" v-model:show="drawerActive"
                 :placement="drawerPlacement" :width="drawerWidth">
+
                 <n-drawer-content title="Menu" :body-content-style="{ padding: 0 }" :header-style="{
                     padding: '15px'
-                }" :closable="drawerClosable">
+                }" :footer-style="{ justifyContent: 'start' }" :closable="drawerClosable">
+
                     <template #header>
-                        <slot name="start"></slot>
+                        <slot name="drawer-header"></slot>
                     </template>
+
                     <n-menu mode="vertical" :default-value="route.path" :inverted="menuInverted" :options="menuOptions" />
+
+                    <template #footer>
+                        <slot name="drawer-footer"></slot>
+                    </template>
                 </n-drawer-content>
+
             </n-drawer>
 
             <n-menu v-if="!isMobileOrTablet" :default-value="route.path" :inverted="menuInverted" mode="horizontal"
@@ -27,7 +35,9 @@
 
         <n-button v-if="menuOptions.length > 0 && isMobileOrTablet" text @click="() => drawerActive = true" tag="span"
             :focusable="false">
-            <NaiveIcon :name="menuToggleIcon" :size="menuToggleIconSize"></NaiveIcon>
+            <slot name="toggle">
+                <NaiveIcon :name="menuToggleIcon" :size="menuToggleIconSize"></NaiveIcon>
+            </slot>
         </n-button>
 
     </div>
