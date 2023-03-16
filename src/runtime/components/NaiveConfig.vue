@@ -254,15 +254,18 @@ const naiveTheme = useNaiveTheme()
 watch(themeOverrides, (value) => naiveTheme.value = value, { immediate: true })
 
 useHead(() => ({
+    htmlAttrs: {
+        class: colorMode.value
+    },
     style: [
         {
             children: `
                 body {
-                    background-color: ${themeOverrides.value?.common?.bodyColor} !important;
+                    background-color: ${themeOverrides.value?.common?.bodyColor}!important;
                     font-family: ${themeOverrides.value?.common?.fontFamily} !important;
                     font-size: ${themeOverrides.value?.common?.fontSize} !important;
                     line-height: ${themeOverrides.value?.common?.lineHeight} !important;
-                    }\n`
+                }\n`
         },
     ],
 }));

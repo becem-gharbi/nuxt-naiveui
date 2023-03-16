@@ -1,7 +1,11 @@
 <template>
     <n-space vertical :style="{ margin: '1em' }" size="large">
 
-        <n-h3 class="m-5">Buttons</n-h3>
+        <n-card title="My card" class="dark:bg-blue-600">
+            <h1>A card</h1>
+        </n-card>
+
+        <n-h3>Buttons</n-h3>
 
         <n-space align="center">
             <n-text>Basic</n-text>

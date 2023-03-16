@@ -33,6 +33,7 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: {
     colorMode: "system",
     iconSize: 20,
+    themeConfig: {}
   },
 
   // Add types for volar
