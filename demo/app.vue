@@ -1,6 +1,6 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar :routes="[]" :menu-inverted="false" drawer-closable drawer-width="100%" :back-icon="false">
+    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false" drawer-closable drawer-width="100%" :back-icon="false">
 
       <template #start>
         <div class="brand">
@@ -16,6 +16,13 @@
           </n-button>
         </NuxtLink>
         <NaiveColorModeSwitch />
+      </template>
+
+      <template #drawer-header>
+        <div class="brand">
+          <NaiveIcon name="logos:naiveui"></NaiveIcon>
+          <n-text strong>nuxt-naiveui</n-text>
+        </div>
       </template>
 
     </NaiveNavbar>

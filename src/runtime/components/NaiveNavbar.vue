@@ -76,7 +76,7 @@ const props = withDefaults(defineProps<{
     drawerClosable?: boolean,
     drawerWidth?: string | number
 }>(), {
-    routes: [],
+    routes: () => [],
     menuToggleIcon: "material-symbols:menu-rounded",
     menuPlacement: "left",
     drawerPlacement: "left",
