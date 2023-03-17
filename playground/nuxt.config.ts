@@ -7,7 +7,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  ssr: true,
+  ssr: false,
   css: ["~/assets/fonts/gellix/style.css"],
   modules: ["../src/module"],
 });
