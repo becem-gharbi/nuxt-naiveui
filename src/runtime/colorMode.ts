@@ -10,27 +10,36 @@ export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig().public.naiveui;
   const { colorMode, colorModePreference } = useNaiveColorMode();
 
-  colorModePreference.value =
-    useCookie<ColorModePreference>("naive_color_mode_preference").value ||
-    config.colorModePreference;
+  colorModePreference.value = getColorModePreference();
 
   watch(
     colorModePreference,
     (value) => {
-      if (process.server) {
-        setCookie(event, "naive_color_mode_preference", value);
-      } else {
-        document.cookie = `naive_color_mode_preference=${value}`;
-      }
-
-      if (value === "system") {
-        colorMode.value = detectPreferedColorMode();
-      } else {
-        colorMode.value = value;
-      }
+      setColorMode(value);
     },
     { immediate: true }
   );
+
+  function getColorModePreference() {
+    return (
+      useCookie<ColorModePreference>("naive_color_mode_preference").value ||
+      config.colorModePreference
+    );
+  }
+
+  function setColorMode(colorModePreference: ColorModePreference) {
+    if (process.server) {
+      setCookie(event, "naive_color_mode_preference", colorModePreference);
+    } else {
+      document.cookie = `naive_color_mode_preference=${colorModePreference}`;
+    }
+
+    if (colorModePreference === "system") {
+      colorMode.value = detectPreferedColorMode();
+    } else {
+      colorMode.value = colorModePreference;
+    }
+  }
 
   function detectPreferedColorMode() {
     if (process.server) {
