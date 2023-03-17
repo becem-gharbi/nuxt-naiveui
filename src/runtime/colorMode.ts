@@ -1,25 +1,18 @@
-import { defineNuxtPlugin } from "#imports";
+import { defineNuxtPlugin, useCookie, useRuntimeConfig } from "#imports";
 import { watch, useRequestEvent } from "#imports";
 import { useRequestHeaders } from "#app";
-import { setCookie } from "h3";
+import { setCookie, setResponseHeader } from "h3";
 import useNaiveColorMode from "./composables/useNaiveColorMode";
+import type { ColorModePreference } from "./types";
 
 export default defineNuxtPlugin(() => {
-  const headers = useRequestHeaders();
   const event = useRequestEvent();
+  const config = useRuntimeConfig().public.naiveui;
   const { colorMode, colorModePreference } = useNaiveColorMode();
 
-  function detectPreferedColorMode() {
-    if (process.server) {
-      return headers["sec-ch-prefers-color-scheme"] === "dark"
-        ? "dark"
-        : "light";
-    } else {
-      return window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-    }
-  }
+  colorModePreference.value =
+    useCookie<ColorModePreference>("naive_color_mode_preference").value ||
+    config.colorModePreference;
 
   watch(
     colorModePreference,
@@ -38,4 +31,21 @@ export default defineNuxtPlugin(() => {
     },
     { immediate: true }
   );
+
+  function detectPreferedColorMode() {
+    if (process.server) {
+      setResponseHeader(event, "Accept-CH", "Sec-CH-Prefers-Color-Scheme");
+      setResponseHeader(event, "Vary", "Sec-CH-Prefers-Color-Scheme");
+      setResponseHeader(event, "Critical-CH", "Sec-CH-Prefers-Color-Scheme");
+
+      const headers = useRequestHeaders();
+      return headers["sec-ch-prefers-color-scheme"] === "dark"
+        ? "dark"
+        : "light";
+    } else {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+  }
 });

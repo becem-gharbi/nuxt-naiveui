@@ -52,8 +52,8 @@ export default defineNuxtModule<ModuleOptions>({
     const runtimeDir = fileURLToPath(new URL("./runtime", import.meta.url));
 
     // Add plugins
-    addPlugin(resolve(runtimeDir, "naive.server"), { append: true });
-    addPlugin(resolve(runtimeDir, "colorMode"), { append: true });
+    addPlugin(resolve(runtimeDir, "naive.server"));
+    addPlugin(resolve(runtimeDir, "colorMode"));
 
     // Add composables directory
     addImportsDir(resolve(runtimeDir, "composables"));

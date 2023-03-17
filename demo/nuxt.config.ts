@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     },
   },
   ssr: true,
-  modules: ["@bg-dev/nuxt-naiveui", "@nuxtjs/tailwindcss"],
+  modules: ["@bg-dev/nuxt-naiveui", "@nuxtjs/tailwindcss", "@nuxt/devtools"],
   css: ["~/assets/fonts/gellix/style.css"],
   vite: {
     server: {
@@ -19,6 +19,6 @@ export default defineNuxtConfig({
     },
   },
   naiveui: {
-    colorModePreference: "system",
+    colorModePreference: "light",
   },
 });
