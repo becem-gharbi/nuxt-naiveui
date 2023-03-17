@@ -1,7 +1,7 @@
 <template>
     <div :style="navbarStyle">
         <n-button text v-if="backIcon && isMobileOrTablet" @click="() => router.back()" tag="span" :focusable="false">
-            <NaiveIcon name="material-symbols:arrow-back-sharp" :size="backIconSize" />
+            <NaiveIcon name="ph:arrow-left" :size="backIconSize" />
         </n-button>
 
         <slot name="start"></slot>
@@ -77,7 +77,7 @@ const props = withDefaults(defineProps<{
     drawerWidth?: string | number
 }>(), {
     routes: () => [],
-    menuToggleIcon: "material-symbols:menu-rounded",
+    menuToggleIcon: "ph:equals",
     menuPlacement: "left",
     drawerPlacement: "left",
     menuInverted: false,
