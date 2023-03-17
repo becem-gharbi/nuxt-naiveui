@@ -1,7 +1,7 @@
 <template>
     <n-space vertical :style="{ margin: '1em' }" size="large">
 
-        <n-card title="My card" class="dark:bg-blue-600">
+        <n-card title="My card" class="dark:bg-blue-600 bg-gray-100">
             <h1>A card</h1>
         </n-card>
 

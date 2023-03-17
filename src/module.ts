@@ -11,6 +11,7 @@ import type { ThemeConfig, ColorModePreference } from "./runtime/types";
 export type { NavbarRoute, ThemeConfig, TabbarRoute } from "./runtime/types";
 import naive from "naive-ui";
 import { name, version } from "../package.json";
+import { defu } from "defu";
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions {
@@ -33,6 +34,7 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: {
     colorModePreference: "system",
     iconSize: 20,
+    themeConfig: {},
   },
 
   // Add types for volar
@@ -78,7 +80,10 @@ export default defineNuxtModule<ModuleOptions>({
     });
 
     // Pass module options to runtimeConfig object
-    nuxt.options.runtimeConfig.public.naiveui = options;
+    nuxt.options.runtimeConfig.public.naiveui = defu(
+      nuxt.options.runtimeConfig.public.naiveui,
+      options
+    );
 
     // Add imports for naive-ui components
     const naiveComponents = Object.keys(naive).filter((name) =>

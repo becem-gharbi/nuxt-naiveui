@@ -6,7 +6,7 @@ import {
   useRequestEvent,
   computed,
 } from "#imports";
-import { CookieRef, useRequestHeaders } from "#app";
+import { useRequestHeaders } from "#app";
 import type { Ref } from "vue";
 import { setCookie } from "h3";
 import type { ColorMode, ColorModePreference } from "../types";
@@ -16,16 +16,12 @@ export default function useNaiveColorMode() {
   const headers = useRequestHeaders();
   const event = useRequestEvent();
 
-  const colorModePreferenceCookie: CookieRef<ColorModePreference> =
-    useCookie<ColorModePreference>("naive_color_mode_preference", {
-      sameSite: "lax",
-      secure: true,
-      default: () => config.colorModePreference as ColorModePreference,
-    });
   const colorModePreference: Ref<ColorModePreference> =
     useState<ColorModePreference>(
       "naive_color_mode_preference",
-      () => colorModePreferenceCookie.value
+      () =>
+        useCookie<ColorModePreference>("naive_color_mode_preference").value ||
+        config.colorModePreference
     );
 
   const colorModeState: Ref<ColorMode> =
@@ -47,12 +43,9 @@ export default function useNaiveColorMode() {
     colorModePreference,
     (value) => {
       if (process.server) {
-        setCookie(event, "naive_color_mode_preference", value, {
-          sameSite: "lax",
-          secure: true,
-        });
+        setCookie(event, "naive_color_mode_preference", value);
       } else {
-        colorModePreferenceCookie.value = value;
+        document.cookie = `naive_color_mode_preference=${value}`;
       }
 
       if (value === "system") {

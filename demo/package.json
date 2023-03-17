@@ -8,8 +8,10 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@bg-dev/nuxt-naiveui": "^1.0.0-beta.14",
     "@nuxtjs/tailwindcss": "^6.6.0",
     "nuxt": "^3.2.3"
+  },
+  "dependencies": {
+    "@bg-dev/nuxt-naiveui": "file:../package"
   }
 }
