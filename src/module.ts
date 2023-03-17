@@ -7,7 +7,7 @@ import {
   addImports,
 } from "@nuxt/kit";
 import { fileURLToPath } from "url";
-import type { ThemeConfig } from "./runtime/types";
+import type { ThemeConfig, ColorModePreference } from "./runtime/types";
 export type { NavbarRoute, ThemeConfig, TabbarRoute } from "./runtime/types";
 import naive from "naive-ui";
 import { name, version } from "../package.json";
@@ -15,7 +15,7 @@ import { name, version } from "../package.json";
 // Module options TypeScript inteface definition
 export interface ModuleOptions {
   themeConfig?: ThemeConfig;
-  colorMode: "light" | "dark" | "system";
+  colorModePreference: ColorModePreference;
   iconSize: number;
 }
 
@@ -31,7 +31,7 @@ export default defineNuxtModule<ModuleOptions>({
 
   // Default configuration options of the Nuxt module
   defaults: {
-    colorMode: "system",
+    colorModePreference: "system",
     iconSize: 20,
   },
 

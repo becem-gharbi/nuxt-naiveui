@@ -4,26 +4,32 @@ import {
   useState,
   watch,
   useRequestEvent,
+  computed,
 } from "#imports";
 import { CookieRef, useRequestHeaders } from "#app";
 import type { Ref } from "vue";
 import { setCookie } from "h3";
+import type { ColorMode, ColorModePreference } from "../types";
 
 export default function useNaiveColorMode() {
   const config = useRuntimeConfig().public.naiveui;
   const headers = useRequestHeaders();
   const event = useRequestEvent();
 
-  const colorModeCookie: CookieRef<"light" | "dark"> = useCookie<
-    "light" | "dark"
-  >("naive_color_mode", {
-    sameSite: "lax",
-    secure: true,
-  });
+  const colorModePreferenceCookie: CookieRef<ColorModePreference> =
+    useCookie<ColorModePreference>("naive_color_mode_preference", {
+      sameSite: "lax",
+      secure: true,
+      default: () => config.colorModePreference as ColorModePreference,
+    });
+  const colorModePreference: Ref<ColorModePreference> =
+    useState<ColorModePreference>(
+      "naive_color_mode_preference",
+      () => colorModePreferenceCookie.value
+    );
 
-  const colorMode: Ref<"light" | "dark"> = useState<"light" | "dark">(
-    "naive_color_mode"
-  );
+  const colorModeState: Ref<ColorMode> =
+    useState<ColorMode>("naive_color_mode");
 
   function detectPreferedColorMode() {
     if (process.server) {
@@ -37,30 +43,28 @@ export default function useNaiveColorMode() {
     }
   }
 
-  colorMode.value = colorModeCookie.value;
-
-  if (!colorMode.value) {
-    if (config.colorMode === "system") {
-      colorMode.value = detectPreferedColorMode();
-    } else {
-      colorMode.value = config.colorMode === "dark" ? "dark" : "light";
-    }
-  }
-
   watch(
-    colorMode,
+    colorModePreference,
     (value) => {
       if (process.server) {
-        setCookie(event, "naive_color_mode", value, {
+        setCookie(event, "naive_color_mode_preference", value, {
           sameSite: "lax",
           secure: true,
         });
       } else {
-        colorModeCookie.value = value;
+        colorModePreferenceCookie.value = value;
+      }
+
+      if (value === "system") {
+        colorModeState.value = detectPreferedColorMode();
+      } else {
+        colorModeState.value = value;
       }
     },
     { immediate: true }
   );
 
-  return { colorMode: colorMode };
+  const colorMode = computed<ColorMode>(() => colorModeState.value);
+
+  return { colorMode, colorModePreference };
 }

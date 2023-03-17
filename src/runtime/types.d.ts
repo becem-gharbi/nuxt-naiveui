@@ -21,3 +21,7 @@ export interface TabbarRoute {
   iconUnselected: string;
   path: string;
 }
+
+export type ColorMode = "light" | "dark";
+
+export type ColorModePreference = "light" | "dark" | "system";
