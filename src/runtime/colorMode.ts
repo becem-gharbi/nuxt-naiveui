@@ -5,26 +5,23 @@ import { setCookie, setResponseHeader } from "h3";
 import useNaiveColorMode from "./composables/useNaiveColorMode";
 import type { ColorModePreference } from "./types";
 
-export default defineNuxtPlugin(() => {
+export default defineNuxtPlugin((nuxtApp) => {
   const event = useRequestEvent();
   const config = useRuntimeConfig().public.naiveui;
   const { colorMode, colorModePreference } = useNaiveColorMode();
 
-  colorModePreference.value = getColorModePreference();
+  colorModePreference.value =
+    useCookie<ColorModePreference>("naive_color_mode_preference").value ||
+    config.colorModePreference;
 
-  watch(
-    colorModePreference,
-    (value) => {
-      setColorMode(value);
-    },
-    { immediate: true }
-  );
-
-  function getColorModePreference() {
-    return (
-      useCookie<ColorModePreference>("naive_color_mode_preference").value ||
-      config.colorModePreference
-    );
+  if (process.server) {
+    setColorMode(colorModePreference.value);
+  } else {
+    nuxtApp.hook("app:mounted", () => {
+      watch(colorModePreference, (value) => setColorMode(value), {
+        immediate: true,
+      });
+    });
   }
 
   function setColorMode(colorModePreference: ColorModePreference) {

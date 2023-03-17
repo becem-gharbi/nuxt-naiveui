@@ -18,7 +18,4 @@ export default defineNuxtConfig({
       },
     },
   },
-  naiveui: {
-   // colorModePreference: "light",
-  },
 });
