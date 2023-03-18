@@ -26,9 +26,11 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   function setColorMode(colorModePreference: ColorModePreference) {
     if (process.server) {
-      setCookie(event, "naive_color_mode_preference", colorModePreference);
+      setCookie(event, "naive_color_mode_preference", colorModePreference, {
+        path: "/",
+      });
     } else {
-      document.cookie = `naive_color_mode_preference=${colorModePreference}`;
+      document.cookie = `naive_color_mode_preference=${colorModePreference}; path=/`;
     }
 
     if (colorModePreference === "system") {
