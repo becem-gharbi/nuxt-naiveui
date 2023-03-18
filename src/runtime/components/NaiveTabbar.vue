@@ -39,7 +39,7 @@ const route = useRoute()
 const { isMobileOrTablet } = useNaiveDevice()
 
 const tabBarStyle = computed<StyleValue>(() => ({
-    position: "fixed",
+    position: "sticky",
     backgroundColor: naiveTheme.value?.common?.bodyColor,
     bottom: '0px',
     zIndex: 100,
@@ -63,12 +63,5 @@ const tabBarStyle = computed<StyleValue>(() => ({
     justify-content: space-around;
     align-items: center;
     font-size: small;
-}
-</style>
-
-<style>
-body {
-    min-height: 100% !important;
-    padding-bottom: 56px;
 }
 </style>
