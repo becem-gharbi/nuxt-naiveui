@@ -128,7 +128,7 @@ const themeConfig: ThemeConfig = {
 - It's **highly recommended** to include `NaiveConfig` even without theme configuration as it's intended to fixe global styles and accessibility issues.
 - **Body is unusable** is an error message i've encountered frequently. A quick solution is to downgrade Node to v16 as suggested in this [issue](https://github.com/nuxt/nuxt/issues/19245).
 
-### Documentation
+## Documentation
 
 Refer to [Naive-ui website](https://www.naiveui.com/en-US/os-theme/docs/introduction)
 
