@@ -12,6 +12,7 @@ A Nuxt 3 module for integrating Naive UI component library into your Nuxt 3 proj
 - ✔️ SSR friendly
 - ✔️ Auto imported and tree-shakable components & composables
 - ✔️ Highly customizable for color mode and device type
+- ✔️ Friendly integration with Tailwindcss
 - ✔️ Implements custom components
   - ✔️ `NaiveNavbar` an adaptive navbar for app navigation
   - ✔️ `NaiveIcon` a wrapper based on iconify/vue with large collection of [icons](https://icones.js.org/)
@@ -39,7 +40,7 @@ export default defineNuxtConfig({
   modules: ["@bg-dev/nuxt-naiveui"],
 
   naiveui: {
-    colorModePreference: "system",
+    colorModePreference: "light",
     iconSize: 18,
     themeConfig: {},
   },
@@ -75,6 +76,53 @@ const themeConfig: ThemeConfig = {
 </script>
 ```
 
+### Integration with Nuxt Tailwind
+Color mode integration
+```js
+// tailwind.config.js
+
+module.exports = {
+  darkMode: "class",
+}
+```
+
+Theme integration
+```ts
+// nuxt.config.ts
+
+tailwindcss: {
+  exposeConfig: true
+}
+```
+```ts
+// app.vue
+
+import { ThemeConfig } from "@bg-dev/nuxt-naiveui"
+import { theme } from '#tailwind-config'
+
+const themeConfig: ThemeConfig = {
+  shared: {
+    common: {
+      fontFamily: theme.fontFamily.sans,
+      lineHeight: theme.lineHeight.normal
+    },
+  },
+  light: {
+    common: {
+      primaryColor: theme.colors.blue[600],
+      primaryColorHover: theme.colors.blue[500],
+      primaryColorPressed: theme.colors.blue[700]
+    }
+  },
+  dark: {
+    common: {
+      primaryColor: theme.colors.blue[500],
+      primaryColorHover: theme.colors.blue[400],
+      primaryColorPressed: theme.colors.blue[600]
+    }
+  }
+}
+```
 ## Notes
 
 - It's **highly recommended** to include `NaiveConfig` even without theme configuration as it's intended to fixe global styles and accessibility issues.

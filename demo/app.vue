@@ -37,6 +37,30 @@
 
 <script setup lang="ts">
 import { ThemeConfig, NavbarRoute, TabbarRoute } from "@bg-dev/nuxt-naiveui"
+import { theme } from '#tailwind-config'
+
+const themeConfig: ThemeConfig = {
+  shared: {
+    common: {
+      fontFamily: theme.fontFamily.sans,
+      lineHeight: theme.lineHeight.normal
+    },
+  },
+  light: {
+    common: {
+      primaryColor: theme.colors.blue[600],
+      primaryColorHover: theme.colors.blue[500],
+      primaryColorPressed: theme.colors.blue[700]
+    }
+  },
+  dark: {
+    common: {
+      primaryColor: theme.colors.blue[500],
+      primaryColorHover: theme.colors.blue[400],
+      primaryColorPressed: theme.colors.blue[600]
+    }
+  }
+}
 
 const navbarRoutes: NavbarRoute[] = [
   {
@@ -82,15 +106,6 @@ const tabBarRoutes: TabbarRoute[] = [
     path: "/computers"
   }
 ]
-
-const themeConfig: ThemeConfig = {
-  shared: {
-    common: {
-      fontFamily: "Gellix",
-
-    }
-  },
-}
 </script>
 
 
