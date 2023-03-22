@@ -261,7 +261,8 @@ useHead(() => ({
         {
             children: `
                 body {
-                    background-color: ${themeOverrides.value?.common?.bodyColor}!important;
+                    background-color: ${themeOverrides.value?.common?.bodyColor} !important;
+                    color: ${themeOverrides.value?.common?.textColorBase} !important;
                     font-family: ${themeOverrides.value?.common?.fontFamily} !important;
                     font-size: ${themeOverrides.value?.common?.fontSize} !important;
                     line-height: ${themeOverrides.value?.common?.lineHeight} !important;
