@@ -1,5 +1,6 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
+
     <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false" drawer-closable drawer-width="100%" :back-icon="false">
 
       <template #start>
@@ -114,5 +115,4 @@ const tabBarRoutes: TabbarRoute[] = [
   display: flex;
   align-items: center;
   gap: 1em
-}
-</style>
+}</style>

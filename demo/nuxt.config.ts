@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     },
   },
   ssr: true,
-  modules: ["@bg-dev/nuxt-naiveui", "@nuxtjs/tailwindcss", "@nuxt/devtools"],
+  modules: ["@bg-dev/nuxt-naiveui", "@nuxtjs/tailwindcss"],
   css: ["~/assets/fonts/gellix/style.css"],
   vite: {
     server: {
