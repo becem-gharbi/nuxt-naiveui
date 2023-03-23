@@ -70,18 +70,18 @@ const navbarRoutes: NavbarRoute[] = [
     path: "/"
   },
   {
-    label: "Categories",
+    label: "Pages",
     icon: "mdi:bookmark-multiple-outline",
     children: [
       {
-        label: "Books",
+        label: "Page 1",
         icon: "material-symbols:menu-book-outline-rounded",
-        path: "/books"
+        path: "/page1"
       },
       {
-        label: "Computers",
+        label: "Page 2",
         icon: "material-symbols:computer-outline",
-        path: "/computers"
+        path: "/page2"
       }
     ]
   }
@@ -95,16 +95,16 @@ const tabBarRoutes: TabbarRoute[] = [
     path: "/"
   },
   {
-    label: "Books",
+    label: "Page 1",
     iconUnselected: "material-symbols:menu-book-outline-rounded",
     iconSelected: "material-symbols:menu-book-sharp",
-    path: "/books"
+    path: "/page1"
   },
   {
-    label: "Computers",
+    label: "Page 2",
     iconUnselected: "material-symbols:computer-outline",
     iconSelected: "material-symbols:computer",
-    path: "/computers"
+    path: "/page2"
   }
 ]
 </script>
@@ -115,4 +115,5 @@ const tabBarRoutes: TabbarRoute[] = [
   display: flex;
   align-items: center;
   gap: 1em
-}</style>
+}
+</style>

@@ -21,4 +21,7 @@ export default defineNuxtConfig({
   tailwindcss: {
     exposeConfig: true,
   },
+  naiveui: {
+    colorModePreference: "system",
+  },
 });
