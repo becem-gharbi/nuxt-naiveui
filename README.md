@@ -76,53 +76,68 @@ const themeConfig: ThemeConfig = {
 </script>
 ```
 
+### Force color mode
+
+You may want to force a color mode on a particular page (e.g, setting light mode on landing page). This can be achieved by setting `colorMode` property in the page meta definition.
+
+```js
+definePageMeta({
+  colorMode: "light",
+});
+```
+
 ### Integration with Nuxt Tailwind
+
 Color mode integration
+
 ```js
 // tailwind.config.js
 
 module.exports = {
   darkMode: "class",
-}
+};
 ```
 
 Theme integration
+
 ```ts
 // nuxt.config.ts
 
 tailwindcss: {
-  exposeConfig: true
+  exposeConfig: true;
 }
 ```
+
 ```ts
 // app.vue
 
-import { ThemeConfig } from "@bg-dev/nuxt-naiveui"
-import { theme } from '#tailwind-config'
+import { ThemeConfig } from "@bg-dev/nuxt-naiveui";
+import { theme } from "#tailwind-config";
 
 const themeConfig: ThemeConfig = {
   shared: {
     common: {
       fontFamily: theme.fontFamily.sans,
-      lineHeight: theme.lineHeight.normal
+      lineHeight: theme.lineHeight.normal,
     },
   },
   light: {
     common: {
       primaryColor: theme.colors.blue[600],
       primaryColorHover: theme.colors.blue[500],
-      primaryColorPressed: theme.colors.blue[700]
-    }
+      primaryColorPressed: theme.colors.blue[700],
+    },
   },
   dark: {
     common: {
       primaryColor: theme.colors.blue[500],
       primaryColorHover: theme.colors.blue[400],
-      primaryColorPressed: theme.colors.blue[600]
-    }
-  }
-}
+      primaryColorPressed: theme.colors.blue[600],
+    },
+  },
+};
 ```
+
 ## Notes
 
 - It's **highly recommended** to include `NaiveConfig` even without theme configuration as it's intended to fix global styles and accessibility issues.
