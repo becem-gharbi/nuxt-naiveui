@@ -8,5 +8,9 @@ export default function useNaiveColorMode() {
 
   const colorMode: Ref<ColorMode> = useState<ColorMode>("naive_color_mode");
 
-  return { colorMode, colorModePreference };
+  const colorModeForced: Ref<boolean> = useState<boolean>(
+    "naive_color_mode_forced"
+  );
+
+  return { colorMode, colorModePreference, colorModeForced };
 }
