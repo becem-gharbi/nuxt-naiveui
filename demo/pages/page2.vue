@@ -1,12 +1,11 @@
 <template>
     <div>
-        <n-h1>Books</n-h1>
+        <n-h1>Page 2</n-h1>
+        <n-h3>This page is always in light mode</n-h3>
     </div>
 </template>
 
 <script setup>
-import { definePageMeta } from '#imports';
-
 definePageMeta({
     colorMode: "light"
 })

@@ -1,45 +1,16 @@
-import { useCookie, useRuntimeConfig, useState, watch } from "#imports";
-import type { CookieRef } from "#app";
+import { useState } from "#imports";
 import type { Ref } from "vue";
+import type { ColorMode, ColorModePreference } from "../types";
 
 export default function useNaiveColorMode() {
-  const config = useRuntimeConfig().public.naiveui;
+  const colorModePreference: Ref<ColorModePreference> =
+    useState<ColorModePreference>("naive_color_mode_preference");
 
-  function detectPreferedColorMode() {
-    if (process.server) return;
-    return window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  }
+  const colorMode: Ref<ColorMode> = useState<ColorMode>("naive_color_mode");
 
-  const colorModeCookie: CookieRef<"light" | "dark"> = useCookie<
-    "light" | "dark"
-  >("naive_color_mode", {
-    sameSite: "lax",
-    secure: true,
-  });
-
-  const colorMode: Ref<"light" | "dark"> = useState<"light" | "dark">(
-    "naive_color_mode",
-    () => colorModeCookie.value
+  const colorModeForced: Ref<boolean> = useState<boolean>(
+    "naive_color_mode_forced"
   );
 
-  watch(colorMode, (value) => {
-    colorModeCookie.value = value;
-  });
-
-  if (!colorMode.value) {
-    if (config.defaultColorMode === "system") {
-      const systemColorMode = detectPreferedColorMode();
-
-      if (systemColorMode) {
-        colorMode.value = systemColorMode;
-      }
-    } else {
-      colorMode.value = config.defaultColorMode === "dark" ? "dark" : "light";
-    }
-  }
-
-  return { colorMode };
+  return { colorMode, colorModePreference, colorModeForced };
 }

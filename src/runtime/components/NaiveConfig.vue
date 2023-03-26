@@ -6,16 +6,17 @@
 
 <script setup lang="ts">
 //@ts-ignore
-import { useHead, computed, useRuntimeConfig } from "#imports"
+import { useHead, computed, useRuntimeConfig, watch, onMounted } from "#imports"
 import { NConfigProvider, GlobalThemeOverrides, ConfigProviderProps } from "naive-ui"
-import { defu } from 'defu'
 import useNaiveColorMode from "../composables/useNaiveColorMode"
 import useNaiveDevice from "../composables/useNaiveDevice"
+import useNaiveTheme from "../composables/useNaiveTheme"
 import type { ThemeConfig } from "../types"
+import { defu } from "defu"
 
 const defaultDarkTheme: GlobalThemeOverrides = {
     common: {
-        lineHeight: "0px",
+        lineHeight: "normal",
         baseColor: "#000",
         primaryColor: "#63e2b7",
         primaryColorHover: "#7fe7c4",
@@ -114,10 +115,10 @@ const defaultDarkTheme: GlobalThemeOverrides = {
 
 const defaultLightTheme: GlobalThemeOverrides = {
     common: {
-        lineHeight: "0px",
+        lineHeight: "normal",
         bodyColor: "white",
-        textColor1: "#171717",
-        textColor2: "#262626",
+        textColor1: "#262626",
+        textColor2: "#525252",
         textColor3: "#a3a3a3",
     },
     IconWrapper: {
@@ -125,23 +126,20 @@ const defaultLightTheme: GlobalThemeOverrides = {
         iconColor: "inherited"
     },
     Menu: {
-        itemIconColor: "#262626",
-        itemTextColor: "#262626",
+        itemIconColor: "#525252",
+        itemTextColor: "#525252",
 
-        itemTextColorHorizontal: "#262626",
-        itemIconColorHorizontal: "#262626",
+        itemTextColorHorizontal: "#525252",
+        itemIconColorHorizontal: "#525252",
 
-        itemTextColorActiveHorizontal: "#262626",
-        itemTextColorChildActiveHorizontal: "#262626",
+        itemIconColorHoverHorizontalInverted: "#525252",
+        itemTextColorHoverHorizontalInverted: "#525252",
 
-        itemIconColorHoverHorizontalInverted: "#262626",
-        itemTextColorHoverHorizontalInverted: "#262626",
+        itemTextColorActiveHorizontalInverted: "#525252",
+        itemIconColorActiveHorizontalInverted: "#525252",
 
-        itemTextColorActiveHorizontalInverted: "#262626",
-        itemIconColorActiveHorizontalInverted: "#262626",
-
-        itemTextColorActiveHoverHorizontalInverted: "#262626",
-        itemIconColorActiveHoverHorizontalInverted: "#262626",
+        itemTextColorActiveHoverHorizontalInverted: "#525252",
+        itemIconColorActiveHoverHorizontalInverted: "#525252",
 
         itemTextColorInverted: "#a3a3a3",
         itemIconColorInverted: "#a3a3a3",
@@ -149,11 +147,64 @@ const defaultLightTheme: GlobalThemeOverrides = {
         itemTextColorHoverInverted: "#a3a3a3",
         itemIconColorHoverInverted: "#a3a3a3",
 
-        itemTextColorChildActiveHorizontalInverted: "#262626",
-        itemIconColorChildActiveHorizontalInverted: "#262626",
+        itemTextColorChildActiveHorizontalInverted: "#525252",
+        itemIconColorChildActiveHorizontalInverted: "#525252",
 
-        itemIconColorChildActiveHoverHorizontalInverted: "#262626",
-        itemTextColorChildActiveHoverHorizontalInverted: "#262626",
+        itemIconColorChildActiveHoverHorizontalInverted: "#525252",
+        itemTextColorChildActiveHoverHorizontalInverted: "#525252",
+
+        itemTextColorChildActiveHoverInverted: "#525252",
+        itemTextColorChildActiveInverted: "#525252",
+        itemIconColorChildActiveHoverInverted: "#525252",
+        itemIconColorChildActiveInverted: "#525252",
+    }
+}
+
+const defaultMobileOrTabletTheme: GlobalThemeOverrides = {
+    common: {
+        fontSize: "15px",
+        heightMedium: "40px",
+        fontSizeMedium: "15px"
+    },
+    Form: {
+        labelFontSizeTopMedium: "15px"
+    },
+    Input: {
+        heightMedium: "40px",
+        fontSizeMedium: "15px",
+    },
+    Button: {
+        heightMedium: "40px",
+        fontSizeMedium: "15px"
+    },
+    Card: {
+        fontSizeMedium: "15px"
+    },
+    Avatar: {
+        heightMedium: "40px",
+        fontSize: "15px"
+    },
+    ColorPicker: {
+        heightMedium: "40px",
+        fontSizeMedium: "15px"
+    },
+    Dropdown: {
+        optionHeightMedium: "40px",
+        fontSizeMedium: "15px"
+    },
+    Radio: {
+        buttonHeightMedium: "40px",
+        fontSizeMedium: "15px"
+    },
+    Skeleton: {
+        heightMedium: "40px",
+    },
+    Tag: {
+        heightMedium: "34px",
+        fontSizeMedium: "15px"
+    },
+    Result: {
+        fontSizeMedium: "15px",
     }
 }
 
@@ -166,27 +217,30 @@ const config = useRuntimeConfig().public.naiveui
 const props = defineProps<NaiveConfigProps>()
 
 const { colorMode } = useNaiveColorMode()
-const { isMobileOrTablet } = useNaiveDevice()
+
+const { isMobileOrTablet, isMobile } = useNaiveDevice()
 
 const themeOverrides = computed<GlobalThemeOverrides>(() => {
-    const themeConfig = props.themeConfig || config.defaultThemeConfig
 
-    const darkTheme: GlobalThemeOverrides = defu(
-        themeConfig?.dark,
-        defaultDarkTheme
-    );
+    const themeConfig = props.themeConfig || config.themeConfig
 
-    const lightTheme: GlobalThemeOverrides = defu(
-        themeConfig?.light,
-        defaultLightTheme
-    );
+    let colorModeTheme: GlobalThemeOverrides | undefined = undefined
 
-    const colorModeTheme: GlobalThemeOverrides =
-        colorMode.value === "dark" ? darkTheme : lightTheme
+    if (colorMode.value === "dark") {
+        colorModeTheme = defu(themeConfig?.dark, defaultDarkTheme);
+    }
+    else {
+        colorModeTheme = defu(themeConfig?.light, defaultLightTheme);
+    }
 
-    const deviceTheme: GlobalThemeOverrides | undefined = isMobileOrTablet
-        ? themeConfig?.mobileOrTablet
-        : {};
+    let deviceTheme: GlobalThemeOverrides | undefined = undefined
+
+    if (isMobileOrTablet) {
+        deviceTheme = defu(themeConfig?.mobileOrTablet, defaultMobileOrTabletTheme)
+    }
+    else if (isMobile) {
+        deviceTheme = defu(themeConfig?.mobile, defaultMobileOrTabletTheme)
+    }
 
     return defu(
         themeConfig?.shared,
@@ -195,16 +249,37 @@ const themeOverrides = computed<GlobalThemeOverrides>(() => {
     );
 })
 
+const naiveTheme = useNaiveTheme()
+
+watch(themeOverrides, (value) => naiveTheme.value = value, { immediate: true })
+
 useHead(() => ({
+    htmlAttrs: {
+        class: colorMode.value
+    },
     style: [
         {
-            children: `body {
-           background-color: ${themeOverrides.value?.common?.bodyColor} !important;
-           font-family: ${themeOverrides.value?.common?.fontFamily} !important;
-           font-size: ${themeOverrides.value?.common?.fontSize} !important;
-           line-height: ${themeOverrides.value?.common?.lineHeight} !important;
-        `,
+            children: `
+                body {
+                    background-color: ${themeOverrides.value?.common?.bodyColor} !important;
+                    color: ${themeOverrides.value?.common?.textColorBase} !important;
+                    font-family: ${themeOverrides.value?.common?.fontFamily} !important;
+                    font-size: ${themeOverrides.value?.common?.fontSize} !important;
+                    line-height: ${themeOverrides.value?.common?.lineHeight} !important;
+                }\n`
         },
     ],
 }));
+
+onMounted(() => {
+    document.querySelectorAll(".n-submenu").forEach(subMenu => {
+        subMenu?.firstElementChild?.setAttribute("role", "none")
+    })
+})
 </script>
+
+<style>
+.n-button {
+    background-color: var(--n-color);
+}
+</style>

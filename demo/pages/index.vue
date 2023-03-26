@@ -1,12 +1,16 @@
 <template>
     <n-space vertical :style="{ margin: '1em' }" size="large">
 
+        <n-card title="My card" class="dark:bg-blue-600 bg-gray-100">
+            <h1>A card</h1>
+        </n-card>
+
         <n-h3>Buttons</n-h3>
 
         <n-space align="center">
             <n-text>Basic</n-text>
             <n-button>Default</n-button>
-            <n-button type="error">Error</n-button>
+            <n-button type="error" tag="span" attr-type="reset">Error</n-button>
             <n-button type="info">Info</n-button>
             <n-button type="primary">Primary</n-button>
             <n-button type="success">Success</n-button>
@@ -75,7 +79,7 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "#imports"
 
 const formModel = ref({

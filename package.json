@@ -1,7 +1,13 @@
 {
   "name": "@bg-dev/nuxt-naiveui",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "A nuxt 3 naive-ui module",
+  "author": "Becem Gharbi",
+  "keywords": [
+    "nuxt",
+    "naive-ui",
+    "module"
+  ],
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -24,24 +30,32 @@
     "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:watch": "vitest watch"
+    "test:watch": "vitest watch",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@iconify/vue": "^4.1.0",
-    "@nuxt/kit": "^3.2.2",
+    "@nuxt/kit": "^3.3.2",
     "defu": "^6.1.2",
-    "naive-ui": "^2.34.3",
-    "unplugin-auto-import": "^0.14.3",
-    "unplugin-vue-components": "^0.24.0"
+    "naive-ui": "^2.34.3"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxt/module-builder": "^0.2.1",
-    "@nuxt/schema": "^3.2.2",
-    "@nuxt/test-utils": "^3.2.2",
-    "changelogen": "^0.4.1",
-    "eslint": "^8.34.0",
-    "nuxt": "^3.2.2",
-    "vitest": "^0.28.5"
+    "@nuxt/schema": "^3.3.2",
+    "@nuxt/test-utils": "^3.3.2",
+    "changelogen": "^0.5.1",
+    "eslint": "^8.36.0",
+    "nuxt": "^3.3.2",
+    "semantic-release": "^21.0.0",
+    "vitest": "^0.29.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/becem-gharbi/nuxt-naiveui.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
   }
 }

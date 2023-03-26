@@ -1,6 +1,7 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false" drawer-closable drawer-width="100%">
+
+    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false" drawer-closable drawer-width="100%" :back-icon="false">
 
       <template #start>
         <div class="brand">
@@ -19,11 +20,10 @@
       </template>
 
       <template #drawer-header>
-        <n-text>Header</n-text>
-      </template>
-
-      <template #drawer-footer>
-        <n-text>Footer</n-text>
+        <div class="brand">
+          <NaiveIcon name="logos:naiveui"></NaiveIcon>
+          <n-text strong>nuxt-naiveui</n-text>
+        </div>
       </template>
 
     </NaiveNavbar>
@@ -38,6 +38,30 @@
 
 <script setup lang="ts">
 import { ThemeConfig, NavbarRoute, TabbarRoute } from "@bg-dev/nuxt-naiveui"
+import { theme } from '#tailwind-config'
+
+const themeConfig: ThemeConfig = {
+  shared: {
+    common: {
+      fontFamily: theme.fontFamily.sans,
+      lineHeight: theme.lineHeight.normal
+    },
+  },
+  light: {
+    common: {
+      primaryColor: theme.colors.blue[600],
+      primaryColorHover: theme.colors.blue[500],
+      primaryColorPressed: theme.colors.blue[700]
+    }
+  },
+  dark: {
+    common: {
+      primaryColor: theme.colors.blue[500],
+      primaryColorHover: theme.colors.blue[400],
+      primaryColorPressed: theme.colors.blue[600]
+    }
+  }
+}
 
 const navbarRoutes: NavbarRoute[] = [
   {
@@ -46,18 +70,18 @@ const navbarRoutes: NavbarRoute[] = [
     path: "/"
   },
   {
-    label: "Categories",
+    label: "Pages",
     icon: "mdi:bookmark-multiple-outline",
     children: [
       {
-        label: "Books",
+        label: "Page 1",
         icon: "material-symbols:menu-book-outline-rounded",
-        path: "/books"
+        path: "/page1"
       },
       {
-        label: "Computers",
+        label: "Page 2",
         icon: "material-symbols:computer-outline",
-        path: "/computers"
+        path: "/page2"
       }
     ]
   }
@@ -71,27 +95,18 @@ const tabBarRoutes: TabbarRoute[] = [
     path: "/"
   },
   {
-    label: "Books",
+    label: "Page 1",
     iconUnselected: "material-symbols:menu-book-outline-rounded",
     iconSelected: "material-symbols:menu-book-sharp",
-    path: "/books"
+    path: "/page1"
   },
   {
-    label: "Computers",
+    label: "Page 2",
     iconUnselected: "material-symbols:computer-outline",
     iconSelected: "material-symbols:computer",
-    path: "/computers"
+    path: "/page2"
   }
 ]
-
-const themeConfig: ThemeConfig = {
-  shared: {
-    common: {
-      fontFamily: "Gellix",
-
-    }
-  },
-}
 </script>
 
 

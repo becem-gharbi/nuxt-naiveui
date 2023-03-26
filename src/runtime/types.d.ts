@@ -5,6 +5,7 @@ export interface ThemeConfig {
   light?: GlobalThemeOverrides;
   dark?: GlobalThemeOverrides;
   mobileOrTablet?: GlobalThemeOverrides;
+  mobile?: GlobalThemeOverrides;
 }
 
 export interface NavbarRoute {
@@ -13,3 +14,14 @@ export interface NavbarRoute {
   path?: string;
   children?: NavbarRoute[];
 }
+
+export interface TabbarRoute {
+  label: string;
+  iconSelected: string;
+  iconUnselected: string;
+  path: string;
+}
+
+export type ColorMode = "light" | "dark";
+
+export type ColorModePreference = "light" | "dark" | "system";

@@ -2,42 +2,59 @@ import {
   defineNuxtModule,
   addPlugin,
   createResolver,
-  extendViteConfig,
   addImportsDir,
   addComponent,
+  addImports,
+  extendViteConfig,
 } from "@nuxt/kit";
 import { fileURLToPath } from "url";
-import Components from "unplugin-vue-components/vite";
-import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
-import AutoImport from "unplugin-auto-import/vite";
-import type { ThemeConfig } from "./runtime/types";
-export type { NavbarRoute, ThemeConfig } from "./runtime/types";
+import type { ThemeConfig, ColorModePreference } from "./runtime/types";
+export type { NavbarRoute, ThemeConfig, TabbarRoute } from "./runtime/types";
+import naive from "naive-ui";
+import { name, version } from "../package.json";
+import { defu } from "defu";
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions {
-  defaultThemeConfig?: ThemeConfig;
-  defaultColorMode: "light" | "dark" | "system";
-  defaultIconSize: number;
+  themeConfig?: ThemeConfig;
+  colorModePreference: ColorModePreference;
+  iconSize: number;
 }
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: "@bg-dev/nuxt-naiveui",
+    name,
+    version,
     configKey: "naiveui",
+    compatibility: {
+      nuxt: "^3.0.0",
+    },
   },
 
   // Default configuration options of the Nuxt module
   defaults: {
-    defaultColorMode: "system",
-    defaultIconSize: 20,
+    colorModePreference: "light",
+    iconSize: 20,
+    themeConfig: {},
+  },
+
+  // Add types for volar
+  hooks: {
+    "prepare:types": ({ tsConfig, references }) => {
+      tsConfig.compilerOptions!.types.push("naive-ui/volar");
+      references.push({
+        types: "naive-ui/volar",
+      });
+    },
   },
 
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url);
     const runtimeDir = fileURLToPath(new URL("./runtime", import.meta.url));
 
-    // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
+    // Add plugins
     addPlugin(resolve(runtimeDir, "naive.server"));
+    addPlugin(resolve(runtimeDir, "colorMode"));
 
     // Add composables directory
     addImportsDir(resolve(runtimeDir, "composables"));
@@ -59,40 +76,48 @@ export default defineNuxtModule<ModuleOptions>({
       name: "NaiveColorModeSwitch",
       filePath: resolve(runtimeDir, "components", "NaiveColorModeSwitch.vue"),
     });
+    addComponent({
+      name: "NaiveTabbar",
+      filePath: resolve(runtimeDir, "components", "NaiveTabbar.vue"),
+    });
 
     // Pass module options to runtimeConfig object
-    nuxt.options.runtimeConfig.public.naiveui = options;
+    nuxt.options.runtimeConfig.public.naiveui = defu(
+      nuxt.options.runtimeConfig.public.naiveui,
+      options
+    );
 
-    // Add types for volar
-    nuxt.hook("prepare:types", (options) => {
-      options.tsConfig.compilerOptions?.types?.push("naive-ui/volar");
+    // Add imports for naive-ui components
+    const naiveComponents = Object.keys(naive).filter((name) =>
+      /^(N[A-Z]|n-[a-z])/.test(name)
+    );
+
+    naiveComponents.forEach((name) => {
+      addComponent({
+        export: name,
+        name: name,
+        filePath: "naive-ui",
+      });
     });
 
-    // Add auto import for naive components & composables
-    extendViteConfig((config) => {
-      config.plugins?.push(
-        AutoImport({
-          imports: [
-            {
-              "naive-ui": [
-                "useDialog",
-                "useMessage",
-                "useNotification",
-                "useLoadingBar",
-                "useThemeVars",
-                "useDialogReactiveList",
-                "useOsTheme",
-              ],
-            },
-          ],
-        }),
-        Components({
-          resolvers: [NaiveUiResolver()],
-        })
-      );
+    // Add imports for naive-ui composables
+    const naiveComposables = [
+      "useDialog",
+      "useMessage",
+      "useNotification",
+      "useLoadingBar",
+      "useDialogReactiveList",
+    ];
+
+    naiveComposables.forEach((name) => {
+      addImports({
+        name: name,
+        as: name,
+        from: "naive-ui",
+      });
     });
 
-    // Transpile naive modules
+    // https://www.naiveui.com/en-US/os-theme/docs/ssr
     if (process.env.NODE_ENV === "production") {
       nuxt.options.build.transpile.push(
         "naive-ui",
@@ -100,6 +125,18 @@ export default defineNuxtModule<ModuleOptions>({
         "@css-render/vue3-ssr",
         "@juggle/resize-observer"
       );
+    } else {
+      nuxt.options.build.transpile.push("@juggle/resize-observer");
+
+      extendViteConfig((config) => {
+        config.optimizeDeps = config.optimizeDeps || {};
+        config.optimizeDeps.include = config.optimizeDeps.include || [];
+        config.optimizeDeps.include.push(
+          "naive-ui",
+          "vueuc",
+          "date-fns-tz/esm/formatInTimeZone"
+        );
+      });
     }
   },
 });
