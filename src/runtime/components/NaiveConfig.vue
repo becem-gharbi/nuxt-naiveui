@@ -162,49 +162,49 @@ const defaultLightTheme: GlobalThemeOverrides = {
 
 const defaultMobileOrTabletTheme: GlobalThemeOverrides = {
     common: {
-        fontSize: "15px",
-        heightMedium: "40px",
-        fontSizeMedium: "15px"
+        fontSize: "16px",
+        heightMedium: "42px",
+        fontSizeMedium: "16px"
     },
     Form: {
-        labelFontSizeTopMedium: "15px"
+        labelFontSizeTopMedium: "16px"
     },
     Input: {
-        heightMedium: "40px",
-        fontSizeMedium: "15px",
+        heightMedium: "42px",
+        fontSizeMedium: "16px",
     },
     Button: {
-        heightMedium: "40px",
-        fontSizeMedium: "15px"
+        heightMedium: "42px",
+        fontSizeMedium: "16px"
     },
     Card: {
-        fontSizeMedium: "15px"
+        fontSizeMedium: "16px"
     },
     Avatar: {
-        heightMedium: "40px",
-        fontSize: "15px"
+        heightMedium: "42px",
+        fontSize: "16px"
     },
     ColorPicker: {
-        heightMedium: "40px",
-        fontSizeMedium: "15px"
+        heightMedium: "42px",
+        fontSizeMedium: "16px"
     },
     Dropdown: {
-        optionHeightMedium: "40px",
-        fontSizeMedium: "15px"
+        optionHeightMedium: "42px",
+        fontSizeMedium: "16px"
     },
     Radio: {
-        buttonHeightMedium: "40px",
-        fontSizeMedium: "15px"
+        buttonHeightMedium: "42px",
+        fontSizeMedium: "16px"
     },
     Skeleton: {
-        heightMedium: "40px",
+        heightMedium: "42px",
     },
     Tag: {
         heightMedium: "34px",
-        fontSizeMedium: "15px"
+        fontSizeMedium: "16px"
     },
     Result: {
-        fontSizeMedium: "15px",
+        fontSizeMedium: "16px",
     }
 }
 
