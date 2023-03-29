@@ -1,6 +1,6 @@
 {
   "name": "@bg-dev/nuxt-naiveui",
-  "version": "0.0.0-development",
+  "version": "1.0.4",
   "description": "A nuxt 3 naive-ui module",
   "author": "Becem Gharbi",
   "keywords": [
@@ -27,11 +27,10 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "release": "npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:watch": "vitest watch",
-    "semantic-release": "semantic-release"
+    "test:watch": "vitest watch"
   },
   "dependencies": {
     "@iconify/vue": "^4.1.0",
@@ -47,13 +46,9 @@
     "changelogen": "^0.5.1",
     "eslint": "^8.36.0",
     "nuxt": "^3.3.2",
-    "semantic-release": "^21.0.0",
     "vitest": "^0.29.7"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/becem-gharbi/nuxt-naiveui.git"
-  },
+  "repository": "https://github.com/becem-gharbi/nuxt-naiveui.git",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
