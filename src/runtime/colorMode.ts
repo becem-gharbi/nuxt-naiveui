@@ -23,11 +23,15 @@ export default defineNuxtPlugin(() => {
     useCookie<ColorModePreference>("naive_color_mode_preference").value ||
     config.colorModePreference;
 
-  watchEffect(() => {
-    if (!colorModeForced.value) {
-      setColorMode(colorModePreference.value);
-    }
-  });
+  if (process.server) {
+    setColorMode(colorModePreference.value);
+  } else {
+    watchEffect(() => {
+      if (!colorModeForced.value) {
+        setColorMode(colorModePreference.value);
+      }
+    });
+  }
 
   function setColorMode(colorModePreference: ColorModePreference) {
     if (process.server) {
