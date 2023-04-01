@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.0.7
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.0.6...v1.0.7)
+
+
+### 🩹 Fixes
+
+  - Set watchEffect client side only ([ef511be](https://github.com/becem-gharbi/nuxt-naiveui/commit/ef511be))
+
+### ❤️  Contributors
+
+- Becem-gharbi
+
 ## v1.0.6
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.0.5...v1.0.6)
