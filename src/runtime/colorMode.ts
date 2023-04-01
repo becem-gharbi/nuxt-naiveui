@@ -4,14 +4,14 @@ import {
   useRuntimeConfig,
   addRouteMiddleware,
 } from "#imports";
-import { watch, useRequestEvent } from "#imports";
+import { watchEffect, useRequestEvent } from "#imports";
 import { useRequestHeaders } from "#app";
 import { setCookie, setResponseHeader } from "h3";
 import useNaiveColorMode from "./composables/useNaiveColorMode";
 import colorModeMiddleware from "./middleware/colorMode";
 import type { ColorModePreference } from "./types";
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(() => {
   const event = useRequestEvent();
   const config = useRuntimeConfig().public.naiveui;
   const { colorMode, colorModePreference, colorModeForced } =
@@ -23,23 +23,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     useCookie<ColorModePreference>("naive_color_mode_preference").value ||
     config.colorModePreference;
 
-  if (process.server) {
-    setColorMode(colorModePreference.value);
-  } else {
-    nuxtApp.hook("app:mounted", () => {
-      watch(
-        [colorModeForced, colorModePreference],
-        (values) => {
-          if (!values[0]) {
-            setColorMode(values[1]);
-          }
-        },
-        {
-          immediate: true,
-        }
-      );
-    });
-  }
+  watchEffect(() => {
+    if (!colorModeForced.value) {
+      setColorMode(colorModePreference.value);
+    }
+  });
 
   function setColorMode(colorModePreference: ColorModePreference) {
     if (process.server) {
