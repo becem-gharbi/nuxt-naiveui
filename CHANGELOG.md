@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.0.8
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.0.7...v1.0.8)
+
+
+### 🩹 Fixes
+
+  - Load device specific components conditionally ([941c4e4](https://github.com/becem-gharbi/nuxt-naiveui/commit/941c4e4))
+
+### 🏡 Chore
+
+  - Upgrade demo app deps ([a913011](https://github.com/becem-gharbi/nuxt-naiveui/commit/a913011))
+
+### ❤️  Contributors
+
+- Becem-gharbi
+
 ## v1.0.7
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.0.6...v1.0.7)
