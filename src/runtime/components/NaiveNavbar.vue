@@ -1,13 +1,14 @@
 <template>
     <div :style="navbarStyle">
-        <n-button class="mobileOrTablet" text v-if="backIcon" @click="() => router.back()" tag="span" :focusable="false">
+        <n-button class="mobileOrTablet" text v-if="backIcon && isMobileOrTablet" @click="() => router.back()" tag="span"
+            :focusable="false">
             <NaiveIcon name="ph:arrow-left" :size="backIconSize" />
         </n-button>
 
         <slot name="start"></slot>
 
         <nav :style="{ textAlign: menuPlacement, flex: 1 }">
-            <n-drawer class="mobileOrTablet" v-if="menuOptions.length > 0" v-model:show="drawerActive"
+            <n-drawer class="mobileOrTablet" v-if="menuOptions.length > 0 && isMobileOrTablet" v-model:show="drawerActive"
                 :placement="drawerPlacement" :width="drawerWidth">
 
                 <n-drawer-content title="Menu" :body-content-style="{ padding: 0 }" :header-style="{
@@ -27,14 +28,14 @@
 
             </n-drawer>
 
-            <n-menu class="notMobileOrTablet" :default-value="route.path" :inverted="menuInverted" mode="horizontal"
-                :options="menuOptions" />
+            <n-menu class="notMobileOrTablet" v-if="!isMobileOrTablet" :default-value="route.path" :inverted="menuInverted"
+                mode="horizontal" :options="menuOptions" />
         </nav>
 
         <slot name="end"></slot>
 
-        <n-button class="mobileOrTablet" v-if="menuOptions.length > 0" text @click="() => drawerActive = true" tag="span"
-            :focusable="false">
+        <n-button class="mobileOrTablet" v-if="menuOptions.length > 0 && isMobileOrTablet" text
+            @click="() => drawerActive = true" tag="span" :focusable="false">
             <slot name="toggle">
                 <NaiveIcon :name="menuToggleIcon" :size="menuToggleIconSize"></NaiveIcon>
             </slot>
@@ -54,10 +55,12 @@ import NaiveIcon from "./NaiveIcon.vue"
 import useNaiveTheme from "../composables/useNaiveTheme"
 import type { NavbarRoute } from "../types"
 import { NDrawer, NMenu, NDrawerContent, NButton } from "naive-ui"
+import useNaiveDevice from "../composables/useNaiveDevice"
 
 const drawerActive = ref(false)
 const route = useRoute()
 const router = useRouter()
+const { isMobileOrTablet } = useNaiveDevice()
 watch(route, () => drawerActive.value = false)
 
 const props = withDefaults(defineProps<{
