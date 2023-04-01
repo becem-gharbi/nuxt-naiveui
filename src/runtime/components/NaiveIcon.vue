@@ -1,3 +1,9 @@
+<template>
+    <n-icon-wrapper :size="sSize" :border-radius="borderRadius" :color="color" :icon-color="iconColor">
+        <Icon :icon="icon" :width="sSize" :height="sSize" />
+    </n-icon-wrapper>
+</template>
+
 <script setup lang="ts">
 //@ts-ignore
 import { computed, useRuntimeConfig } from '#imports'
@@ -11,11 +17,6 @@ const props = defineProps<{ name: string; size?: number, color?: string, borderR
 
 const sSize = computed(() => props.size || config.iconSize)
 
-const icon = await loadIcon(props.name)
+const icon = await loadIcon(props.name).catch(e => console.error("Failed to load icon"))
 </script>
 
-<template>
-    <n-icon-wrapper :size="sSize" :border-radius="borderRadius" :color="color" :icon-color="iconColor">
-        <Icon :icon="icon" :width="sSize" :height="sSize" />
-    </n-icon-wrapper>
-</template>

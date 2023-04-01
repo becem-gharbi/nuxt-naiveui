@@ -1,12 +1,12 @@
 <template>
-    <n-config-provider :theme-overrides="themeOverrides" :inline-theme-disabled="true">
+    <n-config-provider :theme-overrides="naiveTheme" :inline-theme-disabled="true">
         <slot></slot>
     </n-config-provider>
 </template>
 
 <script setup lang="ts">
 //@ts-ignore
-import { useHead, computed, useRuntimeConfig, watch, onMounted } from "#imports"
+import { useHead, useRuntimeConfig, onMounted, watchEffect, ref } from "#imports"
 import { NConfigProvider, GlobalThemeOverrides, ConfigProviderProps } from "naive-ui"
 import useNaiveColorMode from "../composables/useNaiveColorMode"
 import useNaiveDevice from "../composables/useNaiveDevice"
@@ -117,6 +117,7 @@ const defaultLightTheme: GlobalThemeOverrides = {
     common: {
         lineHeight: "normal",
         bodyColor: "white",
+        textColorBase: "black",
         textColor1: "#262626",
         textColor2: "#525252",
         textColor3: "#a3a3a3",
@@ -216,13 +217,26 @@ const config = useRuntimeConfig().public.naiveui
 
 const props = defineProps<NaiveConfigProps>()
 
+const themeConfig = props.themeConfig || config.themeConfig
+
 const { colorMode } = useNaiveColorMode()
 
 const { isMobileOrTablet, isMobile } = useNaiveDevice()
 
-const themeOverrides = computed<GlobalThemeOverrides>(() => {
+let deviceTheme: GlobalThemeOverrides | undefined = undefined
 
-    const themeConfig = props.themeConfig || config.themeConfig
+if (isMobileOrTablet) {
+    deviceTheme = defu(themeConfig?.mobileOrTablet, defaultMobileOrTabletTheme)
+}
+else if (isMobile) {
+    deviceTheme = defu(themeConfig?.mobile, defaultMobileOrTabletTheme)
+}
+
+const naiveTheme = useNaiveTheme()
+
+const isMounted = ref(false)
+
+watchEffect(() => {
 
     let colorModeTheme: GlobalThemeOverrides | undefined = undefined
 
@@ -233,53 +247,56 @@ const themeOverrides = computed<GlobalThemeOverrides>(() => {
         colorModeTheme = defu(themeConfig?.light, defaultLightTheme);
     }
 
-    let deviceTheme: GlobalThemeOverrides | undefined = undefined
-
-    if (isMobileOrTablet) {
-        deviceTheme = defu(themeConfig?.mobileOrTablet, defaultMobileOrTabletTheme)
-    }
-    else if (isMobile) {
-        deviceTheme = defu(themeConfig?.mobile, defaultMobileOrTabletTheme)
-    }
-
-    return defu(
+    naiveTheme.value = defu(
         themeConfig?.shared,
         deviceTheme,
-        colorModeTheme
+        colorModeTheme,
+        { isMounted: isMounted.value }
     );
 })
 
-const naiveTheme = useNaiveTheme()
-
-watch(themeOverrides, (value) => naiveTheme.value = value, { immediate: true })
-
 useHead(() => ({
     htmlAttrs: {
-        class: colorMode.value
+        class: colorMode.value,
     },
     style: [
         {
             children: `
                 body {
-                    background-color: ${themeOverrides.value?.common?.bodyColor} !important;
-                    color: ${themeOverrides.value?.common?.textColorBase} !important;
-                    font-family: ${themeOverrides.value?.common?.fontFamily} !important;
-                    font-size: ${themeOverrides.value?.common?.fontSize} !important;
-                    line-height: ${themeOverrides.value?.common?.lineHeight} !important;
+                    background-color: ${naiveTheme.value?.common?.bodyColor} !important;
+                    color: ${naiveTheme.value?.common?.textColorBase} !important;
+                    font-family: ${naiveTheme.value?.common?.fontFamily} !important;
+                    font-size: ${naiveTheme.value?.common?.fontSize} !important;
+                    line-height: ${naiveTheme.value?.common?.lineHeight} !important;
                 }\n`
         },
     ],
 }));
 
 onMounted(() => {
+    isMounted.value = true
+
     document.querySelectorAll(".n-submenu").forEach(subMenu => {
         subMenu?.firstElementChild?.setAttribute("role", "none")
     })
 })
+
 </script>
 
 <style>
 .n-button {
     background-color: var(--n-color);
+}
+
+@media screen and (min-width : 768px) {
+    .mobileOrTablet {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width : 768px) {
+    .notMobileOrTablet {
+        display: none !important;
+    }
 }
 </style>

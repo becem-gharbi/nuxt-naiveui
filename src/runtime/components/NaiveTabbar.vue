@@ -1,5 +1,5 @@
 <template>
-    <div v-if="isMobileOrTablet" :style="tabBarStyle">
+    <div class="mobileOrTablet" :style="tabBarStyle">
         <NuxtLink v-for="tabbarRoute of routes" :to="tabbarRoute.path" :style="{ textDecoration: 'none' }">
 
             <n-button quaternary :focusable="false" :type="tabbarRoute.path === route.path ? 'primary' : 'default'">
@@ -24,7 +24,6 @@ import { NuxtLink } from "#components"
 import type { StyleValue } from "vue"
 import NaiveIcon from "./NaiveIcon.vue"
 import useNaiveTheme from "../composables/useNaiveTheme"
-import useNaiveDevice from "../composables/useNaiveDevice"
 import { TabbarRoute } from "../types"
 
 withDefaults(defineProps<{
@@ -36,7 +35,6 @@ withDefaults(defineProps<{
 
 const naiveTheme = useNaiveTheme()
 const route = useRoute()
-const { isMobileOrTablet } = useNaiveDevice()
 
 const tabBarStyle = computed<StyleValue>(() => ({
     position: "sticky",
