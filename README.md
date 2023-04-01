@@ -14,7 +14,7 @@ A Nuxt 3 module for integrating Naive UI component library into your Nuxt 3 proj
 - ✔️ Highly customizable for color mode and device type
 - ✔️ Friendly integration with Tailwindcss
 - ✔️ Implements custom components
-  - ✔️ `NaiveNavbar` an adaptive navbar for app navigation
+  - ✔️ `NaiveNavbar` a responsive navbar for app navigation
   - ✔️ `NaiveIcon` a wrapper based on iconify/vue with large collection of [icons](https://icones.js.org/)
   - ✔️ `NaiveColorModeSwitch` light/dark modes switch based on `useNaiveColorMode` composable
   - ✔️ `NaiveTabbar` a tabBar for mobile/tablet navigation
@@ -141,7 +141,7 @@ const themeConfig: ThemeConfig = {
 ## Notes
 
 - It's **highly recommended** to include `NaiveConfig` even without theme configuration as it's intended to fix global styles and accessibility issues.
-- **Body is unusable** is an error message i've encountered frequently. A quick solution is to downgrade Node to v16 as suggested in this [issue](https://github.com/nuxt/nuxt/issues/19245).
+- **Body is unusable** is an error message that may show up on dev. A quick workaround is to downgrade Node to v16 as suggested in this [issue](https://github.com/nuxt/nuxt/issues/19245).
 
 ## Documentation
 
