@@ -143,9 +143,9 @@ const themeConfig: ThemeConfig = {
 - It's **highly recommended** to include `NaiveConfig` even without theme configuration as it's intended to fix global styles and accessibility issues.
 - **Body is unusable** is an error message that may show up on dev. A quick workaround is to downgrade Node to v16 as suggested in this [issue](https://github.com/nuxt/nuxt/issues/19245).
 
-## Documentation
+## Caveats
 
-Refer to [Naive-ui website](https://www.naiveui.com/en-US/os-theme/docs/introduction)
+- Naive UI generates CSS using JS [(reference)](https://www.npmjs.com/package/css-render), **this may cause an issue on pre-rendered Nuxt pages**. In fact this nuxt module proposes dynamic theming based on color mode and device type. However the pre-rendered pages are static (generated at build time). Thus a hydration mismatch may occur. Which means a flash of inaccurate styles may occur during hydration.
 
 ## Development
 
