@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.0.9
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.0.8...v1.0.9)
+
+
+### 💅 Refactors
+
+  - Watch color mode changes on app mounted hook ([a2b8593](https://github.com/becem-gharbi/nuxt-naiveui/commit/a2b8593))
+
+### 📖 Documentation
+
+  - Add caveats to README ([be7d7a3](https://github.com/becem-gharbi/nuxt-naiveui/commit/be7d7a3))
+
+### ❤️  Contributors
+
+- Becem-gharbi
+
 ## v1.0.8
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.0.7...v1.0.8)
