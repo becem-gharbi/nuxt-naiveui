@@ -11,7 +11,7 @@ import useNaiveColorMode from "./composables/useNaiveColorMode";
 import colorModeMiddleware from "./middleware/colorMode";
 import type { ColorModePreference } from "./types";
 
-export default defineNuxtPlugin(() => {
+export default defineNuxtPlugin((nuxtApp) => {
   const event = useRequestEvent();
   const config = useRuntimeConfig().public.naiveui;
   const { colorMode, colorModePreference, colorModeForced } =
@@ -23,15 +23,15 @@ export default defineNuxtPlugin(() => {
     useCookie<ColorModePreference>("naive_color_mode_preference").value ||
     config.colorModePreference;
 
-  if (process.server) {
-    setColorMode(colorModePreference.value);
-  } else {
+  setColorMode(colorModePreference.value);
+
+  nuxtApp.hook("app:mounted", () => {
     watchEffect(() => {
       if (!colorModeForced.value) {
         setColorMode(colorModePreference.value);
       }
     });
-  }
+  });
 
   function setColorMode(colorModePreference: ColorModePreference) {
     if (process.server) {
