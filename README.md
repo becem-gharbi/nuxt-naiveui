@@ -145,7 +145,7 @@ const themeConfig: ThemeConfig = {
 
 ## Caveats
 
-- Naive UI generates CSS using JS [(reference)](https://www.npmjs.com/package/css-render), **this may cause an issue on pre-rendered Nuxt pages**. In fact this nuxt module proposes dynamic theming based on color mode and device type. However the pre-rendered pages are static (generated at build time). Thus a hydration mismatch may occur. Which means a flash of inaccurate styles may occur during hydration.
+Naive UI generates CSS using JS [(reference)](https://www.npmjs.com/package/css-render), **this may cause an issue on pre-rendered Nuxt pages**. In fact this nuxt module proposes dynamic theming based on color mode and device type. However the pre-rendered pages are static (generated at build time). Thus a hydration mismatch may occur. Which means a flash of inaccurate styles may occur during hydration.
 
 ## Development
 
