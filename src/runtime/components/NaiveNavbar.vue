@@ -1,15 +1,13 @@
 <template>
     <div :style="navbarStyle">
-        <n-button class="mobileOrTablet" text v-if="backIcon && isMobileOrTablet" @click="() => router.back()" tag="span"
-            :focusable="false">
+        <n-button class="mobileOrTablet" text v-if="backIcon" @click="() => router.back()" tag="span" :focusable="false">
             <NaiveIcon name="ph:arrow-left" :size="backIconSize" />
         </n-button>
 
         <slot name="start"></slot>
 
-        <nav :style="{ textAlign: menuPlacement, flex: 1 }">
-            <n-drawer class="mobileOrTablet" v-if="menuOptions.length > 0 && isMobileOrTablet" v-model:show="drawerActive"
-                :placement="drawerPlacement" :width="drawerWidth">
+        <nav v-if="menuOptions.length > 0" :style="{ textAlign: menuPlacement, flex: 1 }">
+            <n-drawer v-model:show="drawerActive" :placement="drawerPlacement" :width="drawerWidth">
 
                 <n-drawer-content title="Menu" :body-content-style="{ padding: 0 }" :header-style="{
                     padding: '15px'
@@ -34,8 +32,8 @@
 
         <slot name="end"></slot>
 
-        <n-button class="mobileOrTablet" v-if="menuOptions.length > 0 && isMobileOrTablet" text
-            @click="() => drawerActive = true" tag="span" :focusable="false">
+        <n-button class="mobileOrTablet" v-if="menuOptions.length > 0" text @click="() => drawerActive = true" tag="span"
+            :focusable="false">
             <slot name="toggle">
                 <NaiveIcon :name="menuToggleIcon" :size="menuToggleIconSize"></NaiveIcon>
             </slot>

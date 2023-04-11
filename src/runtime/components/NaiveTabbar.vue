@@ -1,5 +1,5 @@
 <template>
-    <div class="mobileOrTablet" v-if="isMobileOrTablet" :style="tabBarStyle">
+    <div class="mobileOrTablet" :style="tabBarStyle">
         <NuxtLink v-for="tabbarRoute of routes" :to="tabbarRoute.path" :style="{ textDecoration: 'none' }">
 
             <n-button quaternary :focusable="false" :type="tabbarRoute.path === route.path ? 'primary' : 'default'">
