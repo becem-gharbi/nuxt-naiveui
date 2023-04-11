@@ -83,6 +83,7 @@ const props = withDefaults(defineProps<{
     menuToggleIconSize: 26,
     backIcon: false,
     backIconSize: 26,
+    drawerWidth: "100%"
 })
 
 const naiveTheme = useNaiveTheme()

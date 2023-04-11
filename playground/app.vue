@@ -1,6 +1,6 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false" drawer-closable drawer-width="100%">
+    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false" drawer-closable>
 
       <template #start>
         <div class="brand">
