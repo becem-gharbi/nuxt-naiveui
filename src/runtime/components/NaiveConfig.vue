@@ -263,15 +263,23 @@ useHead(() => ({
         {
             children: `
                 body {
-                    background-color: ${naiveTheme.value?.common?.bodyColor} !important;
-                    color: ${naiveTheme.value?.common?.textColorBase} !important;
-                    font-family: ${naiveTheme.value?.common?.fontFamily} !important;
-                    font-size: ${naiveTheme.value?.common?.fontSize} !important;
-                    line-height: ${naiveTheme.value?.common?.lineHeight} !important;
-                }\n`
+                    ${[
+                    compileBodyStyle('background-color', naiveTheme.value?.common?.bodyColor),
+                    compileBodyStyle('color', naiveTheme.value?.common?.textColorBase),
+                    compileBodyStyle('font-family', naiveTheme.value?.common?.fontFamily),
+                    compileBodyStyle('font-size', naiveTheme.value?.common?.fontSize),
+                    compileBodyStyle('line-height', naiveTheme.value?.common?.lineHeight)]
+                    .join(" ")
+                }`
         },
     ],
 }));
+
+function compileBodyStyle(prop: string, value?: string) {
+    if (value) {
+        return `${prop}: ${value} !important;`
+    }
+}
 
 onMounted(() => {
     isMounted.value = true
