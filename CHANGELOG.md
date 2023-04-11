@@ -1,6 +1,33 @@
 # Changelog
 
 
+## v1.0.10
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.0.9...v1.0.10)
+
+
+### 🩹 Fixes
+
+  - Remove class light in html tag ([9583360](https://github.com/becem-gharbi/nuxt-naiveui/commit/9583360))
+  - Remove undefined global styles ([c86f116](https://github.com/becem-gharbi/nuxt-naiveui/commit/c86f116))
+
+### 💅 Refactors
+
+  - Display mobileOrTablet components based on media query only ([c82e050](https://github.com/becem-gharbi/nuxt-naiveui/commit/c82e050))
+  - **naivenavbar:** Set default drawer width to 100% ([cc45ff9](https://github.com/becem-gharbi/nuxt-naiveui/commit/cc45ff9))
+
+### 📖 Documentation
+
+  - Update README ([89f00f1](https://github.com/becem-gharbi/nuxt-naiveui/commit/89f00f1))
+
+### 🏡 Chore
+
+  - Remove demo app ([bbb2bd1](https://github.com/becem-gharbi/nuxt-naiveui/commit/bbb2bd1))
+
+### ❤️  Contributors
+
+- Becem-gharbi
+
 ## v1.0.9
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.0.8...v1.0.9)
