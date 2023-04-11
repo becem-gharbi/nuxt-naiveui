@@ -257,7 +257,7 @@ watchEffect(() => {
 
 useHead(() => ({
     htmlAttrs: {
-        class: colorMode.value,
+        class: colorMode.value === "dark" ? "dark" : "",
     },
     style: [
         {
