@@ -6,8 +6,9 @@
 
         <slot name="start"></slot>
 
-        <nav v-if="menuOptions.length > 0" :style="{ textAlign: menuPlacement, flex: 1 }">
-            <n-drawer v-model:show="drawerActive" :placement="drawerPlacement" :width="drawerWidth">
+        <nav :style="{ textAlign: menuPlacement, flex: 1 }">
+            <n-drawer v-if="menuOptions.length > 0" v-model:show="drawerActive" :placement="drawerPlacement"
+                :width="drawerWidth">
 
                 <n-drawer-content title="Menu" :body-content-style="{ padding: 0 }" :header-style="{
                     padding: '15px'
