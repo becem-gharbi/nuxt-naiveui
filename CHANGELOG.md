@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.0.11
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.0.10...v1.0.11)
+
+
+### 🩹 Fixes
+
+  - **naivenavbar:** Nav layout ([46355ed](https://github.com/becem-gharbi/nuxt-naiveui/commit/46355ed))
+
+### ❤️  Contributors
+
+- Becem-gharbi
+
 ## v1.0.10
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.0.9...v1.0.10)
