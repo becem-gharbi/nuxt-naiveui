@@ -179,7 +179,7 @@ npm run release
 
 [npm-version-src]: https://img.shields.io/npm/v/@bg-dev/nuxt-naiveui/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-version-href]: https://npmjs.com/package/@bg-dev/nuxt-naiveui
-[npm-downloads-src]: https://img.shields.io/npm/dm/@bg-dev/nuxt-naiveui.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-src]: https://img.shields.io/npm/dt/@bg-dev/nuxt-naiveui.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-downloads-href]: https://npmjs.com/package/@bg-dev/nuxt-naiveui
 [license-src]: https://img.shields.io/npm/l/@bg-dev/nuxt-naiveui.svg?style=flat&colorA=18181B&colorB=28CF8D
 [license-href]: https://npmjs.com/package/@bg-dev/nuxt-naiveui
