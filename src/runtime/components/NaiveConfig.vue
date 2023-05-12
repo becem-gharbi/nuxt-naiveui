@@ -111,6 +111,11 @@ const defaultDarkTheme: GlobalThemeOverrides = {
         color: "transparent",
         iconColor: "inherited"
     },
+
+    Tooltip: {
+        color: "rgb(72, 72, 78)",
+        textColor: "rgba(255, 255, 255, 0.9)"
+    }
 };
 
 const defaultLightTheme: GlobalThemeOverrides = {
