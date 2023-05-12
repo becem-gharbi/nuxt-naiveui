@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v1.1.0
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.0.11...v1.1.0)
+
+
+### 🚀 Enhancements
+
+  - Set NaiveColorModeSwitch props as NButton for typed fallthrough ([f4f62fd](https://github.com/becem-gharbi/nuxt-naiveui/commit/f4f62fd))
+
+### 🩹 Fixes
+
+  - Define NTooltip colors on dark mode ([03f0263](https://github.com/becem-gharbi/nuxt-naiveui/commit/03f0263))
+  - Set NSlider indicator color on dark theme ([311818f](https://github.com/becem-gharbi/nuxt-naiveui/commit/311818f))
+
+### 📖 Documentation
+
+  - Display total downloads ([ea82008](https://github.com/becem-gharbi/nuxt-naiveui/commit/ea82008))
+
+### 🏡 Chore
+
+  - Update deps ([bd54efe](https://github.com/becem-gharbi/nuxt-naiveui/commit/bd54efe))
+
+### ❤️  Contributors
+
+- Becem-gharbi
+
 ## v1.0.11
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.0.10...v1.0.11)
