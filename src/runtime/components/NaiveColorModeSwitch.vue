@@ -6,10 +6,13 @@
     </n-button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import NaiveIcon from "./NaiveIcon.vue"
 import useNaiveColorMode from "../composables/useNaiveColorMode";
-import { NButton } from "naive-ui"
+import { NButton, ButtonProps } from "naive-ui"
+
+interface Props extends ButtonProps { }
+defineProps<Props>()
 
 const { colorModePreference } = useNaiveColorMode()
 
