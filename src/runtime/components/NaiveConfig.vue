@@ -115,7 +115,12 @@ const defaultDarkTheme: GlobalThemeOverrides = {
     Tooltip: {
         color: "rgb(72, 72, 78)",
         textColor: "rgba(255, 255, 255, 0.9)"
-    }
+    },
+
+    Slider: {
+        indicatorColor: "rgb(72, 72, 78)",
+        indicatorTextColor: "rgba(255, 255, 255, 0.9)"
+    },
 };
 
 const defaultLightTheme: GlobalThemeOverrides = {
