@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.1.1
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.1.0...v1.1.1)
+
+
+### 🩹 Fixes
+
+  - Fix extends base type resolver ([ceb0b1d](https://github.com/becem-gharbi/nuxt-naiveui/commit/ceb0b1d))
+
+### ❤️  Contributors
+
+- Becem-gharbi
+
 ## v1.1.0
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.0.11...v1.1.0)
