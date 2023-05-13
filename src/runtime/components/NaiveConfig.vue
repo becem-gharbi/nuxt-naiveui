@@ -220,7 +220,7 @@ const defaultMobileOrTabletTheme: GlobalThemeOverrides = {
 }
 
 interface NaiveConfigProps
-    extends Omit<ConfigProviderProps, "themeOverrides" | "theme"> {
+    extends /* @vue-ignore */ Omit<ConfigProviderProps, "themeOverrides" | "theme"> {
     themeConfig?: ThemeConfig;
 }
 const config = useRuntimeConfig().public.naiveui

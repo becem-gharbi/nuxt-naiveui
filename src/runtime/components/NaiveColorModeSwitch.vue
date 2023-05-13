@@ -11,7 +11,7 @@ import NaiveIcon from "./NaiveIcon.vue"
 import useNaiveColorMode from "../composables/useNaiveColorMode";
 import { NButton, ButtonProps } from "naive-ui"
 
-interface Props extends ButtonProps { }
+interface Props extends /* @vue-ignore */ ButtonProps { }
 defineProps<Props>()
 
 const { colorModePreference } = useNaiveColorMode()
