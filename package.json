@@ -34,19 +34,19 @@
   },
   "dependencies": {
     "@iconify/vue": "^4.1.1",
-    "@nuxt/kit": "^3.4.3",
+    "@nuxt/kit": "^3.5.3",
     "defu": "^6.1.2",
-    "naive-ui": "^2.34.3"
+    "naive-ui": "^2.34.4"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.1.1",
-    "@nuxt/module-builder": "^0.3.1",
-    "@nuxt/schema": "^3.4.3",
-    "@nuxt/test-utils": "^3.4.3",
+    "@nuxt/module-builder": "^0.4.0",
+    "@nuxt/schema": "^3.5.3",
+    "@nuxt/test-utils": "^3.5.3",
     "changelogen": "^0.5.3",
-    "eslint": "^8.40.0",
-    "nuxt": "^3.4.3",
-    "vitest": "^0.31.0"
+    "eslint": "^8.42.0",
+    "nuxt": "^3.5.3",
+    "vitest": "^0.32.0"
   },
   "repository": "https://github.com/becem-gharbi/nuxt-naiveui.git",
   "publishConfig": {
