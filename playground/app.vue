@@ -1,12 +1,10 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false" drawer-closable>
+    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false" drawer-closable menu-placement="center">
 
       <template #start>
-        <div class="brand">
-          <NaiveIcon name="logos:naiveui"></NaiveIcon>
-          <n-text strong>nuxt-naiveui</n-text>
-        </div>
+        <NaiveIcon name="logos:naiveui"></NaiveIcon>
+        <n-text strong>nuxt-naiveui</n-text>
       </template>
 
       <template #end>

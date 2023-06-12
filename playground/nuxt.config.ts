@@ -1,4 +1,6 @@
 export default defineNuxtConfig({
+  ssr: true,
+
   app: {
     head: {
       title: "Nuxt Naive UI",
@@ -7,7 +9,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  ssr: true,
+
   css: ["~/assets/fonts/gellix/style.css"],
   modules: ["../src/module"],
   naiveui: {

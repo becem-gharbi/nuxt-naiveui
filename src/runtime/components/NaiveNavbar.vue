@@ -1,44 +1,56 @@
 <template>
     <div :style="navbarStyle">
-        <n-button class="mobileOrTablet" text v-if="backIcon" @click="() => router.back()" tag="span" :focusable="false">
-            <NaiveIcon name="ph:arrow-left" :size="backIconSize" />
-        </n-button>
+        <div class="outer">
 
-        <slot name="start"></slot>
+            <div :style="menuPlacement === 'center' ? { flex: 1 } : {}">
+                <div class="inner-start">
+                    <n-button class="mobileOrTablet" text v-if="backIcon" @click="() => router.back()" tag="span"
+                        :focusable="false">
+                        <NaiveIcon name="ph:arrow-left" :size="backIconSize" />
+                    </n-button>
 
-        <nav :style="{ textAlign: menuPlacement, flex: 1 }">
-            <n-drawer v-if="menuOptions.length > 0" v-model:show="drawerActive" :placement="drawerPlacement"
-                :width="drawerWidth">
+                    <slot name="start"></slot>
+                </div>
+            </div>
 
-                <n-drawer-content title="Menu" :body-content-style="{ padding: 0 }" :header-style="{
-                    padding: '15px'
-                }" :footer-style="{ justifyContent: 'start' }" :closable="drawerClosable">
+            <div v-if="!isMobileOrTablet" :style="{ flexGrow: 1, textAlign: menuPlacement }">
+                <n-menu class="notMobileOrTablet" :default-value="route.path" :inverted="menuInverted" mode="horizontal"
+                    :options="menuOptions" />
+            </div>
 
-                    <template #header>
-                        <slot name="drawer-header"></slot>
-                    </template>
+            <div :style="menuPlacement === 'center' ? { flex: 1 } : {}">
+                <div class="inner-end">
+                    <slot name="end"></slot>
 
-                    <n-menu mode="vertical" :default-value="route.path" :inverted="menuInverted" :options="menuOptions" />
+                    <n-button class="mobileOrTablet" v-if="menuOptions.length > 0" text @click="() => drawerActive = true"
+                        tag="span" :focusable="false">
+                        <slot name="toggle">
+                            <NaiveIcon :name="menuToggleIcon" :size="menuToggleIconSize"></NaiveIcon>
+                        </slot>
+                    </n-button>
+                </div>
+            </div>
 
-                    <template #footer>
-                        <slot name="drawer-footer"></slot>
-                    </template>
-                </n-drawer-content>
+        </div>
 
-            </n-drawer>
+        <n-drawer v-if="menuOptions.length > 0" v-model:show="drawerActive" :placement="drawerPlacement"
+            :width="drawerWidth">
 
-            <n-menu class="notMobileOrTablet" v-if="!isMobileOrTablet" :default-value="route.path" :inverted="menuInverted"
-                mode="horizontal" :options="menuOptions" />
-        </nav>
+            <n-drawer-content title="Menu" :body-content-style="{ padding: 0 }" :header-style="{
+                padding: '15px'
+            }" :footer-style="{ justifyContent: 'start' }" :closable="drawerClosable">
 
-        <slot name="end"></slot>
+                <template #header>
+                    <slot name="drawer-header"></slot>
+                </template>
 
-        <n-button class="mobileOrTablet" v-if="menuOptions.length > 0" text @click="() => drawerActive = true" tag="span"
-            :focusable="false">
-            <slot name="toggle">
-                <NaiveIcon :name="menuToggleIcon" :size="menuToggleIconSize"></NaiveIcon>
-            </slot>
-        </n-button>
+                <n-menu mode="vertical" :default-value="route.path" :inverted="menuInverted" :options="menuOptions" />
+
+                <template #footer>
+                    <slot name="drawer-footer"></slot>
+                </template>
+            </n-drawer-content>
+        </n-drawer>
 
     </div>
 </template>
@@ -92,15 +104,8 @@ const naiveTheme = useNaiveTheme()
 const navbarStyle = computed<StyleValue>(() => ({
     position: props.sticky ? 'sticky' : 'static',
     backgroundColor: naiveTheme.value?.common?.bodyColor,
-    top: "0px",
-    height: "56px",
-    zIndex: 100,
-    padding: "0 15px",
-    boxShadow: '0px 0px 2px 0px #a3a3a3',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    gap: '1em',
+    top: 0,
+    zIndex: 100
 }))
 
 
@@ -124,3 +129,30 @@ const menuOptions = computed<MenuOption[]>(() => {
     return cb(props.routes)
 })
 </script>
+
+
+<style scoped>
+.outer {
+    height: 56px;
+    padding: 0 16px;
+    box-shadow: 0px 0px 2px 0px #a3a3a3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.inner-start {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.inner-end {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+</style>
