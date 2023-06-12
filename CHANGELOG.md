@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.1.3
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.1.2...v1.1.3)
+
+
+### 🩹 Fixes
+
+  - **navbar:** Center menu relative to page ([106c730](https://github.com/becem-gharbi/nuxt-naiveui/commit/106c730))
+
+### ❤️  Contributors
+
+- Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.1.2
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.1.1...v1.1.2)
