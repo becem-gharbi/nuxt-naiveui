@@ -216,6 +216,9 @@ const defaultMobileOrTabletTheme: GlobalThemeOverrides = {
     },
     Result: {
         fontSizeMedium: "16px",
+    },
+    Tabs: {
+        tabFontSizeMedium: "16px"
     }
 }
 
