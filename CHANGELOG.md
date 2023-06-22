@@ -1,6 +1,29 @@
 # Changelog
 
 
+## v1.2.0
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.1.3...v1.2.0)
+
+
+### 🚀 Enhancements
+
+  - Add reset method to useNaiveForm ([a553396](https://github.com/becem-gharbi/nuxt-naiveui/commit/a553396))
+  - Add edited variable to useNaiveForm ([1483dd3](https://github.com/becem-gharbi/nuxt-naiveui/commit/1483dd3))
+
+### 🩹 Fixes
+
+  - Remove logs errors on invalid form submit ([b36850e](https://github.com/becem-gharbi/nuxt-naiveui/commit/b36850e))
+  - **navbar:** Update active item on route change ([64fcddb](https://github.com/becem-gharbi/nuxt-naiveui/commit/64fcddb))
+
+### 💅 Refactors
+
+  - Set tabs font size to 16px on mobileOrTablet ([6df60d6](https://github.com/becem-gharbi/nuxt-naiveui/commit/6df60d6))
+
+### ❤️  Contributors
+
+- Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.1.3
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.1.2...v1.1.3)

@@ -1,6 +1,6 @@
 {
   "name": "@bg-dev/nuxt-naiveui",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "description": "A nuxt 3 naive-ui module",
   "author": "Becem Gharbi",
   "keywords": [
