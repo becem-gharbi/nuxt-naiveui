@@ -1,6 +1,16 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
+  "extends": ["config:base", "group:allNonMajor"],
+  "packageRules": [
+    {
+      "groupName": "Nuxt 3",
+      "groupSlug": "nuxt3",
+      "matchPackageNames": [
+        "@nuxt/schema",
+        "@nuxt/kit",
+        "@nuxtjs/eslint-config-typescript",
+        "nuxt"
+      ]
+    }
   ]
 }
