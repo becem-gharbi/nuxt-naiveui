@@ -60,26 +60,6 @@
         <n-divider />
 
         <n-h3>Form</n-h3>
-        <n-form>
-            <n-form-item label="Email">
-                <n-input v-model:value="formModel.email" />
-            </n-form-item>
-            <n-form-item label="Password">
-                <n-input type="password" v-model:value="formModel.password" />
-            </n-form-item>
-            <n-form-item>
-                <n-button>Submit</n-button>
-            </n-form-item>
-        </n-form>
+        <Form></Form>
     </n-space>
 </template>
-
-
-<script setup>
-import { ref } from "#imports"
-
-const formModel = ref({
-    email: "",
-    password: ""
-})
-</script>

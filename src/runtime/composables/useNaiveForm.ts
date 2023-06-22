@@ -1,10 +1,12 @@
 import { FormInst, FormRules } from "naive-ui";
-import { ref, Ref } from "#imports";
+import { ref } from "#imports";
+import type { Ref } from "vue";
 
-export default function useNaiveForm() {
+export default function useNaiveForm(model: Ref<any> = ref({})) {
   const formRef: Ref<FormInst | null> = ref<FormInst | null>(null);
   const pending: Ref<boolean> = ref(false);
   const rules: Ref<FormRules> = ref<FormRules>({});
+  const defaultModel = JSON.parse(JSON.stringify(model.value));
   const apiErrors: Ref<Record<string, boolean>> = ref<Record<string, boolean>>(
     {}
   );
@@ -21,7 +23,9 @@ export default function useNaiveForm() {
    * @note apiErrors should be checked on validators
    */
   function onSubmit(callback: () => Promise<void>): void {
-    formRef.value?.validate((errors) => {
+    console.log(defaultModel);
+
+    formRef.value?.validate((errors: any) => {
       if (!errors) {
         resetApiErrors();
         pending.value = true;
@@ -35,5 +39,9 @@ export default function useNaiveForm() {
     });
   }
 
-  return { formRef, pending, rules, apiErrors, onSubmit };
+  function reset() {
+    model.value = JSON.parse(JSON.stringify(defaultModel));
+  }
+
+  return { formRef, pending, rules, apiErrors, reset, onSubmit };
 }
