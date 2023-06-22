@@ -1,6 +1,6 @@
 import { FormInst, FormRules } from "naive-ui";
-import { ref } from "#imports";
-import type { Ref } from "vue";
+import { ref, computed } from "#imports";
+import type { Ref, ComputedRef } from "vue";
 
 export default function useNaiveForm(model: Ref<any> = ref({})) {
   const formRef: Ref<FormInst | null> = ref<FormInst | null>(null);
@@ -9,6 +9,9 @@ export default function useNaiveForm(model: Ref<any> = ref({})) {
   const defaultModel = JSON.parse(JSON.stringify(model.value));
   const apiErrors: Ref<Record<string, boolean>> = ref<Record<string, boolean>>(
     {}
+  );
+  const edited: ComputedRef<boolean> = computed(
+    () => JSON.stringify(model.value) !== JSON.stringify(defaultModel)
   );
 
   function resetApiErrors() {
@@ -43,5 +46,5 @@ export default function useNaiveForm(model: Ref<any> = ref({})) {
     model.value = JSON.parse(JSON.stringify(defaultModel));
   }
 
-  return { formRef, pending, rules, apiErrors, reset, onSubmit };
+  return { formRef, pending, rules, apiErrors, edited, reset, onSubmit };
 }

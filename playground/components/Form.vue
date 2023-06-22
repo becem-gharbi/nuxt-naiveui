@@ -9,7 +9,7 @@
         </n-form-item>
 
         <div>
-            <n-button attr-type="submit" :loading="pending" :disabled="pending" type="primary">Login</n-button>
+            <n-button attr-type="submit" :loading="pending" :disabled="!edited" type="primary">Login</n-button>
             <n-button attr-type="button" :disabled="pending" @click="reset">Reset</n-button>
 
         </div>
@@ -25,7 +25,7 @@ const model = ref({
     password: "qsd",
 })
 
-const { formRef, rules, pending, apiErrors, reset, onSubmit } = useNaiveForm(model)
+const { formRef, rules, pending, apiErrors, edited, reset, onSubmit } = useNaiveForm(model)
 
 apiErrors.value = {
     wrongCredentials: false,
