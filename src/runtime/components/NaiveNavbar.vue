@@ -14,7 +14,7 @@
             </div>
 
             <div v-if="!isMobileOrTablet" :style="{ flexGrow: 1, textAlign: menuPlacement }">
-                <n-menu class="notMobileOrTablet" :default-value="route.path" :inverted="menuInverted" mode="horizontal"
+                <n-menu class="notMobileOrTablet" v-model:value="activePath" :inverted="menuInverted" mode="horizontal"
                     :options="menuOptions" />
             </div>
 
@@ -44,7 +44,7 @@
                     <slot name="drawer-header"></slot>
                 </template>
 
-                <n-menu mode="vertical" :default-value="route.path" :inverted="menuInverted" :options="menuOptions" />
+                <n-menu mode="vertical" v-model:value="activePath" :inverted="menuInverted" :options="menuOptions" />
 
                 <template #footer>
                     <slot name="drawer-footer"></slot>
@@ -72,7 +72,14 @@ const drawerActive = ref(false)
 const route = useRoute()
 const router = useRouter()
 const { isMobileOrTablet } = useNaiveDevice()
-watch(route, () => drawerActive.value = false)
+const activePath = ref(route.path)
+
+watch(route, (newRoute: any) => {
+    activePath.value = newRoute.path
+    drawerActive.value = false
+})
+
+
 
 const props = withDefaults(defineProps<{
     routes?: NavbarRoute[],

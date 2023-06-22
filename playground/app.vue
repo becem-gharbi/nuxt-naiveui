@@ -3,8 +3,10 @@
     <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false" drawer-closable menu-placement="center">
 
       <template #start>
-        <NaiveIcon name="logos:naiveui"></NaiveIcon>
-        <n-text strong>nuxt-naiveui</n-text>
+        <nuxt-link to="/">
+          <NaiveIcon name="logos:naiveui"></NaiveIcon>
+          <n-text strong>nuxt-naiveui</n-text>
+        </nuxt-link>
       </template>
 
       <template #end>
