@@ -23,20 +23,20 @@ export default function useNaiveForm(model: Ref<any> = ref({})) {
    * @note apiErrors should be checked on validators
    */
   function onSubmit(callback: () => Promise<void>): void {
-    console.log(defaultModel);
-
-    formRef.value?.validate((errors: any) => {
-      if (!errors) {
-        resetApiErrors();
-        pending.value = true;
-
-        callback().finally(() => {
-          pending.value = false;
-          formRef.value?.validate();
+    formRef.value
+      ?.validate((errors: any) => {
+        if (!errors) {
           resetApiErrors();
-        });
-      }
-    });
+          pending.value = true;
+
+          callback().finally(() => {
+            pending.value = false;
+            formRef.value?.validate();
+            resetApiErrors();
+          });
+        }
+      })
+      .catch(() => {});
   }
 
   function reset() {
