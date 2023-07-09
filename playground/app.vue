@@ -46,6 +46,11 @@ const navbarRoutes: NavbarRoute[] = [
     path: "/"
   },
   {
+    label: "Computers",
+    icon: "material-symbols:computer-outline",
+    path: "/computers"
+  },
+  {
     label: "Categories",
     icon: "mdi:bookmark-multiple-outline",
     children: [
@@ -54,11 +59,6 @@ const navbarRoutes: NavbarRoute[] = [
         icon: "material-symbols:menu-book-outline-rounded",
         path: "/books"
       },
-      {
-        label: "Computers",
-        icon: "material-symbols:computer-outline",
-        path: "/computers"
-      }
     ]
   }
 ]

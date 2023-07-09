@@ -69,12 +69,12 @@ import { NDrawer, NMenu, NDrawerContent, NButton } from "naive-ui"
 const drawerActive = ref(false)
 const route = useRoute()
 const router = useRouter()
-const activePath = ref(route.path)
+const activePath = ref()
 
 watch(route, (newRoute: any) => {
-    activePath.value = newRoute.path
+    activePath.value = "/" + newRoute.path.split("/")[1]
     drawerActive.value = false
-})
+}, { immediate: true })
 
 
 
