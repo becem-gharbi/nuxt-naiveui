@@ -56,7 +56,7 @@
 
 <script setup lang = "ts" >
 //@ts-ignore
-import { ref, computed, h, useRoute, watch, useRouter } from "#imports"
+import { ref, computed, h, useRoute, useRouter, watchEffect } from "#imports"
 //@ts-ignore
 import { NuxtLink } from "#components"
 import type { StyleValue } from "vue"
@@ -71,10 +71,10 @@ const route = useRoute()
 const router = useRouter()
 const activePath = ref()
 
-watch(route, (newRoute: any) => {
-    activePath.value = "/" + newRoute.path.split("/")[1]
+watchEffect(() => {
+    activePath.value = "/" + route.path.split("/")[1]
     drawerActive.value = false
-}, { immediate: true })
+})
 
 
 

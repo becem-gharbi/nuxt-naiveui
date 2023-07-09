@@ -1,13 +1,13 @@
 <template>
     <div class="mobileOrTablet" :style="tabBarStyle">
-        <NuxtLink v-for="tabbarRoute of routes" :to="tabbarRoute.path" :style="{ textDecoration: 'none' }">
+        <NuxtLink v-for="tabbarRoute of   routes  " :to="tabbarRoute.path" :style="{ textDecoration: 'none' }">
 
             <n-button quaternary :focusable="false" :type="tabbarRoute.path === route.path ? 'primary' : 'default'">
                 <div class="tab-bar-item">
                     <NaiveIcon
                         :name="tabbarRoute.path === route.path ? tabbarRoute.iconSelected : tabbarRoute.iconUnselected"
                         :size="iconSize" />
-                    <n-text :type="tabbarRoute.path === route.path ? 'primary' : 'default'">{{
+                    <n-text :type="tabbarRoute.path === ('/' + route.path.split('/')[1]) ? 'primary' : 'default'">{{
                         tabbarRoute.label }}</n-text>
                 </div>
             </n-button>
