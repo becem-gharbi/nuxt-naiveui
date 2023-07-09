@@ -1,6 +1,33 @@
 # Changelog
 
 
+## v1.2.1
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.0...v1.2.1)
+
+### 🩹 Fixes
+
+- **useNaiveForm:** Set edited to false on submit success ([802bfe5](https://github.com/becem-gharbi/nuxt-naiveui/commit/802bfe5))
+- **NaiveColorModeSwitch:** Add a fallback icon ([3b34dcd](https://github.com/becem-gharbi/nuxt-naiveui/commit/3b34dcd))
+- **NaiveNavbar:** Set active path to page's root path ([59fb6d1](https://github.com/becem-gharbi/nuxt-naiveui/commit/59fb6d1))
+- **NaiveTabbar:** Set active path to page's root path ([a9d8a04](https://github.com/becem-gharbi/nuxt-naiveui/commit/a9d8a04))
+
+### 💅 Refactors
+
+- **NaiveNavbar:** Remove adaptive behaviour ([7660a85](https://github.com/becem-gharbi/nuxt-naiveui/commit/7660a85))
+- **NaiveTabbar:** Remove adaptive behaviour ([88fb7b9](https://github.com/becem-gharbi/nuxt-naiveui/commit/88fb7b9))
+
+### 🏡 Chore
+
+- Configure Renovate ([532578f](https://github.com/becem-gharbi/nuxt-naiveui/commit/532578f))
+- Upgrade dependencies ([3cd0e72](https://github.com/becem-gharbi/nuxt-naiveui/commit/3cd0e72))
+- **playground:** Add tailwindCSS ([41bb480](https://github.com/becem-gharbi/nuxt-naiveui/commit/41bb480))
+- **readme:** Set tailwind color mode integration snippet in ts ([dc01e04](https://github.com/becem-gharbi/nuxt-naiveui/commit/dc01e04))
+
+### ❤️  Contributors
+
+- Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.2.0
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.1.3...v1.2.0)
