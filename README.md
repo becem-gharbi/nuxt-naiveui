@@ -91,9 +91,11 @@ definePageMeta({
 Color mode integration
 
 ```js
-// tailwind.config.js
+// tailwind.config.ts
 
-module.exports = {
+import type { Config } from "tailwindcss";
+
+export default <Partial<Config>>{
   darkMode: "class",
 };
 ```
