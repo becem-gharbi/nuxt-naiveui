@@ -5,7 +5,6 @@
       <template #start>
         <nuxt-link to="/">
           <NaiveIcon name="logos:naiveui"></NaiveIcon>
-          <n-text strong>nuxt-naiveui</n-text>
         </nuxt-link>
       </template>
 
@@ -38,6 +37,7 @@
 
 <script setup lang="ts">
 import { ThemeConfig, NavbarRoute, TabbarRoute } from "@bg-dev/nuxt-naiveui"
+import { theme } from "#tailwind-config";
 
 const navbarRoutes: NavbarRoute[] = [
   {
@@ -87,11 +87,25 @@ const tabBarRoutes: TabbarRoute[] = [
 const themeConfig: ThemeConfig = {
   shared: {
     common: {
-      fontFamily: "Gellix",
-
-    }
+      fontFamily: theme.fontFamily.sans,
+      lineHeight: theme.lineHeight.normal,
+    },
   },
-}
+  light: {
+    common: {
+      primaryColor: theme.colors.blue[600],
+      primaryColorHover: theme.colors.blue[500],
+      primaryColorPressed: theme.colors.blue[700],
+    },
+  },
+  dark: {
+    common: {
+      primaryColor: theme.colors.blue[500],
+      primaryColorHover: theme.colors.blue[400],
+      primaryColorPressed: theme.colors.blue[600],
+    },
+  },
+};
 </script>
 
 

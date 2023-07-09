@@ -76,8 +76,6 @@ watchEffect(() => {
     drawerActive.value = false
 })
 
-
-
 const props = withDefaults(defineProps<{
     routes?: NavbarRoute[],
     menuToggleIcon?: string,
@@ -89,7 +87,7 @@ const props = withDefaults(defineProps<{
     drawerPlacement?: "top" | "right" | "bottom" | "left",
     sticky?: boolean,
     drawerClosable?: boolean,
-    drawerWidth?: string | number
+    drawerWidth?: string | number,
 }>(), {
     routes: () => [],
     menuToggleIcon: "ph:equals",
@@ -100,7 +98,7 @@ const props = withDefaults(defineProps<{
     menuToggleIconSize: 26,
     backIcon: false,
     backIconSize: 26,
-    drawerWidth: "100%"
+    drawerWidth: "100%",
 })
 
 const naiveTheme = useNaiveTheme()
