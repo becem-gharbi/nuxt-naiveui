@@ -6,12 +6,12 @@ export default function useNaiveForm(model: Ref<any> = ref({})) {
   const formRef: Ref<FormInst | null> = ref<FormInst | null>(null);
   const pending: Ref<boolean> = ref(false);
   const rules: Ref<FormRules> = ref<FormRules>({});
-  const defaultModel = JSON.parse(JSON.stringify(model.value));
+  const defaultModel = ref(JSON.parse(JSON.stringify(model.value)));
   const apiErrors: Ref<Record<string, boolean>> = ref<Record<string, boolean>>(
     {}
   );
   const edited: ComputedRef<boolean> = computed(
-    () => JSON.stringify(model.value) !== JSON.stringify(defaultModel)
+    () => JSON.stringify(model.value) !== JSON.stringify(defaultModel.value)
   );
 
   function resetApiErrors() {
@@ -32,18 +32,22 @@ export default function useNaiveForm(model: Ref<any> = ref({})) {
           resetApiErrors();
           pending.value = true;
 
-          callback().finally(() => {
-            pending.value = false;
-            formRef.value?.validate();
-            resetApiErrors();
-          });
+          callback()
+            .then(() => {
+              defaultModel.value = JSON.parse(JSON.stringify(model.value));
+            })
+            .finally(() => {
+              pending.value = false;
+              formRef.value?.validate();
+              resetApiErrors();
+            });
         }
       })
       .catch(() => {});
   }
 
   function reset() {
-    model.value = JSON.parse(JSON.stringify(defaultModel));
+    model.value = JSON.parse(JSON.stringify(defaultModel.value));
   }
 
   return { formRef, pending, rules, apiErrors, edited, reset, onSubmit };

@@ -10,7 +10,7 @@
 
         <div>
             <n-button attr-type="submit" :loading="pending" :disabled="!edited" type="primary">Login</n-button>
-            <n-button attr-type="button" :disabled="pending" @click="reset">Reset</n-button>
+            <n-button attr-type="button" :disabled="pending || !edited" @click="reset">Reset</n-button>
 
         </div>
     </n-form>
@@ -64,5 +64,13 @@ rules.value = {
 }
 
 async function handleSubmit() {
+    const res = await $fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        body: {
+            title: 'foo',
+            body: 'bar',
+            userId: 1,
+        }
+    })
 }
 </script>
