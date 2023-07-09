@@ -43,6 +43,7 @@
     "@nuxt/module-builder": "^0.4.0",
     "@nuxt/schema": "^3.6.2",
     "@nuxt/test-utils": "^3.6.2",
+    "@nuxtjs/tailwindcss": "^6.8.0",
     "changelogen": "^0.5.4",
     "eslint": "^8.44.0",
     "nuxt": "^3.6.2",

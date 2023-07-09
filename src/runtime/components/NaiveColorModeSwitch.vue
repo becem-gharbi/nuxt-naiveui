@@ -3,6 +3,7 @@
         <NaiveIcon v-if="colorModePreference === 'dark'" name="ph:moon"></NaiveIcon>
         <NaiveIcon v-else-if="colorModePreference === 'light'" name="ph:sun"></NaiveIcon>
         <NaiveIcon v-else-if="colorModePreference === 'system'" name="ph:monitor"></NaiveIcon>
+        <NaiveIcon v-else name="ph:dots-three"></NaiveIcon>
     </n-button>
 </template>
 

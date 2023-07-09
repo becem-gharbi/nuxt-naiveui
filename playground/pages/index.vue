@@ -1,6 +1,8 @@
 <template>
     <n-space vertical :style="{ margin: '1em' }" size="large">
 
+        <h1>Nuxt Naive UI</h1>
+
         <n-h3>Buttons</n-h3>
 
         <n-space align="center">
