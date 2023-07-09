@@ -13,9 +13,8 @@
                 </div>
             </div>
 
-            <div v-if="!isMobileOrTablet" :style="{ flexGrow: 1, textAlign: menuPlacement }">
-                <n-menu class="notMobileOrTablet" v-model:value="activePath" :inverted="menuInverted" mode="horizontal"
-                    :options="menuOptions" />
+            <div class="notMobileOrTablet" :style="{ flexGrow: 1, textAlign: menuPlacement }">
+                <n-menu v-model:value="activePath" :inverted="menuInverted" mode="horizontal" :options="menuOptions" />
             </div>
 
             <div :style="menuPlacement === 'center' ? { flex: 1 } : {}">
@@ -66,12 +65,10 @@ import NaiveIcon from "./NaiveIcon.vue"
 import useNaiveTheme from "../composables/useNaiveTheme"
 import type { NavbarRoute } from "../types"
 import { NDrawer, NMenu, NDrawerContent, NButton } from "naive-ui"
-import useNaiveDevice from "../composables/useNaiveDevice"
 
 const drawerActive = ref(false)
 const route = useRoute()
 const router = useRouter()
-const { isMobileOrTablet } = useNaiveDevice()
 const activePath = ref(route.path)
 
 watch(route, (newRoute: any) => {
