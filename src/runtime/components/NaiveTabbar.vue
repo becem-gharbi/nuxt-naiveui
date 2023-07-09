@@ -25,7 +25,6 @@ import type { StyleValue } from "vue"
 import NaiveIcon from "./NaiveIcon.vue"
 import useNaiveTheme from "../composables/useNaiveTheme"
 import { TabbarRoute } from "../types"
-import useNaiveDevice from "../composables/useNaiveDevice"
 
 withDefaults(defineProps<{
     routes: TabbarRoute[],
@@ -36,7 +35,6 @@ withDefaults(defineProps<{
 
 const naiveTheme = useNaiveTheme()
 const route = useRoute()
-const { isMobileOrTablet } = useNaiveDevice()
 
 const tabBarStyle = computed<StyleValue>(() => ({
     position: "sticky",
