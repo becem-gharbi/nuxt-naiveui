@@ -306,7 +306,7 @@ onMounted(() => {
 
 <style>
 .n-button {
-    background-color: var(--n-color);
+    background-color: var(--n-color) !important;
 }
 
 @media screen and (min-width : 768px) {
