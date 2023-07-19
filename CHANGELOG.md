@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v1.2.2
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.1...v1.2.2)
+
+### 🩹 Fixes
+
+- Solve NButton bg color conflict with tailwind in prod ([6fd509c](https://github.com/becem-gharbi/nuxt-naiveui/commit/6fd509c))
+
+### 📖 Documentation
+
+- Fix fontfamily config ([fec3db0](https://github.com/becem-gharbi/nuxt-naiveui/commit/fec3db0))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([e753428](https://github.com/becem-gharbi/nuxt-naiveui/commit/e753428))
+
+### ❤️  Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+- Tobias Diez <code@tobiasdiez.com>
+
 ## v1.2.1
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.0...v1.2.1)
