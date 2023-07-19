@@ -119,7 +119,7 @@ import { theme } from "#tailwind-config";
 const themeConfig: ThemeConfig = {
   shared: {
     common: {
-      fontFamily: theme.fontFamily.sans,
+      fontFamily: theme.fontFamily.sans.join(", "),
       lineHeight: theme.lineHeight.normal,
     },
   },
