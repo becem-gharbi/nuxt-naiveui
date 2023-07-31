@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.2.3
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.2...v1.2.3)
+
+### 🩹 Fixes
+
+- **n-button:** Fix unapplied  hover state ([47605cb](https://github.com/becem-gharbi/nuxt-naiveui/commit/47605cb))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([85778ec](https://github.com/becem-gharbi/nuxt-naiveui/commit/85778ec))
+
+### ❤️  Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v1.2.2
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.1...v1.2.2)
