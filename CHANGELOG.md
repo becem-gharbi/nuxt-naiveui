@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v1.2.4
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.3...v1.2.4)
+
+### 🩹 Fixes
+
+- **colorMode:** Wait until suspense resolved to set forced colorMode ([bc36150](https://github.com/becem-gharbi/nuxt-naiveui/commit/bc36150))
+
+### 💅 Refactors
+
+- Use #imports instead of relative paths ([57135af](https://github.com/becem-gharbi/nuxt-naiveui/commit/57135af))
+
+### 🏡 Chore
+
+- Update package description ([0d7c882](https://github.com/becem-gharbi/nuxt-naiveui/commit/0d7c882))
+- Move plugins under /plugins ([7f67f12](https://github.com/becem-gharbi/nuxt-naiveui/commit/7f67f12))
+- Set package tag to latest ([f240574](https://github.com/becem-gharbi/nuxt-naiveui/commit/f240574))
+
+### ❤️  Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v1.2.3
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.2...v1.2.3)
