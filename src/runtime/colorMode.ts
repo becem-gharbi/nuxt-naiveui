@@ -25,12 +25,18 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   setColorMode(colorModePreference.value);
 
-  nuxtApp.hook("app:mounted", () => {
-    watchEffect(() => {
-      if (!colorModeForced.value) {
-        setColorMode(colorModePreference.value);
-      }
-    });
+  watchEffect(() => {
+    if (colorModeForced.value === false) {
+      setColorMode(colorModePreference.value);
+    } else if (process.server) {
+      colorMode.value = colorModeForced.value;
+    }
+  });
+
+  nuxtApp.hook("page:finish", () => {
+    if (colorModeForced.value) {
+      colorMode.value = colorModeForced.value;
+    }
   });
 
   function setColorMode(colorModePreference: ColorModePreference) {

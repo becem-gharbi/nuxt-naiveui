@@ -1,6 +1,6 @@
 import { useState } from "#imports";
 import type { Ref } from "vue";
-import type { ColorMode, ColorModePreference } from "../types";
+import type { ColorMode, ColorModePreference, ColorModeForce } from "../types";
 
 export default function useNaiveColorMode() {
   const colorModePreference: Ref<ColorModePreference> =
@@ -8,7 +8,7 @@ export default function useNaiveColorMode() {
 
   const colorMode: Ref<ColorMode> = useState<ColorMode>("naive_color_mode");
 
-  const colorModeForced: Ref<boolean> = useState<boolean>(
+  const colorModeForced: Ref<ColorModeForce> = useState<ColorModeForce>(
     "naive_color_mode_forced"
   );
 

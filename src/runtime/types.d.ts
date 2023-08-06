@@ -25,3 +25,5 @@ export interface TabbarRoute {
 export type ColorMode = "light" | "dark";
 
 export type ColorModePreference = "light" | "dark" | "system";
+
+export type ColorModeForce = ColorMode | false;
