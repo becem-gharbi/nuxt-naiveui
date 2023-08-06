@@ -17,14 +17,10 @@
 </template>
 
 <script setup lang="ts">
-//@ts-ignore
-import { computed, useRoute } from "#imports"
-//@ts-ignore
-import { NuxtLink } from "#components"
+import { computed, useRoute, useNaiveTheme } from "#imports"
+import { NuxtLink, NaiveIcon } from "#components"
 import type { StyleValue } from "vue"
-import NaiveIcon from "./NaiveIcon.vue"
-import useNaiveTheme from "../composables/useNaiveTheme"
-import { TabbarRoute } from "../types"
+import type { TabbarRoute } from "../types"
 
 withDefaults(defineProps<{
     routes: TabbarRoute[],

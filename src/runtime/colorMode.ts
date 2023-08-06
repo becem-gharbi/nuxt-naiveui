@@ -3,11 +3,12 @@ import {
   useCookie,
   useRuntimeConfig,
   addRouteMiddleware,
+  watchEffect,
+  useRequestEvent,
+  useNaiveColorMode,
+  useRequestHeaders,
 } from "#imports";
-import { watchEffect, useRequestEvent } from "#imports";
-import { useRequestHeaders } from "#app";
 import { setCookie, setResponseHeader } from "h3";
-import useNaiveColorMode from "./composables/useNaiveColorMode";
 import colorModeMiddleware from "./middleware/colorMode";
 import type { ColorModePreference } from "./types";
 

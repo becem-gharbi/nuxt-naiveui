@@ -1,4 +1,4 @@
-import { useRequestHeaders } from "#app";
+import { useRequestHeaders } from "#imports";
 
 export default function useNaiveDevice() {
   const userAgent =

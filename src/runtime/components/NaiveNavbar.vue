@@ -55,16 +55,12 @@
 </template>
 
 <script setup lang = "ts" >
-//@ts-ignore
-import { ref, computed, h, useRoute, useRouter, watchEffect } from "#imports"
-//@ts-ignore
-import { NuxtLink } from "#components"
+import { ref, computed, h, useRoute, useRouter, watchEffect, useNaiveTheme } from "#imports"
+import { NDrawer, NMenu, NDrawerContent, NButton } from "naive-ui"
+import { NuxtLink, NaiveIcon } from "#components"
 import type { StyleValue } from "vue"
 import type { MenuOption } from "naive-ui"
-import NaiveIcon from "./NaiveIcon.vue"
-import useNaiveTheme from "../composables/useNaiveTheme"
 import type { NavbarRoute } from "../types"
-import { NDrawer, NMenu, NDrawerContent, NButton } from "naive-ui"
 
 const drawerActive = ref(false)
 const route = useRoute()

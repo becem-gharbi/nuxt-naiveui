@@ -8,8 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import NaiveIcon from "./NaiveIcon.vue"
-import useNaiveColorMode from "../composables/useNaiveColorMode";
+import { NaiveIcon } from "#components"
+import { useNaiveColorMode } from "#imports";
 import { NButton, ButtonProps } from "naive-ui"
 
 interface Props extends /* @vue-ignore */ ButtonProps { }

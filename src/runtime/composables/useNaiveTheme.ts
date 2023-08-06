@@ -1,4 +1,5 @@
-import { useState, Ref } from "#imports";
+import { useState } from "#imports";
+import type { Ref } from "#imports";
 import type { GlobalThemeOverrides } from "naive-ui";
 
 export default function useNaiveTheme() {

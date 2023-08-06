@@ -1,5 +1,5 @@
 import { useState } from "#imports";
-import type { Ref } from "vue";
+import type { Ref } from "#imports";
 import type { ColorMode, ColorModePreference, ColorModeForce } from "../types";
 
 export default function useNaiveColorMode() {

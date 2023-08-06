@@ -8,11 +8,12 @@ import {
   extendViteConfig,
 } from "@nuxt/kit";
 import { fileURLToPath } from "url";
-import type { ThemeConfig, ColorModePreference } from "./runtime/types";
-export type { NavbarRoute, ThemeConfig, TabbarRoute } from "./runtime/types";
 import naive from "naive-ui";
 import { name, version } from "../package.json";
 import { defu } from "defu";
+import type { ThemeConfig, ColorModePreference } from "./runtime/types";
+export type { NavbarRoute, ThemeConfig, TabbarRoute } from "./runtime/types";
+
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions {

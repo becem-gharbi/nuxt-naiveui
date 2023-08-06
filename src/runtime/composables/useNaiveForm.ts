@@ -1,6 +1,6 @@
 import { FormInst, FormRules } from "naive-ui";
 import { ref, computed } from "#imports";
-import type { Ref, ComputedRef } from "vue";
+import type { Ref, ComputedRef } from "#imports";
 
 export default function useNaiveForm(model: Ref<any> = ref({})) {
   const formRef: Ref<FormInst | null> = ref<FormInst | null>(null);

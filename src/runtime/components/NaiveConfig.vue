@@ -5,14 +5,13 @@
 </template>
 
 <script setup lang="ts">
-//@ts-ignore
-import { useHead, useRuntimeConfig, onMounted, watchEffect, ref } from "#imports"
+import {
+    useHead, useRuntimeConfig, onMounted, watchEffect, ref, useNaiveColorMode,
+    useNaiveDevice, useNaiveTheme
+} from "#imports"
 import { NConfigProvider, GlobalThemeOverrides, ConfigProviderProps } from "naive-ui"
-import useNaiveColorMode from "../composables/useNaiveColorMode"
-import useNaiveDevice from "../composables/useNaiveDevice"
-import useNaiveTheme from "../composables/useNaiveTheme"
-import type { ThemeConfig } from "../types"
 import { defu } from "defu"
+import type { ThemeConfig } from "../types"
 
 const defaultDarkTheme: GlobalThemeOverrides = {
     common: {

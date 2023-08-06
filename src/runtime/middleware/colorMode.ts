@@ -1,5 +1,4 @@
-import { defineNuxtRouteMiddleware } from "#app";
-import useNaiveColorMode from "../composables/useNaiveColorMode";
+import { useNaiveColorMode, defineNuxtRouteMiddleware } from "#imports";
 import type { ColorMode } from "../types";
 
 export default defineNuxtRouteMiddleware((to) => {
