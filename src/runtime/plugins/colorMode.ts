@@ -28,7 +28,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   nuxtApp.hook("app:mounted", () => {
     watchEffect(() => {
-      if (colorModeForced.value === false) {
+      if (!colorModeForced.value) {
         setColorMode(colorModePreference.value);
       }
     });
