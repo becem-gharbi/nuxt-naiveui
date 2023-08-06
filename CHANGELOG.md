@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.2.5
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.4...v1.2.5)
+
+### 🩹 Fixes
+
+- **colorMode:** Wait until suspense resolved to set colorMode ([841dde5](https://github.com/becem-gharbi/nuxt-naiveui/commit/841dde5))
+
+### ❤️  Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v1.2.4
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.3...v1.2.4)
