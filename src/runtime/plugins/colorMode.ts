@@ -28,15 +28,15 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   nuxtApp.hook("app:mounted", () => {
     watchEffect(() => {
-      if (!colorModeForced.value) {
-        setColorMode(colorModePreference.value);
-      }
+      setColorMode(colorModePreference.value);
     });
   });
 
   nuxtApp.hook("page:finish", () => {
     if (colorModeForced.value) {
       colorMode.value = colorModeForced.value;
+    } else {
+      setColorMode(colorModePreference.value);
     }
   });
 
