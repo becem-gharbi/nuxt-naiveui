@@ -14,7 +14,6 @@ import { defu } from "defu";
 import type { ThemeConfig, ColorModePreference } from "./runtime/types";
 export type { NavbarRoute, ThemeConfig, TabbarRoute } from "./runtime/types";
 
-
 // Module options TypeScript inteface definition
 export interface ModuleOptions {
   themeConfig?: ThemeConfig;
@@ -54,8 +53,8 @@ export default defineNuxtModule<ModuleOptions>({
     const runtimeDir = fileURLToPath(new URL("./runtime", import.meta.url));
 
     // Add plugins
-    addPlugin(resolve(runtimeDir, "naive.server"));
-    addPlugin(resolve(runtimeDir, "colorMode"));
+    addPlugin(resolve(runtimeDir, "plugins", "naive.server"));
+    addPlugin(resolve(runtimeDir, "plugins", "colorMode"));
 
     // Add composables directory
     addImportsDir(resolve(runtimeDir, "composables"));

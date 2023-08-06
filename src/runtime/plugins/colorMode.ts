@@ -9,8 +9,8 @@ import {
   useRequestHeaders,
 } from "#imports";
 import { setCookie, setResponseHeader } from "h3";
-import colorModeMiddleware from "./middleware/colorMode";
-import type { ColorModePreference } from "./types";
+import colorModeMiddleware from "../middleware/colorMode";
+import type { ColorModePreference } from "../types";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const event = useRequestEvent();
@@ -26,12 +26,12 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   setColorMode(colorModePreference.value);
 
-  watchEffect(() => {
-    if (colorModeForced.value === false) {
-      setColorMode(colorModePreference.value);
-    } else if (process.server) {
-      colorMode.value = colorModeForced.value;
-    }
+  nuxtApp.hook("app:mounted", () => {
+    watchEffect(() => {
+      if (colorModeForced.value === false) {
+        setColorMode(colorModePreference.value);
+      }
+    });
   });
 
   nuxtApp.hook("page:finish", () => {
