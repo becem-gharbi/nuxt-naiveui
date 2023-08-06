@@ -1,7 +1,7 @@
 {
   "name": "@bg-dev/nuxt-naiveui",
-  "version": "1.2.3",
-  "description": "A nuxt 3 naive-ui module",
+  "version": "1.2.3-edge",
+  "description": "Naive UI module for Nuxt 3",
   "author": "Becem Gharbi",
   "keywords": [
     "nuxt",
@@ -47,11 +47,11 @@
     "changelogen": "^0.5.4",
     "eslint": "^8.46.0",
     "nuxt": "^3.6.5",
-    "vitest": "^0.33.0"
+    "vitest": "^0.34.1"
   },
   "repository": "https://github.com/becem-gharbi/nuxt-naiveui.git",
   "publishConfig": {
     "access": "public",
-    "tag": "latest"
+    "tag": "edge"
   }
 }
