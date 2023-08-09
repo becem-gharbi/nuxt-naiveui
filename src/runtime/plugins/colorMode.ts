@@ -44,14 +44,14 @@ export default defineNuxtPlugin((nuxtApp) => {
     if (process.server) {
       setCookie(event, "naive_color_mode_preference", colorModePreference, {
         path: "/",
-        maxAge: 1339200,
+        maxAge: 3600 * 24 * 30 * 12,
         secure: true,
         sameSite: "lax",
       });
     } else {
       useCookie("naive_color_mode_preference", {
         path: "/",
-        maxAge: 1339200,
+        maxAge: 3600 * 24 * 30 * 12,
         secure: true,
         sameSite: "lax",
       }).value = colorModePreference;
