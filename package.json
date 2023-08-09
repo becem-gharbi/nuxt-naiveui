@@ -1,6 +1,6 @@
 {
   "name": "@bg-dev/nuxt-naiveui",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Naive UI module for Nuxt 3",
   "author": "Becem Gharbi",
   "keywords": [
@@ -27,7 +27,7 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "release": "npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "release": "npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest watch"

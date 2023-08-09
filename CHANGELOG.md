@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.2.6
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.5...v1.2.6)
+
+### 🩹 Fixes
+
+- **colorMode:** Replace session cookie with long-lived cookie ([b89eff4](https://github.com/becem-gharbi/nuxt-naiveui/commit/b89eff4))
+
+### 🏡 Chore
+
+- Set tag to latest ([cc9ee29](https://github.com/becem-gharbi/nuxt-naiveui/commit/cc9ee29))
+
+### ❤️  Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v1.2.5
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.4...v1.2.5)
