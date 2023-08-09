@@ -44,9 +44,17 @@ export default defineNuxtPlugin((nuxtApp) => {
     if (process.server) {
       setCookie(event, "naive_color_mode_preference", colorModePreference, {
         path: "/",
+        maxAge: 1339200,
+        secure: true,
+        sameSite: "lax",
       });
     } else {
-      document.cookie = `naive_color_mode_preference=${colorModePreference}; path=/`;
+      useCookie("naive_color_mode_preference", {
+        path: "/",
+        maxAge: 1339200,
+        secure: true,
+        sameSite: "lax",
+      }).value = colorModePreference;
     }
 
     if (colorModePreference === "system") {
