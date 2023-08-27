@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.3.1
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.7...v1.3.1)
+
+### 🩹 Fixes
+
+- Nuxt 3.7 support ([31271ce](https://github.com/becem-gharbi/nuxt-naiveui/commit/31271ce))
+
+### 🏡 Chore
+
+- Sync lock ([2beb529](https://github.com/becem-gharbi/nuxt-naiveui/commit/2beb529))
+
+### ❤️ Contributors
+
+- Harlan Wilton ([@harlan-zw](http://github.com/harlan-zw))
+
 ## v1.2.7
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.6...v1.2.7)
