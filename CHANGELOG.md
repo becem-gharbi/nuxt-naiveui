@@ -1,6 +1,25 @@
 # Changelog
 
 
+## v1.2.7
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.6...v1.2.7)
+
+### 🩹 Fixes
+
+- Fixes types generation with nuxt v3.7 (becem-gharbi/nuxt-naiveui#15) ([#15](https://github.com/becem-gharbi/nuxt-naiveui/issues/15))
+- Add missing style tags on ssr (related to nuxt 3.7) ([8d4769d](https://github.com/becem-gharbi/nuxt-naiveui/commit/8d4769d))
+
+### 🏡 Chore
+
+- Upgrade nuxt to v3.7 ([2dcc191](https://github.com/becem-gharbi/nuxt-naiveui/commit/2dcc191))
+- Strict nuxt compatibility to >=3.7 ([3987893](https://github.com/becem-gharbi/nuxt-naiveui/commit/3987893))
+
+### ❤️ Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+- Sanjay Soundarajan <sanjay.16@live.com>
+
 ## v1.2.6
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.5...v1.2.6)
