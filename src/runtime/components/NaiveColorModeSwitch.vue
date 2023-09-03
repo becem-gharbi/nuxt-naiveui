@@ -1,10 +1,27 @@
 <template>
-    <n-button text @click="toggleColorMode" tag="span" :focusable="false">
-        <NaiveIcon v-if="colorModePreference === 'dark'" name="ph:moon"></NaiveIcon>
-        <NaiveIcon v-else-if="colorModePreference === 'light'" name="ph:sun"></NaiveIcon>
-        <NaiveIcon v-else-if="colorModePreference === 'system'" name="ph:monitor"></NaiveIcon>
-        <NaiveIcon v-else name="ph:dots-three"></NaiveIcon>
-    </n-button>
+  <n-button
+    text
+    tag="span"
+    :focusable="false"
+    @click="toggleColorMode"
+  >
+    <NaiveIcon
+      v-if="colorModePreference === 'dark'"
+      name="ph:moon"
+    />
+    <NaiveIcon
+      v-else-if="colorModePreference === 'light'"
+      name="ph:sun"
+    />
+    <NaiveIcon
+      v-else-if="colorModePreference === 'system'"
+      name="ph:monitor"
+    />
+    <NaiveIcon
+      v-else
+      name="ph:dots-three"
+    />
+  </n-button>
 </template>
 
 <script setup lang="ts">

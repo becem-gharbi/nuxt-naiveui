@@ -1,16 +1,27 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar :routes="navbarRoutes" :menu-inverted="false" drawer-closable menu-placement="center">
-
+    <NaiveNavbar
+      :routes="navbarRoutes"
+      :menu-inverted="false"
+      drawer-closable
+      menu-placement="center"
+    >
       <template #start>
         <nuxt-link to="/">
-          <NaiveIcon name="logos:naiveui"></NaiveIcon>
+          <NaiveIcon name="logos:naiveui" />
         </nuxt-link>
       </template>
 
       <template #end>
-        <NuxtLink to="https://github.com/becem-gharbi/nuxt-naiveui" target="_" aria-label="source-code">
-          <n-button text tag="span">
+        <NuxtLink
+          to="https://github.com/becem-gharbi/nuxt-naiveui"
+          target="_"
+          aria-label="source-code"
+        >
+          <n-button
+            text
+            tag="span"
+          >
             <NaiveIcon name="cib:github" />
           </n-button>
         </NuxtLink>
@@ -24,13 +35,11 @@
       <template #drawer-footer>
         <n-text>Footer</n-text>
       </template>
-
     </NaiveNavbar>
 
-    <NuxtPage></NuxtPage>
+    <NuxtPage />
 
     <NaiveTabbar :routes="tabBarRoutes" />
-
   </NaiveConfig>
 </template>
 

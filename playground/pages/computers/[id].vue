@@ -1,3 +1,3 @@
 <template>
-    <h1>ID {{ $route.params.id }}</h1>
+  <h1>ID {{ $route.params.id }}</h1>
 </template>

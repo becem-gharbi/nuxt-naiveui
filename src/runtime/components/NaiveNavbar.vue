@@ -1,60 +1,96 @@
 <template>
-    <div :style="navbarStyle">
-        <div class="outer">
+  <div :style="navbarStyle">
+    <div class="outer">
+      <div :style="menuPlacement === 'center' ? { flex: 1 } : {}">
+        <div class="inner-start">
+          <n-button
+            v-if="backIcon"
+            class="mobileOrTablet"
+            text
+            tag="span"
+            :focusable="false"
+            @click="() => router.back()"
+          >
+            <NaiveIcon
+              name="ph:arrow-left"
+              :size="backIconSize"
+            />
+          </n-button>
 
-            <div :style="menuPlacement === 'center' ? { flex: 1 } : {}">
-                <div class="inner-start">
-                    <n-button class="mobileOrTablet" text v-if="backIcon" @click="() => router.back()" tag="span"
-                        :focusable="false">
-                        <NaiveIcon name="ph:arrow-left" :size="backIconSize" />
-                    </n-button>
-
-                    <slot name="start"></slot>
-                </div>
-            </div>
-
-            <div class="notMobileOrTablet" :style="{ flexGrow: 1, textAlign: menuPlacement }">
-                <n-menu v-model:value="activePath" :inverted="menuInverted" mode="horizontal" :options="menuOptions" />
-            </div>
-
-            <div :style="menuPlacement === 'center' ? { flex: 1 } : {}">
-                <div class="inner-end">
-                    <slot name="end"></slot>
-
-                    <n-button class="mobileOrTablet" v-if="menuOptions.length > 0" text @click="() => drawerActive = true"
-                        tag="span" :focusable="false">
-                        <slot name="toggle">
-                            <NaiveIcon :name="menuToggleIcon" :size="menuToggleIconSize"></NaiveIcon>
-                        </slot>
-                    </n-button>
-                </div>
-            </div>
-
+          <slot name="start" />
         </div>
+      </div>
 
-        <n-drawer v-if="menuOptions.length > 0" v-model:show="drawerActive" :placement="drawerPlacement"
-            :width="drawerWidth">
+      <div
+        class="notMobileOrTablet"
+        :style="{ flexGrow: 1, textAlign: menuPlacement }"
+      >
+        <n-menu
+          v-model:value="activePath"
+          :inverted="menuInverted"
+          mode="horizontal"
+          :options="menuOptions"
+        />
+      </div>
 
-            <n-drawer-content title="Menu" :body-content-style="{ padding: 0 }" :header-style="{
-                padding: '15px'
-            }" :footer-style="{ justifyContent: 'start' }" :closable="drawerClosable">
+      <div :style="menuPlacement === 'center' ? { flex: 1 } : {}">
+        <div class="inner-end">
+          <slot name="end" />
 
-                <template #header>
-                    <slot name="drawer-header"></slot>
-                </template>
-
-                <n-menu mode="vertical" v-model:value="activePath" :inverted="menuInverted" :options="menuOptions" />
-
-                <template #footer>
-                    <slot name="drawer-footer"></slot>
-                </template>
-            </n-drawer-content>
-        </n-drawer>
-
+          <n-button
+            v-if="menuOptions.length > 0"
+            class="mobileOrTablet"
+            text
+            tag="span"
+            :focusable="false"
+            @click="() => drawerActive = true"
+          >
+            <slot name="toggle">
+              <NaiveIcon
+                :name="menuToggleIcon"
+                :size="menuToggleIconSize"
+              />
+            </slot>
+          </n-button>
+        </div>
+      </div>
     </div>
+
+    <n-drawer
+      v-if="menuOptions.length > 0"
+      v-model:show="drawerActive"
+      :placement="drawerPlacement"
+      :width="drawerWidth"
+    >
+      <n-drawer-content
+        title="Menu"
+        :body-content-style="{ padding: 0 }"
+        :header-style="{
+          padding: '15px'
+        }"
+        :footer-style="{ justifyContent: 'start' }"
+        :closable="drawerClosable"
+      >
+        <template #header>
+          <slot name="drawer-header" />
+        </template>
+
+        <n-menu
+          v-model:value="activePath"
+          mode="vertical"
+          :inverted="menuInverted"
+          :options="menuOptions"
+        />
+
+        <template #footer>
+          <slot name="drawer-footer" />
+        </template>
+      </n-drawer-content>
+    </n-drawer>
+  </div>
 </template>
 
-<script setup lang = "ts" >
+<script setup lang = "ts">
 import { ref, computed, h, useRoute, useRouter, watchEffect, useNaiveTheme } from "#imports"
 import { NDrawer, NMenu, NDrawerContent, NButton } from "naive-ui"
 import { NuxtLink, NaiveIcon } from "#components"

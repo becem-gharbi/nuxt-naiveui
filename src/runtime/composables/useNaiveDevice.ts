@@ -1,3 +1,5 @@
+/* eslint no-useless-escape: 0 */
+
 import { useRequestHeaders } from "#imports";
 
 export default function useNaiveDevice() {

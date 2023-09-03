@@ -1,19 +1,48 @@
 <template>
-    <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
-        <n-form-item label="Email" path="email" :show-require-mark="false">
-            <n-input v-model:value="model.email"></n-input>
-        </n-form-item>
+  <n-form
+    ref="formRef"
+    :rules="rules"
+    :model="model"
+    @submit.prevent="() => onSubmit(handleSubmit)"
+  >
+    <n-form-item
+      label="Email"
+      path="email"
+      :show-require-mark="false"
+    >
+      <n-input v-model:value="model.email" />
+    </n-form-item>
 
-        <n-form-item path="password" label="Password" :show-require-mark="false">
-            <n-input v-model:value="model.password" type="password" show-password-on="mousedown"></n-input>
-        </n-form-item>
+    <n-form-item
+      path="password"
+      label="Password"
+      :show-require-mark="false"
+    >
+      <n-input
+        v-model:value="model.password"
+        type="password"
+        show-password-on="mousedown"
+      />
+    </n-form-item>
 
-        <div>
-            <n-button attr-type="submit" :loading="pending" :disabled="!edited" type="primary">Login</n-button>
-            <n-button attr-type="button" :disabled="pending || !edited" @click="reset">Reset</n-button>
-
-        </div>
-    </n-form>
+    <div>
+      <n-button
+        attr-type="submit"
+        :loading="pending"
+        :disabled="!edited"
+        type="primary"
+      >
+        Login
+      </n-button>
+      <n-button
+        attr-type="button"
+        :disabled="pending || !edited"
+        @click="reset"
+      >
+        Reset
+      </n-button>
+    </div>
+  </n-form>
 </template>
 
 
@@ -64,7 +93,7 @@ rules.value = {
 }
 
 async function handleSubmit() {
-    const res = await $fetch("https://jsonplaceholder.typicode.com/posts", {
+    await $fetch("https://jsonplaceholder.typicode.com/posts", {
         method: "POST",
         body: {
             title: 'foo',
