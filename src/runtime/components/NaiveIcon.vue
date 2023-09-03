@@ -1,5 +1,5 @@
 <template>
-    <n-icon-wrapper :size="sSize" :border-radius="borderRadius" :color="color" :icon-color="iconColor">
+    <n-icon-wrapper v-if="icon" :size="sSize" :border-radius="borderRadius" :color="color" :icon-color="iconColor">
         <Icon :icon="icon" :width="sSize" :height="sSize" />
     </n-icon-wrapper>
 </template>
