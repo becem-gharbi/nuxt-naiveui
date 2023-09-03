@@ -58,7 +58,7 @@
 import { ref, computed, h, useRoute, useRouter, watchEffect, useNaiveTheme } from "#imports"
 import { NDrawer, NMenu, NDrawerContent, NButton } from "naive-ui"
 import { NuxtLink, NaiveIcon } from "#components"
-import type { StyleValue } from "vue"
+import type { StyleValue , Component} from "vue"
 import type { MenuOption } from "naive-ui"
 import type { NavbarRoute } from "../types"
 
@@ -113,7 +113,7 @@ const menuOptions = computed<MenuOption[]>(() => {
         const menuOption: MenuOption =
         {
             label: route.path ? () => h(NuxtLink, { to: route.path }, { default: () => route.label }) : route.label,
-            icon: route.icon ? () => h(NaiveIcon, { name: route.icon }) : undefined,
+            icon: route.icon ? () => h(NaiveIcon as Component, { name: route.icon }) : undefined,
             key: route.path || route.label,
         }
 

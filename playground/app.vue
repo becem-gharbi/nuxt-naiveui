@@ -36,7 +36,7 @@
 
 
 <script setup lang="ts">
-import { ThemeConfig, NavbarRoute, TabbarRoute } from "@bg-dev/nuxt-naiveui"
+import { ThemeConfig, NavbarRoute, TabbarRoute } from "../src/module"
 import { theme } from "#tailwind-config";
 
 const navbarRoutes: NavbarRoute[] = [
@@ -87,7 +87,7 @@ const tabBarRoutes: TabbarRoute[] = [
 const themeConfig: ThemeConfig = {
   shared: {
     common: {
-      fontFamily: theme.fontFamily.sans,
+      fontFamily: theme.fontFamily.sans.join(", "),
       lineHeight: theme.lineHeight.normal,
     },
   },

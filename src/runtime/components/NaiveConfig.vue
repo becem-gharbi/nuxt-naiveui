@@ -1,7 +1,10 @@
 <template>
-    <n-config-provider :theme-overrides="naiveTheme" :inline-theme-disabled="true">
-        <slot></slot>
-    </n-config-provider>
+  <n-config-provider
+    :theme-overrides="naiveTheme"
+    :inline-theme-disabled="true"
+  >
+    <slot />
+  </n-config-provider>
 </template>
 
 <script setup lang="ts">
@@ -11,7 +14,7 @@ import {
 } from "#imports"
 import { NConfigProvider, GlobalThemeOverrides, ConfigProviderProps } from "naive-ui"
 import { defu } from "defu"
-import type { ThemeConfig } from "../types"
+import type { ThemeConfig,PublicConfig } from "../types"
 
 const defaultDarkTheme: GlobalThemeOverrides = {
     common: {
@@ -225,7 +228,7 @@ interface NaiveConfigProps
     extends /* @vue-ignore */ Omit<ConfigProviderProps, "themeOverrides" | "theme"> {
     themeConfig?: ThemeConfig;
 }
-const config = useRuntimeConfig().public.naiveui
+const config = useRuntimeConfig().public.naiveui as PublicConfig
 
 const props = defineProps<NaiveConfigProps>()
 

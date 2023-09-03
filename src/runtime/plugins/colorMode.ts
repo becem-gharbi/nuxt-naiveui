@@ -10,11 +10,11 @@ import {
 } from "#imports";
 import { setCookie, setResponseHeader } from "h3";
 import colorModeMiddleware from "../middleware/colorMode";
-import type { ColorModePreference } from "../types";
+import type { ColorModePreference , PublicConfig} from "../types";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const event = useRequestEvent();
-  const config = useRuntimeConfig().public.naiveui;
+  const config = useRuntimeConfig().public.naiveui as PublicConfig
   const { colorMode, colorModePreference, colorModeForced } =
     useNaiveColorMode();
 

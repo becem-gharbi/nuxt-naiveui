@@ -11,15 +11,11 @@ import { fileURLToPath } from "url";
 import naive from "naive-ui";
 import { name, version } from "../package.json";
 import { defu } from "defu";
-import type { ThemeConfig, ColorModePreference } from "./runtime/types";
-export type { NavbarRoute, ThemeConfig, TabbarRoute } from "./runtime/types";
+import type { PublicConfig } from "./runtime/types";
+export type { NavbarRoute, ThemeConfig, TabbarRoute, PublicConfig } from "./runtime/types";
 
 // Module options TypeScript inteface definition
-export interface ModuleOptions {
-  themeConfig?: ThemeConfig;
-  colorModePreference: ColorModePreference;
-  iconSize: number;
-}
+export interface ModuleOptions extends PublicConfig { }
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
@@ -84,10 +80,12 @@ export default defineNuxtModule<ModuleOptions>({
     });
 
     // Pass module options to runtimeConfig object
-    nuxt.options.runtimeConfig.public.naiveui = defu(
-      nuxt.options.runtimeConfig.public.naiveui,
-      options
-    );
+    nuxt.options.runtimeConfig = defu(nuxt.options.runtimeConfig, {
+      app: {},
+      public: {
+        naiveui: options
+      }
+    })
 
     // Add imports for naive-ui components
     const naiveComponents = Object.keys(naive).filter((name) =>
