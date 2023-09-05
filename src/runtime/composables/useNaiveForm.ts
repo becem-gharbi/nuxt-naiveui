@@ -1,4 +1,4 @@
-import { FormInst, FormRules } from "naive-ui";
+import type { FormInst, FormRules } from "naive-ui";
 import { ref, computed } from "#imports";
 import type { Ref, ComputedRef } from "#imports";
 

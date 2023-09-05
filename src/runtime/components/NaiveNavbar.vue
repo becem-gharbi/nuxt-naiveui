@@ -92,7 +92,6 @@
 
 <script setup lang = "ts">
 import { ref, computed, h, useRoute, useRouter, watchEffect, useNaiveTheme } from "#imports"
-import { NDrawer, NMenu, NDrawerContent, NButton } from "naive-ui"
 import { NuxtLink, NaiveIcon } from "#components"
 import type { StyleValue , Component} from "vue"
 import type { MenuOption } from "naive-ui"

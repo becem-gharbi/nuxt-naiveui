@@ -25,9 +25,8 @@
 </template>
 
 <script setup lang="ts">
-import { NaiveIcon } from "#components"
 import { useNaiveColorMode } from "#imports";
-import { NButton, ButtonProps } from "naive-ui"
+import type { ButtonProps } from "naive-ui"
 
 interface Props extends /* @vue-ignore */ ButtonProps { }
 defineProps<Props>()

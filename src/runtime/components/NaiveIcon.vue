@@ -20,8 +20,7 @@ import type {PublicConfig} from "../types"
 import { computed, useRuntimeConfig } from '#imports'
 import { Icon } from '@iconify/vue/dist/offline'
 import { loadIcon } from '@iconify/vue'
-import { NIconWrapper } from "naive-ui"
-
+ 
 const config = useRuntimeConfig().public.naiveui as PublicConfig
 
 const props = defineProps<{ name: string; size?: number, color?: string, borderRadius?: number, iconColor?: string }>()

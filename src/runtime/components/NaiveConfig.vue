@@ -12,9 +12,9 @@ import {
     useHead, useRuntimeConfig, onMounted, watchEffect, ref, useNaiveColorMode,
     useNaiveDevice, useNaiveTheme
 } from "#imports"
-import { NConfigProvider, GlobalThemeOverrides, ConfigProviderProps } from "naive-ui"
+import type { GlobalThemeOverrides, ConfigProviderProps } from "naive-ui"
 import { defu } from "defu"
-import type { ThemeConfig,PublicConfig } from "../types"
+import type { ThemeConfig, PublicConfig } from "../types"
 
 const defaultDarkTheme: GlobalThemeOverrides = {
     common: {
