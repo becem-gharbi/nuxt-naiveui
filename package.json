@@ -46,7 +46,7 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "changelogen": "^0.5.5",
     "eslint": "^8.48.0",
-    "nuxt": "^3.7.0",
+    "nuxt": "^3.7.1",
     "vitest": "^0.34.3"
   },
   "repository": "https://github.com/becem-gharbi/nuxt-naiveui.git",
