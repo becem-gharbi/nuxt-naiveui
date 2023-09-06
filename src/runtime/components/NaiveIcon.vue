@@ -27,6 +27,6 @@ const props = defineProps<{ name: string; size?: number, color?: string, borderR
 
 const sSize = computed(() => props.size || config.iconSize)
 
-const icon = await loadIcon(props.name).catch(() => console.error("Failed to load icon"))
+const icon = await loadIcon(props.name).catch(() => console.error(`Failed to load icon ${props.name}`))
 </script>
 
