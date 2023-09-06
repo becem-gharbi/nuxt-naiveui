@@ -5,13 +5,9 @@
 </template>
 
 <script setup>
-import { definePageMeta, useAsyncData } from '#imports';
+import { definePageMeta } from '#imports';
 
 definePageMeta({
     colorMode: "light"
 })
-
-await useAsyncData(() => new Promise(resolve => {
-    setTimeout(resolve, 2000)
-}))
 </script>

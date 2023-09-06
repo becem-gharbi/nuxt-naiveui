@@ -4,8 +4,6 @@
     :style="{ margin: '1em' }"
     size="large"
   >
-    <h1>Nuxt Naive UI</h1>
-
     <n-h3>Buttons</n-h3>
 
     <n-space align="center">
@@ -174,11 +172,3 @@
     <FormTest />
   </n-space>
 </template>
-
-<script setup>
-import { useAsyncData } from '#imports';
-
-await useAsyncData(() => new Promise(resolve => {
-    setTimeout(resolve, 2000)
-}))
-</script>
