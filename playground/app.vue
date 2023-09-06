@@ -5,6 +5,7 @@
       :menu-inverted="false"
       drawer-closable
       menu-placement="center"
+      back-icon
     >
       <template #start>
         <nuxt-link to="/">
