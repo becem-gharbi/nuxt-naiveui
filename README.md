@@ -53,7 +53,7 @@ That's it! You can now use `@bg-dev/nuxt-naiveui` in your Nuxt app ✨
 
 ### Theme customization
 
-Use `NaiveConfig` component in `app.vue` and set `themeConfig` property, alternatively set `themeConfig` in the module options. The compiled themeConfig is shared globally via `useNaiveTheme` composable.
+Use `NaiveConfig` component in `app.vue` and set `themeConfig` property, alternatively set `themeConfig` in the module options. The common theme is shared globally via `useThemeVars` composable.
 
 ```javascript
 <template>
@@ -88,7 +88,7 @@ definePageMeta({
 
 ### Integration with Nuxt Tailwind
 
-Color mode integration
+**Color mode integration**
 
 ```js
 // tailwind.config.ts
@@ -100,7 +100,9 @@ export default <Partial<Config>>{
 };
 ```
 
-Theme integration
+**Theme integration**
+
+Please be aware this adds ~19.5KB (~3.5KB) to the client bundle size, [source](https://tailwindcss.nuxtjs.org/tailwind/config#referencing-in-the-application).
 
 ```ts
 // nuxt.config.ts
