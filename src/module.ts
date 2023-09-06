@@ -41,10 +41,7 @@ export default defineNuxtModule<ModuleOptions>({
 
   // Add types for volar
   hooks: {
-    "prepare:types": ({ tsConfig, references }) => {
-      tsConfig.compilerOptions ||= {};
-      tsConfig.compilerOptions.types ||= [];
-      tsConfig.compilerOptions!.types.push("naive-ui/volar");
+    "prepare:types": ({  references }) => {
       references.push({
         types: "naive-ui/volar",
       });

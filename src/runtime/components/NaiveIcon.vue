@@ -6,7 +6,11 @@
     :color="color"
     :icon-color="iconColor"
   >
-    <Icon :icon="icon" :width="sSize" :height="sSize" />
+    <Icon
+      :icon="icon"
+      :width="sSize"
+      :height="sSize"
+    />
   </n-icon-wrapper>
 </template>
 
@@ -34,7 +38,7 @@ const load = (name: string) =>
 
 const icon = ref();
 
-watchEffect(() => load(props.name).then((res) => (icon.value = res)));
-
 icon.value = await load(props.name);
+
+watchEffect(() => load(props.name).then((res) => (icon.value = res)));
 </script>
