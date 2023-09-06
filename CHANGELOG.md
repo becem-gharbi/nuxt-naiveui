@@ -1,6 +1,54 @@
 # Changelog
 
 
+## v1.4.1
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.3.1...v1.4.1)
+
+### 🔥 Performance
+
+- **NaiveNavbar:** Lazy load drawer ([9f16999](https://github.com/becem-gharbi/nuxt-naiveui/commit/9f16999))
+- **useNaiveTheme:** Remove it! useThemeVars instead ([b95a1e8](https://github.com/becem-gharbi/nuxt-naiveui/commit/b95a1e8))
+- **colorMode:** Remove preference reactivity ([db95976](https://github.com/becem-gharbi/nuxt-naiveui/commit/db95976))
+- **NaiveIcon:** Add reactivity ([a4b9870](https://github.com/becem-gharbi/nuxt-naiveui/commit/a4b9870))
+- **NaiveConfig:** Lazy load default themes ([e2c8f08](https://github.com/becem-gharbi/nuxt-naiveui/commit/e2c8f08))
+- **NaiveNavbar:** Prevent horizontal menu load on mobileOrTablet ([337d601](https://github.com/becem-gharbi/nuxt-naiveui/commit/337d601))
+
+### 🩹 Fixes
+
+- Don't try to display icon if name is wrong ([4e9f0c5](https://github.com/becem-gharbi/nuxt-naiveui/commit/4e9f0c5))
+
+### 💅 Refactors
+
+- Remove extra imports ([96c22d5](https://github.com/becem-gharbi/nuxt-naiveui/commit/96c22d5))
+- **NaiveNavbar:** Move dynamic styles to style tag> ([8b26570](https://github.com/becem-gharbi/nuxt-naiveui/commit/8b26570))
+- **NaiveTabbar:** Move dynamic styles to style tag ([a6de872](https://github.com/becem-gharbi/nuxt-naiveui/commit/a6de872))
+- **NaiveConfig:** Move global styles to assets ([18c274d](https://github.com/becem-gharbi/nuxt-naiveui/commit/18c274d))
+- **NaiveNavbar:** Remove conditional rendering based on menuOptions's length ([f1d2b42](https://github.com/becem-gharbi/nuxt-naiveui/commit/f1d2b42))
+
+### 📖 Documentation
+
+- Update Usage section ([6c78d65](https://github.com/becem-gharbi/nuxt-naiveui/commit/6c78d65))
+
+### 🌊 Types
+
+- Fix nuxi typecheck errors ([eed57a0](https://github.com/becem-gharbi/nuxt-naiveui/commit/eed57a0))
+- **volar:** Push naive types via preferences only ([74194f3](https://github.com/becem-gharbi/nuxt-naiveui/commit/74194f3))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([fa039d1](https://github.com/becem-gharbi/nuxt-naiveui/commit/fa039d1))
+- Fix ESLint issues ([4edeab2](https://github.com/becem-gharbi/nuxt-naiveui/commit/4edeab2))
+- Add benchmark initial ([71534fa](https://github.com/becem-gharbi/nuxt-naiveui/commit/71534fa))
+- Upgrade nuxt ([6828f29](https://github.com/becem-gharbi/nuxt-naiveui/commit/6828f29))
+- Remove benchmark ([3d5846f](https://github.com/becem-gharbi/nuxt-naiveui/commit/3d5846f))
+- Bump version to 1.4 ([f591029](https://github.com/becem-gharbi/nuxt-naiveui/commit/f591029))
+
+### ❤️ Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+- Tobias Diez <code@tobiasdiez.com>
+
 ## v1.3.1
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.2.7...v1.3.1)
