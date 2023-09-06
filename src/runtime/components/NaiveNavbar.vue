@@ -31,7 +31,6 @@
       <slot name="end" />
 
       <n-button
-        v-if="menuOptions.length > 0"
         class="mobileOrTablet"
         text
         tag="span"
@@ -48,7 +47,7 @@
     </div>
   </div>
 
-  <LazyNaiveContainer v-if="menuOptions.length > 0">
+  <LazyNaiveContainer>
     <n-drawer
       v-model:show="drawerActive"
       :placement="drawerPlacement"

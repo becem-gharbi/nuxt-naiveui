@@ -49,6 +49,10 @@ export default function useNaiveColorMode() {
         }).value = colorModePreference;
       }
 
+      if (colorModeForced.value) {
+        return
+      }
+      
       if (colorModePreference === "system") {
         colorMode.value = detectPreferedColorMode();
       } else {
