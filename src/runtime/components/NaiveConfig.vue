@@ -318,25 +318,3 @@ onMounted(() => {
   });
 });
 </script>
-
-<style>
-.n-button:default {
-  background-color: var(--n-color) !important;
-}
-
-.n-button {
-  background-color: var(--n-color);
-}
-
-@media screen and (min-width: 768px) {
-  .mobileOrTablet {
-    display: none !important;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .notMobileOrTablet {
-    display: none !important;
-  }
-}
-</style>

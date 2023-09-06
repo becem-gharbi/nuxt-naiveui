@@ -55,6 +55,9 @@ export default defineNuxtModule<ModuleOptions>({
     const { resolve } = createResolver(import.meta.url);
     const runtimeDir = fileURLToPath(new URL("./runtime", import.meta.url));
 
+    // Add assets
+    nuxt.options.css.push(resolve(runtimeDir, "assets", "style.css"));
+
     // Add plugins
     addPlugin(resolve(runtimeDir, "plugins", "naive.server"));
     addPlugin(resolve(runtimeDir, "plugins", "colorMode"));
@@ -116,7 +119,7 @@ export default defineNuxtModule<ModuleOptions>({
       "useNotification",
       "useLoadingBar",
       "useDialogReactiveList",
-      "useThemeVars"
+      "useThemeVars",
     ];
 
     naiveComposables.forEach((name) => {
