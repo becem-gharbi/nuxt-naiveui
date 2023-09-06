@@ -12,10 +12,15 @@ import naive from "naive-ui";
 import { name, version } from "../package.json";
 import { defu } from "defu";
 import type { PublicConfig } from "./runtime/types";
-export type { NavbarRoute, ThemeConfig, TabbarRoute, PublicConfig } from "./runtime/types";
+export type {
+  NavbarRoute,
+  ThemeConfig,
+  TabbarRoute,
+  PublicConfig,
+} from "./runtime/types";
 
 // Module options TypeScript inteface definition
-export interface ModuleOptions extends PublicConfig { }
+export interface ModuleOptions extends PublicConfig {}
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
@@ -78,14 +83,18 @@ export default defineNuxtModule<ModuleOptions>({
       name: "NaiveTabbar",
       filePath: resolve(runtimeDir, "components", "NaiveTabbar.vue"),
     });
+    addComponent({
+      name: "NaiveContainer",
+      filePath: resolve(runtimeDir, "components", "NaiveContainer.vue"),
+    });
 
     // Pass module options to runtimeConfig object
     nuxt.options.runtimeConfig = defu(nuxt.options.runtimeConfig, {
       app: {},
       public: {
-        naiveui: options
-      }
-    })
+        naiveui: options,
+      },
+    });
 
     // Add imports for naive-ui components
     const naiveComponents = Object.keys(naive).filter((name) =>

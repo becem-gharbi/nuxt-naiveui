@@ -56,37 +56,38 @@
       </div>
     </div>
 
-    <n-drawer
-      v-if="menuOptions.length > 0"
-      v-model:show="drawerActive"
-      :placement="drawerPlacement"
-      :width="drawerWidth"
-    >
-      <n-drawer-content
-        title="Menu"
-        :body-content-style="{ padding: 0 }"
-        :header-style="{
-          padding: '15px'
-        }"
-        :footer-style="{ justifyContent: 'start' }"
-        :closable="drawerClosable"
+    <LazyNaiveContainer v-if="menuOptions.length > 0">
+      <n-drawer
+        v-model:show="drawerActive"
+        :placement="drawerPlacement"
+        :width="drawerWidth"
       >
-        <template #header>
-          <slot name="drawer-header" />
-        </template>
+        <n-drawer-content
+          title="Menu"
+          :body-content-style="{ padding: 0 }"
+          :header-style="{
+            padding: '15px'
+          }"
+          :footer-style="{ justifyContent: 'start' }"
+          :closable="drawerClosable"
+        >
+          <template #header>
+            <slot name="drawer-header" />
+          </template>
 
-        <n-menu
-          v-model:value="activePath"
-          mode="vertical"
-          :inverted="menuInverted"
-          :options="menuOptions"
-        />
+          <n-menu
+            v-model:value="activePath"
+            mode="vertical"
+            :inverted="menuInverted"
+            :options="menuOptions"
+          />
 
-        <template #footer>
-          <slot name="drawer-footer" />
-        </template>
-      </n-drawer-content>
-    </n-drawer>
+          <template #footer>
+            <slot name="drawer-footer" />
+          </template>
+        </n-drawer-content>
+      </n-drawer>
+    </LazyNaiveContainer>
   </div>
 </template>
 
