@@ -18,7 +18,10 @@
       <slot name="start" />
     </div>
 
-    <div class="inner-middle notMobileOrTablet">
+    <div
+      v-if="!isMobileOrTablet"
+      class="inner-middle notMobileOrTablet"
+    >
       <n-menu
         v-model:value="activePath"
         :inverted="menuInverted"
@@ -90,18 +93,20 @@ import {
   useRouter,
   watchEffect,
   useThemeVars,
+  useNaiveDevice,
 } from "#imports";
 import { NuxtLink, NaiveIcon } from "#components";
 import type { Component } from "vue";
-import type {  MenuOption } from "naive-ui";
+import type { MenuOption } from "naive-ui";
 import type { NavbarRoute } from "../types";
 
 const drawerActive = ref(false);
 const route = useRoute();
 const router = useRouter();
 const activePath = ref();
-const naiveTheme = useThemeVars()
- 
+const naiveTheme = useThemeVars();
+const { isMobileOrTablet } = useNaiveDevice();
+
 watchEffect(() => {
   activePath.value = "/" + route.path.split("/")[1];
   drawerActive.value = false;
@@ -137,7 +142,9 @@ const props = withDefaults(
 
 const sticky = computed(() => (props.sticky ? "sticky" : "static"));
 const backgroundColor = computed(() => naiveTheme.value.bodyColor);
-const flexInnerSides = computed(() => (props.menuPlacement === "center" ? 1 : "auto"));
+const flexInnerSides = computed(() =>
+  props.menuPlacement === "center" ? 1 : "auto"
+);
 
 const menuOptions = computed<MenuOption[]>(() => {
   const cb = (routes: NavbarRoute[]) =>
@@ -195,8 +202,8 @@ const menuOptions = computed<MenuOption[]>(() => {
   flex: v-bind(flexInnerSides);
 }
 
-.inner-middle{
-   flex-grow: 1;
-   text-align: v-bind(menuPlacement) 
+.inner-middle {
+  flex-grow: 1;
+  text-align: v-bind(menuPlacement);
 }
 </style>

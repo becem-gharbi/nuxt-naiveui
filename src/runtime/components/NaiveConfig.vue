@@ -72,8 +72,6 @@ async function updateTheme(colorMode: string) {
 
 await updateTheme(colorMode.value);
 
-watch([colorMode, isMounted], (value) => updateTheme(value[0]));
-
 useHead(() => ({
   htmlAttrs: {
     class: colorMode.value === "dark" ? "dark" : "",
@@ -121,4 +119,6 @@ onMounted(() => {
     subMenu?.firstElementChild?.setAttribute("role", "none");
   });
 });
+
+watch([colorMode, isMounted], (value) => updateTheme(value[0]));
 </script>
