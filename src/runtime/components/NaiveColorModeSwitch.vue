@@ -5,22 +5,7 @@
     :focusable="false"
     @click="toggleColorMode"
   >
-    <NaiveIcon
-      v-if="preference === 'dark'"
-      name="ph:moon"
-    />
-    <NaiveIcon
-      v-else-if="preference === 'light'"
-      name="ph:sun"
-    />
-    <NaiveIcon
-      v-else-if="preference === 'system'"
-      name="ph:monitor"
-    />
-    <NaiveIcon
-      v-else
-      name="ph:dots-three"
-    />
+    <NaiveIcon :name="icon" />
   </n-button>
 </template>
 
@@ -34,6 +19,7 @@ defineProps<Props>();
 const { colorModePreference } = useNaiveColorMode();
 
 const preference = ref(colorModePreference.get());
+const icon = ref(getIcon());
 
 function toggleColorMode() {
   switch (preference.value) {
@@ -49,6 +35,21 @@ function toggleColorMode() {
       colorModePreference.set("light");
       preference.value = "light";
       break;
+  }
+
+  icon.value = getIcon();
+}
+
+function getIcon() {
+  switch (preference.value) {
+    case "light":
+      return "ph:sun";
+    case "dark":
+      return "ph:moon";
+    case "system":
+      return "ph:monitor";
+    default:
+      return "ph:dots-three";
   }
 }
 </script>
