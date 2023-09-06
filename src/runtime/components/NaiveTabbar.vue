@@ -1,10 +1,7 @@
 <template>
-  <div
-    class="mobileOrTablet"
-    :style="tabBarStyle"
-  >
+  <div class="outer mobileOrTablet">
     <NuxtLink
-      v-for="tabbarRoute of routes "
+      v-for="tabbarRoute of routes"
       :key="tabbarRoute.path"
       :to="tabbarRoute.path"
       :style="{ textDecoration: 'none' }"
@@ -14,14 +11,23 @@
         :focusable="false"
         :type="tabbarRoute.path === route.path ? 'primary' : 'default'"
       >
-        <div class="tab-bar-item">
+        <div class="inner-item">
           <NaiveIcon
-            :name="tabbarRoute.path === route.path ? tabbarRoute.iconSelected : tabbarRoute.iconUnselected"
+            :name="
+              tabbarRoute.path === route.path
+                ? tabbarRoute.iconSelected
+                : tabbarRoute.iconUnselected
+            "
             :size="iconSize"
           />
-          <n-text :type="tabbarRoute.path === ('/' + route.path.split('/')[1]) ? 'primary' : 'default'">
-            {{
-              tabbarRoute.label }}
+          <n-text
+            :type="
+              tabbarRoute.path === '/' + route.path.split('/')[1]
+                ? 'primary'
+                : 'default'
+            "
+          >
+            {{ tabbarRoute.label }}
           </n-text>
         </div>
       </n-button>
@@ -30,45 +36,47 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useRoute, useNaiveTheme } from "#imports"
-import { NuxtLink, NaiveIcon } from "#components"
-import type { StyleValue } from "vue"
-import type { TabbarRoute } from "../types"
+import { computed, useRoute, useThemeVars } from "#imports";
+import { NuxtLink, NaiveIcon } from "#components";
+import type { TabbarRoute } from "../types";
 
-withDefaults(defineProps<{
-    routes: TabbarRoute[],
-    iconSize?: number
-}>(), {
-    iconSize: 24
-})
+withDefaults(
+  defineProps<{
+    routes: TabbarRoute[];
+    iconSize?: number;
+  }>(),
+  {
+    iconSize: 24,
+  }
+);
 
-const naiveTheme = useNaiveTheme()
-const route = useRoute()
-
-const tabBarStyle = computed<StyleValue>(() => ({
-    position: "sticky",
-    backgroundColor: naiveTheme.value?.common?.bodyColor,
-    bottom: '0px',
-    zIndex: 100,
-    boxShadow: '0px 0px 2px 0px #a3a3a3',
-    display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    gap: '0px',
-    width: "100vw",
-    height: '56px',
-    boxSizing: 'border-box',
-}))
-
+const naiveTheme = useThemeVars();
+const route = useRoute();
+const backgroundColor = computed(() => naiveTheme.value.bodyColor);
 </script>
 
 <style scoped>
-.tab-bar-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    justify-content: space-around;
-    align-items: center;
-    font-size: small;
+.outer {
+  position: sticky;
+  background-color: v-bind(backgroundColor);
+  bottom: 0;
+  z-index: 100;
+  box-shadow: 0px 0px 2px 0px #a3a3a3;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0;
+  width: 100vw;
+  height: 56px;
+  box-sizing: border-box;
+}
+
+.inner-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  justify-content: space-around;
+  align-items: center;
+  font-size: small;
 }
 </style>
