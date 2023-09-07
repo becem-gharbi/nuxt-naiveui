@@ -22,7 +22,7 @@
       v-if="!isMobileOrTablet"
       class="inner-middle notMobileOrTablet"
     >
-      <n-menu
+      <LazyNMenu
         v-model:value="activePath"
         :inverted="menuInverted"
         mode="horizontal"
@@ -50,38 +50,36 @@
     </div>
   </div>
 
-  <LazyNaiveContainer>
-    <n-drawer
-      v-model:show="drawerActive"
-      :placement="drawerPlacement"
-      :width="drawerWidth"
+  <n-drawer
+    v-model:show="drawerActive"
+    :placement="drawerPlacement"
+    :width="drawerWidth"
+  >
+    <LazyNDrawerContent
+      title="Menu"
+      :body-content-style="{ padding: 0 }"
+      :header-style="{
+        padding: '15px',
+      }"
+      :footer-style="{ justifyContent: 'start' }"
+      :closable="drawerClosable"
     >
-      <n-drawer-content
-        title="Menu"
-        :body-content-style="{ padding: 0 }"
-        :header-style="{
-          padding: '15px',
-        }"
-        :footer-style="{ justifyContent: 'start' }"
-        :closable="drawerClosable"
-      >
-        <template #header>
-          <slot name="drawer-header" />
-        </template>
+      <template #header>
+        <slot name="drawer-header" />
+      </template>
 
-        <n-menu
-          v-model:value="activePath"
-          mode="vertical"
-          :inverted="menuInverted"
-          :options="menuOptions"
-        />
+      <LazyNMenu
+        v-model:value="activePath"
+        mode="vertical"
+        :inverted="menuInverted"
+        :options="menuOptions"
+      />
 
-        <template #footer>
-          <slot name="drawer-footer" />
-        </template>
-      </n-drawer-content>
-    </n-drawer>
-  </LazyNaiveContainer>
+      <template #footer>
+        <slot name="drawer-footer" />
+      </template>
+    </LazyNDrawerContent>
+  </n-drawer>
 </template>
 
 <script setup lang="ts">
@@ -94,6 +92,7 @@ import {
   watchEffect,
   useThemeVars,
   useNaiveDevice,
+  defineAsyncComponent,
 } from "#imports";
 import { NuxtLink, NaiveIcon } from "#components";
 import type { Component } from "vue";
@@ -106,6 +105,13 @@ const router = useRouter();
 const activePath = ref();
 const naiveTheme = useThemeVars();
 const { isMobileOrTablet } = useNaiveDevice();
+
+const LazyNDrawerContent = defineAsyncComponent(
+  () => import("naive-ui/es/drawer/src/DrawerContent")
+);
+const LazyNMenu = defineAsyncComponent(
+  () => import("naive-ui/es/menu/src/Menu")
+);
 
 watchEffect(() => {
   activePath.value = "/" + route.path.split("/")[1];
