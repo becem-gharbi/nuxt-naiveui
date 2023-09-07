@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.4.2
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.4.1...v1.4.2)
+
+### 🔥 Performance
+
+- **NaiveNavbar:** Lazy load horizontal menu based on device ([b5cee22](https://github.com/becem-gharbi/nuxt-naiveui/commit/b5cee22))
+
+### 💅 Refactors
+
+- **NaiveNavbar:** Add drawerRoutes prop to override routes on drawer's menu ([c1e5e20](https://github.com/becem-gharbi/nuxt-naiveui/commit/c1e5e20))
+
+### ❤️ Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v1.4.1
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.3.1...v1.4.1)
