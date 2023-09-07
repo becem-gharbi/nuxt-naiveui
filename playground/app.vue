@@ -2,6 +2,7 @@
   <NaiveConfig :theme-config="themeConfig">
     <NaiveNavbar
       :routes="navbarRoutes"
+      :drawer-routes="drawerRoutes"
       :menu-inverted="false"
       drawer-closable
       menu-placement="center"
@@ -72,6 +73,13 @@ const navbarRoutes: NavbarRoute[] = [
   }
 ]
 
+const drawerRoutes: NavbarRoute[] = [
+  {
+    label: "Sample, this is a long long lable",
+    icon: "ri:home-4-line",
+    path: "/"
+  }
+]
 const tabBarRoutes: TabbarRoute[] = [
   {
     label: "Sample",

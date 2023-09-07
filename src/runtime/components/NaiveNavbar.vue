@@ -68,6 +68,8 @@
         <slot name="drawer-header" />
       </template>
 
+      <slot name="drawer-content" />
+
       <LazyNMenu
         v-model:value="activePath"
         mode="vertical"
@@ -121,6 +123,7 @@ watchEffect(() => {
 const props = withDefaults(
   defineProps<{
     routes?: NavbarRoute[];
+    drawerRoutes?: NavbarRoute[];
     menuToggleIcon?: string;
     menuToggleIconSize?: number;
     backIcon?: boolean;
@@ -134,6 +137,7 @@ const props = withDefaults(
   }>(),
   {
     routes: () => [],
+    drawerRoutes: () => [],
     menuToggleIcon: "ph:equals",
     menuPlacement: "left",
     drawerPlacement: "left",
@@ -158,7 +162,7 @@ const menuOptions = computed<MenuOption[]>(() => {
       const menuOption: MenuOption = {
         label: route.path
           ? () =>
-              h(NuxtLink, { to: route.path }, { default: () => route.label })
+            h(NuxtLink, { to: route.path }, { default: () => route.label })
           : route.label,
         icon: route.icon
           ? () => h(NaiveIcon as Component, { name: route.icon })
@@ -173,7 +177,7 @@ const menuOptions = computed<MenuOption[]>(() => {
       return menuOption;
     });
 
-  return cb(props.routes);
+  return cb(drawerActive.value && props.drawerRoutes.length ? props.drawerRoutes : props.routes);
 });
 </script>
 
