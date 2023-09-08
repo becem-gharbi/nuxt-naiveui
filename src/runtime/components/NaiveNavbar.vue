@@ -147,6 +147,7 @@ const props = withDefaults(
     backIcon: false,
     backIconSize: 26,
     drawerWidth: "100%",
+    drawerClosable: true
   }
 );
 
