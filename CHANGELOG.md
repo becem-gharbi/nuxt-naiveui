@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v1.4.3
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.4.2...v1.4.3)
+
+### 💅 Refactors
+
+- **NaiveNavbar:** Set default value for drawerClosable ([ba16d6f](https://github.com/becem-gharbi/nuxt-naiveui/commit/ba16d6f))
+
+### 📖 Documentation
+
+- Create docus app and define architecture ([1c367b2](https://github.com/becem-gharbi/nuxt-naiveui/commit/1c367b2))
+- Add content ([11e7db5](https://github.com/becem-gharbi/nuxt-naiveui/commit/11e7db5))
+- **readme:** Add documentation section ([f7f7de1](https://github.com/becem-gharbi/nuxt-naiveui/commit/f7f7de1))
+- Update naive-icon section ([944e7b2](https://github.com/becem-gharbi/nuxt-naiveui/commit/944e7b2))
+- Update naive-icon section ([72e05eb](https://github.com/becem-gharbi/nuxt-naiveui/commit/72e05eb))
+
+### ❤️ Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v1.4.2
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.4.1...v1.4.2)
