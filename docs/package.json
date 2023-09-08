@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "devDependencies": {
+    "@bg-dev/nuxt-naiveui": "^1.4.2",
     "@nuxt-themes/docus": "^1.14.6",
     "@nuxt/devtools": "^0.8.3",
     "@nuxt/eslint-config": "^0.2.0",
