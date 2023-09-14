@@ -147,14 +147,14 @@ const props = withDefaults(
     backIcon: false,
     backIconSize: 26,
     drawerWidth: "100%",
-    drawerClosable: true
+    drawerClosable: true,
   }
 );
 
 const sticky = computed(() => (props.sticky ? "sticky" : "static"));
 const backgroundColor = computed(() => naiveTheme.value.bodyColor);
 const flexInnerSides = computed(() =>
-  props.menuPlacement === "center" ? 1 : "auto"
+  props.menuPlacement === "center" ? 1 : 0
 );
 
 const menuOptions = computed<MenuOption[]>(() => {
@@ -163,7 +163,7 @@ const menuOptions = computed<MenuOption[]>(() => {
       const menuOption: MenuOption = {
         label: route.path
           ? () =>
-            h(NuxtLink, { to: route.path }, { default: () => route.label })
+              h(NuxtLink, { to: route.path }, { default: () => route.label })
           : route.label,
         icon: route.icon
           ? () => h(NaiveIcon as Component, { name: route.icon })
@@ -178,7 +178,11 @@ const menuOptions = computed<MenuOption[]>(() => {
       return menuOption;
     });
 
-  return cb(drawerActive.value && props.drawerRoutes.length ? props.drawerRoutes : props.routes);
+  return cb(
+    drawerActive.value && props.drawerRoutes.length
+      ? props.drawerRoutes
+      : props.routes
+  );
 });
 </script>
 
@@ -203,6 +207,7 @@ const menuOptions = computed<MenuOption[]>(() => {
   justify-content: flex-start;
   gap: 12px;
   flex: v-bind(flexInnerSides);
+  width: fit-content;
 }
 
 .inner-end {

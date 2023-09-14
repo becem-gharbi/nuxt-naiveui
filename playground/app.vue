@@ -44,21 +44,20 @@
   </NaiveConfig>
 </template>
 
-
 <script setup lang="ts">
-import type { ThemeConfig, NavbarRoute, TabbarRoute } from "../src/module"
+import type { ThemeConfig, NavbarRoute, TabbarRoute } from "../src/module";
 // import { theme } from "#tailwind-config";
 
 const navbarRoutes: NavbarRoute[] = [
   {
     label: "Sample, this is a long long lable",
     icon: "ri:home-4-line",
-    path: "/"
+    path: "/",
   },
   {
     label: "Computers",
     icon: "material-symbols:computer-outline",
-    path: "/computers"
+    path: "/computers",
   },
   {
     label: "Categories",
@@ -67,39 +66,39 @@ const navbarRoutes: NavbarRoute[] = [
       {
         label: "Books",
         icon: "material-symbols:menu-book-outline-rounded",
-        path: "/books"
+        path: "/books",
       },
-    ]
-  }
-]
+    ],
+  },
+];
 
 const drawerRoutes: NavbarRoute[] = [
   {
     label: "Sample, this is a long long lable",
     icon: "ri:home-4-line",
-    path: "/"
-  }
-]
+    path: "/",
+  },
+];
 const tabBarRoutes: TabbarRoute[] = [
   {
     label: "Sample",
     iconUnselected: "ri:home-4-line",
     iconSelected: "material-symbols:home-sharp",
-    path: "/"
+    path: "/",
   },
   {
     label: "Books",
     iconUnselected: "material-symbols:menu-book-outline-rounded",
     iconSelected: "material-symbols:menu-book-sharp",
-    path: "/books"
+    path: "/books",
   },
   {
     label: "Computers",
     iconUnselected: "material-symbols:computer-outline",
     iconSelected: "material-symbols:computer",
-    path: "/computers"
-  }
-]
+    path: "/computers",
+  },
+];
 
 const themeConfig: ThemeConfig = {
   // shared: {
@@ -125,11 +124,10 @@ const themeConfig: ThemeConfig = {
 };
 </script>
 
-
 <style scoped>
 .brand {
   display: flex;
   align-items: center;
-  gap: 1em
+  gap: 1em;
 }
 </style>
