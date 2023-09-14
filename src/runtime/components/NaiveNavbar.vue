@@ -154,7 +154,7 @@ const props = withDefaults(
 const sticky = computed(() => (props.sticky ? "sticky" : "static"));
 const backgroundColor = computed(() => naiveTheme.value.bodyColor);
 const flexInnerSides = computed(() =>
-  props.menuPlacement === "center" ? 1 : 0
+  props.menuPlacement === "center" ? 1 : "inherited"
 );
 
 const menuOptions = computed<MenuOption[]>(() => {
@@ -163,7 +163,7 @@ const menuOptions = computed<MenuOption[]>(() => {
       const menuOption: MenuOption = {
         label: route.path
           ? () =>
-              h(NuxtLink, { to: route.path }, { default: () => route.label })
+            h(NuxtLink, { to: route.path }, { default: () => route.label })
           : route.label,
         icon: route.icon
           ? () => h(NaiveIcon as Component, { name: route.icon })
