@@ -1,12 +1,7 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar
-      :routes="navbarRoutes"
-      :drawer-routes="drawerRoutes"
-      :menu-inverted="false"
-      drawer-closable
-      menu-placement="center"
-    >
+    <NaiveNavbar :routes="navbarRoutes" :drawer-routes="drawerRoutes" :menu-inverted="false" drawer-closable
+      menu-placement="center">
       <template #start>
         <nuxt-link to="/">
           <NaiveIcon name="logos:naiveui" />
@@ -14,15 +9,8 @@
       </template>
 
       <template #end>
-        <NuxtLink
-          to="https://github.com/becem-gharbi/nuxt-naiveui"
-          target="_"
-          aria-label="source-code"
-        >
-          <n-button
-            text
-            tag="span"
-          >
+        <NuxtLink to="https://github.com/becem-gharbi/nuxt-naiveui" target="_" aria-label="source-code">
+          <n-button text tag="span">
             <NaiveIcon name="cib:github" />
           </n-button>
         </NuxtLink>
@@ -38,7 +26,9 @@
       </template>
     </NaiveNavbar>
 
-    <NuxtPage />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
 
     <NaiveTabbar :routes="tabBarRoutes" />
   </NaiveConfig>
@@ -123,10 +113,33 @@ const themeConfig: ThemeConfig = {
 };
 </script>
 
-<style scoped>
+<style>
 .brand {
   display: flex;
   align-items: center;
   gap: 1em;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 1s;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+
+
+.layout-enter-active,
+.layout-leave-active {
+  transition: all 1s;
+}
+
+.layout-enter-from,
+.layout-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
 }
 </style>

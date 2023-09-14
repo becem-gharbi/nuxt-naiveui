@@ -6,8 +6,13 @@
 
 <script setup>
 import { definePageMeta } from '#imports';
+import { useAsyncData } from '#imports';
 
 definePageMeta({
     colorMode: "light"
 })
+
+await useAsyncData(() => new Promise(resolve => {
+  setTimeout(resolve, 2000)
+}))
 </script>

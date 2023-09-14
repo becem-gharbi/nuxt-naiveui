@@ -8,6 +8,8 @@ export default defineNuxtConfig({
         lang: "en",
       },
     },
+    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: { name: "layout", mode: "out-in" },
   },
 
   // css: ["~/assets/fonts/gellix/style.css"],

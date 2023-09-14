@@ -1,9 +1,5 @@
 <template>
-  <n-space
-    vertical
-    :style="{ margin: '1em' }"
-    size="large"
-  >
+  <n-space vertical :style="{ margin: '1em' }" size="large">
     <n-h3>Buttons</n-h3>
 
     <n-space align="center">
@@ -34,40 +30,22 @@
       <n-button secondary>
         Default
       </n-button>
-      <n-button
-        type="error"
-        secondary
-      >
+      <n-button type="error" secondary>
         Error
       </n-button>
-      <n-button
-        type="info"
-        secondary
-      >
+      <n-button type="info" secondary>
         Info
       </n-button>
-      <n-button
-        type="primary"
-        secondary
-      >
+      <n-button type="primary" secondary>
         Primary
       </n-button>
-      <n-button
-        type="success"
-        secondary
-      >
+      <n-button type="success" secondary>
         Success
       </n-button>
-      <n-button
-        type="tertiary"
-        secondary
-      >
+      <n-button type="tertiary" secondary>
         Tertiary
       </n-button>
-      <n-button
-        type="warning"
-        secondary
-      >
+      <n-button type="warning" secondary>
         Warning
       </n-button>
     </n-space>
@@ -77,40 +55,22 @@
       <n-button quaternary>
         Default
       </n-button>
-      <n-button
-        type="error"
-        quaternary
-      >
+      <n-button type="error" quaternary>
         Error
       </n-button>
-      <n-button
-        type="info"
-        quaternary
-      >
+      <n-button type="info" quaternary>
         Info
       </n-button>
-      <n-button
-        type="primary"
-        quaternary
-      >
+      <n-button type="primary" quaternary>
         Primary
       </n-button>
-      <n-button
-        type="success"
-        quaternary
-      >
+      <n-button type="success" quaternary>
         Success
       </n-button>
-      <n-button
-        type="tertiary"
-        quaternary
-      >
+      <n-button type="tertiary" quaternary>
         Tertiary
       </n-button>
-      <n-button
-        type="warning"
-        quaternary
-      >
+      <n-button type="warning" quaternary>
         Warning
       </n-button>
     </n-space>
@@ -140,28 +100,16 @@
       <n-tag :bordered="false">
         Default
       </n-tag>
-      <n-tag
-        type="success"
-        :bordered="false"
-      >
+      <n-tag type="success" :bordered="false">
         Success
       </n-tag>
-      <n-tag
-        type="warning"
-        :bordered="false"
-      >
+      <n-tag type="warning" :bordered="false">
         Warning
       </n-tag>
-      <n-tag
-        type="error"
-        :bordered="false"
-      >
+      <n-tag type="error" :bordered="false">
         Warning
       </n-tag>
-      <n-tag
-        type="info"
-        :bordered="false"
-      >
+      <n-tag type="info" :bordered="false">
         Info
       </n-tag>
     </n-space>
@@ -172,3 +120,11 @@
     <FormTest />
   </n-space>
 </template>
+
+<script setup>
+import { useAsyncData } from '#imports';
+
+await useAsyncData(() => new Promise(resolve => {
+  setTimeout(resolve, 2000)
+}))
+</script>
