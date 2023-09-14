@@ -2,10 +2,10 @@ import type { GlobalThemeOverrides } from "naive-ui";
 
 export interface ThemeConfig {
   shared?: GlobalThemeOverrides;
-  light?: GlobalThemeOverrides;
-  dark?: GlobalThemeOverrides;
-  mobileOrTablet?: GlobalThemeOverrides;
-  mobile?: GlobalThemeOverrides;
+  light?: GlobalThemeOverrides & { defaults?: boolean };
+  dark?: GlobalThemeOverrides & { defaults?: boolean };
+  mobileOrTablet?: GlobalThemeOverrides & { defaults?: boolean };
+  mobile?: GlobalThemeOverrides & { defaults?: boolean };
 }
 
 export interface NavbarRoute {

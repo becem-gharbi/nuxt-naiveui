@@ -41,7 +41,7 @@ export default defineNuxtModule<ModuleOptions>({
 
   // Add types for volar
   hooks: {
-    "prepare:types": ({  references }) => {
+    "prepare:types": ({ references }) => {
       references.push({
         types: "naive-ui/volar",
       });

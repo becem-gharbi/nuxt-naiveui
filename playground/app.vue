@@ -90,6 +90,12 @@ const tabBarRoutes: TabbarRoute[] = [
 ];
 
 const themeConfig: ThemeConfig = {
+  mobile: {
+    defaults: false
+  },
+  mobileOrTablet: {
+    defaults: false
+  }
   // shared: {
   //   common: {
   //     fontFamily: theme.fontFamily.sans.join(", "),
