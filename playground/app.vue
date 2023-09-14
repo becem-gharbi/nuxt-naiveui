@@ -46,7 +46,6 @@
 
 <script setup lang="ts">
 import type { ThemeConfig, NavbarRoute, TabbarRoute } from "../src/module";
-// import { theme } from "#tailwind-config";
 
 const navbarRoutes: NavbarRoute[] = [
   {
