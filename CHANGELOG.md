@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v1.4.4
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.4.3...v1.4.4)
+
+### 🔥 Performance
+
+- On load only update dom on pre-rendered pages ([a2eeea2](https://github.com/becem-gharbi/nuxt-naiveui/commit/a2eeea2))
+
+### 🩹 Fixes
+
+- **NaiveNavbar:** Fix left and right menu placement ([9d39c4c](https://github.com/becem-gharbi/nuxt-naiveui/commit/9d39c4c))
+- Fix CLS on pre-rendered pages by allowing disable of theme defaults ([e9d28de](https://github.com/becem-gharbi/nuxt-naiveui/commit/e9d28de))
+
+### 📖 Documentation
+
+- Update content ([c967fa9](https://github.com/becem-gharbi/nuxt-naiveui/commit/c967fa9))
+
+### 🏡 Chore
+
+- **playground:** Add transitions ([7c86f22](https://github.com/becem-gharbi/nuxt-naiveui/commit/7c86f22))
+- Fix lint issues ([19ee949](https://github.com/becem-gharbi/nuxt-naiveui/commit/19ee949))
+
+### ❤️ Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v1.4.3
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.4.2...v1.4.3)
