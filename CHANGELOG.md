@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.4.6
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.4.5...v1.4.6)
+
+### 🌊 Types
+
+- **NaiveNavbar:** Fix sticky type error ([eb119fa](https://github.com/becem-gharbi/nuxt-naiveui/commit/eb119fa))
+
+### 🏡 Chore
+
+- Add typecheck to release workflow ([a77ad8c](https://github.com/becem-gharbi/nuxt-naiveui/commit/a77ad8c))
+
+### ❤️ Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v1.4.5
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.4.4...v1.4.5)
