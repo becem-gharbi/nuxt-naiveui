@@ -151,7 +151,7 @@ const props = withDefaults(
   }
 );
 
-const sticky = computed(() => (props.sticky ? "sticky" : "static"));
+const _sticky = computed(() => (props.sticky ? "sticky" : "static"));
 const backgroundColor = computed(() => naiveTheme.value.bodyColor);
 const flexInnerSides = computed(() =>
   props.menuPlacement === "center" ? 1 : "inherited"
@@ -188,7 +188,7 @@ const menuOptions = computed<MenuOption[]>(() => {
 
 <style scoped>
 .outer {
-  position: v-bind(sticky);
+  position: v-bind(_sticky);
   background-color: v-bind(backgroundColor);
   top: 0;
   z-index: 100;
