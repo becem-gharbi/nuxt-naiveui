@@ -10,13 +10,14 @@
       path="email"
       :show-require-mark="false"
     >
-      <n-input v-model:value="model.email" />
+      <n-input v-model:value="model.email" :input-props="{ autocomplete: 'username' }"/>
     </n-form-item>
 
     <n-form-item
       path="password"
       label="Password"
       :show-require-mark="false"
+      :input-props="{ autocomplete: 'current-password' }"
     >
       <n-input
         v-model:value="model.password"
