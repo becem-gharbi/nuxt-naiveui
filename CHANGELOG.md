@@ -1,6 +1,29 @@
 # Changelog
 
 
+## v1.4.7
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.4.6...v1.4.7)
+
+### 🩹 Fixes
+
+- Remove input autofill white background color ([5320bf7](https://github.com/becem-gharbi/nuxt-naiveui/commit/5320bf7))
+
+### 📖 Documentation
+
+- Fix comments on theme config ([4155a39](https://github.com/becem-gharbi/nuxt-naiveui/commit/4155a39))
+
+### 🏡 Chore
+
+- Add funding btn ([8efcb35](https://github.com/becem-gharbi/nuxt-naiveui/commit/8efcb35))
+- Upgrade dependencies ([4738a60](https://github.com/becem-gharbi/nuxt-naiveui/commit/4738a60))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem Gharbi <becem.gharbi@live.com>
+- Sebastian Di Luzio <sebidiluzio@gmail.com>
+
 ## v1.4.6
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.4.5...v1.4.6)
