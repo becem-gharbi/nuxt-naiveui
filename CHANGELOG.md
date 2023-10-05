@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v1.5.1
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.4.7...v1.5.1)
+
+### 🩹 Fixes
+
+- Fix Missing './esm/formatInTimeZone' ([#26](https://github.com/becem-gharbi/nuxt-naiveui/pull/26))
+
+### 🏡 Chore
+
+- Upgrade naive-ui to v2.35 ([50ebb04](https://github.com/becem-gharbi/nuxt-naiveui/commit/50ebb04))
+- Refresh lockfile ([3b2f468](https://github.com/becem-gharbi/nuxt-naiveui/commit/3b2f468))
+- Bump version to 1.5 ([b73c13b](https://github.com/becem-gharbi/nuxt-naiveui/commit/b73c13b))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.4.7
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.4.6...v1.4.7)
