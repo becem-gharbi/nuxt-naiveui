@@ -140,7 +140,7 @@ export default defineNuxtModule<ModuleOptions>({
         config.optimizeDeps.include.push(
           "naive-ui",
           "vueuc",
-          "date-fns-tz/esm/formatInTimeZone"
+          "date-fns-tz/formatInTimeZone"
         );
       });
     }
