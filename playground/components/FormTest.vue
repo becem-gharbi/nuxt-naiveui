@@ -10,7 +10,10 @@
       path="email"
       :show-require-mark="false"
     >
-      <n-input v-model:value="model.email" :input-props="{ autocomplete: 'username' }"/>
+      <n-input
+        v-model:value="model.email"
+        :input-props="{ autocomplete: 'username' }"
+      />
     </n-form-item>
 
     <n-form-item
