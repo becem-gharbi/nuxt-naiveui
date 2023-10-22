@@ -50,38 +50,40 @@
     </div>
   </div>
 
-  <n-drawer
-    v-model:show="drawerActive"
-    :placement="drawerPlacement"
-    :width="drawerWidth"
-  >
-    <LazyNDrawerContent
-      title="Menu"
-      :body-content-style="{ padding: 0 }"
-      :header-style="{
-        padding: '15px',
-      }"
-      :footer-style="{ justifyContent: 'start' }"
-      :closable="drawerClosable"
+  <client-only>
+    <n-drawer
+      v-model:show="drawerActive"
+      :placement="drawerPlacement"
+      :width="drawerWidth"
     >
-      <template #header>
-        <slot name="drawer-header" />
-      </template>
+      <LazyNDrawerContent
+        title="Menu"
+        :body-content-style="{ padding: 0 }"
+        :header-style="{
+          padding: '15px',
+        }"
+        :footer-style="{ justifyContent: 'start' }"
+        :closable="drawerClosable"
+      >
+        <template #header>
+          <slot name="drawer-header" />
+        </template>
 
-      <slot name="drawer-content" />
+        <slot name="drawer-content" />
 
-      <LazyNMenu
-        v-model:value="activePath"
-        mode="vertical"
-        :inverted="menuInverted"
-        :options="menuOptions"
-      />
+        <LazyNMenu
+          v-model:value="activePath"
+          mode="vertical"
+          :inverted="menuInverted"
+          :options="menuOptions"
+        />
 
-      <template #footer>
-        <slot name="drawer-footer" />
-      </template>
-    </LazyNDrawerContent>
-  </n-drawer>
+        <template #footer>
+          <slot name="drawer-footer" />
+        </template>
+      </LazyNDrawerContent>
+    </n-drawer>
+  </client-only>
 </template>
 
 <script setup lang="ts">
