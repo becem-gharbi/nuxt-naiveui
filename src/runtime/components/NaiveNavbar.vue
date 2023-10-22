@@ -1,6 +1,29 @@
 <template>
-  <div class="outer">
-    <div class="inner-start">
+  <div
+    :style="{
+      display: 'flex',
+      justifyContent: 'space-between', 
+      alignItems: 'center',
+      gap: '16px',   
+      padding: '0px 16px',
+      height: '56px',
+      position: _sticky,
+      backgroundColor: backgroundColor,
+      top: 0,
+      zIndex: 100,
+      boxShadow: '0px 0px 2px 0px #a3a3a3'
+    }"
+  >
+    <div
+      :style="{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        gap: '12px',
+        flex: flexInnerSides,
+        width: 'fit-content'
+      }"
+    >
       <n-button
         v-if="backIcon"
         class="mobileOrTablet"
@@ -20,7 +43,11 @@
 
     <div
       v-if="!isMobileOrTablet"
-      class="inner-middle notMobileOrTablet"
+      class="notMobileOrTablet"
+      :style="{
+        flexGrow: 1,
+        textAlign: menuPlacement
+      }"
     >
       <LazyNMenu
         v-model:value="activePath"
@@ -30,7 +57,15 @@
       />
     </div>
 
-    <div class="inner-end">
+    <div
+      :style="{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        gap: '12px',
+        flex: flexInnerSides
+      }"
+    >
       <slot name="end" />
 
       <n-button
@@ -187,41 +222,3 @@ const menuOptions = computed<MenuOption[]>(() => {
   );
 });
 </script>
-
-<style scoped>
-.outer {
-  position: v-bind(_sticky);
-  background-color: v-bind(backgroundColor);
-  top: 0;
-  z-index: 100;
-  height: 56px;
-  padding: 0 16px;
-  box-shadow: 0px 0px 2px 0px #a3a3a3;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-}
-
-.inner-start {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
-  flex: v-bind(flexInnerSides);
-  width: fit-content;
-}
-
-.inner-end {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  flex: v-bind(flexInnerSides);
-}
-
-.inner-middle {
-  flex-grow: 1;
-  text-align: v-bind(menuPlacement);
-}
-</style>
