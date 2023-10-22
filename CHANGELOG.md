@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v1.5.2
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.5.1...v1.5.2)
+
+### 🔥 Performance
+
+- **NaiveNavbar:** Render drawer on client-side only ([774f14a](https://github.com/becem-gharbi/nuxt-naiveui/commit/774f14a))
+
+### 🩹 Fixes
+
+- **NaiveNavbar:** Inline styles to avoid potential CLS ([8c01aa0](https://github.com/becem-gharbi/nuxt-naiveui/commit/8c01aa0))
+
+### 📖 Documentation
+
+- Upgrade to nuxt 3.8 ([c02ea52](https://github.com/becem-gharbi/nuxt-naiveui/commit/c02ea52))
+- Remove unused nuxt-naiveui module ([3c17701](https://github.com/becem-gharbi/nuxt-naiveui/commit/3c17701))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.5.1
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.4.7...v1.5.1)
