@@ -91,7 +91,7 @@
       :placement="drawerPlacement"
       :width="drawerWidth"
     >
-      <LazyNDrawerContent
+      <n-drawer-content
         title="Menu"
         :body-content-style="{ padding: 0 }"
         :header-style="{
@@ -116,7 +116,7 @@
         <template #footer>
           <slot name="drawer-footer" />
         </template>
-      </LazyNDrawerContent>
+      </n-drawer-content>
     </n-drawer>
   </client-only>
 </template>
@@ -145,9 +145,6 @@ const activePath = ref();
 const naiveTheme = useThemeVars();
 const { isMobileOrTablet } = useNaiveDevice();
 
-const LazyNDrawerContent = defineAsyncComponent(
-  () => import("naive-ui/es/drawer/src/DrawerContent")
-);
 const LazyNMenu = defineAsyncComponent(
   () => import("naive-ui/es/menu/src/Menu")
 );
@@ -205,13 +202,11 @@ const menuOptions = computed<MenuOption[]>(() => {
         icon: route.icon
           ? () => h(NaiveIcon as Component, { name: route.icon })
           : undefined,
-        key: route.path || route.label,
+        key: route.path ?? route.label,
       };
-
       if (route.children) {
         menuOption.children = cb(route.children);
       }
-
       return menuOption;
     });
 
