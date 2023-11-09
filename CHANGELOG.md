@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v1.5.3
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.5.2...v1.5.3)
+
+### 🩹 Fixes
+
+- **NaiveConfig:** Missing end delimiter ([d2ab9c1](https://github.com/becem-gharbi/nuxt-naiveui/commit/d2ab9c1))
+- **NaiveIcon:** Avoid duplicate fetch calls ([ab9817a](https://github.com/becem-gharbi/nuxt-naiveui/commit/ab9817a))
+- **NInput:** Set numeric default value for lineHeightTextarea ([#32](https://github.com/becem-gharbi/nuxt-naiveui/pull/32))
+
+### 💅 Refactors
+
+- **NaiveConfig:** Minor refactoring ([9174300](https://github.com/becem-gharbi/nuxt-naiveui/commit/9174300))
+- **NaiveNavbar:** Remove lazy loading of n-drawer-content ([f7e36f0](https://github.com/becem-gharbi/nuxt-naiveui/commit/f7e36f0))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+- Seekwe ([@sohaha](http://github.com/sohaha))
+
 ## v1.5.2
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.5.1...v1.5.2)
