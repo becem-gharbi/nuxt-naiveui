@@ -16,11 +16,11 @@ import {
   ref,
   useNaiveColorMode,
   useNaiveDevice,
+  useNuxtApp,
 } from "#imports";
 import type { GlobalThemeOverrides, ConfigProviderProps } from "naive-ui";
 import { defu } from "defu";
 import type { ThemeConfig, PublicConfig } from "../types";
-import { useNuxtApp } from "#imports";
 
 interface NaiveConfigProps
   extends /* @vue-ignore */ Omit<
@@ -36,7 +36,7 @@ const props = defineProps<NaiveConfigProps>();
 const { payload } = useNuxtApp();
 const isPrerendered = typeof payload.prerenderedAt === "number";
 
-const themeConfig = props.themeConfig || config.themeConfig;
+const themeConfig = props.themeConfig ?? config.themeConfig;
 
 const { colorMode } = useNaiveColorMode();
 
@@ -60,9 +60,7 @@ async function updateTheme(colorMode: string) {
         defaultMobileOrTabletTheme.default
       );
     }
-  }
-  //
-  else if (isMobile) {
+  } else if (isMobile) {
     if (themeConfig?.mobile?.defaults === false) {
       deviceTheme = themeConfig?.mobile;
     } else {
@@ -75,7 +73,6 @@ async function updateTheme(colorMode: string) {
       );
     }
   }
-
   if (colorMode === "dark") {
     if (themeConfig?.dark?.defaults === false) {
       colorModeTheme = themeConfig?.dark;
@@ -83,15 +80,11 @@ async function updateTheme(colorMode: string) {
       const defaultDarkTheme = await import("../theme/dark");
       colorModeTheme = defu(themeConfig?.dark, defaultDarkTheme.default);
     }
-  }
-  //
-  else {
-    if (themeConfig?.light?.defaults === false) {
-      colorModeTheme = themeConfig?.light;
-    } else {
-      const defaultLightTheme = await import("../theme/light");
-      colorModeTheme = defu(themeConfig?.light, defaultLightTheme.default);
-    }
+  } else if (themeConfig?.light?.defaults === false) {
+    colorModeTheme = themeConfig?.light;
+  } else {
+    const defaultLightTheme = await import("../theme/light");
+    colorModeTheme = defu(themeConfig?.light, defaultLightTheme.default);
   }
 
   naiveTheme.value = defu(themeConfig?.shared, deviceTheme, colorModeTheme);
