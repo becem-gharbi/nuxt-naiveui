@@ -128,7 +128,8 @@ useHead(() => ({
                         "line-height",
                         naiveTheme.value?.common?.lineHeight
                       ),
-                    ].join(" ")}`,
+                    ].join(" ")}
+                    }`,
     },
   ],
 }));
