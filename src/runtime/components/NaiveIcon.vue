@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import type { PublicConfig } from "../types";
 //@ts-ignore
-import { computed, useRuntimeConfig, ref, watchEffect } from "#imports";
+import { computed, useRuntimeConfig, ref, watch } from "#imports";
 import { Icon } from "@iconify/vue/dist/offline";
 import { loadIcon } from "@iconify/vue";
 
@@ -31,14 +31,14 @@ const props = defineProps<{
   iconColor?: string;
 }>();
 
-const sSize = computed(() => props.size || config.iconSize);
+const sSize = computed(() => props.size ?? config.iconSize);
+const sName = computed(() => props.name)
 
-const load = (name: string) =>
-  loadIcon(name).catch(() => console.error(`Failed to load icon ${name}`));
+const load = (name: string) => loadIcon(name).catch(() => console.error(`Failed to load icon ${name}`));
 
 const icon = ref();
 
-icon.value = await load(props.name);
+icon.value = await load(sName.value);
 
-watchEffect(() => load(props.name).then((res) => (icon.value = res)));
+watch(sName, (value) => load(value).then((res) => (icon.value = res)));
 </script>
