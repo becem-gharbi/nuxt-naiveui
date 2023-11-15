@@ -1,5 +1,8 @@
 <template>
-  <n-config-provider :theme-overrides="naiveTheme" inline-theme-disabled>
+  <n-config-provider
+    :theme-overrides="naiveTheme"
+    inline-theme-disabled
+  >
     <slot />
   </n-config-provider>
 </template>
@@ -17,7 +20,7 @@ import {
 } from "#imports";
 import { defu } from "defu";
 import type { GlobalThemeOverrides, ConfigProviderProps } from "naive-ui";
-import type { ThemeConfig, PublicConfig, ColorMode } from "../types";
+import type { ThemeConfig, PublicConfig } from "../types";
 
 interface NaiveConfigProps
   extends /* @vue-ignore */ Omit<
@@ -33,7 +36,7 @@ const naiveTheme = ref();
 const themeConfig = props.themeConfig ?? config.themeConfig;
 const { colorMode } = useNaiveColorMode();
 
-await updateTheme(colorMode.value);
+await updateTheme();
 
 useHead(() => ({
   htmlAttrs: {
@@ -71,7 +74,7 @@ useHead(() => ({
 }));
 
 onMounted(() => {
-  watch(colorMode, (value) => updateTheme(value));
+  watch(colorMode, updateTheme);
 
   const { payload } = useNuxtApp();
   const isPrerendered = typeof payload.prerenderedAt === "number";
@@ -86,9 +89,35 @@ onMounted(() => {
   });
 });
 
-async function updateTheme(colorMode: ColorMode) {
-  let deviceTheme: GlobalThemeOverrides | undefined = undefined;
-  let colorModeTheme: GlobalThemeOverrides | undefined = undefined;
+async function updateTheme() {
+  const deviceTheme = await getDeviceTheme()
+  const colorModeTheme = await getColorModeTheme()
+
+  naiveTheme.value = defu(themeConfig?.shared, deviceTheme, colorModeTheme);
+}
+
+async function getColorModeTheme() {
+  let colorModeTheme: GlobalThemeOverrides = {};
+
+  if (colorMode.value === "dark") {
+    if (themeConfig?.dark?.defaults === false) {
+      colorModeTheme = themeConfig?.dark;
+    } else {
+      const defaultDarkTheme = await import("../theme/dark");
+      colorModeTheme = defu(themeConfig?.dark, defaultDarkTheme.default);
+    }
+  } else if (themeConfig?.light?.defaults === false) {
+    colorModeTheme = themeConfig?.light;
+  } else {
+    const defaultLightTheme = await import("../theme/light");
+    colorModeTheme = defu(themeConfig?.light, defaultLightTheme.default);
+  }
+
+  return colorModeTheme
+}
+
+async function getDeviceTheme() {
+  let deviceTheme: GlobalThemeOverrides = {}
 
   const { isMobileOrTablet, isMobile } = useNaiveDevice();
 
@@ -117,21 +146,8 @@ async function updateTheme(colorMode: ColorMode) {
       );
     }
   }
-  if (colorMode === "dark") {
-    if (themeConfig?.dark?.defaults === false) {
-      colorModeTheme = themeConfig?.dark;
-    } else {
-      const defaultDarkTheme = await import("../theme/dark");
-      colorModeTheme = defu(themeConfig?.dark, defaultDarkTheme.default);
-    }
-  } else if (themeConfig?.light?.defaults === false) {
-    colorModeTheme = themeConfig?.light;
-  } else {
-    const defaultLightTheme = await import("../theme/light");
-    colorModeTheme = defu(themeConfig?.light, defaultLightTheme.default);
-  }
 
-  naiveTheme.value = defu(themeConfig?.shared, deviceTheme, colorModeTheme);
+  return deviceTheme
 }
 
 function compileBodyStyle(prop: string, value?: string) {
