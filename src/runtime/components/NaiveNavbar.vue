@@ -1,19 +1,5 @@
 <template>
-  <div
-    :style="{
-      display: 'flex',
-      justifyContent: 'space-between', 
-      alignItems: 'center',
-      gap: '16px',   
-      padding: '0px 16px',
-      height: '56px',
-      position: _sticky,
-      backgroundColor: backgroundColor,
-      top: 0,
-      zIndex: 100,
-      boxShadow: '0px 0px 2px 0px #a3a3a3'
-    }"
-  >
+  <nav>
     <div
       :style="{
         display: 'flex',
@@ -21,7 +7,7 @@
         justifyContent: 'flex-start',
         gap: '12px',
         flex: flexInnerSides,
-        width: 'fit-content'
+        width: 'fit-content',
       }"
     >
       <n-button
@@ -30,7 +16,7 @@
         text
         tag="span"
         :focusable="false"
-        @click="() => router.back()"
+        @click="router.back"
       >
         <NaiveIcon
           name="ph:arrow-left"
@@ -46,7 +32,7 @@
       class="notMobileOrTablet"
       :style="{
         flexGrow: 1,
-        textAlign: menuPlacement
+        textAlign: menuPlacement,
       }"
     >
       <LazyNMenu
@@ -63,7 +49,7 @@
         alignItems: 'center',
         justifyContent: 'flex-end',
         gap: '12px',
-        flex: flexInnerSides
+        flex: flexInnerSides,
       }"
     >
       <slot name="end" />
@@ -83,7 +69,7 @@
         </slot>
       </n-button>
     </div>
-  </div>
+  </nav>
 
   <client-only>
     <n-drawer
@@ -197,7 +183,7 @@ const menuOptions = computed<MenuOption[]>(() => {
       const menuOption: MenuOption = {
         label: route.path
           ? () =>
-            h(NuxtLink, { to: route.path }, { default: () => route.label })
+              h(NuxtLink, { to: route.path }, { default: () => route.label })
           : route.label,
         icon: route.icon
           ? () => h(NaiveIcon as Component, { name: route.icon })
@@ -217,3 +203,19 @@ const menuOptions = computed<MenuOption[]>(() => {
   );
 });
 </script>
+
+<style scoped>
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 0px 16px;
+  height: 56px;
+  position: v-bind(_sticky);
+  top: 0;
+  z-index: 100;
+  box-shadow: 0px 0px 2px 0px #a3a3a3;
+  background-color: v-bind(backgroundColor);
+}
+</style>
