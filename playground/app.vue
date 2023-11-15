@@ -1,12 +1,7 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar
-      :routes="navbarRoutes"
-      :drawer-routes="drawerRoutes"
-      :menu-inverted="false"
-      drawer-closable
-      menu-placement="center"
-    >
+    <NaiveNavbar :routes="navbarRoutes" :drawer-routes="drawerRoutes" :menu-inverted="false" drawer-closable
+      menu-placement="center">
       <template #start>
         <nuxt-link to="/">
           <NaiveIcon name="logos:naiveui" />
@@ -14,15 +9,8 @@
       </template>
 
       <template #end>
-        <NuxtLink
-          to="https://github.com/becem-gharbi/nuxt-naiveui"
-          target="_"
-          aria-label="source-code"
-        >
-          <n-button
-            text
-            tag="span"
-          >
+        <NuxtLink to="https://github.com/becem-gharbi/nuxt-naiveui" target="_" aria-label="source-code">
+          <n-button text tag="span">
             <NaiveIcon name="cib:github" />
           </n-button>
         </NuxtLink>
@@ -102,12 +90,6 @@ const tabBarRoutes: TabbarRoute[] = [
 ];
 
 const themeConfig: ThemeConfig = {
-  mobile: {
-    defaults: false
-  },
-  mobileOrTablet: {
-    defaults: false
-  }
   // shared: {
   //   common: {
   //     fontFamily: theme.fontFamily.sans.join(", "),
