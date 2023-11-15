@@ -5,7 +5,7 @@ import {
   useRequestEvent,
   useRequestHeaders,
 } from "#imports";
-import { setCookie, setResponseHeader } from "h3";
+import { setResponseHeader } from "h3";
 
 import type { Ref } from "#imports";
 import type {
@@ -18,41 +18,26 @@ import type {
 export default function useNaiveColorMode() {
   const event = useRequestEvent();
   const config = useRuntimeConfig().public.naiveui as PublicConfig;
-
   const colorMode: Ref<ColorMode> = useState<ColorMode>("naive_color_mode");
-
   const colorModeForced: Ref<ColorModeForce> = useState<ColorModeForce>(
     "naive_color_mode_forced"
   );
+  const colorModePreferenceCookie = useCookie<ColorModePreference>("naive_color_mode_preference", {
+    path: "/",
+    maxAge: 3600 * 24 * 30 * 12,
+    secure: true,
+    sameSite: "lax",
+  })
 
   const colorModePreference = {
-    get() {
-      return (
-        useCookie<ColorModePreference>("naive_color_mode_preference").value ||
-        config.colorModePreference
-      );
-    },
+    get: () => colorModePreferenceCookie.value || config.colorModePreference,
     set(colorModePreference: ColorModePreference) {
-      if (process.server) {
-        setCookie(event, "naive_color_mode_preference", colorModePreference, {
-          path: "/",
-          maxAge: 3600 * 24 * 30 * 12,
-          secure: true,
-          sameSite: "lax",
-        });
-      } else {
-        useCookie("naive_color_mode_preference", {
-          path: "/",
-          maxAge: 3600 * 24 * 30 * 12,
-          secure: true,
-          sameSite: "lax",
-        }).value = colorModePreference;
-      }
+      colorModePreferenceCookie.value = colorModePreference
 
       if (colorModeForced.value) {
         return
       }
-      
+
       if (colorModePreference === "system") {
         colorMode.value = detectPreferedColorMode();
       } else {
