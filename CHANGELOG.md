@@ -1,6 +1,31 @@
 # Changelog
 
 
+## v1.5.4
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.5.3...v1.5.4)
+
+### 🩹 Fixes
+
+- Fix [vue warn] onScopeDispose warning ([#34](https://github.com/becem-gharbi/nuxt-naiveui/pull/34))
+- **NaiveNavbar:** Fix backgroundColor on pre-rendered dark mode ([8306bf5](https://github.com/becem-gharbi/nuxt-naiveui/commit/8306bf5))
+- **NaiveIcon:** Force IconifyIcon update on pre-rendered pages ([7ee6287](https://github.com/becem-gharbi/nuxt-naiveui/commit/7ee6287))
+- **NInput:** Set min-height for textarea ([#32](https://github.com/becem-gharbi/nuxt-naiveui/pull/32))
+
+### 💅 Refactors
+
+- **NaiveConfig:** Minor refactoring ([b8962c6](https://github.com/becem-gharbi/nuxt-naiveui/commit/b8962c6))
+- **NaiveConfig:** Minor refactoring ([04a2f13](https://github.com/becem-gharbi/nuxt-naiveui/commit/04a2f13))
+
+### 🏡 Chore
+
+- Set NInput default textColor ([a1f53df](https://github.com/becem-gharbi/nuxt-naiveui/commit/a1f53df))
+- Fix lint issues ([91d82a7](https://github.com/becem-gharbi/nuxt-naiveui/commit/91d82a7))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.5.3
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.5.2...v1.5.3)
