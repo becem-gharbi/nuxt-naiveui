@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.5.5
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.5.4...v1.5.5)
+
+### 🩹 Fixes
+
+- **NaiveNavbar:** Fix CLS on SSR ([871751f](https://github.com/becem-gharbi/nuxt-naiveui/commit/871751f))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.5.4
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.5.3...v1.5.4)
