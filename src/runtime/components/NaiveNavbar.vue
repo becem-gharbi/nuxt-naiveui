@@ -1,5 +1,18 @@
 <template>
-  <nav>
+  <nav
+    :style="{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      gap: '16px',
+      padding: '0px 16px',
+      height: '56px',
+      position:_sticky,
+      top: 0,
+      zIndex: 100,
+      boxShadow: '0px 0px 2px 0px #a3a3a3'
+    }"
+  >
     <div
       :style="{
         display: 'flex',
@@ -206,16 +219,6 @@ const menuOptions = computed<MenuOption[]>(() => {
 
 <style scoped>
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 0px 16px;
-  height: 56px;
-  position: v-bind(_sticky);
-  top: 0;
-  z-index: 100;
-  box-shadow: 0px 0px 2px 0px #a3a3a3;
   background-color: v-bind(backgroundColor);
 }
 </style>
