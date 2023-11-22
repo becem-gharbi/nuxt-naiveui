@@ -7,10 +7,10 @@
       gap: '16px',
       padding: '0px 16px',
       height: '56px',
-      position:_sticky,
+      position: _sticky,
       top: 0,
       zIndex: 100,
-      boxShadow: '0px 0px 2px 0px #a3a3a3'
+      boxShadow: '0px 0px 2px 0px #a3a3a3',
     }"
   >
     <div
@@ -48,11 +48,10 @@
         textAlign: menuPlacement,
       }"
     >
-      <LazyNMenu
-        v-model:value="activePath"
+      <LazyNaiveMenuLink
         :inverted="menuInverted"
         mode="horizontal"
-        :options="menuOptions"
+        :routes="routes"
       />
     </div>
 
@@ -105,11 +104,10 @@
 
         <slot name="drawer-content" />
 
-        <LazyNMenu
-          v-model:value="activePath"
+        <LazyNaiveMenuLink
           mode="vertical"
           :inverted="menuInverted"
-          :options="menuOptions"
+          :routes="drawerRoutes"
         />
 
         <template #footer>
@@ -124,35 +122,20 @@
 import {
   ref,
   computed,
-  h,
-  useRoute,
   useRouter,
-  watchEffect,
   useThemeVars,
   useNaiveDevice,
-  defineAsyncComponent,
 } from "#imports";
-import { NuxtLink, NaiveIcon } from "#components";
-import type { Component } from "vue";
-import type { MenuOption } from "naive-ui";
+import { NaiveIcon, LazyNaiveMenuLink } from "#components";
 import type { NavbarRoute } from "../types";
 
 const drawerActive = ref(false);
-const route = useRoute();
 const router = useRouter();
-const activePath = ref();
 const naiveTheme = useThemeVars();
 const { isMobileOrTablet } = useNaiveDevice();
 
-const LazyNMenu = defineAsyncComponent(
-  () => import("naive-ui/es/menu/src/Menu")
-);
-
-watchEffect(() => {
-  activePath.value = "/" + route.path.split("/")[1];
-  drawerActive.value = false;
-});
-
+router.afterEach(()=> drawerActive.value = false)
+ 
 const props = withDefaults(
   defineProps<{
     routes?: NavbarRoute[];
@@ -189,32 +172,6 @@ const backgroundColor = computed(() => naiveTheme.value.bodyColor);
 const flexInnerSides = computed(() =>
   props.menuPlacement === "center" ? 1 : "inherited"
 );
-
-const menuOptions = computed<MenuOption[]>(() => {
-  const cb = (routes: NavbarRoute[]) =>
-    routes.map((route) => {
-      const menuOption: MenuOption = {
-        label: route.path
-          ? () =>
-              h(NuxtLink, { to: route.path }, { default: () => route.label })
-          : route.label,
-        icon: route.icon
-          ? () => h(NaiveIcon as Component, { name: route.icon })
-          : undefined,
-        key: route.path ?? route.label,
-      };
-      if (route.children) {
-        menuOption.children = cb(route.children);
-      }
-      return menuOption;
-    });
-
-  return cb(
-    drawerActive.value && props.drawerRoutes.length
-      ? props.drawerRoutes
-      : props.routes
-  );
-});
 </script>
 
 <style scoped>
