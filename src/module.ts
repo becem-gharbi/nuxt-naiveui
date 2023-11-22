@@ -83,6 +83,10 @@ export default defineNuxtModule<ModuleOptions>({
       name: "NaiveTabbar",
       filePath: resolve(runtimeDir, "components", "NaiveTabbar.vue"),
     });
+    addComponent({
+      name: "NaiveMenuLink",
+      filePath: resolve(runtimeDir, "components", "NaiveMenuLink.vue"),
+    });
 
     // Pass module options to runtimeConfig object
     nuxt.options.runtimeConfig = defu(nuxt.options.runtimeConfig, {
