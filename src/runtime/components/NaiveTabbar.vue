@@ -22,7 +22,7 @@
           />
           <n-text
             :type="
-              tabbarRoute.path === '/' + route.path.split('/')[1]
+              tabbarRoute.path === route.path
                 ? 'primary'
                 : 'default'
             "

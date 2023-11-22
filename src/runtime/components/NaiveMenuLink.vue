@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect, useRoute, computed, h } from "#imports";
+import { ref, useRouter, computed, h } from "#imports";
 import { NuxtLink, NaiveIcon } from "#components";
 import type { Component } from "vue";
 import type { MenuProps, MenuOption } from "naive-ui";
@@ -19,12 +19,10 @@ interface NaiveMenuLinkProps
 
 const props = defineProps<NaiveMenuLinkProps>();
 
-const route = useRoute();
-const activePath = ref();
+const router = useRouter();
+const activePath = ref(router.currentRoute.value.path.toString());
 
-watchEffect(() => {
-    activePath.value = "/" + route.path.split("/")[1];
-});
+router.afterEach((to)=> activePath.value = to.path.toString())
 
 const menuOptions = computed<MenuOption[]>(() => {
     const cb = (routes: NavbarRoute[]) =>

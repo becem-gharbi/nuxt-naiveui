@@ -134,7 +134,7 @@ const router = useRouter();
 const naiveTheme = useThemeVars();
 const { isMobileOrTablet } = useNaiveDevice();
 
-router.afterEach(()=> drawerActive.value = false)
+router.afterEach(() => drawerActive.value = false)
  
 const props = withDefaults(
   defineProps<{
