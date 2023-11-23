@@ -40,7 +40,7 @@ export default {
     heightMedium: "42px",
   },
   Tag: {
-    heightMedium: "34px",
+    heightMedium: "36px",
     fontSizeMedium: "16px",
   },
   Result: {
@@ -49,4 +49,7 @@ export default {
   Tabs: {
     tabFontSizeMedium: "16px",
   },
+  Pagination: {
+      itemSizeMedium: '36px'
+  }
 } as GlobalThemeOverrides;
