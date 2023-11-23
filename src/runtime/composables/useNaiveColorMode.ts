@@ -12,17 +12,16 @@ import type {
   ColorMode,
   ColorModePreference,
   ColorModeForce,
-  PublicConfig,
 } from "../types";
 
 export default function useNaiveColorMode() {
   const event = useRequestEvent();
-  const config = useRuntimeConfig().public.naiveui as PublicConfig;
+  const config = useRuntimeConfig().public.naiveui;
   const colorMode: Ref<ColorMode> = useState<ColorMode>("naive_color_mode");
   const colorModeForced: Ref<ColorModeForce> = useState<ColorModeForce>(
     "naive_color_mode_forced"
   );
-  const colorModePreferenceCookie = useCookie<ColorModePreference>("naive_color_mode_preference", {
+  const colorModePreferenceCookie = useCookie<ColorModePreference>(config.colorModePreferenceCookieName, {
     path: "/",
     maxAge: 3600 * 24 * 30 * 12,
     secure: true,

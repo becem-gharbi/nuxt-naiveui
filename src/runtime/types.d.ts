@@ -31,5 +31,6 @@ export type ColorModeForce = ColorMode | false;
 export interface PublicConfig {
   themeConfig?: ThemeConfig;
   colorModePreference: ColorModePreference;
+  colorModePreferenceCookieName: string;
   iconSize: number;
 }
