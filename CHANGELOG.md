@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v1.6.0
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.5.5...v1.6.0)
+
+### 🚀 Enhancements
+
+- Add NaiveMenuLink component ([0f3a1b0](https://github.com/becem-gharbi/nuxt-naiveui/commit/0f3a1b0))
+
+### 🔥 Performance
+
+- **NaiveNavbar:** Remove NMenu and use NaiveMenuLink instead ([b0f6fca](https://github.com/becem-gharbi/nuxt-naiveui/commit/b0f6fca))
+- Remove colorMode middleware and replace it with navigation hook ([5efb5a5](https://github.com/becem-gharbi/nuxt-naiveui/commit/5efb5a5))
+- **useNaiveDevice:** Reduce regex size ([d90b9ea](https://github.com/becem-gharbi/nuxt-naiveui/commit/d90b9ea))
+
+### 💅 Refactors
+
+- Use navigation hook instead of watching route ([bf1b455](https://github.com/becem-gharbi/nuxt-naiveui/commit/bf1b455))
+- Avoid create color mode cookie if not needed ([#34](https://github.com/becem-gharbi/nuxt-naiveui/pull/34), [#22](https://github.com/becem-gharbi/nuxt-naiveui/pull/22))
+- **theme:** Set height to 36px on mobileOrTablet of Pagination and Tag ([6b8316a](https://github.com/becem-gharbi/nuxt-naiveui/commit/6b8316a))
+- Add colorModePreferenceCookieName config option ([b5430e0](https://github.com/becem-gharbi/nuxt-naiveui/commit/b5430e0))
+- Use RegExp.exec() instead of match() ([7ac6a5b](https://github.com/becem-gharbi/nuxt-naiveui/commit/7ac6a5b))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.5.5
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.5.4...v1.5.5)
