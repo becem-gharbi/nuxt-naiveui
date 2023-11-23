@@ -7,8 +7,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     style: () => collect()
       .split('</style>')
       .map((block) => {
-        const id = block.match(/cssr-id="(.+?)"/)?.[1]
-        const style = (block.match(/>(.*)/s)?.[1] || '').trim()
+        const id = RegExp(/cssr-id="(.+?)"/).exec(block)?.[1]
+        const style = (RegExp(/>(.*)/s).exec(block)?.[1] ?? '').trim()
         return {
           ['cssr-id']: id,
           innerHTML: style,
