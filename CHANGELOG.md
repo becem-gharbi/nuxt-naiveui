@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.6.1
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.6.0...v1.6.1)
+
+### 🩹 Fixes
+
+- **colorMode:** Sync preference when changed on another tab ([d3b83c7](https://github.com/becem-gharbi/nuxt-naiveui/commit/d3b83c7))
+- **NaiveColorModeSwitch:** Sync preference when changed on another tab ([7d94914](https://github.com/becem-gharbi/nuxt-naiveui/commit/7d94914))
+
+### 💅 Refactors
+
+- **composables:** Use named export ([c48e2e4](https://github.com/becem-gharbi/nuxt-naiveui/commit/c48e2e4))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.6.0
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.5.5...v1.6.0)
