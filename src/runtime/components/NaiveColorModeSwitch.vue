@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { useNaiveColorMode, ref } from "#imports";
+import { useNaiveColorMode, ref, onMounted } from "#imports";
 import type { ButtonProps } from "naive-ui";
 
 interface Props extends /* @vue-ignore */ ButtonProps {}
@@ -52,4 +52,13 @@ function getIcon() {
       return "ph:dots-three";
   }
 }
+
+onMounted(() => {
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden === false) {
+      preference.value = colorModePreference.get();
+      icon.value = getIcon()
+    }
+  });
+})
 </script>
