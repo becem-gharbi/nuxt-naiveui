@@ -28,4 +28,12 @@ export default defineNuxtPlugin((nuxtApp) => {
       colorMode.value = colorModeForced.value;
     }
   });
+
+  nuxtApp.hook('app:mounted', () => {
+     document.addEventListener("visibilitychange", () => {
+      if (document.hidden === false) {
+        colorModePreference.set(colorModePreference.get());
+      }
+    });
+  })
 });
