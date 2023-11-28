@@ -14,7 +14,7 @@ import type {
   ColorModeForce,
 } from "../types";
 
-export default function useNaiveColorMode() {
+export function useNaiveColorMode() {
   const event = useRequestEvent();
   const config = useRuntimeConfig().public.naiveui;
   const colorMode: Ref<ColorMode> = useState<ColorMode>("naive_color_mode");

@@ -1,6 +1,6 @@
 import { useRequestHeaders } from "#imports";
 
-export default function useNaiveDevice() {
+export function useNaiveDevice() {
   const userAgent = process.client ? navigator.userAgent : useRequestHeaders()["user-agent"] ?? '';
 
   // https://github.com/matomo-org/device-detector/blob/967270594a8319745b34da14f08822b0799bac87/DeviceDetector.php#L46
