@@ -26,3 +26,7 @@ input:-webkit-autofill:focus {
 .n-input__textarea-mirror {
     min-height: var(--n-height);
 }
+
+input:-internal-autofill-selected {
+    color: var(--n-text-color) !important;
+}
