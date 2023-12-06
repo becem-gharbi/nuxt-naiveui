@@ -1,17 +1,17 @@
 import {
   useState,
-  useCookie,
   useRuntimeConfig,
   useRequestEvent,
   useRequestHeaders,
 } from "#imports";
-import { setResponseHeader } from "h3";
+import { setResponseHeader, getCookie, setCookie } from "h3";
+import Cookies from "js-cookie";
 
 import type { Ref } from "#imports";
 import type {
   ColorMode,
   ColorModePreference,
-  ColorModeForce,
+  ColorModeForce
 } from "../types";
 
 export function useNaiveColorMode() {
@@ -21,12 +21,30 @@ export function useNaiveColorMode() {
   const colorModeForced: Ref<ColorModeForce> = useState<ColorModeForce>(
     "naive_color_mode_forced"
   );
-  const colorModePreferenceCookie = useCookie<ColorModePreference>(config.colorModePreferenceCookieName, {
-    path: "/",
-    maxAge: 3600 * 24 * 30 * 12,
-    secure: true,
-    sameSite: "lax",
-  })
+
+  const colorModePreferenceCookie = {
+    get value() {
+      const v = process.client
+        ? Cookies.get(config.colorModePreferenceCookieName)
+        : getCookie(event, config.colorModePreferenceCookieName);
+      return v ?? "";
+    },
+    set value(newValue) {
+      if (process.client) {
+        Cookies.set(config.colorModePreferenceCookieName, newValue, {
+          expires: 356,
+          secure: true,
+          sameSite: "lax",
+        });
+      } else {
+        setCookie(event, config.colorModePreferenceCookieName, newValue, {
+          maxAge: 30758400, // 1 year
+          secure: true,
+          sameSite: "lax",
+        });
+      }
+    },
+  };
 
   const colorModePreference = {
     get: () => colorModePreferenceCookie.value || config.colorModePreference,
