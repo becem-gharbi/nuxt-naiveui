@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.6.2
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.6.1...v1.6.2)
+
+### 🔥 Performance
+
+- Fix failed bfcache ([51a3362](https://github.com/becem-gharbi/nuxt-naiveui/commit/51a3362))
+
+### 🌊 Types
+
+- **NaiveMenuLink:** Create appropriate type for `routes` prop ([39e34d7](https://github.com/becem-gharbi/nuxt-naiveui/commit/39e34d7))
+- **useNaiveColorMode:** Assert colorModePreference get type ([d15cddb](https://github.com/becem-gharbi/nuxt-naiveui/commit/d15cddb))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.6.1
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.6.0...v1.6.1)
