@@ -10,11 +10,11 @@ import { ref, useRouter, computed, h } from "#imports";
 import { NuxtLink, NaiveIcon } from "#components";
 import type { Component } from "vue";
 import type { MenuProps, MenuOption } from "naive-ui";
-import type { NavbarRoute } from "../types";
+import type { MenuLinkRoute } from "../types";
 
 interface NaiveMenuLinkProps
     extends /* @vue-ignore */ Omit<MenuProps, "options" | "value"> {
-    routes: NavbarRoute[];
+    routes: MenuLinkRoute[];
 }
 
 const props = defineProps<NaiveMenuLinkProps>();
@@ -25,7 +25,7 @@ const activePath = ref(router.currentRoute.value.path.toString());
 router.afterEach((to)=> activePath.value = to.path.toString())
 
 const menuOptions = computed<MenuOption[]>(() => {
-    const cb = (routes: NavbarRoute[]) =>
+    const cb = (routes: MenuLinkRoute[]) =>
         routes.map((route) => {
             const menuOption: MenuOption = {
                 label: route.path
