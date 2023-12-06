@@ -47,7 +47,7 @@ export function useNaiveColorMode() {
   };
 
   const colorModePreference = {
-    get: () => colorModePreferenceCookie.value || config.colorModePreference,
+    get: () => colorModePreferenceCookie.value as ColorModePreference || config.colorModePreference,
     set(colorModePreference: ColorModePreference) {
       // No need to create cookie if preference is the default
       if (colorModePreferenceCookie.value || colorModePreference !== config.colorModePreference) {
