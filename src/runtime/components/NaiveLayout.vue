@@ -1,6 +1,7 @@
 <template>
   <n-layout style="min-height:100dvh">
     <n-layout-header
+      v-if="hasHeader"
       bordered
       style="display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px;padding:0 16px;"
     >
@@ -8,37 +9,34 @@
       <div style="flex: 1">
         <NaiveMenuLink
           v-if="hasNavbar"
-          class="notMobileOrTablet"
           :routes="routes"
           mode="horizontal"
         />
       </div>
       <slot name="end" />
       <n-button
-        class="mobileOrTablet"
+        v-if="!hasNavbar"
         text
         tag="span"
         :focusable="false"
         @click="drawerActive = true"
       >
-        <slot name="toggle">
-          <NaiveIcon
-            :name="toggleIcon"
-            :size="26"
-          />
-        </slot>
+        <NaiveIcon
+          :name="toggleIcon"
+          :size="26"
+        />
       </n-button>
     </n-layout-header>
 
     <n-layout
       position="absolute"
       :has-sider="hasSidebar"
-      style="top: 56px"
+      :native-scrollbar="hasSidebar"
+      :style="{top: hasHeader ? '56px':'0px'}"
     >
       <n-layout-sider
         v-if="hasSidebar"
         content-style="min-height:100dvh;display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:8px;"
-        class="notMobileOrTablet"
         :native-scrollbar="false"
         bordered
       >
@@ -46,7 +44,6 @@
         <div style="flex: 1">
           <NaiveMenuLink
             v-if="hasSidebar"
-            class="notMobileOrTablet"
             :routes="routes"
             mode="vertical"
           />
@@ -66,7 +63,7 @@
   <client-only>
     <n-drawer
       v-model:show="drawerActive"
-      :width="drawerWidth"
+      width="100%"
       placement="left"
     >
       <n-drawer-content
@@ -93,7 +90,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useNaiveDevice, ref } from "#imports";
+import { computed, useNaiveDevice, ref, useRouter} from "#imports";
 import type { MenuLinkRoute } from "../types";
 
 const props = withDefaults(
@@ -103,7 +100,6 @@ const props = withDefaults(
     routes?: MenuLinkRoute[];
     drawerRoutes?: MenuLinkRoute[];
     drawerClosable?: boolean;
-    drawerWidth?: number | string;
   }>(),
   {
     layout: "navbar",
@@ -111,24 +107,22 @@ const props = withDefaults(
     routes: () => [],
     drawerRoutes: () => [],
     drawerClosable: true,
-    drawerWidth: "100%",
   }
 );
 
 const drawerActive = ref(false);
 const { isMobileOrTablet } = useNaiveDevice();
+useRouter().afterEach(() => drawerActive.value = false)
+
 const hasSidebar = computed(
   () => !isMobileOrTablet && props.layout === "sidebar"
 );
+
 const hasNavbar = computed(
   () => !isMobileOrTablet && props.layout === "navbar"
 );
-</script>
 
-<style scoped>
-@media screen and (min-width: 768px) {
-    .mobileOrTablet {
-        display: none !important;
-    }
-}
-</style>
+const hasHeader = computed(
+  () => !hasSidebar.value
+)
+</script>

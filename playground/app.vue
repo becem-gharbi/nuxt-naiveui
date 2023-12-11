@@ -1,11 +1,9 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <!-- <NaiveNavbar
+    <NaiveLayout
+      layout="navbar"
       :routes="navbarRoutes"
       :drawer-routes="drawerRoutes"
-      :menu-inverted="false"
-      drawer-closable
-      menu-placement="center"
     >
       <template #start>
         <nuxt-link to="/">
@@ -36,42 +34,16 @@
       <template #drawer-footer>
         <n-text>Footer</n-text>
       </template>
-    </NaiveNavbar> -->
-
-    <NaiveLayout
-      layout="sidebar"
-      :routes="navbarRoutes"
-      :drawer-routes="navbarRoutes"
-    >
-      <template #start>
-        <nuxt-link to="/">
-          <NaiveIcon name="logos:naiveui" />
-        </nuxt-link>
-      </template>
-
-      <template #end>
-        <NaiveColorModeSwitch />
-      </template>
-
-      <template #drawer-header>
-        <n-text>Header</n-text>
-      </template>
-
-      <template #drawer-footer>
-        <n-text>Footer</n-text>
-      </template>
 
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
     </NaiveLayout>
-
-    <!-- <NaiveTabbar :routes="tabBarRoutes" /> -->
   </NaiveConfig>
 </template>
 
 <script setup lang="ts">
-import type { ThemeConfig, NavbarRoute, TabbarRoute } from "../src/module";
+import type { ThemeConfig, NavbarRoute } from "../src/module";
 
 const navbarRoutes: NavbarRoute[] = [
   {
@@ -102,26 +74,6 @@ const drawerRoutes: NavbarRoute[] = [
     label: "Sample, this is a long long lable",
     icon: "ri:home-4-line",
     path: "/",
-  },
-];
-const tabBarRoutes: TabbarRoute[] = [
-  {
-    label: "Sample",
-    iconUnselected: "ri:home-4-line",
-    iconSelected: "material-symbols:home-sharp",
-    path: "/",
-  },
-  {
-    label: "Books",
-    iconUnselected: "material-symbols:menu-book-outline-rounded",
-    iconSelected: "material-symbols:menu-book-sharp",
-    path: "/books",
-  },
-  {
-    label: "Computers",
-    iconUnselected: "material-symbols:computer-outline",
-    iconSelected: "material-symbols:computer",
-    path: "/computers",
   },
 ];
 
