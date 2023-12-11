@@ -1,21 +1,20 @@
 <template>
-  <n-layout style="min-height:100dvh">
+  <n-layout style="min-height: 100dvh">
     <n-layout-header
-      v-if="hasHeader"
       bordered
-      style="display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px;padding:0 16px;"
+      class="layout-header"
     >
       <slot name="start" />
       <div style="flex: 1">
         <NaiveMenuLink
-          v-if="hasNavbar"
+          class="notMobileOrTablet"
           :routes="routes"
           mode="horizontal"
         />
       </div>
       <slot name="end" />
       <n-button
-        v-if="!hasNavbar"
+        class="mobileOrTablet"
         text
         tag="span"
         :focusable="false"
@@ -30,12 +29,11 @@
 
     <n-layout
       position="absolute"
-      :has-sider="hasSidebar"
-      :native-scrollbar="hasSidebar"
-      :style="{top: hasHeader ? '56px':'0px'}"
+      :has-sider="true"
+      class="layout-content"
     >
       <n-layout-sider
-        v-if="hasSidebar"
+        class="notMobileOrTablet"
         content-style="min-height:100dvh;display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:8px;"
         :native-scrollbar="false"
         bordered
@@ -43,7 +41,6 @@
         <slot name="start" />
         <div style="flex: 1">
           <NaiveMenuLink
-            v-if="hasSidebar"
             :routes="routes"
             mode="vertical"
           />
@@ -90,19 +87,17 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useNaiveDevice, ref, useRouter} from "#imports";
+import { ref, useRouter } from "#imports";
 import type { MenuLinkRoute } from "../types";
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
-    layout?: "navbar" | "sidebar";
     toggleIcon?: string;
     routes?: MenuLinkRoute[];
     drawerRoutes?: MenuLinkRoute[];
     drawerClosable?: boolean;
   }>(),
   {
-    layout: "navbar",
     toggleIcon: "ph:equals",
     routes: () => [],
     drawerRoutes: () => [],
@@ -111,18 +106,33 @@ const props = withDefaults(
 );
 
 const drawerActive = ref(false);
-const { isMobileOrTablet } = useNaiveDevice();
-useRouter().afterEach(() => drawerActive.value = false)
-
-const hasSidebar = computed(
-  () => !isMobileOrTablet && props.layout === "sidebar"
-);
-
-const hasNavbar = computed(
-  () => !isMobileOrTablet && props.layout === "navbar"
-);
-
-const hasHeader = computed(
-  () => !hasSidebar.value
-)
+useRouter().afterEach(() => (drawerActive.value = false));
 </script>
+
+<style scoped>
+.layout-header {
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 56px;
+  padding: 0 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .layout-header {
+    display: none !important;
+  }
+  .layout-content {
+    top: 0px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .layout-header {
+    display: flex !important;
+  }
+  .layout-content {
+    top: 56px;
+  }
+}
+</style>
