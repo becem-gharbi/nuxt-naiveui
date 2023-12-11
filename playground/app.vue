@@ -1,6 +1,6 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar
+    <!-- <NaiveNavbar
       :routes="navbarRoutes"
       :drawer-routes="drawerRoutes"
       :menu-inverted="false"
@@ -36,13 +36,37 @@
       <template #drawer-footer>
         <n-text>Footer</n-text>
       </template>
-    </NaiveNavbar>
+    </NaiveNavbar> -->
 
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+    <NaiveLayout
+      layout="sidebar"
+      :routes="navbarRoutes"
+      :drawer-routes="navbarRoutes"
+    >
+      <template #start>
+        <nuxt-link to="/">
+          <NaiveIcon name="logos:naiveui" />
+        </nuxt-link>
+      </template>
 
-    <NaiveTabbar :routes="tabBarRoutes" />
+      <template #end>
+        <NaiveColorModeSwitch />
+      </template>
+
+      <template #drawer-header>
+        <n-text>Header</n-text>
+      </template>
+
+      <template #drawer-footer>
+        <n-text>Footer</n-text>
+      </template>
+
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </NaiveLayout>
+
+    <!-- <NaiveTabbar :routes="tabBarRoutes" /> -->
   </NaiveConfig>
 </template>
 
