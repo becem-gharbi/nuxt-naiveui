@@ -93,7 +93,12 @@ export default defineNuxtModule<ModuleOptions>({
       mode: "client",
       filePath: resolve(runtimeDir, "components", "NaiveNotification.client.vue"),
     });
-    
+    addComponent({
+      name: "NaiveLoadingBar",
+      mode: "client",
+      filePath: resolve(runtimeDir, "components", "NaiveLoadingBar.client.vue"),
+    });
+
     // Pass module options to runtimeConfig object
     nuxt.options.runtimeConfig = defu(nuxt.options.runtimeConfig, {
       app: {},

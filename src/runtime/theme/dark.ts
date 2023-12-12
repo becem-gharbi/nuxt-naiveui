@@ -109,6 +109,9 @@ export default {
   },
   Input: {
     lineHeightTextarea: "1.6",
-    textColor: "rgba(255, 255, 255, 0.82)"
+    textColor: "rgba(255, 255, 255, 0.82)",
+  },
+  LoadingBar: {
+    height: "3px",
   },
 } as GlobalThemeOverrides;

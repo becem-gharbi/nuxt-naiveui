@@ -50,4 +50,7 @@ export default {
     lineHeightTextarea: "1.6",
     textColor: "#525252"
   },
+  LoadingBar: {
+    height: "3px",
+  },
 } as GlobalThemeOverrides;
