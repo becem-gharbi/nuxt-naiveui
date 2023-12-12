@@ -1,6 +1,51 @@
 # Changelog
 
 
+## v1.7.0
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.6.2...v1.7.0)
+
+### 🚀 Enhancements
+
+- Create `NaiveLayout` ([55248d0](https://github.com/becem-gharbi/nuxt-naiveui/commit/55248d0))
+- Add `useNaiveNotification` for outside `setup` usage ([#36](https://github.com/becem-gharbi/nuxt-naiveui/pull/36))
+- Add `useNaiveLoadingBar` for outside `setup` usage ([7671ed6](https://github.com/becem-gharbi/nuxt-naiveui/commit/7671ed6))
+- **loading bar:** Add navigation prop to show on page loading ([#13](https://github.com/becem-gharbi/nuxt-naiveui/pull/13))
+
+### 🔥 Performance
+
+- **naive layout:** Lazy load components based on device ([35dac1f](https://github.com/becem-gharbi/nuxt-naiveui/commit/35dac1f))
+
+### 🩹 Fixes
+
+- **colorModePreference:** Fix reactivity ([9f8b16c](https://github.com/becem-gharbi/nuxt-naiveui/commit/9f8b16c))
+
+### 💅 Refactors
+
+- **NaiveLayout:** Minor refactoring ([42b62e4](https://github.com/becem-gharbi/nuxt-naiveui/commit/42b62e4))
+- Create separate components for navbar and sidebar layouts ([ac42fbc](https://github.com/becem-gharbi/nuxt-naiveui/commit/ac42fbc))
+- **naive layout:** Add drawerWidth prop ([bac5e1f](https://github.com/becem-gharbi/nuxt-naiveui/commit/bac5e1f))
+- **useNaiveColorMode:** Minor refactoring ([d2b911a](https://github.com/becem-gharbi/nuxt-naiveui/commit/d2b911a))
+- **NaiveColorModeSwitch:** Minor refactoring ([ad1ba79](https://github.com/becem-gharbi/nuxt-naiveui/commit/ad1ba79))
+
+### 📖 Documentation
+
+- Update README.md ([2899e72](https://github.com/becem-gharbi/nuxt-naiveui/commit/2899e72))
+- Add new features ([cbe462a](https://github.com/becem-gharbi/nuxt-naiveui/commit/cbe462a))
+
+### 🌊 Types
+
+- Expose MenuLinkRoute ([144fe49](https://github.com/becem-gharbi/nuxt-naiveui/commit/144fe49))
+
+### 🏡 Chore
+
+- **module:** Solve merge conflict ([eaf10cb](https://github.com/becem-gharbi/nuxt-naiveui/commit/eaf10cb))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v1.6.2
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.6.1...v1.6.2)
