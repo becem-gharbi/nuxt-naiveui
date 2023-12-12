@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { useNaiveColorMode, ref, onMounted } from "#imports";
+import { useNaiveColorMode, computed } from "#imports";
 import type { ButtonProps } from "naive-ui";
 
 interface Props extends /* @vue-ignore */ ButtonProps {}
@@ -18,30 +18,13 @@ defineProps<Props>();
 
 const { colorModePreference } = useNaiveColorMode();
 
-const preference = ref(colorModePreference.get());
-const icon = ref(getIcon());
+const preference = computed({
+  get: () => colorModePreference.get(),
+  set: value => colorModePreference.set(value)
+})
 
-function toggleColorMode() {
-  switch (preference.value) {
-    case "light":
-      colorModePreference.set("dark");
-      preference.value = "dark";
-      break;
-    case "dark":
-      colorModePreference.set("system");
-      preference.value = "system";
-      break;
-    case "system":
-      colorModePreference.set("light");
-      preference.value = "light";
-      break;
-  }
-
-  icon.value = getIcon();
-}
-
-function getIcon() {
-  switch (preference.value) {
+const icon = computed(() => {
+    switch (preference.value) {
     case "light":
       return "ph:sun";
     case "dark":
@@ -51,14 +34,19 @@ function getIcon() {
     default:
       return "ph:dots-three";
   }
-}
-
-onMounted(() => {
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden === false) {
-      preference.value = colorModePreference.get();
-      icon.value = getIcon()
-    }
-  });
 })
+
+function toggleColorMode() {
+  switch (preference.value) {
+    case "light":
+      preference.value = "dark";
+      break;
+    case "dark":
+      preference.value = "system";
+      break;
+    case "system":
+      preference.value = "light";
+      break;
+  }
+}
 </script>

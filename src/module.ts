@@ -17,6 +17,7 @@ export type {
   ThemeConfig,
   TabbarRoute,
   PublicConfig,
+  MenuLinkRoute
 } from "./runtime/types";
 
 // Module options TypeScript inteface definition
@@ -89,14 +90,16 @@ export default defineNuxtModule<ModuleOptions>({
       filePath: resolve(runtimeDir, "components", "NaiveMenuLink.vue"),
     });
     addComponent({
-      name: "NaiveNotification",
-      mode: "client",
-      filePath: resolve(runtimeDir, "components", "NaiveNotification.client.vue"),
+      name: "NaiveLayoutSidebar",
+      filePath: resolve(runtimeDir, "components", "NaiveLayoutSidebar.vue"),
     });
     addComponent({
-      name: "NaiveLoadingBar",
-      mode: "client",
-      filePath: resolve(runtimeDir, "components", "NaiveLoadingBar.client.vue"),
+      name: "NaiveLayoutNavbar",
+      filePath: resolve(runtimeDir, "components", "NaiveLayoutNavbar.vue"),
+    });
+    addComponent({
+      name: "NaiveDrawerLink",
+      filePath: resolve(runtimeDir, "components", "NaiveDrawerLink.client.vue"),
     });
 
     // Pass module options to runtimeConfig object

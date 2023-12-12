@@ -11,16 +11,15 @@ import type { Ref } from "#imports";
 import type {
   ColorMode,
   ColorModePreference,
-  ColorModeForce
+  ColorModeForce,
+   PublicConfig
 } from "../types";
 
 export function useNaiveColorMode() {
   const event = useRequestEvent();
-  const config = useRuntimeConfig().public.naiveui;
+  const config = useRuntimeConfig().public.naiveui as PublicConfig;
   const colorMode: Ref<ColorMode> = useState<ColorMode>("naive_color_mode");
-  const colorModeForced: Ref<ColorModeForce> = useState<ColorModeForce>(
-    "naive_color_mode_forced"
-  );
+  const colorModeForced: Ref<ColorModeForce> = useState<ColorModeForce>("naive_color_mode_forced");
 
   const colorModePreferenceCookie = {
     get value() {
@@ -46,24 +45,25 @@ export function useNaiveColorMode() {
     },
   };
 
+  const colorModePreferenceState = useState<ColorModePreference>("naive_color_mode_preference");
+
   const colorModePreference = {
-    get: () => colorModePreferenceCookie.value as ColorModePreference || config.colorModePreference,
-    set(colorModePreference: ColorModePreference) {
+    get: () => colorModePreferenceState.value,
+    set(value: ColorModePreference) {
+      colorModePreferenceState.value = value
+
       // No need to create cookie if preference is the default
-      if (colorModePreferenceCookie.value || colorModePreference !== config.colorModePreference) {
-        colorModePreferenceCookie.value = colorModePreference
+      if (colorModePreferenceCookie.value || value !== config.colorModePreference) {
+        colorModePreferenceCookie.value = value
       }
 
-      if (colorModeForced.value) {
-        return
-      }
-
-      if (colorModePreference === "system") {
-        colorMode.value = detectPreferedColorMode();
-      } else {
-        colorMode.value = colorModePreference;
+      if (!colorModeForced.value) {
+        colorMode.value = value === "system" ? detectPreferedColorMode() : value
       }
     },
+    sync() {
+      this.set(colorModePreferenceCookie.value as ColorModePreference || config.colorModePreference)
+    }
   };
 
   function detectPreferedColorMode() {

@@ -9,13 +9,13 @@ export default defineNuxtPlugin((nuxtApp) => {
   const { colorMode, colorModePreference, colorModeForced } =
     useNaiveColorMode();
 
-  colorModePreference.set(colorModePreference.get());
+  colorModePreference.sync();
 
   nuxtApp.hook("page:finish", () => {
     if (colorModeForced.value) {
       colorMode.value = colorModeForced.value;
     } else {
-      colorModePreference.set(colorModePreference.get());
+      colorModePreference.sync();
     }
   });
 
@@ -32,7 +32,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hook('app:mounted', () => {
      document.addEventListener("visibilitychange", () => {
       if (document.hidden === false) {
-        colorModePreference.set(colorModePreference.get());
+        colorModePreference.sync();
       }
     });
   })

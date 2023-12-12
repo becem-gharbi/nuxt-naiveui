@@ -1,0 +1,121 @@
+<template>
+  <n-layout style="min-height: 100dvh">
+    <n-layout-header
+      bordered
+      class="layout-header"
+    >
+      <slot name="start" />
+      <div style="flex: 1" />
+      <slot name="end" />
+      <n-button
+        class="mobileOrTablet"
+        text
+        tag="span"
+        :focusable="false"
+        @click="drawerActive = true"
+      >
+        <NaiveIcon
+          :name="toggleIcon"
+          :size="26"
+        />
+      </n-button>
+    </n-layout-header>
+
+    <n-layout
+      position="absolute"
+      :has-sider="!isMobileOrTablet"
+      class="layout-content"
+    >
+      <n-layout-sider
+        v-if="!isMobileOrTablet"
+        class="notMobileOrTablet"
+        content-style="min-height:100dvh;display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:8px;"
+        :native-scrollbar="false"
+        bordered
+      >
+        <slot name="start" />
+        <div style="flex: 1">
+          <LazyNaiveMenuLink
+            :routes="routes"
+            mode="vertical"
+          />
+        </div>
+        <slot name="end" />
+      </n-layout-sider>
+
+      <n-layout
+        content-style="padding: 16px;"
+        :native-scrollbar="false"
+      >
+        <slot />
+      </n-layout>
+    </n-layout>
+  </n-layout>
+
+  <LazyNaiveDrawerLink
+    v-model:show="drawerActive"
+    :routes="drawerRoutes"
+    :closable="drawerClosable"
+    :width="drawerWidth"
+  >
+    <template #header>
+      <slot name="drawer-header" />
+    </template>
+    <template #footer>
+      <slot name="drawer-footer" />
+    </template>
+  </LazyNaiveDrawerLink>
+</template>
+
+<script setup lang="ts">
+import { ref, useNaiveDevice } from "#imports";
+import type { MenuLinkRoute } from "../types";
+
+withDefaults(
+  defineProps<{
+    toggleIcon?: string;
+    routes?: MenuLinkRoute[];
+    drawerRoutes?: MenuLinkRoute[];
+    drawerClosable?: boolean;
+    drawerWidth?: string | number;
+  }>(),
+  {
+    toggleIcon: "ph:equals",
+    routes: () => [],
+    drawerRoutes: () => [],
+    drawerClosable: true,
+    drawerWidth: '100%'
+  }
+);
+
+const { isMobileOrTablet } = useNaiveDevice()
+const drawerActive = ref(false);
+</script>
+
+<style scoped>
+.layout-header {
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 56px;
+  padding: 0 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .layout-header {
+    display: none;
+  }
+  .layout-content {
+    top: 0px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .layout-header {
+    display: flex;
+  }
+  .layout-content {
+    top: 56px;
+  }
+}
+</style>

@@ -4,13 +4,13 @@
     :style="{ margin: '1em' }"
     size="large"
   >
-    <n-input
+    <!-- <n-input
       type="textarea"
       placeholder="Autosizable"
       :autosize="{
         minRows: 3
       }"
-    />
+    /> -->
     <n-h3>Buttons</n-h3>
 
     <n-space align="center">

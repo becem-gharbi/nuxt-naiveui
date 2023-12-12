@@ -1,11 +1,8 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveNavbar
+    <NaiveLayoutNavbar
       :routes="navbarRoutes"
       :drawer-routes="drawerRoutes"
-      :menu-inverted="false"
-      drawer-closable
-      menu-placement="center"
     >
       <template #start>
         <nuxt-link to="/">
@@ -36,18 +33,16 @@
       <template #drawer-footer>
         <n-text>Footer</n-text>
       </template>
-    </NaiveNavbar>
 
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-
-    <NaiveTabbar :routes="tabBarRoutes" />
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </NaiveLayoutNavbar>
   </NaiveConfig>
 </template>
 
 <script setup lang="ts">
-import type { ThemeConfig, NavbarRoute, TabbarRoute } from "../src/module";
+import type { ThemeConfig, NavbarRoute } from "../src/module";
 
 const navbarRoutes: NavbarRoute[] = [
   {
@@ -78,26 +73,6 @@ const drawerRoutes: NavbarRoute[] = [
     label: "Sample, this is a long long lable",
     icon: "ri:home-4-line",
     path: "/",
-  },
-];
-const tabBarRoutes: TabbarRoute[] = [
-  {
-    label: "Sample",
-    iconUnselected: "ri:home-4-line",
-    iconSelected: "material-symbols:home-sharp",
-    path: "/",
-  },
-  {
-    label: "Books",
-    iconUnselected: "material-symbols:menu-book-outline-rounded",
-    iconSelected: "material-symbols:menu-book-sharp",
-    path: "/books",
-  },
-  {
-    label: "Computers",
-    iconUnselected: "material-symbols:computer-outline",
-    iconSelected: "material-symbols:computer",
-    path: "/computers",
   },
 ];
 
