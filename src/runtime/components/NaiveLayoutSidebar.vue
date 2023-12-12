@@ -60,7 +60,7 @@
   <client-only>
     <n-drawer
       v-model:show="drawerActive"
-      width="100%"
+      :width="drawerWidth"
       placement="left"
     >
       <n-drawer-content
@@ -96,12 +96,14 @@ withDefaults(
     routes?: MenuLinkRoute[];
     drawerRoutes?: MenuLinkRoute[];
     drawerClosable?: boolean;
+    drawerWidth?: string | number;
   }>(),
   {
     toggleIcon: "ph:equals",
     routes: () => [],
     drawerRoutes: () => [],
     drawerClosable: true,
+    drawerWidth: '100%'
   }
 );
 
