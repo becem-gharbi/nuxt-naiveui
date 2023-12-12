@@ -16,11 +16,9 @@ import type {
 
 export function useNaiveColorMode() {
   const event = useRequestEvent();
-  const config = useRuntimeConfig().public.naiveui;
+  const config = useRuntimeConfig().public;
   const colorMode: Ref<ColorMode> = useState<ColorMode>("naive_color_mode");
-  const colorModeForced: Ref<ColorModeForce> = useState<ColorModeForce>(
-    "naive_color_mode_forced"
-  );
+  const colorModeForced: Ref<ColorModeForce> = useState<ColorModeForce>("naive_color_mode_forced");
 
   const colorModePreferenceCookie = {
     get value() {
@@ -46,9 +44,13 @@ export function useNaiveColorMode() {
     },
   };
 
+  const colorModePreferenceState = useState<ColorModePreference>("naive_color_mode_preference");
+
   const colorModePreference = {
-    get: () => colorModePreferenceCookie.value as ColorModePreference || config.colorModePreference,
+    get: () => colorModePreferenceState.value,
     set(colorModePreference: ColorModePreference) {
+      colorModePreferenceState.value = colorModePreference
+
       // No need to create cookie if preference is the default
       if (colorModePreferenceCookie.value || colorModePreference !== config.colorModePreference) {
         colorModePreferenceCookie.value = colorModePreference
@@ -64,6 +66,9 @@ export function useNaiveColorMode() {
         colorMode.value = colorModePreference;
       }
     },
+    sync() {
+      this.set(colorModePreferenceCookie.value || config.colorModePreference)
+    }
   };
 
   function detectPreferedColorMode() {
