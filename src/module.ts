@@ -36,7 +36,7 @@ export default defineNuxtModule<ModuleOptions>({
   // Default configuration options of the Nuxt module
   defaults: {
     colorModePreference: "light",
-    colorModePreferenceCookieName: 'naive_color_mode_preference',
+    colorModePreferenceCookieName: "naive_color_mode_preference",
     iconSize: 20,
     themeConfig: {},
   },
@@ -67,39 +67,50 @@ export default defineNuxtModule<ModuleOptions>({
     // Add components
     addComponent({
       name: "NaiveConfig",
-      filePath: resolve(runtimeDir, "components", "NaiveConfig.vue"),
+      filePath: resolve(runtimeDir, "components", "NaiveConfig.vue")
     });
     addComponent({
       name: "NaiveNavbar",
-      filePath: resolve(runtimeDir, "components", "NaiveNavbar.vue"),
+      filePath: resolve(runtimeDir, "components", "NaiveNavbar.vue")
     });
     addComponent({
       name: "NaiveIcon",
-      filePath: resolve(runtimeDir, "components", "NaiveIcon.vue"),
+      filePath: resolve(runtimeDir, "components", "NaiveIcon.vue")
     });
     addComponent({
       name: "NaiveColorModeSwitch",
-      filePath: resolve(runtimeDir, "components", "NaiveColorModeSwitch.vue"),
+      filePath: resolve(runtimeDir, "components", "NaiveColorModeSwitch.vue")
     });
     addComponent({
       name: "NaiveTabbar",
-      filePath: resolve(runtimeDir, "components", "NaiveTabbar.vue"),
+      filePath: resolve(runtimeDir, "components", "NaiveTabbar.vue")
     });
     addComponent({
       name: "NaiveMenuLink",
-      filePath: resolve(runtimeDir, "components", "NaiveMenuLink.vue"),
+      filePath: resolve(runtimeDir, "components", "NaiveMenuLink.vue")
     });
     addComponent({
       name: "NaiveLayoutSidebar",
-      filePath: resolve(runtimeDir, "components", "NaiveLayoutSidebar.vue"),
+      filePath: resolve(runtimeDir, "components", "NaiveLayoutSidebar.vue")
     });
     addComponent({
       name: "NaiveLayoutNavbar",
-      filePath: resolve(runtimeDir, "components", "NaiveLayoutNavbar.vue"),
+      filePath: resolve(runtimeDir, "components", "NaiveLayoutNavbar.vue")
     });
     addComponent({
+      mode: "client",
       name: "NaiveDrawerLink",
-      filePath: resolve(runtimeDir, "components", "NaiveDrawerLink.client.vue"),
+      filePath: resolve(runtimeDir, "components", "NaiveDrawerLink.client.vue")
+    });
+    addComponent({
+      mode: "client",
+      name: "NaiveLoadingBar",
+      filePath: resolve(runtimeDir, "components", "NaiveLoadingBar.client.vue")
+    });
+    addComponent({
+      mode: "client",
+      name: "NaiveNotification",
+      filePath: resolve(runtimeDir, "components", "NaiveNotification.client.vue")
     });
 
     // Pass module options to runtimeConfig object
