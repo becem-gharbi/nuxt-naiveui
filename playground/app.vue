@@ -1,6 +1,6 @@
 <template>
   <NaiveConfig :theme-config="themeConfig">
-    <NaiveLayoutSidebar
+    <NaiveLayoutNavbar
       :routes="navbarRoutes"
       :drawer-routes="drawerRoutes"
     >
@@ -37,7 +37,7 @@
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
-    </NaiveLayoutSidebar>
+    </NaiveLayoutNavbar>
   </NaiveConfig>
 </template>
 

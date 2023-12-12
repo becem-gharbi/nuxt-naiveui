@@ -5,13 +5,7 @@
       class="layout-header"
     >
       <slot name="start" />
-      <div style="flex: 1">
-        <NaiveMenuLink
-          class="notMobileOrTablet"
-          :routes="routes"
-          mode="horizontal"
-        />
-      </div>
+      <div style="flex: 1" />
       <slot name="end" />
       <n-button
         class="mobileOrTablet"
@@ -29,10 +23,11 @@
 
     <n-layout
       position="absolute"
-      :has-sider="true"
+      :has-sider="!isMobileOrTablet"
       class="layout-content"
     >
       <n-layout-sider
+        v-if="!isMobileOrTablet"
         class="notMobileOrTablet"
         content-style="min-height:100dvh;display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:8px;"
         :native-scrollbar="false"
@@ -40,7 +35,7 @@
       >
         <slot name="start" />
         <div style="flex: 1">
-          <NaiveMenuLink
+          <LazyNaiveMenuLink
             :routes="routes"
             mode="vertical"
           />
@@ -57,37 +52,23 @@
     </n-layout>
   </n-layout>
 
-  <client-only>
-    <n-drawer
-      v-model:show="drawerActive"
-      :width="drawerWidth"
-      placement="left"
-    >
-      <n-drawer-content
-        :body-content-style="{ padding: '8px' }"
-        :header-style="{ padding: '16px' }"
-        :footer-style="{ justifyContent: 'start' }"
-        :closable="drawerClosable"
-      >
-        <template #header>
-          <slot name="drawer-header" />
-        </template>
-
-        <LazyNaiveMenuLink
-          mode="vertical"
-          :routes="drawerRoutes"
-        />
-
-        <template #footer>
-          <slot name="drawer-footer" />
-        </template>
-      </n-drawer-content>
-    </n-drawer>
-  </client-only>
+  <LazyNaiveDrawerLink
+    v-model:show="drawerActive"
+    :routes="drawerRoutes"
+    :closable="drawerClosable"
+    :width="drawerWidth"
+  >
+    <template #header>
+      <slot name="drawer-header" />
+    </template>
+    <template #footer>
+      <slot name="drawer-footer" />
+    </template>
+  </LazyNaiveDrawerLink>
 </template>
 
 <script setup lang="ts">
-import { ref, useRouter } from "#imports";
+import { ref, useNaiveDevice } from "#imports";
 import type { MenuLinkRoute } from "../types";
 
 withDefaults(
@@ -107,8 +88,8 @@ withDefaults(
   }
 );
 
+const { isMobileOrTablet } = useNaiveDevice()
 const drawerActive = ref(false);
-useRouter().afterEach(() => (drawerActive.value = false));
 </script>
 
 <style scoped>
@@ -122,7 +103,7 @@ useRouter().afterEach(() => (drawerActive.value = false));
 
 @media screen and (min-width: 768px) {
   .layout-header {
-    display: none !important;
+    display: none;
   }
   .layout-content {
     top: 0px;
@@ -131,7 +112,7 @@ useRouter().afterEach(() => (drawerActive.value = false));
 
 @media screen and (max-width: 768px) {
   .layout-header {
-    display: flex !important;
+    display: flex;
   }
   .layout-content {
     top: 56px;

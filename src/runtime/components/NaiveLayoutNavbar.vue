@@ -6,7 +6,8 @@
     >
       <slot name="start" />
       <div style="flex: 1">
-        <NaiveMenuLink
+        <LazyNaiveMenuLink
+          v-if="!isMobileOrTablet"
           class="notMobileOrTablet"
           :routes="routes"
           mode="horizontal"
@@ -42,37 +43,23 @@
     </n-layout>
   </n-layout>
 
-  <client-only>
-    <n-drawer
-      v-model:show="drawerActive"
-      :width="drawerWidth"
-      placement="left"
-    >
-      <n-drawer-content
-        :body-content-style="{ padding: '8px' }"
-        :header-style="{ padding: '16px' }"
-        :footer-style="{ justifyContent: 'start' }"
-        :closable="drawerClosable"
-      >
-        <template #header>
-          <slot name="drawer-header" />
-        </template>
-
-        <LazyNaiveMenuLink
-          mode="vertical"
-          :routes="drawerRoutes"
-        />
-
-        <template #footer>
-          <slot name="drawer-footer" />
-        </template>
-      </n-drawer-content>
-    </n-drawer>
-  </client-only>
+  <LazyNaiveDrawerLink
+    v-model:show="drawerActive"
+    :routes="drawerRoutes"
+    :closable="drawerClosable"
+    :width="drawerWidth"
+  >
+    <template #header>
+      <slot name="drawer-header" />
+    </template>
+    <template #footer>
+      <slot name="drawer-footer" />
+    </template>
+  </LazyNaiveDrawerLink>
 </template>
 
 <script setup lang="ts">
-import { ref, useRouter} from "#imports";
+import { ref, useNaiveDevice } from "#imports";
 import type { MenuLinkRoute } from "../types";
 
 withDefaults(
@@ -92,6 +79,6 @@ withDefaults(
   }
 );
 
-const drawerActive = ref(false);
-useRouter().afterEach(() => drawerActive.value = false);
+const { isMobileOrTablet } = useNaiveDevice()
+const drawerActive = ref(false)
 </script>
