@@ -17,6 +17,7 @@ export type {
   ThemeConfig,
   TabbarRoute,
   PublicConfig,
+  MenuLinkRoute
 } from "./runtime/types";
 
 // Module options TypeScript inteface definition
