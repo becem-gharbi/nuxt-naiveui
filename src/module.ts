@@ -88,7 +88,12 @@ export default defineNuxtModule<ModuleOptions>({
       name: "NaiveMenuLink",
       filePath: resolve(runtimeDir, "components", "NaiveMenuLink.vue"),
     });
-
+    addComponent({
+      name: "NaiveNotification",
+      mode: "client",
+      filePath: resolve(runtimeDir, "components", "NaiveNotification.client.vue"),
+    });
+    
     // Pass module options to runtimeConfig object
     nuxt.options.runtimeConfig = defu(nuxt.options.runtimeConfig, {
       app: {},
