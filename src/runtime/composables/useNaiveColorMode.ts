@@ -11,12 +11,13 @@ import type { Ref } from "#imports";
 import type {
   ColorMode,
   ColorModePreference,
-  ColorModeForce
+  ColorModeForce,
+   PublicConfig
 } from "../types";
 
 export function useNaiveColorMode() {
   const event = useRequestEvent();
-  const config = useRuntimeConfig().public;
+  const config = useRuntimeConfig().public.naiveui as PublicConfig;
   const colorMode: Ref<ColorMode> = useState<ColorMode>("naive_color_mode");
   const colorModeForced: Ref<ColorModeForce> = useState<ColorModeForce>("naive_color_mode_forced");
 
@@ -48,26 +49,20 @@ export function useNaiveColorMode() {
 
   const colorModePreference = {
     get: () => colorModePreferenceState.value,
-    set(colorModePreference: ColorModePreference) {
-      colorModePreferenceState.value = colorModePreference
+    set(value: ColorModePreference) {
+      colorModePreferenceState.value = value
 
       // No need to create cookie if preference is the default
-      if (colorModePreferenceCookie.value || colorModePreference !== config.colorModePreference) {
-        colorModePreferenceCookie.value = colorModePreference
+      if (colorModePreferenceCookie.value || value !== config.colorModePreference) {
+        colorModePreferenceCookie.value = value
       }
 
-      if (colorModeForced.value) {
-        return
-      }
-
-      if (colorModePreference === "system") {
-        colorMode.value = detectPreferedColorMode();
-      } else {
-        colorMode.value = colorModePreference;
+      if (!colorModeForced.value) {
+        colorMode.value = value === "system" ? detectPreferedColorMode() : value
       }
     },
     sync() {
-      this.set(colorModePreferenceCookie.value || config.colorModePreference)
+      this.set(colorModePreferenceCookie.value as ColorModePreference || config.colorModePreference)
     }
   };
 
