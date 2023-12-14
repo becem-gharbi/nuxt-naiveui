@@ -51,7 +51,9 @@
     "nuxt": "^3.8.1",
     "vitest": "^0.34.6"
   },
-  "repository": "https://github.com/becem-gharbi/nuxt-naiveui.git",
+  "repository": {
+    "url": "https://github.com/becem-gharbi/nuxt-naiveui.git"
+  },
   "publishConfig": {
     "access": "public",
     "tag": "latest"
