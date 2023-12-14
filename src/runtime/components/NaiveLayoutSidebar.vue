@@ -2,7 +2,7 @@
   <n-layout style="min-height:100vh;min-height:100dvh;">
     <n-layout-header
       bordered
-      style="align-items:center;justify-content:space-between;gap:16px;height:56px;padding:0 16px;"
+      style="display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px;padding:0 16px;"
       class="layout-header"
     >
       <slot name="start" />
@@ -25,6 +25,7 @@
     <n-layout
       position="absolute"
       :has-sider="!isMobileOrTablet"
+      style="top:56px;"
       class="layout-content"
     >
       <n-layout-sider
@@ -100,15 +101,6 @@ const drawerActive = ref(false);
   }
   .layout-content {
     top: 0px !important;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .layout-header {
-    display: flex !important;
-  }
-  .layout-content {
-    top: 56px !important;
   }
 }
 </style>
