@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.7.1
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.7.0...v1.7.1)
+
+### 🩹 Fixes
+
+- Provide `dvh`  fallback to unsupported browsers ([0c3319e](https://github.com/becem-gharbi/nuxt-naiveui/commit/0c3319e))
+
+### 🏡 Chore
+
+- **package.json:** Replace `repository` with `repository.url` ([c52b95e](https://github.com/becem-gharbi/nuxt-naiveui/commit/c52b95e))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.7.0
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.6.2...v1.7.0)
