@@ -1,7 +1,8 @@
 <template>
-  <n-layout class="screen">
+  <n-layout style="min-height:100vh;min-height:100dvh;">
     <n-layout-header
       bordered
+      style="align-items:center;justify-content:space-between;gap:16px;height:56px;padding:0 16px;"
       class="layout-header"
     >
       <slot name="start" />
@@ -93,33 +94,21 @@ const drawerActive = ref(false);
 </script>
 
 <style scoped>
-.screen {
-  min-height: 100vh;
-  min-height: 100dvh;
-}
-.layout-header {
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  height: 56px;
-  padding: 0 16px;
-}
-
 @media screen and (min-width: 768px) {
   .layout-header {
-    display: none;
+    display: none !important;
   }
   .layout-content {
-    top: 0px;
+    top: 0px !important;
   }
 }
 
 @media screen and (max-width: 768px) {
   .layout-header {
-    display: flex;
+    display: flex !important;
   }
   .layout-content {
-    top: 56px;
+    top: 56px !important;
   }
 }
 </style>
