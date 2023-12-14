@@ -41,21 +41,21 @@
         <slot />
       </n-layout>
     </n-layout>
-  </n-layout>
 
-  <LazyNaiveDrawerLink
-    v-model:show="drawerActive"
-    :routes="drawerRoutes"
-    :closable="drawerClosable"
-    :width="drawerWidth"
-  >
-    <template #header>
-      <slot name="drawer-header" />
-    </template>
-    <template #footer>
-      <slot name="drawer-footer" />
-    </template>
-  </LazyNaiveDrawerLink>
+    <LazyNaiveDrawerLink
+      v-model:show="drawerActive"
+      :routes="drawerRoutes"
+      :closable="drawerClosable"
+      :width="drawerWidth"
+    >
+      <template #header>
+        <slot name="drawer-header" />
+      </template>
+      <template #footer>
+        <slot name="drawer-footer" />
+      </template>
+    </LazyNaiveDrawerLink>
+  </n-layout>
 </template>
 
 <script setup lang="ts">
