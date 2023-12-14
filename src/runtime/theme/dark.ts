@@ -31,7 +31,7 @@ export default {
     textColorDisabled: "rgba(255, 255, 255, 0.38)",
     placeholderColor: "rgba(255, 255, 255, 0.38)",
     placeholderColorDisabled: "rgba(255, 255, 255, 0.28)",
-    iconColor: "white", //"rgba(255, 255, 255, 0.38)",
+    iconColor: "white",
     iconColorDisabled: "rgba(255, 255, 255, 0.28)",
     iconColorHover: "rgba(255, 255, 255, 0.475)",
     iconColorPressed: "rgba(255, 255, 255, 0.30400000000000005)",
@@ -113,5 +113,10 @@ export default {
   },
   LoadingBar: {
     height: "3px",
+  },
+  Layout: {
+    siderColor: "rgb(16, 16, 20)", 
+    headerColor: "rgb(16, 16, 20)",
+    footerColor: "rgb(16, 16, 20)",
   },
 } as GlobalThemeOverrides;

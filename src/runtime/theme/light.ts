@@ -48,9 +48,14 @@ export default {
   },
   Input: {
     lineHeightTextarea: "1.6",
-    textColor: "#525252"
+    textColor: "#525252",
   },
   LoadingBar: {
     height: "3px",
+  },
+  Layout: {
+    siderColor: "white",
+    headerColor: "white",
+    footerColor: "white",
   },
 } as GlobalThemeOverrides;
