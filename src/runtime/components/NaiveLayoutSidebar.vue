@@ -1,5 +1,5 @@
 <template>
-  <n-layout style="min-height: 100dvh">
+  <n-layout class="screen">
     <n-layout-header
       bordered
       class="layout-header"
@@ -29,7 +29,7 @@
       <n-layout-sider
         v-if="!isMobileOrTablet"
         class="notMobileOrTablet"
-        content-style="min-height:100dvh;display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:8px;"
+        content-style="min-height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:8px;"
         :native-scrollbar="false"
         bordered
       >
@@ -93,6 +93,10 @@ const drawerActive = ref(false);
 </script>
 
 <style scoped>
+.screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
 .layout-header {
   align-items: center;
   justify-content: space-between;

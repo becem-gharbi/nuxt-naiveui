@@ -1,5 +1,5 @@
 <template>
-  <n-layout style="min-height:100dvh">
+  <n-layout class="screen">
     <n-layout-header
       bordered
       style="display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px;padding:0 16px;"
@@ -82,3 +82,10 @@ withDefaults(
 const { isMobileOrTablet } = useNaiveDevice()
 const drawerActive = ref(false)
 </script>
+
+<style scoped>
+.screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+</style>
