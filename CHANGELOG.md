@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v1.7.2
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.7.1...v1.7.2)
+
+### 🩹 Fixes
+
+- **NaiveLayout:** Inline height to avoid CLS ([9995dd8](https://github.com/becem-gharbi/nuxt-naiveui/commit/9995dd8))
+
+### 💅 Refactors
+
+- **NaiveLayoutSidebar:** Refactor styles ([f53d4dd](https://github.com/becem-gharbi/nuxt-naiveui/commit/f53d4dd))
+- **NaiveLayout:** Set a single root element ([ddd9998](https://github.com/becem-gharbi/nuxt-naiveui/commit/ddd9998))
+
+### 🏡 Chore
+
+- **default theme:** Change Layout color ([1d1a0df](https://github.com/becem-gharbi/nuxt-naiveui/commit/1d1a0df))
+- **playground:** Create default layout ([a8cd2c4](https://github.com/becem-gharbi/nuxt-naiveui/commit/a8cd2c4))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.7.1
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.7.0...v1.7.1)
