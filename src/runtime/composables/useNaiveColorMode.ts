@@ -12,7 +12,7 @@ import type {
   ColorMode,
   ColorModePreference,
   ColorModeForce,
-   PublicConfig
+  PublicConfig
 } from "../types";
 
 export function useNaiveColorMode() {
@@ -57,8 +57,10 @@ export function useNaiveColorMode() {
         colorModePreferenceCookie.value = value
       }
 
-      if (!colorModeForced.value) {
-        colorMode.value = value === "system" ? detectPreferedColorMode() : value
+      if (colorModeForced.value) {
+        colorMode.value = colorModeForced.value
+      } else {
+        colorMode.value = value === "system" ? detectPreferedColorMode() : value;
       }
     },
     sync() {

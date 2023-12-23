@@ -1,43 +1,31 @@
-import {
-  defineNuxtPlugin,
-  useNaiveColorMode,
-  useRouter,
-} from "#imports";
+import { defineNuxtPlugin, useNaiveColorMode, useRouter } from "#imports";
 import type { ColorMode } from "../types";
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const { colorMode, colorModePreference, colorModeForced } =
+  const {colorModePreference, colorModeForced } =
     useNaiveColorMode();
 
-  const colorModePage = useRouter().currentRoute.value.meta.colorMode as ColorMode;
+  const colorModePage = useRouter().currentRoute.value.meta
+    .colorMode as ColorMode;
 
   colorModeForced.value = colorModePage || false;
-  
+
   colorModePreference.sync();
 
   nuxtApp.hook("page:finish", () => {
-    if (colorModeForced.value) {
-      colorMode.value = colorModeForced.value;
-    } else {
-      colorModePreference.sync();
-    }
+    colorModePreference.sync();
   });
 
   useRouter().afterEach((to) => {
     const colorModePage = to.meta.colorMode as ColorMode;
-
     colorModeForced.value = colorModePage || false;
-
-    if (colorModeForced.value && process.server) {
-      colorMode.value = colorModeForced.value;
-    }
   });
 
-  nuxtApp.hook('app:mounted', () => {
-     document.addEventListener("visibilitychange", () => {
+  nuxtApp.hook("app:mounted", () => {
+    document.addEventListener("visibilitychange", () => {
       if (document.hidden === false) {
         colorModePreference.sync();
       }
     });
-  })
+  });
 });
