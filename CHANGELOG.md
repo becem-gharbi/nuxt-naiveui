@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v1.7.3
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.7.2...v1.7.3)
+
+### 🩹 Fixes
+
+- **colorMode:** Set colorModeForced correctly on initial page ([4054fc6](https://github.com/becem-gharbi/nuxt-naiveui/commit/4054fc6))
+
+### 💅 Refactors
+
+- **NaiveLayout:** Add `native-scrollbar` prop ([6e89ee9](https://github.com/becem-gharbi/nuxt-naiveui/commit/6e89ee9))
+- **colorMode:** Only set `colorMode` on preference set/sync ([c5dcc33](https://github.com/becem-gharbi/nuxt-naiveui/commit/c5dcc33))
+- Call `watch` on `setup` instead of `onMounted` hook ([ee5e0d8](https://github.com/becem-gharbi/nuxt-naiveui/commit/ee5e0d8))
+- No significant change ([81dd8de](https://github.com/becem-gharbi/nuxt-naiveui/commit/81dd8de))
+
+### 📖 Documentation
+
+- **NaiveLayout:** Add `native-scrollbar` prop ([21cf494](https://github.com/becem-gharbi/nuxt-naiveui/commit/21cf494))
+
+### 🏡 Chore
+
+- **styles:** Remove input text color override ([b8d39cc](https://github.com/becem-gharbi/nuxt-naiveui/commit/b8d39cc))
+- **playground:** Add favicon ([473f284](https://github.com/becem-gharbi/nuxt-naiveui/commit/473f284))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.7.2
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.7.1...v1.7.2)
