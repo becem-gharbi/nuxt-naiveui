@@ -18,8 +18,8 @@ import type {
 export function useNaiveColorMode() {
   const event = useRequestEvent();
   const config = useRuntimeConfig().public.naiveui as PublicConfig;
-  const colorMode: Ref<ColorMode> = useState<ColorMode>("naive_color_mode");
-  const colorModeForced: Ref<ColorModeForce> = useState<ColorModeForce>("naive_color_mode_forced");
+  const colorMode: Ref<ColorMode> = useState<ColorMode>("naive-color-mode");
+  const colorModeForced: Ref<ColorModeForce> = useState<ColorModeForce>("naive-color-mode-forced");
 
   const colorModePreferenceCookie = {
     get value() {
@@ -45,7 +45,7 @@ export function useNaiveColorMode() {
     },
   };
 
-  const colorModePreferenceState = useState<ColorModePreference>("naive_color_mode_preference");
+  const colorModePreferenceState = useState<ColorModePreference>("naive-color-mode-preference");
 
   const colorModePreference = {
     get: () => colorModePreferenceState.value,
