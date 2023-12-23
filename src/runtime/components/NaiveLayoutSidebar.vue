@@ -47,7 +47,7 @@
 
       <n-layout
         content-style="padding: 16px;"
-        :native-scrollbar="false"
+        :native-scrollbar="nativeScrollbar"
       >
         <slot />
       </n-layout>
@@ -80,13 +80,15 @@ withDefaults(
     drawerRoutes?: MenuLinkRoute[];
     drawerClosable?: boolean;
     drawerWidth?: string | number;
+    nativeScrollbar?: boolean;
   }>(),
   {
     toggleIcon: "ph:equals",
     routes: () => [],
     drawerRoutes: () => [],
     drawerClosable: true,
-    drawerWidth: '100%'
+    drawerWidth: '100%',
+    nativeScrollbar: false
   }
 );
 
