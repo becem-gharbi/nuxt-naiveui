@@ -9,6 +9,10 @@ export default defineNuxtPlugin((nuxtApp) => {
   const { colorMode, colorModePreference, colorModeForced } =
     useNaiveColorMode();
 
+  const colorModePage = useRouter().currentRoute.value.meta.colorMode as ColorMode;
+
+  colorModeForced.value = colorModePage || false;
+  
   colorModePreference.sync();
 
   nuxtApp.hook("page:finish", () => {
