@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.7.4
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.7.3...v1.7.4)
+
+### 🎨 Styles
+
+- Fix input auto-fill text color ([049a380](https://github.com/becem-gharbi/nuxt-naiveui/commit/049a380))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.7.3
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.7.2...v1.7.3)
