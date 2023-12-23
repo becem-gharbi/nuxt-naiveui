@@ -41,8 +41,9 @@ const load = (name: string) => loadIcon(name).catch(() => console.error(`Failed 
 
 icon.value = await load(sName.value);
 
+watch(sName, (value) =>load(value).then((res) => (icon.value = res)));
+
 onMounted(() => {
-  watch(sName, (value) =>load(value).then((res) => (icon.value = res)));
 
   const { payload } = useNuxtApp();
   const isPrerendered = typeof payload.prerenderedAt === "number";

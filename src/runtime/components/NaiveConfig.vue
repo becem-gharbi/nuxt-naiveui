@@ -73,9 +73,9 @@ useHead(() => ({
   ],
 }));
 
-onMounted(() => {
-  watch(colorMode, updateTheme);
+watch(colorMode, updateTheme);
 
+onMounted(() => {
   const { payload } = useNuxtApp();
   const isPrerendered = typeof payload.prerenderedAt === "number";
 
