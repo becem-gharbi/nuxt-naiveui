@@ -1,6 +1,6 @@
 <template>
   <n-menu
-    v-model:value="activePath"
+    v-model:value="activeKey"
     :options="menuOptions"
   />
 </template>
@@ -18,11 +18,34 @@ interface NaiveMenuLinkProps
 }
 
 const props = defineProps<NaiveMenuLinkProps>();
+const router = useRouter()
+const activeKey = ref(getActiveKey(router.currentRoute.value.path.toString()));
 
-const router = useRouter();
-const activePath = ref(router.currentRoute.value.path.toString());
+router.afterEach((to) => {
+    activeKey.value = getActiveKey(to.path.toString())
+});
 
-router.afterEach((to)=> activePath.value = to.path.toString())
+function getActiveKey(activePath: string) {
+    let activeKey = activePath
+
+    const cb = (routes: MenuLinkRoute[]) => {
+        for (const route of routes) {
+            if (route.path === activePath) {
+                activeKey = route.path
+                break
+            }
+            if (activePath.startsWith(`${route.path}/`)) {
+                activeKey = route.path;
+            }
+            if (route.children) {
+                cb(route.children);
+            }
+        }
+    };
+
+    cb(props.routes)
+    return activeKey
+}
 
 const menuOptions = computed<MenuOption[]>(() => {
     const cb = (routes: MenuLinkRoute[]) =>

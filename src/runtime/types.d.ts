@@ -22,7 +22,12 @@ export interface TabbarRoute {
   path: string;
 }
 
-export interface MenuLinkRoute extends NavbarRoute { }
+export interface MenuLinkRoute {
+  label: string;
+  icon?: string;
+  path?: string;
+  children?: NavbarRoute[];
+}
 
 export type ColorMode = "light" | "dark";
 
