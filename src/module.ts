@@ -21,7 +21,7 @@ export type {
 } from "./runtime/types";
 
 // Module options TypeScript inteface definition
-export interface ModuleOptions extends PublicConfig {}
+export interface ModuleOptions extends PublicConfig { }
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
@@ -98,17 +98,14 @@ export default defineNuxtModule<ModuleOptions>({
       filePath: resolve(runtimeDir, "components", "NaiveLayoutNavbar.vue")
     });
     addComponent({
-      mode: "client",
       name: "NaiveDrawerLink",
       filePath: resolve(runtimeDir, "components", "NaiveDrawerLink.client.vue")
     });
     addComponent({
-      mode: "client",
       name: "NaiveLoadingBar",
       filePath: resolve(runtimeDir, "components", "NaiveLoadingBar.client.vue")
     });
     addComponent({
-      mode: "client",
       name: "NaiveNotification",
       filePath: resolve(runtimeDir, "components", "NaiveNotification.client.vue")
     });
