@@ -47,6 +47,7 @@
       :routes="drawerRoutes"
       :closable="drawerClosable"
       :width="drawerWidth"
+      :placement="drawerPlacement"
     >
       <template #header>
         <slot name="drawer-header" />
@@ -70,6 +71,7 @@ withDefaults(
     drawerClosable?: boolean;
     drawerWidth?: string | number;
     nativeScrollbar?: boolean;
+    drawerPlacement?: 'top' | 'right' | 'bottom' | 'left';
   }>(),
   {
     toggleIcon: "ph:equals",
@@ -77,7 +79,8 @@ withDefaults(
     drawerRoutes: () => [],
     drawerClosable: true,
     drawerWidth: '100%',
-    nativeScrollbar: false
+    nativeScrollbar: false,
+    drawerPlacement: 'left'
   }
 );
 
