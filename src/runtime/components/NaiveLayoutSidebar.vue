@@ -56,6 +56,7 @@
     <LazyNaiveDrawerLink
       v-model:show="drawerActive"
       :routes="drawerRoutes"
+      :drawer-placement="drawerPlacement"
       :closable="drawerClosable"
       :width="drawerWidth"
     >
@@ -78,6 +79,7 @@ withDefaults(
     toggleIcon?: string;
     routes?: MenuLinkRoute[];
     drawerRoutes?: MenuLinkRoute[];
+    drawerPlacement?: string;
     drawerClosable?: boolean;
     drawerWidth?: string | number;
     nativeScrollbar?: boolean;
@@ -87,6 +89,7 @@ withDefaults(
     routes: () => [],
     drawerRoutes: () => [],
     drawerClosable: true,
+    drawerPlacement: 'left',
     drawerWidth: '100%',
     nativeScrollbar: false
   }
