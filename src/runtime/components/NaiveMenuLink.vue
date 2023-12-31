@@ -34,7 +34,7 @@ function getActiveKey(activePath: string) {
                 activeKey = route.path
                 break
             }
-            if (activePath.startsWith(`${route.path}/`)) {
+            if (route.path && activePath.startsWith(`${route.path}/`)) {
                 activeKey = route.path;
             }
             if (route.children) {
