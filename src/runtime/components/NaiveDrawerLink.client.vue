@@ -2,7 +2,7 @@
   <n-drawer
     :show="show"
     :width="width"
-    :placement="drawerPlacement"
+    :placement="placement"
     :on-update:show="(v: boolean) => emits('update:show', v)"
   >
     <n-drawer-content
@@ -36,14 +36,14 @@ withDefaults(
     show: boolean;
     routes?: MenuLinkRoute[];
     closable?: boolean;
-    drawerPlacement?: string;
+    placement?: 'top' | 'right' | 'bottom' | 'left';
     width?: string | number;
   }>(),
     {
     show: false,
     routes: () => [],
     closable: true,
-    drawerPlacement: 'left',
+    placement: 'left',
     width: '100%'
   }
 );
