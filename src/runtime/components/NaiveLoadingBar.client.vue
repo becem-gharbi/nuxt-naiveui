@@ -15,7 +15,7 @@ window.addEventListener("naiveui:loadingBar:error", error);
 const props = defineProps<{ navigation?: boolean }>()
 
 if (props.navigation) {
-  useNuxtApp().hook('page:start', start)
-  useNuxtApp().hook('page:finish', finish)
+  useNuxtApp().hook('page:loading:start', start)
+  useNuxtApp().hook('page:loading:end', finish)
 }
 </script>
