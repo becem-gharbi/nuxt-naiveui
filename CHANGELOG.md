@@ -1,6 +1,43 @@
 # Changelog
 
 
+## v1.8.0
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.7.4...v1.8.0)
+
+### 🚀 Enhancements
+
+- Set nuxt compatibility to `^3.9.0` ([0d0ff0a](https://github.com/becem-gharbi/nuxt-naiveui/commit/0d0ff0a))
+
+### 🩹 Fixes
+
+- **colorMode:** Update value on `page:loading:end` hook ([5cffac5](https://github.com/becem-gharbi/nuxt-naiveui/commit/5cffac5))
+- **NaiveMenuLink:** Treat nested paths as parent path for active item ([642a0ee](https://github.com/becem-gharbi/nuxt-naiveui/commit/642a0ee))
+
+### 💅 Refactors
+
+- **NaiveLoadingBar:** Update navigation state on `page:loading` hook ([1cd313f](https://github.com/becem-gharbi/nuxt-naiveui/commit/1cd313f))
+- **NaiveLayoutNavbar:** Add `drawerPlacement` prop ([905c46d](https://github.com/becem-gharbi/nuxt-naiveui/commit/905c46d))
+- **NaiveMenuLink:** Fix typecheck errors ([e9d4b1e](https://github.com/becem-gharbi/nuxt-naiveui/commit/e9d4b1e))
+
+### 📖 Documentation
+
+- **Components:** Add `drawerPlacement` prop to NaiveLayout ([0e13bee](https://github.com/becem-gharbi/nuxt-naiveui/commit/0e13bee))
+- No significant change ([e042427](https://github.com/becem-gharbi/nuxt-naiveui/commit/e042427))
+
+### 🌊 Types
+
+- **NaiveDrawerLink:** Specify `placement` type ([94e5e10](https://github.com/becem-gharbi/nuxt-naiveui/commit/94e5e10))
+
+### 🏡 Chore
+
+- **addComponent:** Auto-detect `mode` from `filePath` ([c31f084](https://github.com/becem-gharbi/nuxt-naiveui/commit/c31f084))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v1.7.4
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.7.3...v1.7.4)
