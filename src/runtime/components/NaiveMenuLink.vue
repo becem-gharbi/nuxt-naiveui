@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, useRouter, computed, h } from "#imports";
+import { ref, computed, h, useNuxtApp, useRoute } from "#imports";
 import { NuxtLink, NaiveIcon } from "#components";
 import type { Component } from "vue";
 import type { MenuProps, MenuOption } from "naive-ui";
@@ -18,11 +18,10 @@ interface NaiveMenuLinkProps
 }
 
 const props = defineProps<NaiveMenuLinkProps>();
-const router = useRouter()
-const activeKey = ref(getActiveKey(router.currentRoute.value.path.toString()));
+const activeKey = ref(getActiveKey(useRoute().path));
 
-router.afterEach((to) => {
-    activeKey.value = getActiveKey(to.path.toString())
+useNuxtApp().$router.afterEach((to) => {
+    activeKey.value = getActiveKey(to.path)
 });
 
 function getActiveKey(activePath: string) {
