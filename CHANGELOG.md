@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.8.1
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.8.0...v1.8.1)
+
+### 🩹 Fixes
+
+- Solve undefined `meta` when no page components defined ([571221f](https://github.com/becem-gharbi/nuxt-naiveui/commit/571221f))
+- **NaiveMenuLink:** Solve undefined `path` when no page components defined ([a66a5c5](https://github.com/becem-gharbi/nuxt-naiveui/commit/a66a5c5))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.8.0
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.7.4...v1.8.0)
