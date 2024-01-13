@@ -170,7 +170,7 @@ const props = withDefaults(
 const _sticky = computed(() => (props.sticky ? "sticky" : "static"));
 const backgroundColor = computed(() => naiveTheme.value.bodyColor);
 const flexInnerSides = computed(() =>
-  props.menuPlacement === "center" ? 1 : "inherited"
+  props.menuPlacement === "center" ? 1 : "inherit"
 );
 </script>
 

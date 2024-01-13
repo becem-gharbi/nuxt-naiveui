@@ -11,7 +11,7 @@ export default {
   },
   IconWrapper: {
     color: "transparent",
-    iconColor: "inherited",
+    iconColor: "inherit",
   },
   Menu: {
     itemIconColor: "#525252",

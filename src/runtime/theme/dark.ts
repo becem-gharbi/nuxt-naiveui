@@ -95,7 +95,7 @@ export default {
 
   IconWrapper: {
     color: "transparent",
-    iconColor: "inherited",
+    iconColor: "inherit",
   },
 
   Tooltip: {
