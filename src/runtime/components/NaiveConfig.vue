@@ -21,7 +21,7 @@ import {
 } from "#imports";
 import { defu } from "defu";
 import type { GlobalThemeOverrides, ConfigProviderProps } from "naive-ui";
-import type { ThemeConfig, PublicConfig } from "../types";
+import type { ThemeConfig } from "../types";
 
 interface NaiveConfigProps
   extends /* @vue-ignore */ Omit<
@@ -37,8 +37,8 @@ const { colorMode } = useNaiveColorMode();
 
 const themeConfig: ThemeConfig | undefined =
   props.themeConfig
-  ?? useAppConfig().naiveui?.themeConfig as ThemeConfig
-  ?? (useRuntimeConfig().public.naiveui as PublicConfig).themeConfig;
+  ?? (useAppConfig().naiveui as any)?.themeConfig
+  ?? (useRuntimeConfig().public.naiveui as any).themeConfig;
 
 await updateTheme();
 
