@@ -83,10 +83,6 @@ onMounted(() => {
     // In order to update dom on pre-rendered pages
     naiveTheme.value.isPrerendered = true;
   }
-
-  document.querySelectorAll(".n-submenu").forEach((subMenu) => {
-    subMenu?.firstElementChild?.setAttribute("role", "none");
-  });
 });
 
 async function updateTheme() {
