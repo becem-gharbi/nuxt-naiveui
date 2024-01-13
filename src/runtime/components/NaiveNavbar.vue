@@ -29,7 +29,7 @@
         v-if="backIcon"
         class="mobileOrTablet"
         text
-        tag="span"
+        aria-label="back-btn"
         :focusable="false"
         @click="router.back"
       >
@@ -71,7 +71,7 @@
       <n-button
         class="mobileOrTablet"
         text
-        tag="span"
+        aria-label="drawer-toggle-btn"
         :focusable="false"
         @click="drawerActive = true"
       >

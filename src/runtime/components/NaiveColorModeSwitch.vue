@@ -1,7 +1,7 @@
 <template>
   <n-button
     text
-    tag="span"
+    aria-label="color-mode-switch"
     :focusable="false"
     @click="toggleColorMode"
   >

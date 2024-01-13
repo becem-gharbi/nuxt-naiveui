@@ -17,7 +17,7 @@
       <n-button
         class="mobileOrTablet"
         text
-        tag="span"
+        aria-label="drawer-toggle-btn"
         :focusable="false"
         @click="drawerActive = true"
       >
