@@ -26,7 +26,7 @@ export interface MenuLinkRoute {
   label: string;
   icon?: string;
   path?: string;
-  children?: NavbarRoute[];
+  children?: MenuLinkRoute[];
 }
 
 export type ColorMode = "light" | "dark";
