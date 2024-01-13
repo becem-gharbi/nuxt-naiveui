@@ -13,12 +13,8 @@ export default defineNuxtConfig({
   },
 
   // css: ["~/assets/fonts/gellix/style.css"],
-  modules: ["../src/module", "@nuxtjs/tailwindcss"],
+  modules: ["../src/module"],
   naiveui: {
     colorModePreference: "light",
-  },
-
-  tailwindcss: {
-    // exposeConfig: true,
-  },
+  }
 });
