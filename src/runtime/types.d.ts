@@ -41,3 +41,11 @@ export interface PublicConfig {
   colorModePreferenceCookieName: string;
   iconSize: number;
 }
+
+declare module 'nuxt/schema' {
+  interface AppConfigInput {
+    naiveui?: {
+      themeConfig?: ThemeConfig;
+    }
+  }
+}

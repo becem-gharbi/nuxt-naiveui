@@ -17,6 +17,7 @@ import {
   useNaiveColorMode,
   useNaiveDevice,
   useNuxtApp,
+  useAppConfig
 } from "#imports";
 import { defu } from "defu";
 import type { GlobalThemeOverrides, ConfigProviderProps } from "naive-ui";
@@ -30,11 +31,14 @@ interface NaiveConfigProps
   themeConfig?: ThemeConfig;
 }
 
-const config = useRuntimeConfig().public.naiveui as PublicConfig;
 const props = defineProps<NaiveConfigProps>();
 const naiveTheme = ref();
-const themeConfig = props.themeConfig ?? config.themeConfig;
 const { colorMode } = useNaiveColorMode();
+
+const themeConfig: ThemeConfig | undefined =
+  props.themeConfig
+  ?? useAppConfig().naiveui?.themeConfig as ThemeConfig
+  ?? (useRuntimeConfig().public.naiveui as PublicConfig).themeConfig;
 
 await updateTheme();
 
