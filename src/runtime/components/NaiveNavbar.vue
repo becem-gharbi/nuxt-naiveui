@@ -1,17 +1,19 @@
 <template>
-  <nav
-    :style="{
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      gap: '16px',
-      padding: '0px 16px',
-      height: '56px',
-      position: _sticky,
-      top: 0,
-      zIndex: 100,
-      boxShadow: '0px 0px 2px 0px #a3a3a3',
-    }"
+  <n-el
+    tag="nav"
+    :style="`
+        background-color: var(--body-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 0px 16px;
+        height: 56px;
+        position: ${sticky ? 'sticky' : 'static'};
+        top: 0;
+        z-index: 100;
+        box-shadow: 0px 0px 2px 0px #a3a3a3;
+      `"
   >
     <div
       :style="{
@@ -81,7 +83,7 @@
         </slot>
       </n-button>
     </div>
-  </nav>
+  </n-el>
 
   <client-only>
     <n-drawer
@@ -123,7 +125,6 @@ import {
   ref,
   computed,
   useRouter,
-  useThemeVars,
   useNaiveDevice,
 } from "#imports";
 import { NaiveIcon, LazyNaiveMenuLink } from "#components";
@@ -131,7 +132,6 @@ import type { NavbarRoute } from "../types";
 
 const drawerActive = ref(false);
 const router = useRouter();
-const naiveTheme = useThemeVars();
 const { isMobileOrTablet } = useNaiveDevice();
 
 router.afterEach(() => drawerActive.value = false)
@@ -167,15 +167,7 @@ const props = withDefaults(
   }
 );
 
-const _sticky = computed(() => (props.sticky ? "sticky" : "static"));
-const backgroundColor = computed(() => naiveTheme.value.bodyColor);
 const flexInnerSides = computed(() =>
   props.menuPlacement === "center" ? 1 : "inherit"
 );
 </script>
-
-<style scoped>
-nav {
-  background-color: v-bind(backgroundColor);
-}
-</style>
