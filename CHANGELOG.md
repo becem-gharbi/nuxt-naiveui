@@ -1,6 +1,40 @@
 # Changelog
 
 
+## v1.9.0
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.8.1...v1.9.0)
+
+### 🚀 Enhancements
+
+- Allow theme configuration via app.config ([b9e1940](https://github.com/becem-gharbi/nuxt-naiveui/commit/b9e1940))
+
+### 🩹 Fixes
+
+- **NaiveNavbar:** Solve hydration mismatch on `background-color` ([78f9ebf](https://github.com/becem-gharbi/nuxt-naiveui/commit/78f9ebf))
+- Solve mismatch on used text buttons ([693b100](https://github.com/becem-gharbi/nuxt-naiveui/commit/693b100))
+
+### 💅 Refactors
+
+- **NaiveConfig:** Remove fixed workaround ([650e108](https://github.com/becem-gharbi/nuxt-naiveui/commit/650e108))
+
+### 📖 Documentation
+
+- **NaiveConfig:** Add themeConfig setup via app.config ([9134d4b](https://github.com/becem-gharbi/nuxt-naiveui/commit/9134d4b))
+
+### 🌊 Types
+
+- Fix MenuLinkRoute `children` type ([e525582](https://github.com/becem-gharbi/nuxt-naiveui/commit/e525582))
+- Solve typecheck issues ([d0bccc5](https://github.com/becem-gharbi/nuxt-naiveui/commit/d0bccc5))
+
+### 🏡 Chore
+
+- **playground:** Install tailwindcss ([05d969b](https://github.com/becem-gharbi/nuxt-naiveui/commit/05d969b))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.8.1
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.8.0...v1.8.1)
