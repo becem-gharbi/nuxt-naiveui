@@ -1,12 +1,12 @@
 <template>
   <n-icon-wrapper
-    v-if="icon"
     :size="sSize"
     :border-radius="borderRadius"
     :color="color"
     :icon-color="iconColor"
   >
     <Icon
+      v-if="icon"
       :key="key"
       :icon="icon"
       :width="sSize"
