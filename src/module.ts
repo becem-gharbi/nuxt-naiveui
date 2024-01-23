@@ -155,7 +155,8 @@ export default defineNuxtModule<ModuleOptions>({
         "naive-ui",
         "vueuc",
         "@css-render/vue3-ssr",
-        "@juggle/resize-observer"
+        "@juggle/resize-observer",
+        "@iconify/vue"
       );
     } else {
       nuxt.options.build.transpile.push("@juggle/resize-observer");

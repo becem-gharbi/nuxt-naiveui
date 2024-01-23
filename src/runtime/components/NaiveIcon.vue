@@ -1,23 +1,18 @@
 <template>
-  <n-icon-wrapper
-    v-if="icon"
-    :size="sSize"
-    :border-radius="borderRadius"
-    :color="color"
-    :icon-color="iconColor"
-  >
+  <span :style="{display: 'inline-block', width: sSize, height: sSize}">
     <Icon
+      v-if="icon"
       :key="key"
       :icon="icon"
       :width="sSize"
       :height="sSize"
+      :style="{width: sSize, color: iconColor, backgroundColor: color, borderRadius: `${borderRadius}px`}"
     />
-  </n-icon-wrapper>
+  </span>
 </template>
 
 <script setup lang="ts">
 import type { PublicConfig } from "../types";
-//@ts-ignore
 import { computed, useRuntimeConfig, ref, watch, onMounted, useNuxtApp } from "#imports";
 import { Icon } from "@iconify/vue/dist/offline";
 import { loadIcon } from "@iconify/vue";
@@ -32,7 +27,7 @@ const props = defineProps<{
   iconColor?: string;
 }>();
 
-const sSize = computed(() => props.size ?? config.iconSize);
+const sSize = computed(() => `${props.size ?? config.iconSize}px`);
 const sName = computed(() => props.name)
 const icon = ref();
 const key = ref(1)
@@ -44,12 +39,7 @@ icon.value = await load(sName.value);
 watch(sName, (value) =>load(value).then((res) => (icon.value = res)));
 
 onMounted(() => {
-
-  const { payload } = useNuxtApp();
-  const isPrerendered = typeof payload.prerenderedAt === "number";
-
-  if (isPrerendered) {
-      key.value++
-  }
+  const isPrerendered = typeof useNuxtApp().payload.prerenderedAt === "number";
+  if (isPrerendered) { key.value++ }
 })
 </script>
