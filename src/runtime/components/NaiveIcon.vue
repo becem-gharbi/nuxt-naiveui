@@ -1,18 +1,14 @@
 <template>
-  <n-icon-wrapper
-    :size="sSize"
-    :border-radius="borderRadius"
-    :color="color"
-    :icon-color="iconColor"
-  >
+  <span :style="{display: 'inline-block', width: sSize, height: sSize}">
     <Icon
       v-if="icon"
       :key="key"
       :icon="icon"
       :width="sSize"
       :height="sSize"
+      :style="{width: sSize, color: iconColor, backgroundColor: color, borderRadius: `${borderRadius}px`}"
     />
-  </n-icon-wrapper>
+  </span>
 </template>
 
 <script setup lang="ts">
@@ -32,7 +28,7 @@ const props = defineProps<{
   iconColor?: string;
 }>();
 
-const sSize = computed(() => props.size ?? config.iconSize);
+const sSize = computed(() => `${props.size ?? config.iconSize}px`);
 const sName = computed(() => props.name)
 const icon = ref();
 const key = ref(1)
