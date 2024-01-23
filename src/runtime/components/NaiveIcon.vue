@@ -13,7 +13,6 @@
 
 <script setup lang="ts">
 import type { PublicConfig } from "../types";
-//@ts-ignore
 import { computed, useRuntimeConfig, ref, watch, onMounted, useNuxtApp } from "#imports";
 import { Icon } from "@iconify/vue/dist/offline";
 import { loadIcon } from "@iconify/vue";
@@ -40,12 +39,7 @@ icon.value = await load(sName.value);
 watch(sName, (value) =>load(value).then((res) => (icon.value = res)));
 
 onMounted(() => {
-
-  const { payload } = useNuxtApp();
-  const isPrerendered = typeof payload.prerenderedAt === "number";
-
-  if (isPrerendered) {
-      key.value++
-  }
+  const isPrerendered = typeof useNuxtApp().payload.prerenderedAt === "number";
+  if (isPrerendered) { key.value++ }
 })
 </script>
