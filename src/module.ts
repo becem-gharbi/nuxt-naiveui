@@ -123,11 +123,19 @@ export default defineNuxtModule<ModuleOptions>({
       /^(N[A-Z]|n-[a-z])/.test(name)
     );
 
+    const naiveClientOnlyComponents = [
+      "NDrawer",
+      "NDrawerContent",
+      "NModal",
+      "NScrollbar"
+    ]
+
     naiveComponents.forEach((name) => {
       addComponent({
         export: name,
         name: name,
         filePath: "naive-ui",
+        mode: naiveClientOnlyComponents.includes(name) ? 'client' : 'all'
       });
     });
 
