@@ -1,43 +1,18 @@
 <template>
-  <NaiveConfig :theme-config="themeConfig">
+  <NaiveConfig>
     <client-only>
       <n-loading-bar-provider>
         <naive-loading-bar navigation />
       </n-loading-bar-provider>
     </client-only>
-
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+    
+    <n-dialog-provider>
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </n-dialog-provider>
   </NaiveConfig>
 </template>
-
-<script setup lang="ts">
-import type { ThemeConfig } from "../src/module";
-
-const themeConfig: ThemeConfig = {
-  // shared: {
-  //   common: {
-  //     fontFamily: theme.fontFamily.sans.join(", "),
-  //     lineHeight: theme.lineHeight.normal,
-  //   },
-  // },
-  // light: {
-  //   common: {
-  //     primaryColor: theme.colors.blue[600],
-  //     primaryColorHover: theme.colors.blue[500],
-  //     primaryColorPressed: theme.colors.blue[700],
-  //   },
-  // },
-  // dark: {
-  //   common: {
-  //     primaryColor: theme.colors.blue[500],
-  //     primaryColorHover: theme.colors.blue[400],
-  //     primaryColorPressed: theme.colors.blue[600],
-  //   },
-  // },
-};
-</script>
 
 <style>
 .brand {

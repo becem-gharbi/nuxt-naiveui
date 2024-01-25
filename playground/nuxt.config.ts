@@ -18,7 +18,9 @@ export default defineNuxtConfig({
     colorModePreference: "light",
   },
   tailwindcss: {
-    exposeConfig: true,
+    exposeConfig: {
+      write: true
+    },
     viewer: false
   }
 });
