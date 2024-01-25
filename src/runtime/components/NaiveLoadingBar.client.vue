@@ -3,19 +3,23 @@
 </template>
 
 <script setup lang="ts">
-import { useNuxtApp } from "#imports"
+import { useNuxtApp, callOnce } from "#imports"
 import { useLoadingBar  } from "naive-ui"
-
-const { error, finish, start } = useLoadingBar();
-
-window.addEventListener("naiveui:loadingBar:start", start);
-window.addEventListener("naiveui:loadingBar:finish", finish);
-window.addEventListener("naiveui:loadingBar:error", error);
 
 const props = defineProps<{ navigation?: boolean }>()
 
-if (props.navigation) {
-  useNuxtApp().hook('page:loading:start', start)
-  useNuxtApp().hook('page:loading:end', finish)
-}
+await callOnce('naive-loading-bar-add-listener', () => {
+  const { error, finish, start } = useLoadingBar();
+
+  window.addEventListener("naiveui:loadingBar:start", start);
+  window.addEventListener("naiveui:loadingBar:finish", finish);
+  window.addEventListener("naiveui:loadingBar:error", error);
+
+  if (props.navigation) {
+    useNuxtApp().hook('page:loading:start', start)
+    useNuxtApp().hook('page:loading:end', finish)
+  }
+
+  return true
+})
 </script>
