@@ -8,7 +8,7 @@ import { useLoadingBar  } from "naive-ui"
 
 const props = defineProps<{ navigation?: boolean }>()
 
-await callOnce('naive-loading-bar-add-listener', () => {
+await callOnce(() => {
   const { error, finish, start } = useLoadingBar();
 
   window.addEventListener("naiveui:loadingBar:start", start);
@@ -19,7 +19,5 @@ await callOnce('naive-loading-bar-add-listener', () => {
     useNuxtApp().hook('page:loading:start', start)
     useNuxtApp().hook('page:loading:end', finish)
   }
-
-  return true
 })
 </script>

@@ -11,14 +11,12 @@ interface CustomEvent extends Event {
   detail: NotificationOptions;
 }
 
-await callOnce('naive-notification-add-listener', () => {
+await callOnce(() => {
   const { create } = useNotification();
 
   window.addEventListener("naiveui:notification:create", (event) => {
     const { detail } = event as CustomEvent;
     create(detail);
   });
-
-  return true
 })
 </script>
