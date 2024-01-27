@@ -14,11 +14,7 @@
 - ✔️ Auto imported and tree-shakable components & composables
 - ✔️ Highly customizable for color mode and device type
 - ✔️ Friendly integration with Tailwindcss
-- ✔️ Implements custom components
-  - ✔️ `NaiveNavbar` a responsive navbar for app navigation
-  - ✔️ `NaiveIcon` a wrapper based on iconify/vue with large collection of [icons](https://icones.js.org/)
-  - ✔️ `NaiveColorModeSwitch` light/dark modes switch based on `useNaiveColorMode` composable
-  - ✔️ `NaiveTabbar` a tabBar for mobile/tablet navigation
+- ✔️ Adds custom components
 
 ## Installation
 
@@ -33,7 +29,7 @@ yarn add --dev @bg-dev/nuxt-naiveui
 ```
 ## Documentation
 
-A documentation website can be found [here](https://nuxt-naiveui.bg.tn).
+The documentation website can be found [here](https://nuxt-naiveui.bg.tn).
 
 ## License
 
