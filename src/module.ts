@@ -11,6 +11,8 @@ import { fileURLToPath } from "url";
 import naive from "naive-ui";
 import { name, version } from "../package.json";
 import { defu } from "defu";
+import iconifyVitePlugin from './iconify-vite'
+
 import type { PublicConfig } from "./runtime/types";
 export type {
   NavbarRoute,
@@ -159,7 +161,18 @@ export default defineNuxtModule<ModuleOptions>({
     });
 
     // https://www.naiveui.com/en-US/os-theme/docs/ssr
-    if (process.env.NODE_ENV === "production") {
+    if (import.meta.env.DEV) {
+      nuxt.options.build.transpile.push("@juggle/resize-observer");
+      extendViteConfig((config) => {
+        config.optimizeDeps ||= {};
+        config.optimizeDeps.include ||= [];
+        config.optimizeDeps.include.push(
+          "naive-ui",
+          "vueuc",
+          "date-fns-tz/formatInTimeZone"
+        );
+      });
+    } else {
       nuxt.options.build.transpile.push(
         "naive-ui",
         "vueuc",
@@ -167,18 +180,14 @@ export default defineNuxtModule<ModuleOptions>({
         "@juggle/resize-observer",
         "@iconify/vue"
       );
-    } else {
-      nuxt.options.build.transpile.push("@juggle/resize-observer");
+    }
 
+    // https://github.com/becem-gharbi/iconify-offline-nuxt
+    if (nuxt.options.runtimeConfig.public.naiveui.iconDownload) {
       extendViteConfig((config) => {
-        config.optimizeDeps ||= {};
-        config.optimizeDeps.include  ||= [];
-        config.optimizeDeps.include.push(
-          "naive-ui",
-          "vueuc",
-          "date-fns-tz/formatInTimeZone"
-        );
-      });
+        config.plugins ||= []
+        config.plugins.push(iconifyVitePlugin(nuxt.options.rootDir))
+      })
     }
   },
 });
