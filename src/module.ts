@@ -170,8 +170,8 @@ export default defineNuxtModule<ModuleOptions>({
       nuxt.options.build.transpile.push("@juggle/resize-observer");
 
       extendViteConfig((config) => {
-        config.optimizeDeps = config.optimizeDeps || {};
-        config.optimizeDeps.include = config.optimizeDeps.include || [];
+        config.optimizeDeps ||= {};
+        config.optimizeDeps.include  ||= [];
         config.optimizeDeps.include.push(
           "naive-ui",
           "vueuc",
