@@ -1,6 +1,50 @@
 # Changelog
 
 
+## v1.10.0
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.9.0...v1.10.0)
+
+### 🚀 Enhancements
+
+- Set nuxt compatibility to v3.10 ([e41a045](https://github.com/becem-gharbi/nuxt-naiveui/commit/e41a045))
+- Add icons download option ([#42](https://github.com/becem-gharbi/nuxt-naiveui/pull/42))
+
+### 🔥 Performance
+
+- **NaiveIcon:** Reduce bundle size ([#41](https://github.com/becem-gharbi/nuxt-naiveui/pull/41))
+- Exclude `n-drawer` `n-modal` `n-scrollbar` in SSR ([7f3eb40](https://github.com/becem-gharbi/nuxt-naiveui/commit/7f3eb40))
+
+### 🩹 Fixes
+
+- **NaiveNotification:** Only register a single listener ([fd86940](https://github.com/becem-gharbi/nuxt-naiveui/commit/fd86940))
+- **NaiveLoadingBar:** Only register a single listener ([32a0ea4](https://github.com/becem-gharbi/nuxt-naiveui/commit/32a0ea4))
+
+### 💅 Refactors
+
+- Remove extra `true` return on `callOnce` ([d5290ce](https://github.com/becem-gharbi/nuxt-naiveui/commit/d5290ce))
+
+### 📖 Documentation
+
+- Remove single addition requirement of `naive-loading-bar` and `naive-notification` ([5f5abcc](https://github.com/becem-gharbi/nuxt-naiveui/commit/5f5abcc))
+- Remove components import page ([192d155](https://github.com/becem-gharbi/nuxt-naiveui/commit/192d155))
+- Update tailwindcss integration page ([e373835](https://github.com/becem-gharbi/nuxt-naiveui/commit/e373835))
+- Update icon offline section ([a679326](https://github.com/becem-gharbi/nuxt-naiveui/commit/a679326))
+
+### 🏡 Chore
+
+- **playground:** Move theme config to app.config ([b62d806](https://github.com/becem-gharbi/nuxt-naiveui/commit/b62d806))
+- **docs:** Remove unused packages ([e0cee94](https://github.com/becem-gharbi/nuxt-naiveui/commit/e0cee94))
+- No significant change ([f7a3ed8](https://github.com/becem-gharbi/nuxt-naiveui/commit/f7a3ed8))
+- **playground:** Commit icons ([e616690](https://github.com/becem-gharbi/nuxt-naiveui/commit/e616690))
+- No significant change ([9c79ce6](https://github.com/becem-gharbi/nuxt-naiveui/commit/9c79ce6))
+- Avoid import.meta.env on module setup ([61bc065](https://github.com/becem-gharbi/nuxt-naiveui/commit/61bc065))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v1.9.0
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.8.1...v1.9.0)
