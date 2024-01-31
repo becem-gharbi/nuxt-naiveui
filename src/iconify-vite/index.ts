@@ -5,7 +5,7 @@ import { download, getSavedIcons, makeDir, removeSavedIcons, save } from './util
 const COLLECTIONS_URL = 'https://raw.githubusercontent.com/iconify/icon-sets/master/collections.json'
 
 export default function (rootDir = './'): Plugin | undefined {
-  if (import.meta.env.DEV) { return }
+  if (process.env.NODE_ENV === 'development') { return }
 
   // A regex to extract icon names from code. The match should:
   // Start and ends with " or ' or `

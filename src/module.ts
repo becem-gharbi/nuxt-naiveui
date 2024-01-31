@@ -162,7 +162,7 @@ export default defineNuxtModule<ModuleOptions>({
     });
 
     // https://www.naiveui.com/en-US/os-theme/docs/ssr
-    if (import.meta.env.DEV) {
+    if (process.env.NODE_ENV === 'development') {
       nuxt.options.build.transpile.push("@juggle/resize-observer");
       extendViteConfig((config) => {
         config.optimizeDeps ||= {};
