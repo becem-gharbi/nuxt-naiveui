@@ -25,7 +25,7 @@ export function useNaiveColorMode() {
     get value() {
       const v = process.client
         ? Cookies.get(config.colorModePreferenceCookieName)
-        : getCookie(event, config.colorModePreferenceCookieName);
+        : getCookie(event!, config.colorModePreferenceCookieName);
       return v ?? "";
     },
     set value(newValue) {
@@ -36,7 +36,7 @@ export function useNaiveColorMode() {
           sameSite: "lax",
         });
       } else {
-        setCookie(event, config.colorModePreferenceCookieName, newValue, {
+        setCookie(event!, config.colorModePreferenceCookieName, newValue, {
           maxAge: 30758400, // 1 year
           secure: true,
           sameSite: "lax",
@@ -70,9 +70,9 @@ export function useNaiveColorMode() {
 
   function detectPreferedColorMode() {
     if (process.server) {
-      setResponseHeader(event, "Accept-CH", "Sec-CH-Prefers-Color-Scheme");
-      setResponseHeader(event, "Vary", "Sec-CH-Prefers-Color-Scheme");
-      setResponseHeader(event, "Critical-CH", "Sec-CH-Prefers-Color-Scheme");
+      setResponseHeader(event!, "Accept-CH", "Sec-CH-Prefers-Color-Scheme");
+      setResponseHeader(event!, "Vary", "Sec-CH-Prefers-Color-Scheme");
+      setResponseHeader(event!, "Critical-CH", "Sec-CH-Prefers-Color-Scheme");
 
       const headers = useRequestHeaders();
       return headers["sec-ch-prefers-color-scheme"] === "dark"

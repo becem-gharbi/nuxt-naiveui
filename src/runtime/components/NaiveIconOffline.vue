@@ -1,7 +1,13 @@
 <template>
   <span :style="{ display: 'inline-block', width: sSize, height: sSize }">
-    <Icon v-if="icon" :key="key" :icon="icon" :width="sSize" :height="sSize"
-      :style="{ width: sSize, color: iconColor, backgroundColor: color, borderRadius: `${borderRadius}px` }" />
+    <Icon
+      v-if="icon"
+      :key="key"
+      :icon="icon"
+      :width="sSize"
+      :height="sSize"
+      :style="{ width: sSize, color: iconColor, backgroundColor: color, borderRadius: `${borderRadius}px` }"
+    />
   </span>
 </template>
 

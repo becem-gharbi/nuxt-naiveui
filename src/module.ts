@@ -119,7 +119,7 @@ export default defineNuxtModule<ModuleOptions>({
     addComponent({
       name: "NaiveIcon",
       filePath: resolve(runtimeDir, "components",
-        nuxt.options.runtimeConfig.public.naiveui.iconDownload ? "NaiveIconOffline.vue" : "NaiveIcon.vue")
+        options?.iconDownload ? "NaiveIconOffline.vue" : "NaiveIcon.vue")
     });
 
     // Add imports for naive-ui components
@@ -184,7 +184,7 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     // https://github.com/becem-gharbi/iconify-offline-nuxt
-    if (nuxt.options.runtimeConfig.public.naiveui.iconDownload) {
+    if (options?.iconDownload) {
       extendViteConfig((config) => {
         config.plugins ||= []
         config.plugins.push(iconifyVitePlugin(nuxt.options.rootDir))
