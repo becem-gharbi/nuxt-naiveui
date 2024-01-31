@@ -85,10 +85,6 @@ export default defineNuxtModule<ModuleOptions>({
       filePath: resolve(runtimeDir, "components", "NaiveNavbar.vue")
     });
     addComponent({
-      name: "NaiveIcon",
-      filePath: resolve(runtimeDir, "components", "NaiveIcon.vue")
-    });
-    addComponent({
       name: "NaiveColorModeSwitch",
       filePath: resolve(runtimeDir, "components", "NaiveColorModeSwitch.vue")
     });
@@ -119,6 +115,11 @@ export default defineNuxtModule<ModuleOptions>({
     addComponent({
       name: "NaiveNotification",
       filePath: resolve(runtimeDir, "components", "NaiveNotification.client.vue")
+    });
+    addComponent({
+      name: "NaiveIcon",
+      filePath: resolve(runtimeDir, "components",
+        nuxt.options.runtimeConfig.public.naiveui.iconDownload ? "NaiveIconOffline.vue" : "NaiveIcon.vue")
     });
 
     // Add imports for naive-ui components
