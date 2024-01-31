@@ -38,6 +38,7 @@ export default defineNuxtModule<ModuleOptions>({
     colorModePreference: "light",
     colorModePreferenceCookieName: "naive_color_mode_preference",
     iconSize: 20,
+    iconDownload: false,
     themeConfig: {},
   },
 
@@ -56,6 +57,14 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Add assets
     nuxt.options.css.push(resolve(runtimeDir, "assets", "style.css"));
+
+    // Pass module options to runtimeConfig object
+    nuxt.options.runtimeConfig = defu(nuxt.options.runtimeConfig, {
+      app: {},
+      public: {
+        naiveui: options,
+      },
+    });
 
     // Add plugins
     addPlugin(resolve(runtimeDir, "plugins", "naive.server"));
@@ -108,14 +117,6 @@ export default defineNuxtModule<ModuleOptions>({
     addComponent({
       name: "NaiveNotification",
       filePath: resolve(runtimeDir, "components", "NaiveNotification.client.vue")
-    });
-
-    // Pass module options to runtimeConfig object
-    nuxt.options.runtimeConfig = defu(nuxt.options.runtimeConfig, {
-      app: {},
-      public: {
-        naiveui: options,
-      },
     });
 
     // Add imports for naive-ui components

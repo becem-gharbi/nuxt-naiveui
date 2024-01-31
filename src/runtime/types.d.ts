@@ -40,6 +40,7 @@ export interface PublicConfig {
   colorModePreference: ColorModePreference;
   colorModePreferenceCookieName: string;
   iconSize: number;
+  iconDownload: boolean;
 }
 
 declare module 'nuxt/schema' {
