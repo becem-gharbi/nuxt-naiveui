@@ -16,6 +16,7 @@ export default defineNuxtConfig({
   modules: ["../src/module", "@nuxtjs/tailwindcss"],
   naiveui: {
     colorModePreference: "light",
+    iconDownload: true
   },
   tailwindcss: {
     exposeConfig: {

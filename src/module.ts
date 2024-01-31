@@ -11,6 +11,8 @@ import { fileURLToPath } from "url";
 import naive from "naive-ui";
 import { name, version } from "../package.json";
 import { defu } from "defu";
+import iconifyVitePlugin from './iconify-vite'
+
 import type { PublicConfig } from "./runtime/types";
 export type {
   NavbarRoute,
@@ -38,6 +40,7 @@ export default defineNuxtModule<ModuleOptions>({
     colorModePreference: "light",
     colorModePreferenceCookieName: "naive_color_mode_preference",
     iconSize: 20,
+    iconDownload: false,
     themeConfig: {},
   },
 
@@ -57,6 +60,14 @@ export default defineNuxtModule<ModuleOptions>({
     // Add assets
     nuxt.options.css.push(resolve(runtimeDir, "assets", "style.css"));
 
+    // Pass module options to runtimeConfig object
+    nuxt.options.runtimeConfig = defu(nuxt.options.runtimeConfig, {
+      app: {},
+      public: {
+        naiveui: options,
+      },
+    });
+
     // Add plugins
     addPlugin(resolve(runtimeDir, "plugins", "naive.server"));
     addPlugin(resolve(runtimeDir, "plugins", "colorMode"));
@@ -72,10 +83,6 @@ export default defineNuxtModule<ModuleOptions>({
     addComponent({
       name: "NaiveNavbar",
       filePath: resolve(runtimeDir, "components", "NaiveNavbar.vue")
-    });
-    addComponent({
-      name: "NaiveIcon",
-      filePath: resolve(runtimeDir, "components", "NaiveIcon.vue")
     });
     addComponent({
       name: "NaiveColorModeSwitch",
@@ -109,13 +116,10 @@ export default defineNuxtModule<ModuleOptions>({
       name: "NaiveNotification",
       filePath: resolve(runtimeDir, "components", "NaiveNotification.client.vue")
     });
-
-    // Pass module options to runtimeConfig object
-    nuxt.options.runtimeConfig = defu(nuxt.options.runtimeConfig, {
-      app: {},
-      public: {
-        naiveui: options,
-      },
+    addComponent({
+      name: "NaiveIcon",
+      filePath: resolve(runtimeDir, "components",
+        nuxt.options.runtimeConfig.public.naiveui.iconDownload ? "NaiveIconOffline.vue" : "NaiveIcon.vue")
     });
 
     // Add imports for naive-ui components
@@ -158,7 +162,18 @@ export default defineNuxtModule<ModuleOptions>({
     });
 
     // https://www.naiveui.com/en-US/os-theme/docs/ssr
-    if (process.env.NODE_ENV === "production") {
+    if (import.meta.env.DEV) {
+      nuxt.options.build.transpile.push("@juggle/resize-observer");
+      extendViteConfig((config) => {
+        config.optimizeDeps ||= {};
+        config.optimizeDeps.include ||= [];
+        config.optimizeDeps.include.push(
+          "naive-ui",
+          "vueuc",
+          "date-fns-tz/formatInTimeZone"
+        );
+      });
+    } else {
       nuxt.options.build.transpile.push(
         "naive-ui",
         "vueuc",
@@ -166,18 +181,14 @@ export default defineNuxtModule<ModuleOptions>({
         "@juggle/resize-observer",
         "@iconify/vue"
       );
-    } else {
-      nuxt.options.build.transpile.push("@juggle/resize-observer");
+    }
 
+    // https://github.com/becem-gharbi/iconify-offline-nuxt
+    if (nuxt.options.runtimeConfig.public.naiveui.iconDownload) {
       extendViteConfig((config) => {
-        config.optimizeDeps ||= {};
-        config.optimizeDeps.include  ||= [];
-        config.optimizeDeps.include.push(
-          "naive-ui",
-          "vueuc",
-          "date-fns-tz/formatInTimeZone"
-        );
-      });
+        config.plugins ||= []
+        config.plugins.push(iconifyVitePlugin(nuxt.options.rootDir))
+      })
     }
   },
 });
