@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.10.1
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.10.0...v1.10.1)
+
+### 📦 Build
+
+- Support icons download in China ([3289a27](https://github.com/becem-gharbi/nuxt-naiveui/commit/3289a27))
+
+### 🏡 Chore
+
+- Add iconify collections server ([2f649c8](https://github.com/becem-gharbi/nuxt-naiveui/commit/2f649c8))
+- Rename iconify-collections to icon-sets ([9eac7da](https://github.com/becem-gharbi/nuxt-naiveui/commit/9eac7da))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.10.0
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.9.0...v1.10.0)
