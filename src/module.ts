@@ -186,8 +186,11 @@ export default defineNuxtModule<ModuleOptions>({
     // https://github.com/becem-gharbi/iconify-offline-nuxt
     if (options?.iconDownload) {
       extendViteConfig((config) => {
+        // This is a proxy to solve blocked `raw.githubusercontent.com` in China
+        const collectionsUrl = 'https://iconify-icon-sets.vercel.app'
+
         config.plugins ||= []
-        config.plugins.push(iconifyVitePlugin(nuxt.options.rootDir))
+        config.plugins.push(iconifyVitePlugin(nuxt.options.rootDir, collectionsUrl))
       })
     }
   },
