@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { defineAppConfig } from '#imports'
 import { _colors, _fontFamily } from '#tailwind-config/theme.mjs'
 
