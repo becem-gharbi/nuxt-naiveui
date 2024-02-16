@@ -1,7 +1,6 @@
 export default eventHandler(async (event) => {
   const collectionsUrl = 'https://raw.githubusercontent.com/iconify/icon-sets/master/collections.json'
 
-
   const fetchError = createError('failed to fetch collections')
 
   return fetch(collectionsUrl)
