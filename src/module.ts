@@ -130,8 +130,7 @@ export default defineNuxtModule<ModuleOptions>({
     const naiveClientOnlyComponents = [
       "NDrawer",
       "NDrawerContent",
-      "NModal",
-      "NScrollbar"
+      "NModal"
     ]
 
     naiveComponents.forEach((name) => {
