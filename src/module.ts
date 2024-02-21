@@ -41,6 +41,7 @@ export default defineNuxtModule<ModuleOptions>({
     colorModePreferenceCookieName: "naive_color_mode_preference",
     iconSize: 20,
     iconDownload: false,
+    iconCollectionsUrl: 'https://raw.githubusercontent.com/iconify/icon-sets/master/collections.json',
     themeConfig: {},
   },
 
@@ -185,11 +186,8 @@ export default defineNuxtModule<ModuleOptions>({
     // https://github.com/becem-gharbi/iconify-offline-nuxt
     if (options?.iconDownload) {
       extendViteConfig((config) => {
-        // This is a proxy to solve blocked `raw.githubusercontent.com` in China
-        const collectionsUrl = 'https://iconify-icon-sets.vercel.app'
-
         config.plugins ||= []
-        config.plugins.push(iconifyVitePlugin(nuxt.options.rootDir, collectionsUrl))
+        config.plugins.push(iconifyVitePlugin(nuxt.options.rootDir, options?.iconCollectionsUrl))
       })
     }
   },
