@@ -187,7 +187,7 @@ export default defineNuxtModule<ModuleOptions>({
     if (options?.iconDownload) {
       extendViteConfig((config) => {
         config.plugins ||= []
-        config.plugins.push(iconifyVitePlugin(nuxt.options.rootDir, options?.iconCollectionsUrl))
+        config.plugins.push(iconifyVitePlugin(nuxt.options.rootDir, options.iconCollectionsUrl))
       })
     }
   },
