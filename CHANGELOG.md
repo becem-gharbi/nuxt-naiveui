@@ -1,6 +1,33 @@
 # Changelog
 
 
+## v1.10.2
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.10.1...v1.10.2)
+
+### 🩹 Fixes
+
+- Allow ssr of `n-scrollbar` ([93a9e1e](https://github.com/becem-gharbi/nuxt-naiveui/commit/93a9e1e))
+
+### 📖 Documentation
+
+- **icons:** Mention custom collections URL ([58611f6](https://github.com/becem-gharbi/nuxt-naiveui/commit/58611f6))
+- Minor UI improvements ([a853312](https://github.com/becem-gharbi/nuxt-naiveui/commit/a853312))
+
+### 📦 Build
+
+- **icons:** Allow setting custom collections url ([#46](https://github.com/becem-gharbi/nuxt-naiveui/pull/46))
+
+### 🏡 Chore
+
+- Correctly handle failure in icon-sets proxy ([b0f25a7](https://github.com/becem-gharbi/nuxt-naiveui/commit/b0f25a7))
+- No significant change ([66e8097](https://github.com/becem-gharbi/nuxt-naiveui/commit/66e8097))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+- Zihan Hu ([@Zihan-Hu](http://github.com/Zihan-Hu))
+
 ## v1.10.1
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.10.0...v1.10.1)
