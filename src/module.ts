@@ -167,11 +167,7 @@ export default defineNuxtModule<ModuleOptions>({
       extendViteConfig((config) => {
         config.optimizeDeps ||= {};
         config.optimizeDeps.include ||= [];
-        config.optimizeDeps.include.push(
-          "naive-ui",
-          "vueuc",
-          "date-fns-tz/formatInTimeZone"
-        );
+        config.optimizeDeps.include.push("naive-ui");
       });
     } else {
       nuxt.options.build.transpile.push(
