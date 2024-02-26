@@ -51,6 +51,9 @@
     "nuxt": "^3.10.0",
     "vitest": "^1.2.2"
   },
+  "peerDependencies": {
+    "naive-ui": "^2.37.3"
+  },
   "repository": {
     "url": "git+https://github.com/becem-gharbi/nuxt-naiveui.git"
   },
