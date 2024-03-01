@@ -9,7 +9,7 @@
 import { ref, computed, h, useNuxtApp, useRoute } from "#imports";
 import { NuxtLink, NaiveIcon } from "#components";
 import type { Component } from "vue";
-import type { MenuProps, MenuOption } from "naive-ui";
+import { type MenuProps, type MenuOption } from "naive-ui";
 import type { MenuLinkRoute } from "../types";
 
 interface NaiveMenuLinkProps
@@ -17,12 +17,29 @@ interface NaiveMenuLinkProps
     routes: MenuLinkRoute[];
 }
 
-const props = defineProps<NaiveMenuLinkProps>();
-const activeKey = ref(getActiveKey(useRoute().path));
+const route = useRoute()
 
-useNuxtApp().$router.afterEach((to) => {
-    activeKey.value = getActiveKey(to.path)
-});
+const props = defineProps<NaiveMenuLinkProps>();
+
+
+const isDeprecatedKey = computed(()=>{
+    const checkPath = (m: MenuLinkRoute)=>{
+        return !!m.path || m.children.some((c)=> checkPath(c))
+    }
+    // check if deprecated path logic is used
+    return props.routes.some(r=> checkPath(r))
+})
+
+const activeKey = computed(()=>{
+    // check if deprecated path logic is used
+    if(isDeprecatedKey.value){
+        return getActiveKey(route.path)
+    }
+
+    return route.name
+
+})
+
 
 function getActiveKey(activePath: string) {
     let activeKey = activePath
@@ -49,15 +66,18 @@ function getActiveKey(activePath: string) {
 const menuOptions = computed<MenuOption[]>(() => {
     const cb = (routes: MenuLinkRoute[]) =>
         routes.map((route) => {
+            const key = isDeprecatedKey.value ? (route.path ?? route.label) : route.key
+            const to = isDeprecatedKey.value ? route.path : route.to
+
             const menuOption: MenuOption = {
                 label: route.path
                     ? () =>
-                        h(NuxtLink, { to: route.path }, { default: () => route.label })
+                        h(NuxtLink, { to }, { default: () => route.label })
                     : route.label,
                 icon: route.icon
                     ? () => h(NaiveIcon as Component, { name: route.icon })
                     : undefined,
-                key: route.path ?? route.label,
+                key,
             };
             if (route.children) {
                 menuOption.children = cb(route.children);
