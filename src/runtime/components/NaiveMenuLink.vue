@@ -1,12 +1,12 @@
 <template>
   <n-menu
-    v-model:value="activeKey"
+    :value="activeKey"
     :options="menuOptions"
   />
 </template>
 
 <script setup lang="ts">
-import { ref, computed, h, useNuxtApp, useRoute } from "#imports";
+import { computed, h, useRoute } from "#imports";
 import { NuxtLink, NaiveIcon } from "#components";
 import type { Component } from "vue";
 import { type MenuProps, type MenuOption } from "naive-ui";
@@ -21,25 +21,22 @@ const route = useRoute()
 
 const props = defineProps<NaiveMenuLinkProps>();
 
-
-const isDeprecatedKey = computed(()=>{
-    const checkPath = (m: MenuLinkRoute)=>{
-        return !!m.path || m.children.some((c)=> checkPath(c))
+const isDeprecatedKey = computed(() => {
+    const checkPath = (m: MenuLinkRoute): boolean => {
+        return !!m.path || m.children?.some((c) => checkPath(c)) || false
     }
     // check if deprecated path logic is used
-    return props.routes.some(r=> checkPath(r))
+    return props.routes.some(r => checkPath(r))
 })
 
-const activeKey = computed(()=>{
+const activeKey = computed(() => {
     // check if deprecated path logic is used
-    if(isDeprecatedKey.value){
+    if (isDeprecatedKey.value) {
         return getActiveKey(route.path)
     }
 
-    return route.name
-
+    return route.name?.toString()
 })
-
 
 function getActiveKey(activePath: string) {
     let activeKey = activePath
@@ -66,7 +63,7 @@ function getActiveKey(activePath: string) {
 const menuOptions = computed<MenuOption[]>(() => {
     const cb = (routes: MenuLinkRoute[]) =>
         routes.map((route) => {
-            const key = isDeprecatedKey.value ? (route.path ?? route.label) : route.key
+            const key = isDeprecatedKey.value ? (route.path ?? route.label) : route.key?.toString()
             const to = isDeprecatedKey.value ? route.path : route.to
 
             const menuOption: MenuOption = {
