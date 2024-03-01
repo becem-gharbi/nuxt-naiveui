@@ -31,6 +31,24 @@ yarn add --dev @bg-dev/nuxt-naiveui
 
 The documentation website can be found [here](https://nuxt-naiveui.bg.tn).
 
+## Development
+
+```bash
+# Install dependencies
+yarn install && cd playground && yarn install
+
+# Generate type stubs
+yarn dev:prepare
+
+# Develop with the playground
+yarn dev
+
+# Build the playground
+yarn dev:build
+
+# Run ESLint
+yarn lint
+```
 ## License
 
 [MIT License](./LICENSE)
