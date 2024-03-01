@@ -60,7 +60,7 @@ const menuOptions = computed<MenuOption[]>(() => {
             const to = isDeprecatedKey.value ? route.path : route.to
 
             const menuOption: MenuOption = {
-                label: route.path
+                label: to
                     ? () => h(NuxtLink, { to }, { default: () => route.label })
                     : route.label,
                 icon: route.icon
