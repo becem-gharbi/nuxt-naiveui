@@ -1,8 +1,7 @@
-.n-button:default {
-    background-color: var(--n-color) !important;
-}
-
-.n-button {
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
     background-color: var(--n-color);
 }
 
