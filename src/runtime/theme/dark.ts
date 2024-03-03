@@ -83,26 +83,21 @@ export default {
     boxShadow3:
       "0 6px 16px -9px rgba(0, 0, 0, .08), 0 9px 28px 0 rgba(0, 0, 0, .05), 0 12px 48px 16px rgba(0, 0, 0, .03)",
   },
-
   Skeleton: {
     color: "#FFFFFF1F",
     colorEnd: "#FFFFFF2E",
   },
-
   Tag: {
     colorBordered: "#00000000",
   },
-
   IconWrapper: {
     color: "transparent",
     iconColor: "inherit",
   },
-
   Tooltip: {
     color: "rgb(72, 72, 78)",
     textColor: "rgba(255, 255, 255, 0.9)",
   },
-
   Slider: {
     indicatorColor: "rgb(72, 72, 78)",
     indicatorTextColor: "rgba(255, 255, 255, 0.9)",
@@ -115,8 +110,11 @@ export default {
     height: "3px",
   },
   Layout: {
-    siderColor: "rgb(16, 16, 20)", 
+    siderColor: "rgb(16, 16, 20)",
     headerColor: "rgb(16, 16, 20)",
     footerColor: "rgb(16, 16, 20)",
+  },
+  Form: {
+    feedbackPadding: "8px 0px 10px 0px",
   },
 } as GlobalThemeOverrides;

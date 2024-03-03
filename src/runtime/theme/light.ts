@@ -58,4 +58,7 @@ export default {
     headerColor: "white",
     footerColor: "white",
   },
+  Form: {
+    feedbackPadding: "8px 0px 10px 0px",
+  },
 } as GlobalThemeOverrides;
