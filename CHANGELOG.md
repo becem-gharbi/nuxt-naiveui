@@ -1,6 +1,39 @@
 # Changelog
 
 
+## v1.10.3
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.10.2...v1.10.3)
+
+### 🩹 Fixes
+
+- **n-button:** Fix potential unapplied bg color on hover ([97f9c3e](https://github.com/becem-gharbi/nuxt-naiveui/commit/97f9c3e))
+
+### 💅 Refactors
+
+- **theme:** Increase vertical padding of feedback on `n-form` ([19d67dd](https://github.com/becem-gharbi/nuxt-naiveui/commit/19d67dd))
+- Add `useModal` for auto-import ([7c5cd70](https://github.com/becem-gharbi/nuxt-naiveui/commit/7c5cd70))
+
+### 📖 Documentation
+
+- Add setup for pnpm installation ([81947a6](https://github.com/becem-gharbi/nuxt-naiveui/commit/81947a6))
+- Change font-family ([46f8971](https://github.com/becem-gharbi/nuxt-naiveui/commit/46f8971))
+- Change font-family ([0caca9e](https://github.com/becem-gharbi/nuxt-naiveui/commit/0caca9e))
+- Add setup for pnpm installation ([111fcfc](https://github.com/becem-gharbi/nuxt-naiveui/commit/111fcfc))
+- **readme:** Add development section ([614a180](https://github.com/becem-gharbi/nuxt-naiveui/commit/614a180))
+- Mention `NaiveConfig` as root in `error.vue` ([9454e17](https://github.com/becem-gharbi/nuxt-naiveui/commit/9454e17))
+
+### 🏡 Chore
+
+- Remove extra vite optimizations ([#48](https://github.com/becem-gharbi/nuxt-naiveui/pull/48))
+- **lint:** Use `@nuxtjs/eslint-config-typescript` rules ([8c7d607](https://github.com/becem-gharbi/nuxt-naiveui/commit/8c7d607))
+- Set `homepage` on `package.json` ([c1c920d](https://github.com/becem-gharbi/nuxt-naiveui/commit/c1c920d))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+- Becem ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.10.2
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.10.1...v1.10.2)
