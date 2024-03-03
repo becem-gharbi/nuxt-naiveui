@@ -38,37 +38,37 @@
 </template>
 
 <script setup lang="ts">
-import type { NavbarRoute } from "../../src/module";
+import type { NavbarRoute } from '../../src/module'
 
 const navbarRoutes: NavbarRoute[] = [
   {
-    label: "Sample, this is a long long lable",
-    icon: "ri:home-4-line",
-    path: "/",
+    label: 'Sample, this is a long long lable',
+    icon: 'ri:home-4-line',
+    path: '/'
   },
   {
-    label: "Computers",
-    icon: "material-symbols:computer-outline",
-    path: "/computers",
+    label: 'Computers',
+    icon: 'material-symbols:computer-outline',
+    path: '/computers'
   },
   {
-    label: "Categories",
-    icon: "mdi:bookmark-multiple-outline",
+    label: 'Categories',
+    icon: 'mdi:bookmark-multiple-outline',
     children: [
       {
-        label: "Books",
-        icon: "material-symbols:menu-book-outline-rounded",
-        path: "/books",
-      },
-    ],
-  },
-];
+        label: 'Books',
+        icon: 'material-symbols:menu-book-outline-rounded',
+        path: '/books'
+      }
+    ]
+  }
+]
 
 const drawerRoutes: NavbarRoute[] = [
   {
-    label: "Sample, this is a long long lable",
-    icon: "ri:home-4-line",
-    path: "/",
-  },
-];
+    label: 'Sample, this is a long long lable',
+    icon: 'ri:home-4-line',
+    path: '/'
+  }
+]
 </script>

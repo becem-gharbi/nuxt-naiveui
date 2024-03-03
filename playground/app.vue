@@ -5,7 +5,7 @@
         <naive-loading-bar navigation />
       </n-loading-bar-provider>
     </client-only>
-    
+
     <n-dialog-provider>
       <NuxtLayout>
         <NuxtPage />
@@ -31,7 +31,6 @@
   opacity: 0;
   filter: blur(1rem);
 }
-
 
 .layout-enter-active,
 .layout-leave-active {

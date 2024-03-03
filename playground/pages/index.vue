@@ -181,9 +181,9 @@
 </template>
 
 <script setup>
-import { useAsyncData } from '#imports';
+import { useAsyncData } from '#imports'
 
-await useAsyncData(() => new Promise(resolve => {
+await useAsyncData(() => new Promise((resolve) => {
   setTimeout(resolve, 2000)
 }))
 </script>

@@ -1,21 +1,21 @@
-export function useNaiveLoadingBar() {
-  function start() {
+export function useNaiveLoadingBar () {
+  function start () {
     if (process.client) {
-      window.dispatchEvent(new CustomEvent("naiveui:loadingBar:start"));
+      window.dispatchEvent(new CustomEvent('naiveui:loadingBar:start'))
     }
   }
 
-  function finish() {
+  function finish () {
     if (process.client) {
-      window.dispatchEvent(new CustomEvent("naiveui:loadingBar:finish"));
+      window.dispatchEvent(new CustomEvent('naiveui:loadingBar:finish'))
     }
   }
 
-  function error() {
+  function error () {
     if (process.client) {
-      window.dispatchEvent(new CustomEvent("naiveui:loadingBar:error"));
+      window.dispatchEvent(new CustomEvent('naiveui:loadingBar:error'))
     }
   }
 
-  return { start, finish, error };
+  return { start, finish, error }
 }

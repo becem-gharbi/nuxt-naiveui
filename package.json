@@ -45,6 +45,7 @@
     "@nuxt/module-builder": "^0.5.5",
     "@nuxt/schema": "^3.10.3",
     "@nuxt/test-utils": "^3.11.0",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/js-cookie": "^3.0.6",
     "changelogen": "^0.5.5",
     "eslint": "^8.57.0",
