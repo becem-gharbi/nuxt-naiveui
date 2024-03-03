@@ -151,6 +151,7 @@ export default defineNuxtModule<ModuleOptions>({
       "useLoadingBar",
       "useDialogReactiveList",
       "useThemeVars",
+      "useModal"
     ];
 
     naiveComposables.forEach((name) => {
