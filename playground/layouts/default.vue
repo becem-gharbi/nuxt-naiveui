@@ -42,7 +42,7 @@ import type { NavbarRoute } from '../../src/module'
 
 const navbarRoutes: NavbarRoute[] = [
   {
-    label: 'Sample, this is a long long lable',
+    label: 'Sample, this is a long long label',
     icon: 'ri:home-4-line',
     path: '/'
   },
@@ -66,7 +66,7 @@ const navbarRoutes: NavbarRoute[] = [
 
 const drawerRoutes: NavbarRoute[] = [
   {
-    label: 'Sample, this is a long long lable',
+    label: 'Sample, this is a long long label',
     icon: 'ri:home-4-line',
     path: '/'
   }
