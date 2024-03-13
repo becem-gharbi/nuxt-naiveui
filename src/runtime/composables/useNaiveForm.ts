@@ -1,6 +1,6 @@
 import type { FormInst, FormRules } from 'naive-ui'
-import { ref, computed } from '#imports'
-import type { Ref, ComputedRef } from '#imports'
+import { ref, computed, toValue } from '#imports'
+import type { Ref, ComputedRef, MaybeRefOrGetter } from '#imports'
 
 export function useNaiveForm (model: Ref<any> = ref({})) {
   const formRef: Ref<FormInst | null> = ref<FormInst | null>(null)
@@ -50,5 +50,10 @@ export function useNaiveForm (model: Ref<any> = ref({})) {
     model.value = JSON.parse(JSON.stringify(defaultModel.value))
   }
 
-  return { formRef, pending, rules, apiErrors, edited, reset, onSubmit }
+
+  function updateResetValue(){
+    defaultModel.value = JSON.parse(JSON.stringify(model.value))
+  }
+
+  return { formRef, pending, rules, apiErrors, edited, reset, onSubmit, updateResetValue }
 }
