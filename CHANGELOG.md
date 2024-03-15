@@ -1,6 +1,31 @@
 # Changelog
 
 
+## v1.10.4
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.10.3...v1.10.4)
+
+### 🩹 Fixes
+
+- Avoid bg color override of non naive-ui buttons ([74f40b6](https://github.com/becem-gharbi/nuxt-naiveui/commit/74f40b6))
+
+### 📖 Documentation
+
+- **tailwindcss:** Update color mode snippet ([f1be781](https://github.com/becem-gharbi/nuxt-naiveui/commit/f1be781))
+
+### 🏡 Chore
+
+- **playground:** Fix typo ([#53](https://github.com/becem-gharbi/nuxt-naiveui/pull/53))
+- **playground:** Fix typo ([#54](https://github.com/becem-gharbi/nuxt-naiveui/pull/54))
+- **lint:** Fix ([f516e9e](https://github.com/becem-gharbi/nuxt-naiveui/commit/f516e9e))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+- Ryan ([@sohaha](http://github.com/sohaha))
+- Jaafoura ([@J43fura](http://github.com/J43fura))
+
 ## v1.10.3
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.10.2...v1.10.3)
