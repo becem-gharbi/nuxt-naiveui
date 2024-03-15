@@ -1,7 +1,4 @@
-button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+.n-button {
     background-color: var(--n-color);
 }
 
