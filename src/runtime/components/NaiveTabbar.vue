@@ -36,9 +36,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useRoute, useThemeVars } from "#imports";
-import { NuxtLink, NaiveIcon } from "#components";
-import type { TabbarRoute } from "../types";
+import type { TabbarRoute } from '../types'
+import { computed, useRoute, useThemeVars } from '#imports'
+import { NuxtLink, NaiveIcon } from '#components'
 
 withDefaults(
   defineProps<{
@@ -46,13 +46,13 @@ withDefaults(
     iconSize?: number;
   }>(),
   {
-    iconSize: 24,
+    iconSize: 24
   }
-);
+)
 
-const naiveTheme = useThemeVars();
-const route = useRoute();
-const backgroundColor = computed(() => naiveTheme.value.bodyColor);
+const naiveTheme = useThemeVars()
+const route = useRoute()
+const backgroundColor = computed(() => naiveTheme.value.bodyColor)
 </script>
 
 <style scoped>

@@ -8,6 +8,9 @@
 </template>
 
 <script setup lang="ts">
+import { defu } from 'defu'
+import type { GlobalThemeOverrides, ConfigProviderProps } from 'naive-ui'
+import type { ThemeConfig } from '../types'
 import {
   useHead,
   useRuntimeConfig,
@@ -18,33 +21,30 @@ import {
   useNaiveDevice,
   useNuxtApp,
   useAppConfig
-} from "#imports";
-import { defu } from "defu";
-import type { GlobalThemeOverrides, ConfigProviderProps } from "naive-ui";
-import type { ThemeConfig } from "../types";
+} from '#imports'
 
 interface NaiveConfigProps
   extends /* @vue-ignore */ Omit<
     ConfigProviderProps,
-    "themeOverrides" | "theme"
+    'themeOverrides' | 'theme'
   > {
   themeConfig?: ThemeConfig;
 }
 
-const props = defineProps<NaiveConfigProps>();
-const naiveTheme = ref();
-const { colorMode } = useNaiveColorMode();
+const props = defineProps<NaiveConfigProps>()
+const naiveTheme = ref()
+const { colorMode } = useNaiveColorMode()
 
 const themeConfig: ThemeConfig | undefined =
-  props.themeConfig
-  ?? (useAppConfig().naiveui as any)?.themeConfig
-  ?? (useRuntimeConfig().public.naiveui as any).themeConfig;
+  props.themeConfig ??
+  (useAppConfig().naiveui as any)?.themeConfig ??
+  (useRuntimeConfig().public.naiveui as any).themeConfig
 
-await updateTheme();
+await updateTheme()
 
 useHead(() => ({
   htmlAttrs: {
-    class: colorMode.value === "dark" ? "dark" : "",
+    class: colorMode.value === 'dark' ? 'dark' : ''
   },
   style: [
     {
@@ -52,107 +52,107 @@ useHead(() => ({
                 body {
                     ${[
           compileBodyStyle(
-            "background-color",
+            'background-color',
             naiveTheme.value?.common?.bodyColor
           ),
           compileBodyStyle(
-            "color",
+            'color',
             naiveTheme.value?.common?.textColorBase
           ),
           compileBodyStyle(
-            "font-family",
+            'font-family',
             naiveTheme.value?.common?.fontFamily
           ),
           compileBodyStyle(
-            "font-size",
+            'font-size',
             naiveTheme.value?.common?.fontSize
           ),
           compileBodyStyle(
-            "line-height",
+            'line-height',
             naiveTheme.value?.common?.lineHeight
-          ),
-        ].join(" ")}
-                    }`,
-    },
-  ],
-}));
+          )
+        ].join(' ')}
+                    }`
+    }
+  ]
+}))
 
-watch(colorMode, updateTheme);
+watch(colorMode, updateTheme)
 
 onMounted(() => {
-  const { payload } = useNuxtApp();
-  const isPrerendered = typeof payload.prerenderedAt === "number";
+  const { payload } = useNuxtApp()
+  const isPrerendered = typeof payload.prerenderedAt === 'number'
 
   if (isPrerendered) {
     // In order to update dom on pre-rendered pages
-    naiveTheme.value.isPrerendered = true;
+    naiveTheme.value.isPrerendered = true
   }
-});
+})
 
-async function updateTheme() {
+async function updateTheme () {
   const deviceTheme = await getDeviceTheme()
   const colorModeTheme = await getColorModeTheme()
 
-  naiveTheme.value = defu(themeConfig?.shared, deviceTheme, colorModeTheme);
+  naiveTheme.value = defu(themeConfig?.shared, deviceTheme, colorModeTheme)
 }
 
-async function getColorModeTheme() {
-  let colorModeTheme: GlobalThemeOverrides = {};
+async function getColorModeTheme () {
+  let colorModeTheme: GlobalThemeOverrides = {}
 
-  if (colorMode.value === "dark") {
+  if (colorMode.value === 'dark') {
     if (themeConfig?.dark?.defaults === false) {
-      colorModeTheme = themeConfig?.dark;
+      colorModeTheme = themeConfig?.dark
     } else {
-      const defaultDarkTheme = await import("../theme/dark");
-      colorModeTheme = defu(themeConfig?.dark, defaultDarkTheme.default);
+      const defaultDarkTheme = await import('../theme/dark')
+      colorModeTheme = defu(themeConfig?.dark, defaultDarkTheme.default)
     }
   } else if (themeConfig?.light?.defaults === false) {
-    colorModeTheme = themeConfig?.light;
+    colorModeTheme = themeConfig?.light
   } else {
-    const defaultLightTheme = await import("../theme/light");
-    colorModeTheme = defu(themeConfig?.light, defaultLightTheme.default);
+    const defaultLightTheme = await import('../theme/light')
+    colorModeTheme = defu(themeConfig?.light, defaultLightTheme.default)
   }
 
   return colorModeTheme
 }
 
-async function getDeviceTheme() {
+async function getDeviceTheme () {
   let deviceTheme: GlobalThemeOverrides = {}
 
-  const { isMobileOrTablet, isMobile } = useNaiveDevice();
+  const { isMobileOrTablet, isMobile } = useNaiveDevice()
 
   if (isMobileOrTablet) {
     if (themeConfig?.mobileOrTablet?.defaults === false) {
-      deviceTheme = themeConfig?.mobileOrTablet;
+      deviceTheme = themeConfig?.mobileOrTablet
     } else {
       const defaultMobileOrTabletTheme = await import(
-        "../theme/mobileOrTablet"
-      );
+        '../theme/mobileOrTablet'
+      )
       deviceTheme = defu(
         themeConfig?.mobileOrTablet,
         defaultMobileOrTabletTheme.default
-      );
+      )
     }
   } else if (isMobile) {
     if (themeConfig?.mobile?.defaults === false) {
-      deviceTheme = themeConfig?.mobile;
+      deviceTheme = themeConfig?.mobile
     } else {
       const defaultMobileOrTabletTheme = await import(
-        "../theme/mobileOrTablet"
-      );
+        '../theme/mobileOrTablet'
+      )
       deviceTheme = defu(
         themeConfig?.mobile,
         defaultMobileOrTabletTheme.default
-      );
+      )
     }
   }
 
   return deviceTheme
 }
 
-function compileBodyStyle(prop: string, value?: string) {
+function compileBodyStyle (prop: string, value?: string) {
   if (value) {
-    return `${prop}: ${value} !important;`;
+    return `${prop}: ${value} !important;`
   }
 }
 </script>

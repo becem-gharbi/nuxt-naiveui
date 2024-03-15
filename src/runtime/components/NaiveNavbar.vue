@@ -121,21 +121,21 @@
 </template>
 
 <script setup lang="ts">
+import type { NavbarRoute } from '../types'
 import {
   ref,
   computed,
   useRouter,
-  useNaiveDevice,
-} from "#imports";
-import { NaiveIcon, LazyNaiveMenuLink } from "#components";
-import type { NavbarRoute } from "../types";
+  useNaiveDevice
+} from '#imports'
+import { NaiveIcon, LazyNaiveMenuLink } from '#components'
 
-const drawerActive = ref(false);
-const router = useRouter();
-const { isMobileOrTablet } = useNaiveDevice();
+const drawerActive = ref(false)
+const router = useRouter()
+const { isMobileOrTablet } = useNaiveDevice()
 
-router.afterEach(() => drawerActive.value = false)
- 
+router.afterEach(() => { drawerActive.value = false })
+
 const props = withDefaults(
   defineProps<{
     routes?: NavbarRoute[];
@@ -145,8 +145,8 @@ const props = withDefaults(
     backIcon?: boolean;
     backIconSize?: number;
     menuInverted?: boolean;
-    menuPlacement?: "right" | "left" | "center";
-    drawerPlacement?: "top" | "right" | "bottom" | "left";
+    menuPlacement?: 'right' | 'left' | 'center';
+    drawerPlacement?: 'top' | 'right' | 'bottom' | 'left';
     sticky?: boolean;
     drawerClosable?: boolean;
     drawerWidth?: string | number;
@@ -154,20 +154,20 @@ const props = withDefaults(
   {
     routes: () => [],
     drawerRoutes: () => [],
-    menuToggleIcon: "ph:equals",
-    menuPlacement: "left",
-    drawerPlacement: "left",
+    menuToggleIcon: 'ph:equals',
+    menuPlacement: 'left',
+    drawerPlacement: 'left',
     menuInverted: false,
     sticky: true,
     menuToggleIconSize: 26,
     backIcon: false,
     backIconSize: 26,
-    drawerWidth: "100%",
-    drawerClosable: true,
+    drawerWidth: '100%',
+    drawerClosable: true
   }
-);
+)
 
 const flexInnerSides = computed(() =>
-  props.menuPlacement === "center" ? 1 : "inherit"
-);
+  props.menuPlacement === 'center' ? 1 : 'inherit'
+)
 </script>

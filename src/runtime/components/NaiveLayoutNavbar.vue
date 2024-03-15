@@ -60,8 +60,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, useNaiveDevice } from "#imports";
-import type { MenuLinkRoute } from "../types";
+import type { MenuLinkRoute } from '../types'
+import { ref, useNaiveDevice } from '#imports'
 
 withDefaults(
   defineProps<{
@@ -74,7 +74,7 @@ withDefaults(
     drawerPlacement?: 'top' | 'right' | 'bottom' | 'left';
   }>(),
   {
-    toggleIcon: "ph:equals",
+    toggleIcon: 'ph:equals',
     routes: () => [],
     drawerRoutes: () => [],
     drawerClosable: true,
@@ -82,7 +82,7 @@ withDefaults(
     nativeScrollbar: false,
     drawerPlacement: 'left'
   }
-);
+)
 
 const { isMobileOrTablet } = useNaiveDevice()
 const drawerActive = ref(false)

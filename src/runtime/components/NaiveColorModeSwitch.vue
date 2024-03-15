@@ -10,13 +10,13 @@
 </template>
 
 <script setup lang="ts">
-import { useNaiveColorMode, computed } from "#imports";
-import type { ButtonProps } from "naive-ui";
+import type { ButtonProps } from 'naive-ui'
+import { useNaiveColorMode, computed } from '#imports'
 
 interface Props extends /* @vue-ignore */ ButtonProps {}
-defineProps<Props>();
+defineProps<Props>()
 
-const { colorModePreference } = useNaiveColorMode();
+const { colorModePreference } = useNaiveColorMode()
 
 const preference = computed({
   get: () => colorModePreference.get(),
@@ -24,29 +24,29 @@ const preference = computed({
 })
 
 const icon = computed(() => {
-    switch (preference.value) {
-    case "light":
-      return "ph:sun";
-    case "dark":
-      return "ph:moon";
-    case "system":
-      return "ph:monitor";
+  switch (preference.value) {
+    case 'light':
+      return 'ph:sun'
+    case 'dark':
+      return 'ph:moon'
+    case 'system':
+      return 'ph:monitor'
     default:
-      return "ph:dots-three";
+      return 'ph:dots-three'
   }
 })
 
-function toggleColorMode() {
+function toggleColorMode () {
   switch (preference.value) {
-    case "light":
-      preference.value = "dark";
-      break;
-    case "dark":
-      preference.value = "system";
-      break;
-    case "system":
-      preference.value = "light";
-      break;
+    case 'light':
+      preference.value = 'dark'
+      break
+    case 'dark':
+      preference.value = 'system'
+      break
+    case 'system':
+      preference.value = 'light'
+      break
   }
 }
 </script>

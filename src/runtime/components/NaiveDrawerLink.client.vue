@@ -28,27 +28,27 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from "#imports";
-import type { MenuLinkRoute } from "../types";
+import type { MenuLinkRoute } from '../types'
+import { useRouter } from '#imports'
 
 withDefaults(
-    defineProps<{
+  defineProps<{
     show: boolean;
     routes?: MenuLinkRoute[];
     closable?: boolean;
     placement?: 'top' | 'right' | 'bottom' | 'left';
     width?: string | number;
   }>(),
-    {
+  {
     show: false,
     routes: () => [],
     closable: true,
     placement: 'left',
     width: '100%'
   }
-);
+)
 
 const emits = defineEmits(['update:show'])
 
-useRouter().afterEach(() => emits('update:show', false));
+useRouter().afterEach(() => emits('update:show', false))
 </script>
