@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, h, useRoute } from "#imports";
+import { computed, h, useRouter } from "#imports";
 import { NuxtLink, NaiveIcon } from "#components";
 import type { Component } from "vue";
 import type { MenuProps, MenuOption } from "naive-ui";
@@ -19,7 +19,7 @@ interface NaiveMenuLinkProps
 
 const props = defineProps<NaiveMenuLinkProps>();
 
-const currentRoute = useRoute()
+const router = useRouter()
 
 // check if deprecated path logic is used
 const isDeprecatedKey = computed(() => props.routes.some(checkPath))
@@ -27,8 +27,8 @@ const checkPath = (m: MenuLinkRoute): boolean => !!m.path || m.children?.some(ch
 
 // The menu's active key
 const activeKey = computed(() => isDeprecatedKey.value
-    ? getActiveKey(currentRoute.path)
-    : currentRoute.name?.toString()
+    ? getActiveKey(router.currentRoute.value?.path)
+    : router.currentRoute.value?.name?.toString()
 )
 
 function getActiveKey(activePath: string) {
