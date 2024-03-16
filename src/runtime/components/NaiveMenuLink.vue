@@ -56,8 +56,9 @@ function getActiveKey(activePath: string) {
 const menuOptions = computed<MenuOption[]>(() => {
     const cb = (routes: MenuLinkRoute[]) =>
         routes.map((route) => {
-            const key = (isDeprecatedKey.value ? route.path : route.key?.toString()) ?? route.label
             const to = isDeprecatedKey.value ? route.path : route.to
+            const name = route.to && router.resolve(route.to).name?.toString()
+            const key = (isDeprecatedKey.value ? route.path : name) ?? route.label
 
             const menuOption: MenuOption = {
                 label: to

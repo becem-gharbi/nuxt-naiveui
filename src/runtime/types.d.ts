@@ -31,7 +31,6 @@ export type MenuLinkRoute = {
    */
   path?: string;
   to?: never
-  key?: never
   children?: MenuLinkRoute[];
 } | {
   label: string;
@@ -41,7 +40,6 @@ export type MenuLinkRoute = {
    */
   path?: never;
   to: RouteLocationRaw
-  key: string | RouteLocation['name']
   children?: MenuLinkRoute[];
 }
 
