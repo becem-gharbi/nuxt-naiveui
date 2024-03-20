@@ -45,6 +45,12 @@
       >
         Reset
       </n-button>
+      <n-button
+        :disabled="pending || !edited"
+        @click="updateResetValue"
+      >
+        Update Reset Value (to current modelValue)
+      </n-button>
     </div>
   </n-form>
 </template>
@@ -58,7 +64,7 @@ const model = ref({
     password: "qsd",
 })
 
-const { formRef, rules, pending, apiErrors, edited, reset, onSubmit } = useNaiveForm(model)
+const { formRef, rules, pending, apiErrors, edited, reset, onSubmit, updateResetValue } = useNaiveForm(model)
 
 apiErrors.value = {
     wrongCredentials: false,

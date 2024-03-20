@@ -50,5 +50,9 @@ export function useNaiveForm (model: Ref<any> = ref({})) {
     model.value = JSON.parse(JSON.stringify(defaultModel.value))
   }
 
-  return { formRef, pending, rules, apiErrors, edited, reset, onSubmit }
+  function updateResetValue () {
+    defaultModel.value = JSON.parse(JSON.stringify(model.value))
+  }
+
+  return { formRef, pending, rules, apiErrors, edited, reset, onSubmit, updateResetValue }
 }
