@@ -1,6 +1,6 @@
 <template>
   <div class="outer mobileOrTablet">
-    <NuxtLink
+    <nuxt-link
       v-for="tabbarRoute of routes"
       :key="tabbarRoute.path"
       :to="tabbarRoute.path"
@@ -12,7 +12,7 @@
         :type="tabbarRoute.path === route.path ? 'primary' : 'default'"
       >
         <div class="inner-item">
-          <NaiveIcon
+          <naive-icon
             :name="
               tabbarRoute.path === route.path
                 ? tabbarRoute.iconSelected
@@ -31,7 +31,7 @@
           </n-text>
         </div>
       </n-button>
-    </NuxtLink>
+    </nuxt-link>
   </div>
 </template>
 
@@ -43,7 +43,7 @@ import { NuxtLink, NaiveIcon } from '#components'
 withDefaults(
   defineProps<{
     routes: TabbarRoute[];
-    iconSize?: number;
+    iconSize?: number | string;
   }>(),
   {
     iconSize: 24

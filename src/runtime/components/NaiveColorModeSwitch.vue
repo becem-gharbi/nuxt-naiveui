@@ -5,7 +5,7 @@
     :focusable="false"
     @click="toggleColorMode"
   >
-    <NaiveIcon :name="icon" />
+    <naive-icon :name="icon" />
   </n-button>
 </template>
 

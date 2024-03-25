@@ -15,7 +15,7 @@
         :focusable="false"
         @click="drawerActive = true"
       >
-        <NaiveIcon
+        <naive-icon
           :name="toggleIcon"
           :size="26"
         />
@@ -37,7 +37,7 @@
       >
         <slot name="start" />
         <div style="flex: 1">
-          <LazyNaiveMenuLink
+          <lazy-naive-menu-link
             :routes="routes"
             mode="vertical"
           />
@@ -53,7 +53,7 @@
       </n-layout>
     </n-layout>
 
-    <LazyNaiveDrawerLink
+    <lazy-naive-drawer-link
       v-model:show="drawerActive"
       :routes="drawerRoutes"
       :placement="drawerPlacement"
@@ -66,7 +66,7 @@
       <template #footer>
         <slot name="drawer-footer" />
       </template>
-    </LazyNaiveDrawerLink>
+    </lazy-naive-drawer-link>
   </n-layout>
 </template>
 

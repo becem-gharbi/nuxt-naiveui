@@ -33,9 +33,7 @@ export function useNaiveForm (model: Ref<any> = ref({})) {
           pending.value = true
 
           callback()
-            .then(() => {
-              defaultModel.value = JSON.parse(JSON.stringify(model.value))
-            })
+            .then(() => updateResetValue())
             .finally(() => {
               pending.value = false
               formRef.value?.validate()

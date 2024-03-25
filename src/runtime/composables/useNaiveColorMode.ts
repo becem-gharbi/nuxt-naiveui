@@ -1,6 +1,5 @@
 import { setResponseHeader, getCookie, setCookie } from 'h3'
 import Cookies from 'js-cookie'
-
 import type {
   ColorMode,
   ColorModePreference,

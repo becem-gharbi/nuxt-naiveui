@@ -18,7 +18,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   nuxtApp.hook('app:mounted', () => {
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden === false) {
+      if (document.visibilityState === 'visible') {
         colorModePreference.sync()
       }
     })

@@ -50,7 +50,7 @@
         textAlign: menuPlacement,
       }"
     >
-      <LazyNaiveMenuLink
+      <lazy-naive-menu-link
         :inverted="menuInverted"
         mode="horizontal"
         :routes="routes"
@@ -76,7 +76,7 @@
         @click="drawerActive = true"
       >
         <slot name="toggle">
-          <NaiveIcon
+          <naive-icon
             :name="menuToggleIcon"
             :size="menuToggleIconSize"
           />
@@ -85,39 +85,37 @@
     </div>
   </n-el>
 
-  <client-only>
-    <n-drawer
-      v-model:show="drawerActive"
-      :placement="drawerPlacement"
-      :width="drawerWidth"
+  <n-drawer
+    v-model:show="drawerActive"
+    :placement="drawerPlacement"
+    :width="drawerWidth"
+  >
+    <n-drawer-content
+      title="Menu"
+      :body-content-style="{ padding: 0 }"
+      :header-style="{
+        padding: '15px',
+      }"
+      :footer-style="{ justifyContent: 'start' }"
+      :closable="drawerClosable"
     >
-      <n-drawer-content
-        title="Menu"
-        :body-content-style="{ padding: 0 }"
-        :header-style="{
-          padding: '15px',
-        }"
-        :footer-style="{ justifyContent: 'start' }"
-        :closable="drawerClosable"
-      >
-        <template #header>
-          <slot name="drawer-header" />
-        </template>
+      <template #header>
+        <slot name="drawer-header" />
+      </template>
 
-        <slot name="drawer-content" />
+      <slot name="drawer-content" />
 
-        <LazyNaiveMenuLink
-          mode="vertical"
-          :inverted="menuInverted"
-          :routes="drawerRoutes"
-        />
+      <lazy-naive-menu-link
+        mode="vertical"
+        :inverted="menuInverted"
+        :routes="drawerRoutes"
+      />
 
-        <template #footer>
-          <slot name="drawer-footer" />
-        </template>
-      </n-drawer-content>
-    </n-drawer>
-  </client-only>
+      <template #footer>
+        <slot name="drawer-footer" />
+      </template>
+    </n-drawer-content>
+  </n-drawer>
 </template>
 
 <script setup lang="ts">
@@ -141,9 +139,9 @@ const props = withDefaults(
     routes?: NavbarRoute[];
     drawerRoutes?: NavbarRoute[];
     menuToggleIcon?: string;
-    menuToggleIconSize?: number;
+    menuToggleIconSize?: number | string;
     backIcon?: boolean;
-    backIconSize?: number;
+    backIconSize?: number | string;
     menuInverted?: boolean;
     menuPlacement?: 'right' | 'left' | 'center';
     drawerPlacement?: 'top' | 'right' | 'bottom' | 'left';
