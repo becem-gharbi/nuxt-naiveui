@@ -15,24 +15,23 @@ import {
   useHead,
   useRuntimeConfig,
   onMounted,
-  watch,
-  ref,
   useNaiveColorMode,
   useNaiveDevice,
   useNuxtApp,
-  useAppConfig
+  useAppConfig,
+  useAsyncData
 } from '#imports'
 
 interface NaiveConfigProps
-  extends /* @vue-ignore */ Omit<
-    ConfigProviderProps,
-    'themeOverrides' | 'theme'
-  > {
+  extends /* @vue-ignore */ Omit<ConfigProviderProps, 'themeOverrides' | 'theme'> {
   themeConfig?: ThemeConfig;
 }
 
+interface NaiveTheme extends GlobalThemeOverrides {
+  isPrerendered?: boolean
+}
+
 const props = defineProps<NaiveConfigProps>()
-const naiveTheme = ref()
 const { colorMode } = useNaiveColorMode()
 
 const themeConfig: ThemeConfig | undefined =
@@ -40,7 +39,12 @@ const themeConfig: ThemeConfig | undefined =
   (useAppConfig().naiveui as any)?.themeConfig ??
   (useRuntimeConfig().public.naiveui as any).themeConfig
 
-await updateTheme()
+const { data: naiveTheme } = await useAsyncData<NaiveTheme>('naive-theme-config',
+  updateTheme,
+  {
+    watch: [colorMode]
+  }
+)
 
 useHead(() => ({
   htmlAttrs: {
@@ -48,52 +52,30 @@ useHead(() => ({
   },
   style: [
     {
-      children: `
-                body {
-                    ${[
-          compileBodyStyle(
-            'background-color',
-            naiveTheme.value?.common?.bodyColor
-          ),
-          compileBodyStyle(
-            'color',
-            naiveTheme.value?.common?.textColorBase
-          ),
-          compileBodyStyle(
-            'font-family',
-            naiveTheme.value?.common?.fontFamily
-          ),
-          compileBodyStyle(
-            'font-size',
-            naiveTheme.value?.common?.fontSize
-          ),
-          compileBodyStyle(
-            'line-height',
-            naiveTheme.value?.common?.lineHeight
-          )
-        ].join(' ')}
-                    }`
+      children: `body {${[
+          compileStyle('background-color', naiveTheme.value?.common?.bodyColor),
+          compileStyle('color', naiveTheme.value?.common?.textColorBase),
+          compileStyle('font-family', naiveTheme.value?.common?.fontFamily),
+          compileStyle('font-size', naiveTheme.value?.common?.fontSize),
+          compileStyle('line-height', naiveTheme.value?.common?.lineHeight)
+        ].join(' ')}}`
     }
   ]
 }))
 
-watch(colorMode, updateTheme)
-
 onMounted(() => {
-  const { payload } = useNuxtApp()
-  const isPrerendered = typeof payload.prerenderedAt === 'number'
+  const isPrerendered = typeof useNuxtApp().payload.prerenderedAt === 'number'
 
-  if (isPrerendered) {
+  if (isPrerendered && naiveTheme.value) {
     // In order to update dom on pre-rendered pages
     naiveTheme.value.isPrerendered = true
   }
 })
 
 async function updateTheme () {
-  const deviceTheme = await getDeviceTheme()
-  const colorModeTheme = await getColorModeTheme()
+  const [deviceTheme, colorModeTheme] = await Promise.all([getDeviceTheme(), getColorModeTheme()])
 
-  naiveTheme.value = defu(themeConfig?.shared, deviceTheme, colorModeTheme)
+  return defu(themeConfig?.shared, deviceTheme, colorModeTheme)
 }
 
 async function getColorModeTheme () {
@@ -150,9 +132,7 @@ async function getDeviceTheme () {
   return deviceTheme
 }
 
-function compileBodyStyle (prop: string, value?: string) {
-  if (value) {
-    return `${prop}: ${value} !important;`
-  }
+function compileStyle (prop: string, value?: string) {
+  return value && `${prop}: ${value} !important;`
 }
 </script>
