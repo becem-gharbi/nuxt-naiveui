@@ -61,6 +61,7 @@ await callOnce(`naiveui:icon-key-${process.server ? 0 : 1}`, () => {
   })
 })
 
+// eslint-disable-next-line no-console
 const load = (name: string) => loadIcon(name).catch(() => console.error(`Failed to load icon ${name}`))
 
 icon.value = await load(sName.value)
