@@ -1,5 +1,5 @@
 import type { GlobalThemeOverrides } from "naive-ui";
-import type { RouteLocation, RouteLocationRaw } from '#vue-router';
+import type { RouteLocationRaw } from '#vue-router';
 
 export interface ThemeConfig {
   shared?: GlobalThemeOverrides;
@@ -26,20 +26,11 @@ export interface TabbarRoute {
 export type MenuLinkRoute = {
   label: string;
   icon?: string;
+  to?: RouteLocationRaw;
   /**
-   * @deprecated use to instead
-   */
-  path?: string;
-  to?: never
-  children?: MenuLinkRoute[];
-} | {
-  label: string;
-  icon?: string;
-  /**
-   * @deprecated use to instead
-   */
-  path?: never;
-  to: RouteLocationRaw
+  * @deprecated since version 1.11.0, please use `to` instead
+  */
+  path?: RouteLocationRaw;
   children?: MenuLinkRoute[];
 }
 

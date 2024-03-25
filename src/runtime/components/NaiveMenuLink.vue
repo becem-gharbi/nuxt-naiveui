@@ -11,37 +11,52 @@ import { NuxtLink, NaiveIcon } from "#components";
 import type { Component } from "vue";
 import type { MenuProps, MenuOption } from "naive-ui";
 import type { MenuLinkRoute } from "../types";
+import type { RouteLocationNormalizedLoaded } from '#vue-router'
 
 interface NaiveMenuLinkProps
     extends /* @vue-ignore */ Omit<MenuProps, "options" | "value"> {
     routes: MenuLinkRoute[];
+    /**
+    * Refer to (#51)
+    */
+    activeBy?: 'path' | 'name';
 }
 
-const props = defineProps<NaiveMenuLinkProps>();
+const props = withDefaults(
+    defineProps<NaiveMenuLinkProps>(),
+    {
+        routes: () => [],
+        activeBy: 'path'
+    }
+);
 
 const router = useRouter()
 
-// check if deprecated path logic is used
-const isDeprecatedKey = computed(() => props.routes.some(checkPath))
-const checkPath = (m: MenuLinkRoute): boolean => !!m.path || m.children?.some(checkPath) || false
+if (!router.currentRoute.value) {
+    // eslint-disable-next-line no-console
+    console.warn('[nuxt-naiveui] make sure to create page components when using `NaiveMenuLink`')
+}
 
 // The menu's active key
-const activeKey = computed(() => isDeprecatedKey.value
-    ? getActiveKey(router.currentRoute.value?.path)
-    : router.currentRoute.value?.name?.toString()
-)
+const activeKey = computed(() => getActiveKey(router.currentRoute.value))
 
-function getActiveKey(activePath: string) {
+function getActiveKey(activeRoute: RouteLocationNormalizedLoaded) {
+    if (props.activeBy === 'name') {
+        return activeRoute.name?.toString()
+    }
+
+    const activePath = activeRoute.path
     let activeKey = activePath
 
     const cb = (routes: MenuLinkRoute[]) => {
         for (const route of routes) {
-            if (route.path === activePath) {
-                activeKey = route.path
+            const to = route.to ?? route.path
+            if (to && activePath === to.toString()) {
+                activeKey = to.toString()
                 break
             }
-            if (route.path && activePath.startsWith(`${route.path}/`)) {
-                activeKey = route.path;
+            if (to && activePath.startsWith(`${to.toString()}/`)) {
+                activeKey = to.toString();
             }
             if (route.children) {
                 cb(route.children);
@@ -56,9 +71,9 @@ function getActiveKey(activePath: string) {
 const menuOptions = computed<MenuOption[]>(() => {
     const cb = (routes: MenuLinkRoute[]) =>
         routes.map((route) => {
-            const to = isDeprecatedKey.value ? route.path : route.to
-            const name = route.to && router.resolve(route.to).name?.toString()
-            const key = (isDeprecatedKey.value ? route.path : name) ?? route.label
+            const to =  route.to ?? route.path
+            const name = to && router.resolve(to).name?.toString()
+            const key = (props.activeBy === 'name' ?  name: to?.toString()) ?? route.label
 
             const menuOption: MenuOption = {
                 label: to
