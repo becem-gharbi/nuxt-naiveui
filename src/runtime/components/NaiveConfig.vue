@@ -15,7 +15,6 @@ import {
   useHead,
   useRuntimeConfig,
   onMounted,
-  watch,
   useNaiveColorMode,
   useNaiveDevice,
   useNuxtApp,
@@ -24,10 +23,7 @@ import {
 } from '#imports'
 
 interface NaiveConfigProps
-  extends /* @vue-ignore */ Omit<
-    ConfigProviderProps,
-    'themeOverrides' | 'theme'
-  > {
+  extends /* @vue-ignore */ Omit<ConfigProviderProps, 'themeOverrides' | 'theme'> {
   themeConfig?: ThemeConfig;
 }
 
@@ -43,7 +39,12 @@ const themeConfig: ThemeConfig | undefined =
   (useAppConfig().naiveui as any)?.themeConfig ??
   (useRuntimeConfig().public.naiveui as any).themeConfig
 
-const { data: naiveTheme, refresh } = await useAsyncData<NaiveTheme>('naive-theme-config', updateTheme)
+const { data: naiveTheme } = await useAsyncData<NaiveTheme>('naive-theme-config',
+  updateTheme,
+  {
+    watch: [colorMode]
+  }
+)
 
 useHead(() => ({
   htmlAttrs: {
@@ -62,13 +63,10 @@ useHead(() => ({
   ]
 }))
 
-watch(colorMode, () => refresh())
-
 onMounted(() => {
-  const { payload } = useNuxtApp()
-  const isPrerendered = typeof payload.prerenderedAt === 'number'
+  const isPrerendered = typeof useNuxtApp().payload.prerenderedAt === 'number'
 
-  if (naiveTheme.value && isPrerendered) {
+  if (isPrerendered && naiveTheme.value) {
     // In order to update dom on pre-rendered pages
     naiveTheme.value.isPrerendered = true
   }
