@@ -16,11 +16,11 @@ import {
   useRuntimeConfig,
   onMounted,
   watch,
-  ref,
   useNaiveColorMode,
   useNaiveDevice,
   useNuxtApp,
-  useAppConfig
+  useAppConfig,
+  useAsyncData
 } from '#imports'
 
 interface NaiveConfigProps
@@ -31,8 +31,11 @@ interface NaiveConfigProps
   themeConfig?: ThemeConfig;
 }
 
+interface NaiveTheme extends GlobalThemeOverrides {
+  isPrerendered?: boolean
+}
+
 const props = defineProps<NaiveConfigProps>()
-const naiveTheme = ref()
 const { colorMode } = useNaiveColorMode()
 
 const themeConfig: ThemeConfig | undefined =
@@ -40,7 +43,7 @@ const themeConfig: ThemeConfig | undefined =
   (useAppConfig().naiveui as any)?.themeConfig ??
   (useRuntimeConfig().public.naiveui as any).themeConfig
 
-await updateTheme()
+const { data: naiveTheme, refresh } = await useAsyncData<NaiveTheme>('naive-theme-config', updateTheme)
 
 useHead(() => ({
   htmlAttrs: {
@@ -77,13 +80,13 @@ useHead(() => ({
   ]
 }))
 
-watch(colorMode, updateTheme)
+watch(colorMode, () => refresh())
 
 onMounted(() => {
   const { payload } = useNuxtApp()
   const isPrerendered = typeof payload.prerenderedAt === 'number'
 
-  if (isPrerendered) {
+  if (naiveTheme.value && isPrerendered) {
     // In order to update dom on pre-rendered pages
     naiveTheme.value.isPrerendered = true
   }
@@ -93,7 +96,7 @@ async function updateTheme () {
   const deviceTheme = await getDeviceTheme()
   const colorModeTheme = await getColorModeTheme()
 
-  naiveTheme.value = defu(themeConfig?.shared, deviceTheme, colorModeTheme)
+  return defu(themeConfig?.shared, deviceTheme, colorModeTheme)
 }
 
 async function getColorModeTheme () {
