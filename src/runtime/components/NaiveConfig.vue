@@ -75,8 +75,7 @@ onMounted(() => {
 })
 
 async function updateTheme () {
-  const deviceTheme = await getDeviceTheme()
-  const colorModeTheme = await getColorModeTheme()
+  const [deviceTheme, colorModeTheme] = await Promise.all([getDeviceTheme(), getColorModeTheme()])
 
   return defu(themeConfig?.shared, deviceTheme, colorModeTheme)
 }
