@@ -51,31 +51,13 @@ useHead(() => ({
   },
   style: [
     {
-      children: `
-                body {
-                    ${[
-          compileBodyStyle(
-            'background-color',
-            naiveTheme.value?.common?.bodyColor
-          ),
-          compileBodyStyle(
-            'color',
-            naiveTheme.value?.common?.textColorBase
-          ),
-          compileBodyStyle(
-            'font-family',
-            naiveTheme.value?.common?.fontFamily
-          ),
-          compileBodyStyle(
-            'font-size',
-            naiveTheme.value?.common?.fontSize
-          ),
-          compileBodyStyle(
-            'line-height',
-            naiveTheme.value?.common?.lineHeight
-          )
-        ].join(' ')}
-                    }`
+      children: `body {${[
+          compileStyle('background-color', naiveTheme.value?.common?.bodyColor),
+          compileStyle('color', naiveTheme.value?.common?.textColorBase),
+          compileStyle('font-family', naiveTheme.value?.common?.fontFamily),
+          compileStyle('font-size', naiveTheme.value?.common?.fontSize),
+          compileStyle('line-height', naiveTheme.value?.common?.lineHeight)
+        ].join(' ')}}`
     }
   ]
 }))
@@ -153,9 +135,7 @@ async function getDeviceTheme () {
   return deviceTheme
 }
 
-function compileBodyStyle (prop: string, value?: string) {
-  if (value) {
-    return `${prop}: ${value} !important;`
-  }
+function compileStyle (prop: string, value?: string) {
+  return value && `${prop}: ${value} !important;`
 }
 </script>
