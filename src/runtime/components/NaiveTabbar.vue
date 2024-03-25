@@ -7,7 +7,7 @@
       :style="{ textDecoration: 'none' }"
     >
       <n-button
-        quaternary
+        text
         :focusable="false"
         :type="tabbarRoute.path === route.path ? 'primary' : 'default'"
       >
@@ -21,11 +21,7 @@
             :size="iconSize"
           />
           <n-text
-            :type="
-              tabbarRoute.path === route.path
-                ? 'primary'
-                : 'default'
-            "
+            :type="tabbarRoute.path === route.path? 'primary': 'default'"
           >
             {{ tabbarRoute.label }}
           </n-text>
@@ -46,6 +42,7 @@ withDefaults(
     iconSize?: number | string;
   }>(),
   {
+    routes: () => [],
     iconSize: 24
   }
 )
