@@ -1,6 +1,42 @@
 # Changelog
 
 
+## v1.11.0
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.10.4...v1.11.0)
+
+### 🚀 Enhancements
+
+- Add `updateResetValue` function to update the default model value ([#55](https://github.com/becem-gharbi/nuxt-naiveui/pull/55))
+- **MenuLink:** Support active link resolution from route name ([#51](https://github.com/becem-gharbi/nuxt-naiveui/pull/51))
+
+### 🔥 Performance
+
+- **NaiveConfig:** Decrease setup time ([#58](https://github.com/becem-gharbi/nuxt-naiveui/pull/58))
+
+### 💅 Refactors
+
+- No significant change ([fb03ae9](https://github.com/becem-gharbi/nuxt-naiveui/commit/fb03ae9))
+- **NaiveTabbar:** Display link as text button ([1f3f249](https://github.com/becem-gharbi/nuxt-naiveui/commit/1f3f249))
+- Replace `process` with `import.meta` ([19b12bc](https://github.com/becem-gharbi/nuxt-naiveui/commit/19b12bc))
+
+### 🌊 Types
+
+- **NaiveIcon:** Allow `size` to be string ([#59](https://github.com/becem-gharbi/nuxt-naiveui/pull/59))
+- Solve `iconSize` type conflict ([228ca1d](https://github.com/becem-gharbi/nuxt-naiveui/commit/228ca1d))
+- Create `types` folder ([bebde2b](https://github.com/becem-gharbi/nuxt-naiveui/commit/bebde2b))
+
+### 🏡 Chore
+
+- **icon-sets:** Remove extra ContentType res header ([f72fe41](https://github.com/becem-gharbi/nuxt-naiveui/commit/f72fe41))
+- **lint:** Fix ([966b173](https://github.com/becem-gharbi/nuxt-naiveui/commit/966b173))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- OrbisK ([@OrbisK](http://github.com/OrbisK))
+- Becem <becem.gharbi@live.com>
+
 ## v1.10.4
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.10.3...v1.10.4)
