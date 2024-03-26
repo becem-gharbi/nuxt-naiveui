@@ -3,19 +3,19 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Nuxt Naive UI",
+      title: 'Nuxt Naive UI',
       htmlAttrs: {
-        lang: "en",
-      },
+        lang: 'en'
+      }
     },
-    pageTransition: { name: "page", mode: "out-in" },
-    layoutTransition: { name: "layout", mode: "out-in" },
+    pageTransition: { name: 'page', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' }
   },
 
   // css: ["~/assets/fonts/gellix/style.css"],
-  modules: ["../src/module", "@nuxtjs/tailwindcss"],
+  modules: ['../src/module', '@nuxtjs/tailwindcss'],
   naiveui: {
-    colorModePreference: "light",
+    colorModePreference: 'light',
     iconDownload: true
   },
   tailwindcss: {
@@ -24,4 +24,4 @@ export default defineNuxtConfig({
     },
     viewer: false
   }
-});
+})

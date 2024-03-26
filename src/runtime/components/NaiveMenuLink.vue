@@ -13,7 +13,7 @@ import type { MenuProps, MenuOption } from "naive-ui";
 import type { MenuLinkRoute } from "../types";
 
 interface NaiveMenuLinkProps
-    extends /* @vue-ignore */ Omit<MenuProps, "options" | "value"> {
+    extends /* @vue-ignore */ Omit<MenuProps, 'options' | 'value'> {
     routes: MenuLinkRoute[];
     /**
     * Since v1.11.0, please refer to [#51](https://github.com/becem-gharbi/nuxt-naiveui/pull/51)
@@ -64,8 +64,8 @@ function getActiveKey(activeRoute: typeof router.currentRoute.value) {
         }
     };
 
-    cb(props.routes)
-    return activeKey
+  cb(props.routes)
+  return activeKey
 }
 
 const menuOptions = computed<MenuOption[]>(() => {
@@ -91,6 +91,6 @@ const menuOptions = computed<MenuOption[]>(() => {
             return menuOption;
         });
 
-    return cb(props.routes);
-});
+  return cb(props.routes)
+})
 </script>

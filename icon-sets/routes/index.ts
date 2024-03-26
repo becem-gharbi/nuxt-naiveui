@@ -3,11 +3,11 @@ export default eventHandler(async (event) => {
 
   const fetchError = createError('failed to fetch collections')
 
-  return fetch(collectionsUrl)
+  return await fetch(collectionsUrl)
     .then(async (res) => {
       if (res.ok) {
         const data = await res.json()
-        Object.keys(data).forEach(key => data[key] = true)
+        Object.keys(data).forEach((key) => { data[key] = true })
         setResponseHeader(event, 'Content-Type', 'application/json')
         return data
       }

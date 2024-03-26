@@ -24,14 +24,14 @@ export default function (rootDir = './', collectionsUrl = COLLECTIONS_URL): Plug
   return {
     name: 'iconify-download-icons',
 
-    async buildStart() {
+    async buildStart () {
       if (regex) { return }
 
       const fetchError = new Error(`❌ 󠀠 [iconify-download-icons] failed to fetch collections from ${collectionsUrl}`)
 
       const collections = await fetch(collectionsUrl)
-        .then(r => {
-          if (r.ok) return r.json()
+        .then((r) => {
+          if (r.ok) { return r.json() }
           throw fetchError
         })
         .catch(() => {
@@ -42,12 +42,12 @@ export default function (rootDir = './', collectionsUrl = COLLECTIONS_URL): Plug
       regex = new RegExp(`("|'|\`)(${prefixes.join('|')}):[a-z0-9]+(?:-[a-z0-9]+)*("|'|\`)`, 'g')
     },
 
-    transform(code) {
+    transform (code) {
       code.match(regex)?.forEach(m => icons.add(m.replace(/'|"|`/g, '')))
       return { code, map: null }
     },
 
-    async buildEnd() {
+    async buildEnd () {
       const savedIcons = getSavedIcons(iconsDir)
 
       const unusedIcons = savedIcons.filter(i => !icons.has(i))

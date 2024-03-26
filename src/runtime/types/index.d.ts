@@ -54,7 +54,7 @@ export interface PublicConfig {
   themeConfig?: ThemeConfig;
   colorModePreference: ColorModePreference;
   colorModePreferenceCookieName: string;
-  iconSize: number;
+  iconSize: number | string;
   iconDownload: boolean;
   iconCollectionsUrl: string;
 }

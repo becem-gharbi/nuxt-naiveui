@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import { useNotification } from "naive-ui";
-import type { NotificationOptions } from "naive-ui";
+import { useNotification } from 'naive-ui'
+import type { NotificationOptions } from 'naive-ui'
 import { callOnce } from '#imports'
 
 interface CustomEvent extends Event {
@@ -12,11 +12,11 @@ interface CustomEvent extends Event {
 }
 
 await callOnce(() => {
-  const { create } = useNotification();
+  const { create } = useNotification()
 
-  window.addEventListener("naiveui:notification:create", (event) => {
-    const { detail } = event as CustomEvent;
-    create(detail);
-  });
+  window.addEventListener('naiveui:notification:create', (event) => {
+    const { detail } = event as CustomEvent
+    create(detail)
+  })
 })
 </script>

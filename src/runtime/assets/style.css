@@ -1,7 +1,3 @@
-.n-button:default {
-    background-color: var(--n-color) !important;
-}
-
 .n-button {
     background-color: var(--n-color);
 }

@@ -6,7 +6,7 @@
     >
       <slot name="start" />
       <div style="flex: 1">
-        <LazyNaiveMenuLink
+        <lazy-naive-menu-link
           v-if="!isMobileOrTablet"
           class="notMobileOrTablet"
           :routes="routes"
@@ -21,7 +21,7 @@
         :focusable="false"
         @click="drawerActive = true"
       >
-        <NaiveIcon
+        <naive-icon
           :name="toggleIcon"
           :size="26"
         />
@@ -42,7 +42,7 @@
       </n-layout>
     </n-layout>
 
-    <LazyNaiveDrawerLink
+    <lazy-naive-drawer-link
       v-model:show="drawerActive"
       :routes="drawerRoutes"
       :closable="drawerClosable"
@@ -55,13 +55,13 @@
       <template #footer>
         <slot name="drawer-footer" />
       </template>
-    </LazyNaiveDrawerLink>
+    </lazy-naive-drawer-link>
   </n-layout>
 </template>
 
 <script setup lang="ts">
-import { ref, useNaiveDevice } from "#imports";
-import type { MenuLinkRoute } from "../types";
+import type { MenuLinkRoute } from '../types'
+import { ref, useNaiveDevice } from '#imports'
 
 withDefaults(
   defineProps<{
@@ -74,7 +74,7 @@ withDefaults(
     drawerPlacement?: 'top' | 'right' | 'bottom' | 'left';
   }>(),
   {
-    toggleIcon: "ph:equals",
+    toggleIcon: 'ph:equals',
     routes: () => [],
     drawerRoutes: () => [],
     drawerClosable: true,
@@ -82,7 +82,7 @@ withDefaults(
     nativeScrollbar: false,
     drawerPlacement: 'left'
   }
-);
+)
 
 const { isMobileOrTablet } = useNaiveDevice()
 const drawerActive = ref(false)

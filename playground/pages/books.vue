@@ -32,16 +32,15 @@
 </template>
 
 <script setup>
-import { definePageMeta, ref } from '#imports';
-import { useAsyncData } from '#imports';
+import { definePageMeta, ref, useAsyncData } from '#imports'
 
 definePageMeta({
-    colorMode: "light"
+  colorMode: 'light'
 })
 
-const  showModal = ref(false)
+const showModal = ref(false)
 
-await useAsyncData(() => new Promise(resolve => {
+await useAsyncData(() => new Promise((resolve) => {
   setTimeout(resolve, 2000)
 }))
 </script>

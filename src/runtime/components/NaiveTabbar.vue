@@ -1,18 +1,18 @@
 <template>
   <div class="outer mobileOrTablet">
-    <NuxtLink
+    <nuxt-link
       v-for="tabbarRoute of routes"
       :key="tabbarRoute.path"
       :to="tabbarRoute.path"
       :style="{ textDecoration: 'none' }"
     >
       <n-button
-        quaternary
+        text
         :focusable="false"
         :type="tabbarRoute.path === route.path ? 'primary' : 'default'"
       >
         <div class="inner-item">
-          <NaiveIcon
+          <naive-icon
             :name="
               tabbarRoute.path === route.path
                 ? tabbarRoute.iconSelected
@@ -21,38 +21,35 @@
             :size="iconSize"
           />
           <n-text
-            :type="
-              tabbarRoute.path === route.path
-                ? 'primary'
-                : 'default'
-            "
+            :type="tabbarRoute.path === route.path? 'primary': 'default'"
           >
             {{ tabbarRoute.label }}
           </n-text>
         </div>
       </n-button>
-    </NuxtLink>
+    </nuxt-link>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, useRoute, useThemeVars } from "#imports";
-import { NuxtLink, NaiveIcon } from "#components";
-import type { TabbarRoute } from "../types";
+import type { TabbarRoute } from '../types'
+import { computed, useRoute, useThemeVars } from '#imports'
+import { NuxtLink, NaiveIcon } from '#components'
 
 withDefaults(
   defineProps<{
     routes: TabbarRoute[];
-    iconSize?: number;
+    iconSize?: number | string;
   }>(),
   {
-    iconSize: 24,
+    routes: () => [],
+    iconSize: 24
   }
-);
+)
 
-const naiveTheme = useThemeVars();
-const route = useRoute();
-const backgroundColor = computed(() => naiveTheme.value.bodyColor);
+const naiveTheme = useThemeVars()
+const route = useRoute()
+const backgroundColor = computed(() => naiveTheme.value.bodyColor)
 </script>
 
 <style scoped>

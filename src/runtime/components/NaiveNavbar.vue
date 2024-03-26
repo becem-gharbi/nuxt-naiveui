@@ -50,7 +50,7 @@
         textAlign: menuPlacement,
       }"
     >
-      <LazyNaiveMenuLink
+      <lazy-naive-menu-link
         :inverted="menuInverted"
         mode="horizontal"
         :routes="routes"
@@ -76,7 +76,7 @@
         @click="drawerActive = true"
       >
         <slot name="toggle">
-          <NaiveIcon
+          <naive-icon
             :name="menuToggleIcon"
             :size="menuToggleIconSize"
           />
@@ -85,68 +85,66 @@
     </div>
   </n-el>
 
-  <client-only>
-    <n-drawer
-      v-model:show="drawerActive"
-      :placement="drawerPlacement"
-      :width="drawerWidth"
+  <n-drawer
+    v-model:show="drawerActive"
+    :placement="drawerPlacement"
+    :width="drawerWidth"
+  >
+    <n-drawer-content
+      title="Menu"
+      :body-content-style="{ padding: 0 }"
+      :header-style="{
+        padding: '15px',
+      }"
+      :footer-style="{ justifyContent: 'start' }"
+      :closable="drawerClosable"
     >
-      <n-drawer-content
-        title="Menu"
-        :body-content-style="{ padding: 0 }"
-        :header-style="{
-          padding: '15px',
-        }"
-        :footer-style="{ justifyContent: 'start' }"
-        :closable="drawerClosable"
-      >
-        <template #header>
-          <slot name="drawer-header" />
-        </template>
+      <template #header>
+        <slot name="drawer-header" />
+      </template>
 
-        <slot name="drawer-content" />
+      <slot name="drawer-content" />
 
-        <LazyNaiveMenuLink
-          mode="vertical"
-          :inverted="menuInverted"
-          :routes="drawerRoutes"
-        />
+      <lazy-naive-menu-link
+        mode="vertical"
+        :inverted="menuInverted"
+        :routes="drawerRoutes"
+      />
 
-        <template #footer>
-          <slot name="drawer-footer" />
-        </template>
-      </n-drawer-content>
-    </n-drawer>
-  </client-only>
+      <template #footer>
+        <slot name="drawer-footer" />
+      </template>
+    </n-drawer-content>
+  </n-drawer>
 </template>
 
 <script setup lang="ts">
+import type { NavbarRoute } from '../types'
 import {
   ref,
   computed,
   useRouter,
-  useNaiveDevice,
-} from "#imports";
-import { NaiveIcon, LazyNaiveMenuLink } from "#components";
-import type { NavbarRoute } from "../types";
+  useNaiveDevice
+} from '#imports'
+import { NaiveIcon, LazyNaiveMenuLink } from '#components'
 
-const drawerActive = ref(false);
-const router = useRouter();
-const { isMobileOrTablet } = useNaiveDevice();
+const drawerActive = ref(false)
+const router = useRouter()
+const { isMobileOrTablet } = useNaiveDevice()
 
-router.afterEach(() => drawerActive.value = false)
- 
+router.afterEach(() => { drawerActive.value = false })
+
 const props = withDefaults(
   defineProps<{
     routes?: NavbarRoute[];
     drawerRoutes?: NavbarRoute[];
     menuToggleIcon?: string;
-    menuToggleIconSize?: number;
+    menuToggleIconSize?: number | string;
     backIcon?: boolean;
-    backIconSize?: number;
+    backIconSize?: number | string;
     menuInverted?: boolean;
-    menuPlacement?: "right" | "left" | "center";
-    drawerPlacement?: "top" | "right" | "bottom" | "left";
+    menuPlacement?: 'right' | 'left' | 'center';
+    drawerPlacement?: 'top' | 'right' | 'bottom' | 'left';
     sticky?: boolean;
     drawerClosable?: boolean;
     drawerWidth?: string | number;
@@ -154,20 +152,20 @@ const props = withDefaults(
   {
     routes: () => [],
     drawerRoutes: () => [],
-    menuToggleIcon: "ph:equals",
-    menuPlacement: "left",
-    drawerPlacement: "left",
+    menuToggleIcon: 'ph:equals',
+    menuPlacement: 'left',
+    drawerPlacement: 'left',
     menuInverted: false,
     sticky: true,
     menuToggleIconSize: 26,
     backIcon: false,
     backIconSize: 26,
-    drawerWidth: "100%",
-    drawerClosable: true,
+    drawerWidth: '100%',
+    drawerClosable: true
   }
-);
+)
 
 const flexInnerSides = computed(() =>
-  props.menuPlacement === "center" ? 1 : "inherit"
-);
+  props.menuPlacement === 'center' ? 1 : 'inherit'
+)
 </script>
