@@ -9,11 +9,10 @@ import {
   extendViteConfig
 } from '@nuxt/kit'
 import naive from 'naive-ui'
-import { defu } from 'defu'
 import { name, version } from '../package.json'
 import iconifyVitePlugin from './iconify-vite'
-
 import type { PublicConfig } from './runtime/types'
+import { defu } from 'defu'
 export type {
   NavbarRoute,
   ThemeConfig,

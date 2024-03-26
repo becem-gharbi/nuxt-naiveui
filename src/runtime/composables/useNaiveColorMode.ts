@@ -1,4 +1,3 @@
-import { setResponseHeader, getCookie, setCookie } from 'h3'
 import Cookies from 'js-cookie'
 import type {
   ColorMode,
@@ -6,6 +5,7 @@ import type {
   ColorModeForce,
   PublicConfig
 } from '../types'
+import { setResponseHeader, getCookie, setCookie } from 'h3'
 import type { Ref } from '#imports'
 import {
   useState,
