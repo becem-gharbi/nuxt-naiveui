@@ -9,6 +9,7 @@
       <n-button
         text
         :focusable="false"
+        aria-label="tabbar-link-item"
         :type="tabbarRoute.path === route.path ? 'primary' : 'default'"
       >
         <div class="inner-item">
