@@ -23,7 +23,7 @@ export interface TabbarRoute {
   path: string;
 }
 
-export type MenuLinkRoute = {
+export interface MenuLinkRoute {
   label: string;
   icon?: string;
   to?: RouteLocationRaw;
