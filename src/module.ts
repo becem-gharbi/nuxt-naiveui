@@ -65,7 +65,14 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.runtimeConfig = defu(nuxt.options.runtimeConfig, {
       app: {},
       public: {
-        naiveui: options
+        naiveui: {
+          colorModePreference: options.colorModePreference,
+          colorModePreferenceCookieName: options.colorModePreferenceCookieName,
+          iconDownload: options.iconDownload,
+          iconCollectionsUrl: options.iconCollectionsUrl,
+          themeConfig: options.themeConfig,
+          iconSize: options.iconSize as any
+        }
       }
     })
 
