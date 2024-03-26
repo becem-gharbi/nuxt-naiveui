@@ -11,7 +11,6 @@ import { NuxtLink, NaiveIcon } from "#components";
 import type { Component } from "vue";
 import type { MenuProps, MenuOption } from "naive-ui";
 import type { MenuLinkRoute } from "../types";
-import type { RouteLocationNormalizedLoaded } from '#vue-router'
 
 interface NaiveMenuLinkProps
     extends /* @vue-ignore */ Omit<MenuProps, "options" | "value"> {
@@ -40,7 +39,7 @@ if (!router.currentRoute.value) {
 // The menu's active key
 const activeKey = computed(() => getActiveKey(router.currentRoute.value))
 
-function getActiveKey(activeRoute: RouteLocationNormalizedLoaded) {
+function getActiveKey(activeRoute: typeof router.currentRoute.value) {
     if (props.activeBy === 'name') {
         return activeRoute.name?.toString()
     }
@@ -51,12 +50,13 @@ function getActiveKey(activeRoute: RouteLocationNormalizedLoaded) {
     const cb = (routes: MenuLinkRoute[]) => {
         for (const route of routes) {
             const to = route.to ?? route.path
-            if (to && activePath === to.toString()) {
-                activeKey = to.toString()
+            const path = to && router.resolve(to).path
+            if (path && activePath === path) {
+                activeKey = path
                 break
             }
-            if (to && activePath.startsWith(`${to.toString()}/`)) {
-                activeKey = to.toString();
+            if (path && activePath.startsWith(`${path}/`)) {
+                activeKey = path;
             }
             if (route.children) {
                 cb(route.children);
@@ -73,7 +73,8 @@ const menuOptions = computed<MenuOption[]>(() => {
         routes.map((route) => {
             const to =  route.to ?? route.path
             const name = to && router.resolve(to).name?.toString()
-            const key = (props.activeBy === 'name' ?  name: to?.toString()) ?? route.label
+            const path = to && router.resolve(to).path
+            const key = (props.activeBy === 'name' ?  name: path) ?? route.label
 
             const menuOption: MenuOption = {
                 label: to
