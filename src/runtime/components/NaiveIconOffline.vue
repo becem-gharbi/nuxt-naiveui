@@ -34,10 +34,10 @@ const sName = computed(() => props.name)
 const icon = ref()
 const key = ref(1)
 
-await callOnce(`naiveui:icon-key-${process.server ? 0 : 1}`, () => {
+await callOnce(`naiveui:icon-key-${import.meta.server ? 0 : 1}`, () => {
   if (process.dev) { return }
 
-  const imports = process.server
+  const imports = import.meta.server
     ? import.meta.glob('~/public/iconify/*/*.json', { import: 'default' })
     : {}
 
@@ -46,7 +46,7 @@ await callOnce(`naiveui:icon-key-${process.server ? 0 : 1}`, () => {
     const prefix = parseURL(url).pathname.split('/').pop()!.replace('.json', '')
     const icons = getQuery<{ icons: string }>(url).icons.split(',')
 
-    const iconsData = process.server
+    const iconsData = import.meta.server
       ? await Promise.all<any>(icons.map(i => imports[`/public/iconify/${prefix}/${i}.json`]()))
       : await Promise.all(icons.map(i => $fetch(`/iconify/${prefix}/${i}.json`)))
 

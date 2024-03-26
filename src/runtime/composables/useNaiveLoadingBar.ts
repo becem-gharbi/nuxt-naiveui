@@ -1,18 +1,18 @@
 export function useNaiveLoadingBar () {
   function start () {
-    if (process.client) {
+    if (import.meta.client) {
       window.dispatchEvent(new CustomEvent('naiveui:loadingBar:start'))
     }
   }
 
   function finish () {
-    if (process.client) {
+    if (import.meta.client) {
       window.dispatchEvent(new CustomEvent('naiveui:loadingBar:finish'))
     }
   }
 
   function error () {
-    if (process.client) {
+    if (import.meta.client) {
       window.dispatchEvent(new CustomEvent('naiveui:loadingBar:error'))
     }
   }

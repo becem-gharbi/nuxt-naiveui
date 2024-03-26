@@ -22,13 +22,13 @@ export function useNaiveColorMode () {
 
   const colorModePreferenceCookie = {
     get value () {
-      const v = process.client
+      const v = import.meta.client
         ? Cookies.get(config.colorModePreferenceCookieName)
         : getCookie(event!, config.colorModePreferenceCookieName)
       return v ?? ''
     },
     set value (newValue) {
-      if (process.client) {
+      if (import.meta.client) {
         Cookies.set(config.colorModePreferenceCookieName, newValue, {
           expires: 356,
           secure: true,
@@ -68,7 +68,7 @@ export function useNaiveColorMode () {
   }
 
   function detectPreferedColorMode () {
-    if (process.server) {
+    if (import.meta.server) {
       setResponseHeader(event!, 'Accept-CH', 'Sec-CH-Prefers-Color-Scheme')
       setResponseHeader(event!, 'Vary', 'Sec-CH-Prefers-Color-Scheme')
       setResponseHeader(event!, 'Critical-CH', 'Sec-CH-Prefers-Color-Scheme')
