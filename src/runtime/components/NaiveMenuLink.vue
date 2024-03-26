@@ -16,7 +16,7 @@ interface NaiveMenuLinkProps
     extends /* @vue-ignore */ Omit<MenuProps, "options" | "value"> {
     routes: MenuLinkRoute[];
     /**
-    * Refer to (#51)
+    * Since v1.11.0, please refer to [#51](https://github.com/becem-gharbi/nuxt-naiveui/pull/51)
     */
     activeBy?: 'path' | 'name';
 }
