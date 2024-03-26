@@ -1,69 +1,95 @@
 <template>
   <n-menu
-    v-model:value="activeKey"
+    :value="activeKey"
     :options="menuOptions"
   />
 </template>
 
 <script setup lang="ts">
-import type { Component } from 'vue'
-import type { MenuProps, MenuOption } from 'naive-ui'
-import type { MenuLinkRoute } from '../types'
-import { NuxtLink, NaiveIcon } from '#components'
-import { ref, computed, h, useNuxtApp, useRoute } from '#imports'
+import { computed, h, useRouter } from "#imports";
+import { NuxtLink, NaiveIcon } from "#components";
+import type { Component } from "vue";
+import type { MenuProps, MenuOption } from "naive-ui";
+import type { MenuLinkRoute } from "../types";
 
 interface NaiveMenuLinkProps
     extends /* @vue-ignore */ Omit<MenuProps, 'options' | 'value'> {
     routes: MenuLinkRoute[];
+    /**
+    * Since v1.11.0, please refer to [#51](https://github.com/becem-gharbi/nuxt-naiveui/pull/51)
+    */
+    activeBy?: 'path' | 'name';
 }
 
-const props = defineProps<NaiveMenuLinkProps>()
-const activeKey = ref(getActiveKey(useRoute().path))
-
-useNuxtApp().$router.afterEach((to) => {
-  activeKey.value = getActiveKey(to.path)
-})
-
-function getActiveKey (activePath: string) {
-  let activeKey = activePath
-
-  const cb = (routes: MenuLinkRoute[]) => {
-    for (const route of routes) {
-      if (route.path === activePath) {
-        activeKey = route.path
-        break
-      }
-      if (route.path && activePath.startsWith(`${route.path}/`)) {
-        activeKey = route.path
-      }
-      if (route.children) {
-        cb(route.children)
-      }
+const props = withDefaults(
+    defineProps<NaiveMenuLinkProps>(),
+    {
+        routes: () => [],
+        activeBy: 'path'
     }
-  }
+);
+
+const router = useRouter()
+
+if (!router.currentRoute.value) {
+    // eslint-disable-next-line no-console
+    console.warn('[nuxt-naiveui] make sure to create page components when using `NaiveMenuLink`')
+}
+
+// The menu's active key
+const activeKey = computed(() => getActiveKey(router.currentRoute.value))
+
+function getActiveKey(activeRoute: typeof router.currentRoute.value) {
+    if (props.activeBy === 'name') {
+        return activeRoute.name?.toString()
+    }
+
+    const activePath = activeRoute.path
+    let activeKey = activePath
+
+    const cb = (routes: MenuLinkRoute[]) => {
+        for (const route of routes) {
+            const to = route.to ?? route.path
+            const path = to && router.resolve(to).path
+            if (path && activePath === path) {
+                activeKey = path
+                break
+            }
+            if (path && activePath.startsWith(`${path}/`)) {
+                activeKey = path;
+            }
+            if (route.children) {
+                cb(route.children);
+            }
+        }
+    };
 
   cb(props.routes)
   return activeKey
 }
 
 const menuOptions = computed<MenuOption[]>(() => {
-  const cb = (routes: MenuLinkRoute[]) =>
-    routes.map((route) => {
-      const menuOption: MenuOption = {
-        label: route.path
-          ? () =>
-              h(NuxtLink, { to: route.path }, { default: () => route.label })
-          : route.label,
-        icon: route.icon
-          ? () => h(NaiveIcon as Component, { name: route.icon })
-          : undefined,
-        key: route.path ?? route.label
-      }
-      if (route.children) {
-        menuOption.children = cb(route.children)
-      }
-      return menuOption
-    })
+    const cb = (routes: MenuLinkRoute[]) =>
+        routes.map((route) => {
+            const to =  route.to ?? route.path
+            const name = to && router.resolve(to).name?.toString()
+            const path = to && router.resolve(to).path
+            const key = (props.activeBy === 'name' ?  name: path) ?? route.label
+
+            const menuOption: MenuOption = {
+                label: to
+                    ? () => h(NuxtLink, { to }, { default: () => route.label })
+                    : route.label,
+                icon: route.icon
+                    ? () => h(NaiveIcon as Component, { name: route.icon })
+                    : undefined,
+                key,
+            };
+            if (route.children) {
+                menuOption.children = cb(route.children);
+            }
+            return menuOption;
+        });
 
   return cb(props.routes)
 })
