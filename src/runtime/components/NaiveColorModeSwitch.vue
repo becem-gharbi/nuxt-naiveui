@@ -13,8 +13,16 @@
 import type { ButtonProps } from 'naive-ui'
 import { useNaiveColorMode, computed } from '#imports'
 
-interface Props extends /* @vue-ignore */ ButtonProps {}
-defineProps<Props>()
+interface Props extends /* @vue-ignore */ ButtonProps {
+  iconLight?: string;
+  iconDark?: string;
+  iconSystem?: string;
+}
+const props = withDefaults(defineProps<Props>(), {
+  iconLight: 'ph:sun',
+  iconDark: 'ph:moon',
+  iconSystem: 'ph:monitor'
+})
 
 const { colorModePreference } = useNaiveColorMode()
 
@@ -26,11 +34,11 @@ const preference = computed({
 const icon = computed(() => {
   switch (preference.value) {
     case 'light':
-      return 'ph:sun'
+      return props.iconLight
     case 'dark':
-      return 'ph:moon'
+      return props.iconDark
     case 'system':
-      return 'ph:monitor'
+      return props.iconSystem
     default:
       return 'ph:dots-three'
   }
