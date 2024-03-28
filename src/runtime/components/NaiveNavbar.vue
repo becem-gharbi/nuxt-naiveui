@@ -39,6 +39,22 @@
         />
       </n-button>
 
+      <n-button
+        v-if="menuTogglePlacement === 'left'"
+        class="mobileOrTablet"
+        text
+        aria-label="drawer-toggle-btn"
+        :focusable="false"
+        @click="drawerActive = true"
+      >
+        <slot name="toggle">
+          <naive-icon
+            :name="menuToggleIcon"
+            :size="menuToggleIconSize"
+          />
+        </slot>
+      </n-button>
+
       <slot name="start" />
     </div>
 
@@ -69,6 +85,7 @@
       <slot name="end" />
 
       <n-button
+        v-if="menuTogglePlacement === 'right'"
         class="mobileOrTablet"
         text
         aria-label="drawer-toggle-btn"
@@ -144,6 +161,7 @@ const props = withDefaults(
     backIconSize?: number | string;
     menuInverted?: boolean;
     menuPlacement?: 'right' | 'left' | 'center';
+    menuTogglePlacement?: 'right' | 'left';
     drawerPlacement?: 'top' | 'right' | 'bottom' | 'left';
     sticky?: boolean;
     drawerClosable?: boolean;
@@ -154,6 +172,7 @@ const props = withDefaults(
     drawerRoutes: () => [],
     menuToggleIcon: 'ph:equals',
     menuPlacement: 'left',
+    menuTogglePlacement: 'right',
     drawerPlacement: 'left',
     menuInverted: false,
     sticky: true,
