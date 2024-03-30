@@ -15,6 +15,6 @@
     "@nuxt/eslint-config": "^0.2.0",
     "@types/node": "^20.11.6",
     "eslint": "^8.56.0",
-    "nuxt": "^3.9.3"
+    "nuxt": "^3.11.1"
   }
 }
