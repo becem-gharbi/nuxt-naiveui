@@ -15,6 +15,23 @@ interface PaletteOptions extends Colors {
   theme: ColorMode;
 }
 
+export function generateColorThemes (inputColors?: Partial<Colors>) {
+  const colors = {
+    primary: '#1677ff',
+    success: '#52c41a',
+    warning: '#faad14',
+    error: '#f5222d',
+    info: '#1677ff',
+    neutral: '#71717a',
+    ...inputColors
+  }
+
+  return {
+    light: generateColorTheme('light', colors),
+    dark: generateColorTheme('dark', colors)
+  }
+}
+
 function generatePalette (paletteOptions: PaletteOptions) {
   const gray = '#bfbfbf'
   const theme = paletteOptions.theme === 'light' ? 'default' : 'dark'
@@ -86,10 +103,10 @@ function generateColorTheme (mode: ColorMode = 'light', colors: Colors) {
       borderColor: palette.neutral[2],
 
       textColorBase: palette.text[9],
-      textColorDisabled: palette.text[6],
-      textColor1: palette.text[8],
-      textColor2: palette.text[7],
-      textColor3: palette.text[6],
+      textColorDisabled: palette.text[7],
+      textColor1: palette.text[9],
+      textColor2: palette.text[8],
+      textColor3: palette.text[7],
 
       placeholderColor: palette.text[5],
       placeholderColorDisabled: palette.text[5],
@@ -183,23 +200,9 @@ function generateColorTheme (mode: ColorMode = 'light', colors: Colors) {
       arrowColorChildActiveHoverInverted: palette.primary[5],
       arrowColorActiveInverted: palette.primary[6],
       arrowColorActiveHoverInverted: palette.primary[5]
+    },
+    Drawer: {
+      color: palette.neutral[0]
     }
   } as GlobalThemeOverrides
-}
-
-export function generateColorThemes (inputColors?: Partial<Colors>) {
-  const colors = {
-    primary: '#1677ff',
-    success: '#52c41a',
-    warning: '#faad14',
-    error: '#f5222d',
-    info: '#1677ff',
-    neutral: '#71717a',
-    ...inputColors
-  }
-
-  return {
-    light: generateColorTheme('light', colors),
-    dark: generateColorTheme('dark', colors)
-  }
 }
