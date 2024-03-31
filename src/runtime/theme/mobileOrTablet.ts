@@ -1,4 +1,4 @@
-import type { GlobalThemeOverrides } from 'naive-ui'
+import type { Theme } from '../types'
 
 export default {
   common: {
@@ -52,4 +52,4 @@ export default {
   Pagination: {
     itemSizeMedium: '36px'
   }
-} as GlobalThemeOverrides
+} as Theme

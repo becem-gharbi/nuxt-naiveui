@@ -8,9 +8,9 @@
 </template>
 
 <script setup lang="ts">
+import type { ConfigProviderProps } from 'naive-ui'
+import type { ThemeConfig, Theme } from '../types'
 import { defu } from 'defu'
-import type { GlobalThemeOverrides, ConfigProviderProps } from 'naive-ui'
-import type { ThemeConfig } from '../types'
 import {
   useHead,
   useRuntimeConfig,
@@ -27,7 +27,7 @@ interface NaiveConfigProps
   themeConfig?: ThemeConfig;
 }
 
-interface NaiveTheme extends GlobalThemeOverrides {
+interface NaiveTheme extends Theme {
   isPrerendered?: boolean
 }
 
@@ -74,65 +74,57 @@ onMounted(() => {
 
 async function updateTheme () {
   const [deviceTheme, colorModeTheme] = await Promise.all([getDeviceTheme(), getColorModeTheme()])
-
-  return defu(themeConfig?.shared, deviceTheme, colorModeTheme)
+  const sharedTheme = evalTheme(themeConfig?.shared)
+  return defu(sharedTheme, deviceTheme, colorModeTheme)
 }
 
 async function getColorModeTheme () {
-  let colorModeTheme: GlobalThemeOverrides = {}
-
   if (colorMode.value === 'dark') {
-    if (themeConfig?.dark?.defaults === false) {
-      colorModeTheme = themeConfig?.dark
+    const darkTheme = evalTheme(themeConfig?.dark)
+    if (darkTheme?.defaults === false) {
+      return darkTheme
     } else {
       const defaultDarkTheme = await import('../theme/dark')
-      colorModeTheme = defu(themeConfig?.dark, defaultDarkTheme.default)
+      return defu(darkTheme, defaultDarkTheme.default)
     }
-  } else if (themeConfig?.light?.defaults === false) {
-    colorModeTheme = themeConfig?.light
   } else {
-    const defaultLightTheme = await import('../theme/light')
-    colorModeTheme = defu(themeConfig?.light, defaultLightTheme.default)
+    const lightTheme = evalTheme(themeConfig?.light)
+    if (lightTheme?.defaults === false) {
+      return lightTheme
+    } else {
+      const defaultLightTheme = await import('../theme/light')
+      return defu(lightTheme, defaultLightTheme.default)
+    }
   }
-
-  return colorModeTheme
 }
 
 async function getDeviceTheme () {
-  let deviceTheme: GlobalThemeOverrides = {}
-
   const { isMobileOrTablet, isMobile } = useNaiveDevice()
 
   if (isMobileOrTablet) {
-    if (themeConfig?.mobileOrTablet?.defaults === false) {
-      deviceTheme = themeConfig?.mobileOrTablet
+    const mobileOrTabletTheme = evalTheme(themeConfig?.mobileOrTablet)
+    if (mobileOrTabletTheme?.defaults === false) {
+      return mobileOrTabletTheme
     } else {
-      const defaultMobileOrTabletTheme = await import(
-        '../theme/mobileOrTablet'
-      )
-      deviceTheme = defu(
-        themeConfig?.mobileOrTablet,
-        defaultMobileOrTabletTheme.default
-      )
+      const defaultMobileOrTabletTheme = await import('../theme/mobileOrTablet')
+      return defu(mobileOrTabletTheme, defaultMobileOrTabletTheme.default)
     }
   } else if (isMobile) {
-    if (themeConfig?.mobile?.defaults === false) {
-      deviceTheme = themeConfig?.mobile
+    const mobileTheme = evalTheme(themeConfig?.mobile)
+    if (mobileTheme?.defaults === false) {
+      return mobileTheme
     } else {
-      const defaultMobileOrTabletTheme = await import(
-        '../theme/mobileOrTablet'
-      )
-      deviceTheme = defu(
-        themeConfig?.mobile,
-        defaultMobileOrTabletTheme.default
-      )
+      const defaultMobileOrTabletTheme = await import('../theme/mobileOrTablet')
+      return defu(mobileTheme, defaultMobileOrTabletTheme.default)
     }
   }
-
-  return deviceTheme
 }
 
 function compileStyle (prop: string, value?: string) {
   return value && `${prop}: ${value} !important;`
+}
+
+function evalTheme<T extends object> (theme?: T | (() => T)) {
+  return typeof theme === 'function' ? theme() : theme
 }
 </script>
