@@ -1,11 +1,15 @@
 import type { GlobalThemeOverrides } from "naive-ui";
 
+interface Theme extends GlobalThemeOverrides {
+  defaults?: boolean;
+}
+
 export interface ThemeConfig {
-  shared?: GlobalThemeOverrides;
-  light?: GlobalThemeOverrides & { defaults?: boolean };
-  dark?: GlobalThemeOverrides & { defaults?: boolean };
-  mobileOrTablet?: GlobalThemeOverrides & { defaults?: boolean };
-  mobile?: GlobalThemeOverrides & { defaults?: boolean };
+  shared?: Theme | (() => Theme);
+  light?: Theme | (() => Theme);
+  dark?: Theme | (() => Theme);
+  mobileOrTablet?: Theme | (() => Theme);
+  mobile?: Theme | (() => Theme);
 }
 
 export interface NavbarRoute {
@@ -27,9 +31,9 @@ interface RouteLocation {
   force?: boolean;
   hash?: string;
   name?: string | symbol;
-  params?: Record<string, any>,
+  params?: Record<string, any>;
   path?: string;
-  query?: Record<string, any>,
+  query?: Record<string, any>;
   replace?: boolean;
 }
 
@@ -38,8 +42,8 @@ export interface MenuLinkRoute {
   icon?: string;
   to?: string | RouteLocation;
   /**
-  * @deprecated since version 1.11.0, please use `to` instead
-  */
+   * @deprecated since version 1.11.0, please use `to` instead
+   */
   path?: string | RouteLocation;
   children?: MenuLinkRoute[];
 }
@@ -59,10 +63,10 @@ export interface PublicConfig {
   iconCollectionsUrl: string;
 }
 
-declare module 'nuxt/schema' {
+declare module "nuxt/schema" {
   interface AppConfigInput {
     naiveui?: {
       themeConfig?: ThemeConfig;
-    }
+    };
   }
 }
