@@ -27,8 +27,8 @@ export function generateColorThemes (inputColors?: Partial<Colors>) {
   }
 
   return {
-    light: generateColorTheme('light', colors),
-    dark: generateColorTheme('dark', colors)
+    light: () => generateColorTheme('light', colors),
+    dark: () => generateColorTheme('dark', colors)
   }
 }
 
