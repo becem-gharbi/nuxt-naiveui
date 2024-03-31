@@ -148,8 +148,41 @@ function generateColorTheme (mode: ColorMode = 'light', colors: Colors) {
     Tabs: {
       tabColorSegment: palette.neutral[0]
     },
-    Form: {
-      feedbackPadding: '8px 0px 10px 0px' // Patch
+    Menu: {
+      itemTextColorHorizontalInverted: palette.text[7],
+      itemIconColorHorizontalInverted: palette.text[7],
+
+      itemIconColorHoverHorizontalInverted: palette.text[8],
+      itemTextColorHoverHorizontalInverted: palette.text[8],
+
+      itemTextColorActiveHorizontalInverted: palette.text[9],
+      itemIconColorActiveHorizontalInverted: palette.text[9],
+
+      itemTextColorActiveHoverHorizontalInverted: palette.text[8],
+      itemIconColorActiveHoverHorizontalInverted: palette.text[8],
+
+      itemTextColorChildActiveHorizontalInverted: palette.text[9],
+      itemIconColorChildActiveHorizontalInverted: palette.text[9],
+
+      itemIconColorChildActiveHoverHorizontalInverted: palette.text[8],
+      itemTextColorChildActiveHoverHorizontalInverted: palette.text[8],
+
+      itemTextColorInverted: palette.text[8],
+      itemIconColorInverted: palette.text[8],
+      itemTextColorHoverInverted: palette.text[8],
+      itemIconColorHoverInverted: palette.text[8],
+
+      itemTextColorChildActiveHoverInverted: palette.primary[5],
+      itemTextColorChildActiveInverted: palette.primary[6],
+      itemIconColorChildActiveHoverInverted: palette.primary[5],
+      itemIconColorChildActiveInverted: palette.primary[6],
+
+      arrowColorInverted: palette.text[8],
+      arrowColorHoverInverted: palette.text[8],
+      arrowColorChildActiveInverted: palette.primary[6],
+      arrowColorChildActiveHoverInverted: palette.primary[5],
+      arrowColorActiveInverted: palette.primary[6],
+      arrowColorActiveHoverInverted: palette.primary[5]
     }
   } as GlobalThemeOverrides
 }
