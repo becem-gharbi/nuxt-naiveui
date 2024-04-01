@@ -27,7 +27,7 @@ export default function (rootDir = './', collectionsUrl = COLLECTIONS_URL): Plug
     async buildStart () {
       if (regex) { return }
 
-      const fetchError = new Error(`❌ 󠀠 [iconify-download-icons] failed to fetch collections from ${collectionsUrl}`)
+      const fetchError = new Error(`❌ 󠀠 [nuxt-naiveui] failed to fetch collections from ${collectionsUrl}`)
 
       const collections = await fetch(collectionsUrl)
         .then((r) => {
@@ -63,7 +63,7 @@ export default function (rootDir = './', collectionsUrl = COLLECTIONS_URL): Plug
       }
 
       /* eslint-disable no-console */
-      console.log(`✔️ 󠀠 [iconify-download-icons] download ${missingIcons.size} new icons and remove ${unusedIcons.length} unused icons`)
+      console.log(`✔️ 󠀠 [nuxt-naiveui] download ${missingIcons.size} new icons and remove ${unusedIcons.length} unused icons`)
     }
   }
 }

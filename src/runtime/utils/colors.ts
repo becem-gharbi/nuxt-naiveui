@@ -1,6 +1,5 @@
 import { generate } from '@ant-design/colors'
-import type { GlobalThemeOverrides } from 'naive-ui'
-import type { ColorMode } from '../types'
+import type { ColorMode, Theme } from '../types'
 
 interface Colors {
   primary: string;
@@ -135,7 +134,7 @@ function generateColorThemeLight (colors: Colors) {
     Form: {
       feedbackPadding: '8px 0px 10px 0px' // Patch
     }
-  } as GlobalThemeOverrides
+  } as Theme
 }
 
 function generateColorThemeDark (colors: Colors) {
@@ -260,5 +259,5 @@ function generateColorThemeDark (colors: Colors) {
     Form: {
       feedbackPadding: '8px 0px 10px 0px' // Patch
     }
-  } as GlobalThemeOverrides
+  } as Theme
 }

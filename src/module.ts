@@ -10,7 +10,7 @@ import {
 } from '@nuxt/kit'
 import naive from 'naive-ui'
 import { name, version } from '../package.json'
-import iconifyVitePlugin from './iconify-vite'
+import iconifyVitePlugin from './build/iconify'
 import type { PublicConfig } from './runtime/types'
 import { defu } from 'defu'
 export type {

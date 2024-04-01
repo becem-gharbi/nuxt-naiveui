@@ -10,7 +10,7 @@ const download = (icons: string[]) => new Promise<IconifyJSON[]>((resolve, rejec
     const fullname = (e: IconifyIconName) => `${e.prefix}:${e.name}`
 
     if (missing.length) {
-      const error = new Error(`❌ 󠀠 [iconify-download-icons] download failed of ${missing.map(fullname).join(' ')}`)
+      const error = new Error(`❌ 󠀠 [nuxt-naiveui] download failed of ${missing.map(fullname).join(' ')}`)
       reject(error)
     }
 

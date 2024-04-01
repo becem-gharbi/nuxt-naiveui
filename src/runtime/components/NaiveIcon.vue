@@ -33,7 +33,7 @@ const icon = ref()
 const key = ref(1)
 
 // eslint-disable-next-line no-console
-const load = (name: string) => loadIcon(name).catch(() => console.error(`Failed to load icon ${name}`))
+const load = (name: string) => loadIcon(name).catch(() => console.error(`[nuxt-naiveui] failed to load icon ${name}`))
 
 icon.value = await load(sName.value)
 

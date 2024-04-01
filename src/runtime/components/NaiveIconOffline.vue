@@ -15,8 +15,8 @@
 import { Icon } from '@iconify/vue/dist/offline'
 import { _api, loadIcon } from '@iconify/vue'
 import { getQuery, parseURL } from 'ufo'
-import { defu } from 'defu'
 import type { PublicConfig } from '../types'
+import { defu } from 'defu'
 import { computed, useRuntimeConfig, ref, watch, onMounted, useNuxtApp, callOnce } from '#imports'
 
 const config = useRuntimeConfig().public.naiveui as PublicConfig
@@ -62,7 +62,7 @@ await callOnce(`naiveui:icon-key-${import.meta.server ? 0 : 1}`, () => {
 })
 
 // eslint-disable-next-line no-console
-const load = (name: string) => loadIcon(name).catch(() => console.error(`Failed to load icon ${name}`))
+const load = (name: string) => loadIcon(name).catch(() => console.error(`[nuxt-naiveui] failed to load icon ${name}`))
 
 icon.value = await load(sName.value)
 
