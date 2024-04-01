@@ -102,37 +102,22 @@
     </div>
   </n-el>
 
-  <n-drawer
+  <naive-drawer-link
     v-model:show="drawerActive"
     :placement="drawerPlacement"
     :width="drawerWidth"
+    :routes="drawerRoutes"
   >
-    <n-drawer-content
-      title="Menu"
-      :body-content-style="{ padding: 0 }"
-      :header-style="{
-        padding: '15px',
-      }"
-      :footer-style="{ justifyContent: 'start' }"
-      :closable="drawerClosable"
-    >
-      <template #header>
-        <slot name="drawer-header" />
-      </template>
+    <template #header>
+      <slot name="drawer-header" />
+    </template>
 
-      <slot name="drawer-content" />
+    <slot name="drawer-content" />
 
-      <lazy-naive-menu-link
-        mode="vertical"
-        :inverted="menuInverted"
-        :routes="drawerRoutes"
-      />
-
-      <template #footer>
-        <slot name="drawer-footer" />
-      </template>
-    </n-drawer-content>
-  </n-drawer>
+    <template #footer>
+      <slot name="drawer-footer" />
+    </template>
+  </naive-drawer-link>
 </template>
 
 <script setup lang="ts">
@@ -148,8 +133,6 @@ import { NaiveIcon, LazyNaiveMenuLink } from '#components'
 const drawerActive = ref(false)
 const router = useRouter()
 const { isMobileOrTablet } = useNaiveDevice()
-
-router.afterEach(() => { drawerActive.value = false })
 
 const props = withDefaults(
   defineProps<{

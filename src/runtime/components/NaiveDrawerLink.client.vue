@@ -15,6 +15,8 @@
         <slot name="header" />
       </template>
 
+      <slot />
+
       <lazy-naive-menu-link mode="vertical" :routes="routes" />
 
       <template #footer>
