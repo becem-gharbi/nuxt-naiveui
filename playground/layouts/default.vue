@@ -38,18 +38,18 @@
 </template>
 
 <script setup lang="ts">
-import type { NavbarRoute } from '../../src/module'
+import type { MenuLinkRoute } from '../../src/module'
 
-const navbarRoutes: NavbarRoute[] = [
+const navbarRoutes: MenuLinkRoute[] = [
   {
     label: 'Sample, this is a long long label',
     icon: 'ri:home-4-line',
-    path: '/'
+    to: '/'
   },
   {
     label: 'Computers',
     icon: 'material-symbols:computer-outline',
-    path: '/computers'
+    to: '/computers'
   },
   {
     label: 'Categories',
@@ -58,17 +58,17 @@ const navbarRoutes: NavbarRoute[] = [
       {
         label: 'Books',
         icon: 'material-symbols:menu-book-outline-rounded',
-        path: '/books'
+        to: '/books'
       }
     ]
   }
 ]
 
-const drawerRoutes: NavbarRoute[] = [
+const drawerRoutes: MenuLinkRoute[] = [
   {
     label: 'Sample, this is a long long label',
     icon: 'ri:home-4-line',
-    path: '/'
+    to: '/'
   }
 ]
 </script>
