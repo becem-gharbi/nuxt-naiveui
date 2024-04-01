@@ -27,8 +27,8 @@ export function generateColorThemes (inputColors?: Partial<Colors>) {
   }
 
   return {
-    light: () => generateColorTheme('light', colors),
-    dark: () => generateColorTheme('dark', colors)
+    light: () => generateColorTheme(colors, 'light'),
+    dark: () => generateColorTheme(colors, 'dark')
   }
 }
 
@@ -48,7 +48,7 @@ function generatePalette (paletteOptions: PaletteOptions) {
   }
 }
 
-function generateColorTheme (mode: ColorMode = 'light', colors: Colors) {
+function generateColorTheme (colors: Colors, mode: ColorMode = 'light') {
   const palette = generatePalette({
     theme: mode,
     primary: colors.primary,
@@ -86,12 +86,12 @@ function generateColorTheme (mode: ColorMode = 'light', colors: Colors) {
 
       bodyColor: palette.neutral[0],
       cardColor: palette.neutral[0],
+      modalColor: palette.neutral[0],
       inputColor: palette.neutral[0],
       inputColorDisabled: palette.neutral[0],
 
       tabColor: palette.neutral[1],
       popoverColor: palette.neutral[1],
-      modalColor: palette.neutral[1],
       tagColor: palette.neutral[1],
       baseColor: palette.neutral[1],
       codeColor: palette.neutral[1],
@@ -106,7 +106,7 @@ function generateColorTheme (mode: ColorMode = 'light', colors: Colors) {
       textColorDisabled: palette.text[7],
       textColor1: palette.text[9],
       textColor2: palette.text[8],
-      textColor3: palette.text[7],
+      textColor3: palette.text[6],
 
       placeholderColor: palette.text[5],
       placeholderColorDisabled: palette.text[5],
@@ -200,9 +200,6 @@ function generateColorTheme (mode: ColorMode = 'light', colors: Colors) {
       arrowColorChildActiveHoverInverted: palette.primary[5],
       arrowColorActiveInverted: palette.primary[6],
       arrowColorActiveHoverInverted: palette.primary[5]
-    },
-    Drawer: {
-      color: palette.neutral[0]
     }
   } as GlobalThemeOverrides
 }
