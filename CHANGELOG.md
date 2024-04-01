@@ -1,6 +1,39 @@
 # Changelog
 
 
+## v1.12.0
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.11.0...v1.12.0)
+
+### 🚀 Enhancements
+
+- **NaiveColorModeSwitch:** Support custom icons ([#60](https://github.com/becem-gharbi/nuxt-naiveui/pull/60))
+- **DrawerLink:** Allow toggle button to be placed on the left ([#61](https://github.com/becem-gharbi/nuxt-naiveui/pull/61))
+- Add color theme generator ([#62](https://github.com/becem-gharbi/nuxt-naiveui/pull/62))
+
+### 💅 Refactors
+
+- Create NaiveDrawerToggle component ([ec92441](https://github.com/becem-gharbi/nuxt-naiveui/commit/ec92441))
+- **Navbar:** Use internal components ([#64](https://github.com/becem-gharbi/nuxt-naiveui/pull/64))
+- **generateColorThemes:** Minor changes ([642d1ba](https://github.com/becem-gharbi/nuxt-naiveui/commit/642d1ba))
+
+### 📖 Documentation
+
+- Update 6.naive-layout-navbar.md ([0a3cd16](https://github.com/becem-gharbi/nuxt-naiveui/commit/0a3cd16))
+- Update 7.naive-layout-sidebar.md ([a6537c2](https://github.com/becem-gharbi/nuxt-naiveui/commit/a6537c2))
+
+### 🏡 Chore
+
+- No significant change ([22fb8c7](https://github.com/becem-gharbi/nuxt-naiveui/commit/22fb8c7))
+- **NaiveConfig:** Theme config inputs deprecation ([#63](https://github.com/becem-gharbi/nuxt-naiveui/pull/63))
+- **playground:** Replace NavbarRoute with MenuLinkRoute ([2f35ef0](https://github.com/becem-gharbi/nuxt-naiveui/commit/2f35ef0))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+- GjfLeo ([@gjfLeo](http://github.com/gjfLeo))
+
 ## v1.11.0
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.10.4...v1.11.0)
