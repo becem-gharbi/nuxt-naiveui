@@ -33,7 +33,7 @@ export function generateColorThemes (inputColors?: Partial<Colors>) {
     warning: '#faad14',
     error: '#f5222d',
     info: '#1677ff',
-    neutral: '#71717a',
+    neutral: '#475569',
     ...inputColors
   }
 
@@ -127,12 +127,6 @@ function generateColorThemeLight (colors: Colors) {
       arrowColorChildActiveHoverInverted: palette.primary[5],
       arrowColorActiveInverted: palette.primary[6],
       arrowColorActiveHoverInverted: palette.primary[5]
-    },
-    Input: {
-      lineHeightTextarea: '1.6' // Patch
-    },
-    Form: {
-      feedbackPadding: '8px 0px 10px 0px' // Patch
     }
   } as Theme
 }
@@ -176,18 +170,19 @@ function generateColorThemeDark (colors: Colors) {
       cardColor: palette.neutral[0],
       inputColor: palette.neutral[0],
       inputColorDisabled: palette.neutral[0],
+      modalColor: palette.neutral[0],
 
       tabColor: palette.neutral[1],
       popoverColor: palette.neutral[1],
       tagColor: palette.neutral[1],
       baseColor: palette.neutral[1],
       codeColor: palette.neutral[1],
-      modalColor: palette.neutral[1],
+      actionColor: palette.neutral[1],
+
+      avatarColor: palette.neutral[3],
 
       dividerColor: palette.neutral[2],
-      avatarColor: palette.neutral[3],
       hoverColor: palette.neutral[2],
-      actionColor: palette.neutral[1],
       borderColor: palette.neutral[2],
 
       textColorBase: palette.text[9],
@@ -252,12 +247,6 @@ function generateColorThemeDark (colors: Colors) {
     },
     Tabs: {
       tabColorSegment: palette.neutral[0]
-    },
-    Input: {
-      lineHeightTextarea: '1.6' // Patch
-    },
-    Form: {
-      feedbackPadding: '8px 0px 10px 0px' // Patch
     }
   } as Theme
 }
