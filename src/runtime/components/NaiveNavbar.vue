@@ -91,7 +91,7 @@
     </div>
   </n-el>
 
-  <naive-drawer-link
+  <lazy-naive-drawer-link
     v-model:show="drawerActive"
     :placement="drawerPlacement"
     :width="drawerWidth"
@@ -107,7 +107,7 @@
     <template #footer>
       <slot name="drawer-footer" />
     </template>
-  </naive-drawer-link>
+  </lazy-naive-drawer-link>
 </template>
 
 <script setup lang="ts">
@@ -119,7 +119,6 @@ import {
   useRouter,
   useNaiveDevice
 } from '#imports'
-import { NaiveIcon, LazyNaiveMenuLink } from '#components'
 
 const drawerActive = ref(false)
 const router = useRouter()
