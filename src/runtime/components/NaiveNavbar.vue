@@ -111,7 +111,7 @@
 </template>
 
 <script setup lang="ts">
-import type { NavbarRoute } from '../types'
+import type { MenuLinkRoute } from '../types'
 import NaiveDrawerToggle from './internals/NaiveDrawerToggle.vue'
 import {
   ref,
@@ -126,8 +126,8 @@ const { isMobileOrTablet } = useNaiveDevice()
 
 const props = withDefaults(
   defineProps<{
-    routes?: NavbarRoute[];
-    drawerRoutes?: NavbarRoute[];
+    routes?: MenuLinkRoute[];
+    drawerRoutes?: MenuLinkRoute[];
     menuToggleIcon?: string;
     menuToggleIconSize?: number | string;
     backIcon?: boolean;

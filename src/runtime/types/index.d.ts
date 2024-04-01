@@ -12,13 +12,6 @@ export interface ThemeConfig {
   mobile?: Theme | (() => Theme);
 }
 
-export interface NavbarRoute {
-  label: string;
-  icon?: string;
-  path?: string;
-  children?: NavbarRoute[];
-}
-
 export interface TabbarRoute {
   label: string;
   iconSelected: string;
