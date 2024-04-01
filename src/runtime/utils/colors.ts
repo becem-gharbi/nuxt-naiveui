@@ -128,6 +128,12 @@ function generateColorThemeLight (colors: Colors) {
       arrowColorChildActiveHoverInverted: palette.primary[5],
       arrowColorActiveInverted: palette.primary[6],
       arrowColorActiveHoverInverted: palette.primary[5]
+    },
+    Input: {
+      lineHeightTextarea: '1.6' // Patch
+    },
+    Form: {
+      feedbackPadding: '8px 0px 10px 0px' // Patch
     }
   } as GlobalThemeOverrides
 }
@@ -247,6 +253,12 @@ function generateColorThemeDark (colors: Colors) {
     },
     Tabs: {
       tabColorSegment: palette.neutral[0]
+    },
+    Input: {
+      lineHeightTextarea: '1.6' // Patch
+    },
+    Form: {
+      feedbackPadding: '8px 0px 10px 0px' // Patch
     }
   } as GlobalThemeOverrides
 }
