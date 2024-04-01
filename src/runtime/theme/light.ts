@@ -1,4 +1,4 @@
-import type { GlobalThemeOverrides } from 'naive-ui'
+import type { Theme } from '../types'
 
 export default {
   common: {
@@ -61,4 +61,4 @@ export default {
   Form: {
     feedbackPadding: '8px 0px 10px 0px'
   }
-} as GlobalThemeOverrides
+} as Theme
