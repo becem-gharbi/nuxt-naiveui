@@ -5,35 +5,19 @@
       style="display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px;padding:0 16px;"
       class="layout-header"
     >
-      <n-button
+      <naive-drawer-toggle
         v-if="togglePlacement === 'left'"
-        class="mobileOrTablet"
-        text
-        aria-label="drawer-toggle-btn"
-        :focusable="false"
+        :icon="toggleIcon"
         @click="drawerActive = true"
-      >
-        <naive-icon
-          :name="toggleIcon"
-          :size="26"
-        />
-      </n-button>
+      />
       <slot name="start" />
       <div style="flex: 1" />
       <slot name="end" />
-      <n-button
+      <naive-drawer-toggle
         v-if="togglePlacement === 'right'"
-        class="mobileOrTablet"
-        text
-        aria-label="drawer-toggle-btn"
-        :focusable="false"
+        :icon="toggleIcon"
         @click="drawerActive = true"
-      >
-        <naive-icon
-          :name="toggleIcon"
-          :size="26"
-        />
-      </n-button>
+      />
     </n-layout-header>
 
     <n-layout
@@ -86,6 +70,7 @@
 
 <script setup lang="ts">
 import type { MenuLinkRoute } from '../types'
+import NaiveDrawerToggle from './internals/NaiveDrawerToggle.vue'
 import { ref, useNaiveDevice } from '#imports'
 
 withDefaults(
