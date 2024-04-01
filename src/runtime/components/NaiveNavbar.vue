@@ -39,22 +39,16 @@
         />
       </n-button>
 
-      <n-button
+      <naive-drawer-toggle
         v-if="menuTogglePlacement === 'left'"
-        class="mobileOrTablet"
-        text
-        aria-label="drawer-toggle-btn"
-        :focusable="false"
+        :icon="menuToggleIcon"
+        :size="menuToggleIconSize"
         @click="drawerActive = true"
       >
-        <slot name="toggle">
-          <naive-icon
-            :name="menuToggleIcon"
-            :size="menuToggleIconSize"
-          />
-        </slot>
-      </n-button>
-
+        <template #toggle>
+          <slot name="toggle" />
+        </template>
+      </naive-drawer-toggle>
       <slot name="start" />
     </div>
 
@@ -84,21 +78,16 @@
     >
       <slot name="end" />
 
-      <n-button
+      <naive-drawer-toggle
         v-if="menuTogglePlacement === 'right'"
-        class="mobileOrTablet"
-        text
-        aria-label="drawer-toggle-btn"
-        :focusable="false"
+        :icon="menuToggleIcon"
+        :size="menuToggleIconSize"
         @click="drawerActive = true"
       >
-        <slot name="toggle">
-          <naive-icon
-            :name="menuToggleIcon"
-            :size="menuToggleIconSize"
-          />
-        </slot>
-      </n-button>
+        <template #toggle>
+          <slot name="toggle" />
+        </template>
+      </naive-drawer-toggle>
     </div>
   </n-el>
 
@@ -107,6 +96,7 @@
     :placement="drawerPlacement"
     :width="drawerWidth"
     :routes="drawerRoutes"
+    :closable="drawerClosable"
   >
     <template #header>
       <slot name="drawer-header" />
@@ -122,6 +112,7 @@
 
 <script setup lang="ts">
 import type { NavbarRoute } from '../types'
+import NaiveDrawerToggle from './internals/NaiveDrawerToggle.vue'
 import {
   ref,
   computed,
