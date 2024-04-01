@@ -13,13 +13,7 @@ import { name, version } from '../package.json'
 import iconifyVitePlugin from './build/iconify'
 import type { PublicConfig } from './runtime/types'
 import { defu } from 'defu'
-export type {
-  NavbarRoute,
-  ThemeConfig,
-  TabbarRoute,
-  PublicConfig,
-  MenuLinkRoute
-} from './runtime/types'
+export type { TabbarRoute, MenuLinkRoute } from './runtime/types'
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions extends PublicConfig { }

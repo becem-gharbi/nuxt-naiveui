@@ -39,22 +39,16 @@
         />
       </n-button>
 
-      <n-button
+      <naive-drawer-toggle
         v-if="menuTogglePlacement === 'left'"
-        class="mobileOrTablet"
-        text
-        aria-label="drawer-toggle-btn"
-        :focusable="false"
+        :icon="menuToggleIcon"
+        :size="menuToggleIconSize"
         @click="drawerActive = true"
       >
-        <slot name="toggle">
-          <naive-icon
-            :name="menuToggleIcon"
-            :size="menuToggleIconSize"
-          />
-        </slot>
-      </n-button>
-
+        <template #toggle>
+          <slot name="toggle" />
+        </template>
+      </naive-drawer-toggle>
       <slot name="start" />
     </div>
 
@@ -84,77 +78,56 @@
     >
       <slot name="end" />
 
-      <n-button
+      <naive-drawer-toggle
         v-if="menuTogglePlacement === 'right'"
-        class="mobileOrTablet"
-        text
-        aria-label="drawer-toggle-btn"
-        :focusable="false"
+        :icon="menuToggleIcon"
+        :size="menuToggleIconSize"
         @click="drawerActive = true"
       >
-        <slot name="toggle">
-          <naive-icon
-            :name="menuToggleIcon"
-            :size="menuToggleIconSize"
-          />
-        </slot>
-      </n-button>
+        <template #toggle>
+          <slot name="toggle" />
+        </template>
+      </naive-drawer-toggle>
     </div>
   </n-el>
 
-  <n-drawer
+  <lazy-naive-drawer-link
     v-model:show="drawerActive"
     :placement="drawerPlacement"
     :width="drawerWidth"
+    :routes="drawerRoutes"
+    :closable="drawerClosable"
   >
-    <n-drawer-content
-      title="Menu"
-      :body-content-style="{ padding: 0 }"
-      :header-style="{
-        padding: '15px',
-      }"
-      :footer-style="{ justifyContent: 'start' }"
-      :closable="drawerClosable"
-    >
-      <template #header>
-        <slot name="drawer-header" />
-      </template>
+    <template #header>
+      <slot name="drawer-header" />
+    </template>
 
-      <slot name="drawer-content" />
+    <slot name="drawer-content" />
 
-      <lazy-naive-menu-link
-        mode="vertical"
-        :inverted="menuInverted"
-        :routes="drawerRoutes"
-      />
-
-      <template #footer>
-        <slot name="drawer-footer" />
-      </template>
-    </n-drawer-content>
-  </n-drawer>
+    <template #footer>
+      <slot name="drawer-footer" />
+    </template>
+  </lazy-naive-drawer-link>
 </template>
 
 <script setup lang="ts">
-import type { NavbarRoute } from '../types'
+import type { MenuLinkRoute } from '../types'
+import NaiveDrawerToggle from './internals/NaiveDrawerToggle.vue'
 import {
   ref,
   computed,
   useRouter,
   useNaiveDevice
 } from '#imports'
-import { NaiveIcon, LazyNaiveMenuLink } from '#components'
 
 const drawerActive = ref(false)
 const router = useRouter()
 const { isMobileOrTablet } = useNaiveDevice()
 
-router.afterEach(() => { drawerActive.value = false })
-
 const props = withDefaults(
   defineProps<{
-    routes?: NavbarRoute[];
-    drawerRoutes?: NavbarRoute[];
+    routes?: MenuLinkRoute[];
+    drawerRoutes?: MenuLinkRoute[];
     menuToggleIcon?: string;
     menuToggleIconSize?: number | string;
     backIcon?: boolean;
