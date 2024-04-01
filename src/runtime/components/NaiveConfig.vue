@@ -24,6 +24,7 @@ import {
 
 interface NaiveConfigProps
   extends /* @vue-ignore */ Omit<ConfigProviderProps, 'themeOverrides' | 'theme'> {
+  /** @deprecated since version 1.12.0, instead use `naiveui.themeConfig` in `app.config` */
   themeConfig?: ThemeConfig;
 }
 

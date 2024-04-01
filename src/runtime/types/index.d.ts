@@ -41,9 +41,7 @@ export interface MenuLinkRoute {
   label: string;
   icon?: string;
   to?: string | RouteLocation;
-  /**
-   * @deprecated since version 1.11.0, please use `to` instead
-   */
+  /** @deprecated since version 1.11.0, instead use `to` */
   path?: string | RouteLocation;
   children?: MenuLinkRoute[];
 }
@@ -55,6 +53,7 @@ export type ColorModePreference = "light" | "dark" | "system";
 export type ColorModeForce = ColorMode | false;
 
 export interface PublicConfig {
+   /** @deprecated since version 1.12.0, instead use `naiveui.themeConfig` in `app.config` */
   themeConfig?: ThemeConfig;
   colorModePreference: ColorModePreference;
   colorModePreferenceCookieName: string;
