@@ -142,7 +142,7 @@ function generateColorThemeDark (colors: Colors) {
   })
 
   return {
-    defaults: false,
+    defaults: true,
 
     common: {
       primaryColor: palette.primary[6],
@@ -166,48 +166,6 @@ function generateColorThemeDark (colors: Colors) {
       errorColorPressed: palette.error[7],
       errorColorSuppl: palette.error[8],
 
-      tabColor: 'rgba(255, 255, 255, 0.04)',
-      tableColorStriped: 'rgba(255, 255, 255, 0.05)',
-      pressedColor: 'rgba(255, 255, 255, 0.05)',
-      actionColor: 'rgba(255, 255, 255, 0.06)',
-      tableHeaderColor: 'rgba(255, 255, 255, 0.06)',
-      tableColorHover: 'rgba(255, 255, 255, 0.06)',
-      inputColorDisabled: 'rgba(255, 255, 255, 0.06)',
-      buttonColor2: 'rgba(255, 255, 255, 0.08)',
-      buttonColor2Pressed: 'rgba(255, 255, 255, 0.08)',
-      closeColorPressed: 'rgba(255, 255, 255, 0.08)',
-      dividerColor: 'rgba(255, 255, 255, 0.09)',
-      hoverColor: 'rgba(255, 255, 255, 0.09)',
-      inputColor: 'rgba(255, 255, 255, 0.1)',
-      buttonColor2Hover: 'rgba(255, 255, 255, 0.12)',
-      closeColorHover: 'rgba(255, 255, 255, 0.12)',
-      progressRailColor: 'rgba(255, 255, 255, 0.12)',
-      codeColor: 'rgba(255, 255, 255, 0.12)',
-      avatarColor: 'rgba(255, 255, 255, 0.18)',
-      scrollbarColor: 'rgba(255, 255, 255, 0.2)',
-      railColor: 'rgba(255, 255, 255, 0.2)',
-      borderColor: 'rgba(255, 255, 255, 0.24)',
-      placeholderColorDisabled: 'rgba(255, 255, 255, 0.28)',
-      iconColorDisabled: 'rgba(255, 255, 255, 0.28)',
-      iconColorPressed: 'rgba(255, 255, 255, 0.30)',
-      clearColorPressed: 'rgba(255, 255, 255, 0.30)',
-      scrollbarColorHover: 'rgba(255, 255, 255, 0.30)',
-      placeholderColor: 'rgba(255, 255, 255, 0.38)',
-      textColorDisabled: 'rgba(255, 255, 255, 0.38)',
-      clearColor: 'rgba(255, 255, 255, 0.38)',
-      iconColor: 'rgba(255, 255, 255, 0.38)',
-      iconColorHover: 'rgba(255, 255, 255, 0.475)',
-      clearColorHover: 'rgba(255, 255, 255, 0.48)',
-      closeIconColorHover: 'rgba(255, 255, 255, 0.52)',
-      closeIconColor: 'rgba(255, 255, 255, 0.52)',
-      closeIconColorPressed: 'rgba(255, 255, 255, 0.52)',
-      textColor3: 'rgba(255, 255, 255, 0.52)',
-      textColor2: 'rgba(255, 255, 255, 0.82)',
-      textColor1: 'rgba(255, 255, 255, 0.9)',
-
-      textColorBase: 'white',
-      invertedColor: 'black',
-
       bodyColor: palette.neutral[0],
 
       baseColor: palette.neutral[1],
@@ -226,23 +184,12 @@ function generateColorThemeDark (colors: Colors) {
       footerColor: palette.neutral[0]
     },
 
-    Tag: {
-      colorBordered: 'rgba(0, 0, 0, 0)'
-    },
-
     Tooltip: {
-      color: palette.neutral[3],
-      textColor: 'rgba(255, 255, 255, 0.9)'
+      color: palette.neutral[3]
     },
 
     Slider: {
-      indicatorColor: palette.neutral[3],
-      indicatorTextColor: 'rgba(255, 255, 255, 0.9)'
-    },
-
-    Skeleton: {
-      color: 'rgba(255, 255, 255, 0.12)',
-      colorEnd: 'rgba(255, 255, 255, 0.18)'
+      indicatorColor: palette.neutral[3]
     }
   } as Theme
 }
