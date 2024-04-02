@@ -33,7 +33,7 @@ export function generateColorThemes (inputColors?: Partial<Colors>) {
     warning: '#faad14',
     error: '#f5222d',
     info: '#1677ff',
-    neutral: '#475569',
+    neutral: '#64748b',
     ...inputColors
   }
 
@@ -166,87 +166,83 @@ function generateColorThemeDark (colors: Colors) {
       errorColorPressed: palette.error[7],
       errorColorSuppl: palette.error[8],
 
+      tabColor: 'rgba(255, 255, 255, 0.04)',
+      tableColorStriped: 'rgba(255, 255, 255, 0.05)',
+      pressedColor: 'rgba(255, 255, 255, 0.05)',
+      actionColor: 'rgba(255, 255, 255, 0.06)',
+      tableHeaderColor: 'rgba(255, 255, 255, 0.06)',
+      tableColorHover: 'rgba(255, 255, 255, 0.06)',
+      inputColorDisabled: 'rgba(255, 255, 255, 0.06)',
+      buttonColor2: 'rgba(255, 255, 255, 0.08)',
+      buttonColor2Pressed: 'rgba(255, 255, 255, 0.08)',
+      closeColorPressed: 'rgba(255, 255, 255, 0.08)',
+      dividerColor: 'rgba(255, 255, 255, 0.09)',
+      hoverColor: 'rgba(255, 255, 255, 0.09)',
+      inputColor: 'rgba(255, 255, 255, 0.1)',
+      buttonColor2Hover: 'rgba(255, 255, 255, 0.12)',
+      closeColorHover: 'rgba(255, 255, 255, 0.12)',
+      progressRailColor: 'rgba(255, 255, 255, 0.12)',
+      codeColor: 'rgba(255, 255, 255, 0.12)',
+      avatarColor: 'rgba(255, 255, 255, 0.18)',
+      scrollbarColor: 'rgba(255, 255, 255, 0.2)',
+      railColor: 'rgba(255, 255, 255, 0.2)',
+      borderColor: 'rgba(255, 255, 255, 0.24)',
+      placeholderColorDisabled: 'rgba(255, 255, 255, 0.28)',
+      iconColorDisabled: 'rgba(255, 255, 255, 0.28)',
+      iconColorPressed: 'rgba(255, 255, 255, 0.30)',
+      clearColorPressed: 'rgba(255, 255, 255, 0.30)',
+      scrollbarColorHover: 'rgba(255, 255, 255, 0.30)',
+      placeholderColor: 'rgba(255, 255, 255, 0.38)',
+      textColorDisabled: 'rgba(255, 255, 255, 0.38)',
+      clearColor: 'rgba(255, 255, 255, 0.38)',
+      iconColor: 'rgba(255, 255, 255, 0.38)',
+      iconColorHover: 'rgba(255, 255, 255, 0.475)',
+      clearColorHover: 'rgba(255, 255, 255, 0.48)',
+      closeIconColorHover: 'rgba(255, 255, 255, 0.52)',
+      closeIconColor: 'rgba(255, 255, 255, 0.52)',
+      closeIconColorPressed: 'rgba(255, 255, 255, 0.52)',
+      textColor3: 'rgba(255, 255, 255, 0.52)',
+      textColor2: 'rgba(255, 255, 255, 0.82)',
+      textColor1: 'rgba(255, 255, 255, 0.9)',
+
+      textColorBase: 'white',
+      invertedColor: 'black',
+
       bodyColor: palette.neutral[0],
-      cardColor: palette.neutral[0],
-      inputColor: palette.neutral[0],
-      inputColorDisabled: palette.neutral[0],
-      modalColor: palette.neutral[0],
 
-      tabColor: palette.neutral[1],
-      popoverColor: palette.neutral[1],
-      tagColor: palette.neutral[1],
       baseColor: palette.neutral[1],
-      codeColor: palette.neutral[1],
-      actionColor: palette.neutral[1],
-
-      avatarColor: palette.neutral[3],
-
-      dividerColor: palette.neutral[2],
-      hoverColor: palette.neutral[2],
-      borderColor: palette.neutral[2],
-
-      textColorBase: palette.text[9],
-      textColorDisabled: palette.text[7],
-      textColor1: palette.text[9],
-      textColor2: palette.text[8],
-      textColor3: palette.text[6],
-
-      placeholderColor: palette.text[5],
-      placeholderColorDisabled: palette.text[5],
-
-      closeIconColor: palette.neutral[7],
-      closeIconColorHover: palette.neutral[6],
-      closeIconColorPressed: palette.neutral[6],
-      closeColorHover: palette.neutral[2],
-      closeColorPressed: palette.neutral[3],
-
-      clearColor: palette.neutral[7],
-      clearColorHover: palette.neutral[6],
-      clearColorPressed: palette.neutral[6],
-
-      scrollbarColor: palette.neutral[2],
-      scrollbarColorHover: palette.neutral[3],
-
-      progressRailColor: palette.neutral[2],
-      railColor: palette.neutral[2],
-
-      buttonColor2: palette.neutral[1],
-      buttonColor2Hover: palette.neutral[2],
-      buttonColor2Pressed: palette.neutral[3],
-
       tableColor: palette.neutral[1],
-      tableHeaderColor: palette.neutral[1],
-      tableColorStriped: palette.neutral[1],
-      tableColorHover: palette.neutral[1]
+      cardColor: palette.neutral[1],
+
+      tagColor: palette.neutral[2],
+      modalColor: palette.neutral[2],
+
+      popoverColor: palette.neutral[3]
     },
-    Skeleton: {
-      color: palette.neutral[2],
-      colorEnd: palette.neutral[3]
-    },
-    Tag: {
-      colorBordered: palette.neutral[1]
-    },
-    Tooltip: {
-      color: palette.neutral[1],
-      textColor: palette.text[8]
-    },
-    Slider: {
-      indicatorColor: palette.neutral[1],
-      indicatorTextColor: palette.text[8]
-    },
+
     Layout: {
       siderColor: palette.neutral[0],
       headerColor: palette.neutral[0],
       footerColor: palette.neutral[0]
     },
-    Icon: {
-      color: palette.text[8]
+
+    Tag: {
+      colorBordered: 'rgba(0, 0, 0, 0)'
     },
-    Switch: {
-      railColor: palette.neutral[2]
+
+    Tooltip: {
+      color: palette.neutral[3],
+      textColor: 'rgba(255, 255, 255, 0.9)'
     },
-    Tabs: {
-      tabColorSegment: palette.neutral[0]
+
+    Slider: {
+      indicatorColor: palette.neutral[3],
+      indicatorTextColor: 'rgba(255, 255, 255, 0.9)'
+    },
+
+    Skeleton: {
+      color: 'rgba(255, 255, 255, 0.12)',
+      colorEnd: 'rgba(255, 255, 255, 0.18)'
     }
   } as Theme
 }
