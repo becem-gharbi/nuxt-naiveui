@@ -54,7 +54,7 @@ function generateColorThemeLight (colors: Colors) {
   })
 
   return {
-    defaults: false,
+    defaults: true,
 
     common: {
       primaryColor: palette.primary[6],
@@ -76,53 +76,15 @@ function generateColorThemeLight (colors: Colors) {
       errorColor: palette.error[6],
       errorColorHover: palette.error[5],
       errorColorPressed: palette.error[7],
-      errorColorSuppl: palette.error[8],
-
-      bodyColor: palette.neutral[0],
-
-      textColorBase: palette.text[9],
-      textColorDisabled: palette.text[7],
-      textColor1: palette.text[9],
-      textColor2: palette.text[8],
-      textColor3: palette.text[6]
-    },
-    Layout: {
-      siderColor: palette.neutral[0],
-      headerColor: palette.neutral[0],
-      footerColor: palette.neutral[0]
+      errorColorSuppl: palette.error[8]
     },
 
     Menu: {
-      itemTextColorHorizontalInverted: palette.text[7],
-      itemIconColorHorizontalInverted: palette.text[7],
-
-      itemIconColorHoverHorizontalInverted: palette.text[8],
-      itemTextColorHoverHorizontalInverted: palette.text[8],
-
-      itemTextColorActiveHorizontalInverted: palette.text[9],
-      itemIconColorActiveHorizontalInverted: palette.text[9],
-
-      itemTextColorActiveHoverHorizontalInverted: palette.text[8],
-      itemIconColorActiveHoverHorizontalInverted: palette.text[8],
-
-      itemTextColorChildActiveHorizontalInverted: palette.text[9],
-      itemIconColorChildActiveHorizontalInverted: palette.text[9],
-
-      itemIconColorChildActiveHoverHorizontalInverted: palette.text[8],
-      itemTextColorChildActiveHoverHorizontalInverted: palette.text[8],
-
-      itemTextColorInverted: palette.text[8],
-      itemIconColorInverted: palette.text[8],
-      itemTextColorHoverInverted: palette.text[8],
-      itemIconColorHoverInverted: palette.text[8],
-
       itemTextColorChildActiveHoverInverted: palette.primary[5],
       itemTextColorChildActiveInverted: palette.primary[6],
       itemIconColorChildActiveHoverInverted: palette.primary[5],
       itemIconColorChildActiveInverted: palette.primary[6],
 
-      arrowColorInverted: palette.text[8],
-      arrowColorHoverInverted: palette.text[8],
       arrowColorChildActiveInverted: palette.primary[6],
       arrowColorChildActiveHoverInverted: palette.primary[5],
       arrowColorActiveInverted: palette.primary[6],
