@@ -3,15 +3,8 @@ import type { Theme } from '../types'
 export default {
   common: {
     lineHeight: 'normal',
-    bodyColor: 'white',
     textColorBase: 'black',
-    textColor1: '#262626',
-    textColor2: '#525252',
-    textColor3: '#a3a3a3'
-  },
-  IconWrapper: {
-    color: 'transparent',
-    iconColor: 'inherit'
+    bodyColor: 'white'
   },
   Menu: {
     itemIconColor: '#525252',
@@ -44,19 +37,29 @@ export default {
     itemTextColorChildActiveHoverInverted: '#525252',
     itemTextColorChildActiveInverted: '#525252',
     itemIconColorChildActiveHoverInverted: '#525252',
-    itemIconColorChildActiveInverted: '#525252'
-  },
-  Input: {
-    lineHeightTextarea: '1.6',
-    textColor: '#525252'
-  },
-  LoadingBar: {
-    height: '3px'
+    itemIconColorChildActiveInverted: '#525252',
+
+    arrowColorInverted: '#a3a3a3',
+    arrowColorHoverInverted: '#a3a3a3',
+    arrowColorChildActiveInverted: '#525252',
+    arrowColorChildActiveHoverInverted: '#525252',
+    arrowColorActiveInverted: '#525252',
+    arrowColorActiveHoverInverted: '#525252'
   },
   Layout: {
     siderColor: 'white',
     headerColor: 'white',
     footerColor: 'white'
+  },
+  IconWrapper: {
+    color: 'transparent',
+    iconColor: 'inherit'
+  },
+  Input: {
+    lineHeightTextarea: '1.6'
+  },
+  LoadingBar: {
+    height: '3px'
   },
   Form: {
     feedbackPadding: '8px 0px 10px 0px'
