@@ -4,31 +4,34 @@ export default {
   common: {
     lineHeight: 'normal',
     textColorBase: 'black',
-    bodyColor: 'white'
+    bodyColor: 'white',
+    textColor1: '#262626',
+    textColor2: '#525252',
+    textColor3: '#a3a3a3'
   },
   Menu: {
-    itemTextColorHorizontalInverted: '#767c82',
-    itemIconColorInverted: '#767c82',
-    itemTextColorInverted: '#767c82',
+    itemTextColorHorizontalInverted: '#787878',
+    itemIconColorInverted: '#787878',
+    itemTextColorInverted: '#787878',
 
-    itemTextColorHoverHorizontalInverted: '#333639',
-    itemIconColorHoverHorizontalInverted: '#333639',
+    itemTextColorHoverHorizontalInverted: '#525252',
+    itemIconColorHoverHorizontalInverted: '#525252',
 
-    itemTextColorActiveHorizontalInverted: '#1f2225',
-    itemIconColorActiveHorizontalInverted: '#1f2225',
+    itemTextColorActiveHorizontalInverted: '#525252',
+    itemIconColorActiveHorizontalInverted: '#525252',
 
-    itemTextColorActiveHoverHorizontalInverted: '#333639',
-    itemIconColorActiveHoverHorizontalInverted: '#333639',
+    itemTextColorActiveHoverHorizontalInverted: '#525252',
+    itemIconColorActiveHoverHorizontalInverted: '#525252',
 
-    itemTextColorChildActiveHorizontalInverted: '#1f2225',
-    itemIconColorChildActiveHorizontalInverted: '#1f2225',
+    itemTextColorChildActiveHorizontalInverted: '#525252',
+    itemIconColorChildActiveHorizontalInverted: '#525252',
 
-    itemTextColorChildActiveHoverHorizontalInverted: '#333639',
-    itemIconColorChildActiveHoverHorizontalInverted: '#333639',
+    itemTextColorChildActiveHoverHorizontalInverted: '#525252',
+    itemIconColorChildActiveHoverHorizontalInverted: '#525252',
 
-    itemTextColorHoverInverted: '#333639',
-    itemIconColorHoverInverted: '#333639',
-    arrowColorHoverInverted: '#333639',
+    itemTextColorHoverInverted: '#525252',
+    itemIconColorHoverInverted: '#525252',
+    arrowColorHoverInverted: '#525252',
 
     itemTextColorChildActiveInverted: 'var(--n-item-color-active)',
     itemIconColorChildActiveHoverInverted: 'var(--n-item-color-active-hover)',
