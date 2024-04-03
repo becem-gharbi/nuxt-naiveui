@@ -169,6 +169,7 @@ function generateColorThemeDark (colors: Colors) {
       bodyColor: palette.neutral[0],
 
       baseColor: palette.neutral[1],
+      invertedColor: palette.neutral[1],
       tableColor: palette.neutral[1],
       cardColor: palette.neutral[1],
 

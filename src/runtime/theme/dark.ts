@@ -4,7 +4,6 @@ export default {
   common: {
     lineHeight: 'normal',
     textColorBase: 'white',
-    invertedColor: 'black',
 
     primaryColor: '#63e2b7',
     primaryColorHover: '#7fe7c4',
@@ -68,6 +67,7 @@ export default {
 
     bodyColor: '#101014',
     baseColor: '#000',
+    invertedColor: '#000',
     tableColor: '#18181c',
     cardColor: '#18181c',
     tagColor: '#333333',
