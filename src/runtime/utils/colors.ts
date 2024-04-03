@@ -11,9 +11,7 @@ interface Colors {
 }
 
 function generatePalette (mode: ColorMode, colors: Colors) {
-  const gray = '#bfbfbf'
   const theme = mode === 'light' ? 'default' : 'dark'
-  const neutral = theme === 'default' ? gray : colors.neutral
 
   return {
     primary: generate(colors.primary, { theme }),
@@ -21,8 +19,7 @@ function generatePalette (mode: ColorMode, colors: Colors) {
     warning: generate(colors.warning, { theme }),
     error: generate(colors.error, { theme }),
     info: generate(colors.info, { theme }),
-    neutral: generate(neutral, { theme }),
-    text: generate(gray, { theme })
+    neutral: generate(colors.neutral, { theme })
   }
 }
 
@@ -33,7 +30,7 @@ export function generateColorThemes (inputColors?: Partial<Colors>) {
     warning: '#faad14',
     error: '#f5222d',
     info: '#1677ff',
-    neutral: '#475569',
+    neutral: '#6b7280',
     ...inputColors
   }
 
@@ -54,7 +51,7 @@ function generateColorThemeLight (colors: Colors) {
   })
 
   return {
-    defaults: false,
+    defaults: true,
 
     common: {
       primaryColor: palette.primary[6],
@@ -76,57 +73,7 @@ function generateColorThemeLight (colors: Colors) {
       errorColor: palette.error[6],
       errorColorHover: palette.error[5],
       errorColorPressed: palette.error[7],
-      errorColorSuppl: palette.error[8],
-
-      bodyColor: palette.neutral[0],
-
-      textColorBase: palette.text[9],
-      textColorDisabled: palette.text[7],
-      textColor1: palette.text[9],
-      textColor2: palette.text[8],
-      textColor3: palette.text[6]
-    },
-    Layout: {
-      siderColor: palette.neutral[0],
-      headerColor: palette.neutral[0],
-      footerColor: palette.neutral[0]
-    },
-
-    Menu: {
-      itemTextColorHorizontalInverted: palette.text[7],
-      itemIconColorHorizontalInverted: palette.text[7],
-
-      itemIconColorHoverHorizontalInverted: palette.text[8],
-      itemTextColorHoverHorizontalInverted: palette.text[8],
-
-      itemTextColorActiveHorizontalInverted: palette.text[9],
-      itemIconColorActiveHorizontalInverted: palette.text[9],
-
-      itemTextColorActiveHoverHorizontalInverted: palette.text[8],
-      itemIconColorActiveHoverHorizontalInverted: palette.text[8],
-
-      itemTextColorChildActiveHorizontalInverted: palette.text[9],
-      itemIconColorChildActiveHorizontalInverted: palette.text[9],
-
-      itemIconColorChildActiveHoverHorizontalInverted: palette.text[8],
-      itemTextColorChildActiveHoverHorizontalInverted: palette.text[8],
-
-      itemTextColorInverted: palette.text[8],
-      itemIconColorInverted: palette.text[8],
-      itemTextColorHoverInverted: palette.text[8],
-      itemIconColorHoverInverted: palette.text[8],
-
-      itemTextColorChildActiveHoverInverted: palette.primary[5],
-      itemTextColorChildActiveInverted: palette.primary[6],
-      itemIconColorChildActiveHoverInverted: palette.primary[5],
-      itemIconColorChildActiveInverted: palette.primary[6],
-
-      arrowColorInverted: palette.text[8],
-      arrowColorHoverInverted: palette.text[8],
-      arrowColorChildActiveInverted: palette.primary[6],
-      arrowColorChildActiveHoverInverted: palette.primary[5],
-      arrowColorActiveInverted: palette.primary[6],
-      arrowColorActiveHoverInverted: palette.primary[5]
+      errorColorSuppl: palette.error[8]
     }
   } as Theme
 }
@@ -142,7 +89,7 @@ function generateColorThemeDark (colors: Colors) {
   })
 
   return {
-    defaults: false,
+    defaults: true,
 
     common: {
       primaryColor: palette.primary[6],
@@ -167,86 +114,30 @@ function generateColorThemeDark (colors: Colors) {
       errorColorSuppl: palette.error[8],
 
       bodyColor: palette.neutral[0],
-      cardColor: palette.neutral[0],
-      inputColor: palette.neutral[0],
-      inputColorDisabled: palette.neutral[0],
-      modalColor: palette.neutral[0],
 
-      tabColor: palette.neutral[1],
-      popoverColor: palette.neutral[1],
-      tagColor: palette.neutral[1],
       baseColor: palette.neutral[1],
-      codeColor: palette.neutral[1],
-      actionColor: palette.neutral[1],
-
-      avatarColor: palette.neutral[3],
-
-      dividerColor: palette.neutral[2],
-      hoverColor: palette.neutral[2],
-      borderColor: palette.neutral[2],
-
-      textColorBase: palette.text[9],
-      textColorDisabled: palette.text[7],
-      textColor1: palette.text[9],
-      textColor2: palette.text[8],
-      textColor3: palette.text[6],
-
-      placeholderColor: palette.text[5],
-      placeholderColorDisabled: palette.text[5],
-
-      closeIconColor: palette.neutral[7],
-      closeIconColorHover: palette.neutral[6],
-      closeIconColorPressed: palette.neutral[6],
-      closeColorHover: palette.neutral[2],
-      closeColorPressed: palette.neutral[3],
-
-      clearColor: palette.neutral[7],
-      clearColorHover: palette.neutral[6],
-      clearColorPressed: palette.neutral[6],
-
-      scrollbarColor: palette.neutral[2],
-      scrollbarColorHover: palette.neutral[3],
-
-      progressRailColor: palette.neutral[2],
-      railColor: palette.neutral[2],
-
-      buttonColor2: palette.neutral[1],
-      buttonColor2Hover: palette.neutral[2],
-      buttonColor2Pressed: palette.neutral[3],
-
+      invertedColor: palette.neutral[1],
       tableColor: palette.neutral[1],
-      tableHeaderColor: palette.neutral[1],
-      tableColorStriped: palette.neutral[1],
-      tableColorHover: palette.neutral[1]
+      cardColor: palette.neutral[1],
+
+      tagColor: palette.neutral[2],
+      modalColor: palette.neutral[2],
+
+      popoverColor: palette.neutral[3]
     },
-    Skeleton: {
-      color: palette.neutral[2],
-      colorEnd: palette.neutral[3]
-    },
-    Tag: {
-      colorBordered: palette.neutral[1]
-    },
-    Tooltip: {
-      color: palette.neutral[1],
-      textColor: palette.text[8]
-    },
-    Slider: {
-      indicatorColor: palette.neutral[1],
-      indicatorTextColor: palette.text[8]
-    },
+
     Layout: {
       siderColor: palette.neutral[0],
       headerColor: palette.neutral[0],
       footerColor: palette.neutral[0]
     },
-    Icon: {
-      color: palette.text[8]
+
+    Tooltip: {
+      color: palette.neutral[3]
     },
-    Switch: {
-      railColor: palette.neutral[2]
-    },
-    Tabs: {
-      tabColorSegment: palette.neutral[0]
+
+    Slider: {
+      indicatorColor: palette.neutral[3]
     }
   } as Theme
 }
