@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.12.2
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.12.1...v1.12.2)
+
+### 🩹 Fixes
+
+- **theme-generator:** Fix incorrect main color order ([fb37698](https://github.com/becem-gharbi/nuxt-naiveui/commit/fb37698))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.12.1
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.12.0...v1.12.1)
