@@ -77,18 +77,6 @@ function generateColorThemeLight (colors: Colors) {
       errorColorHover: palette.error[5],
       errorColorPressed: palette.error[7],
       errorColorSuppl: palette.error[8]
-    },
-
-    Menu: {
-      itemTextColorChildActiveHoverInverted: palette.primary[5],
-      itemTextColorChildActiveInverted: palette.primary[6],
-      itemIconColorChildActiveHoverInverted: palette.primary[5],
-      itemIconColorChildActiveInverted: palette.primary[6],
-
-      arrowColorChildActiveInverted: palette.primary[6],
-      arrowColorChildActiveHoverInverted: palette.primary[5],
-      arrowColorActiveInverted: palette.primary[6],
-      arrowColorActiveHoverInverted: palette.primary[5]
     }
   } as Theme
 }

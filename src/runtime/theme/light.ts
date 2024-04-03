@@ -7,44 +7,37 @@ export default {
     bodyColor: 'white'
   },
   Menu: {
-    itemIconColor: '#525252',
-    itemTextColor: '#525252',
+    itemTextColorHorizontalInverted: '#767c82',
+    itemIconColorInverted: '#767c82',
+    itemTextColorInverted: '#767c82',
 
-    itemTextColorHorizontal: '#525252',
-    itemIconColorHorizontal: '#525252',
+    itemTextColorHoverHorizontalInverted: '#333639',
+    itemIconColorHoverHorizontalInverted: '#333639',
 
-    itemIconColorHoverHorizontalInverted: '#525252',
-    itemTextColorHoverHorizontalInverted: '#525252',
+    itemTextColorActiveHorizontalInverted: '#1f2225',
+    itemIconColorActiveHorizontalInverted: '#1f2225',
 
-    itemTextColorActiveHorizontalInverted: '#525252',
-    itemIconColorActiveHorizontalInverted: '#525252',
+    itemTextColorActiveHoverHorizontalInverted: '#333639',
+    itemIconColorActiveHoverHorizontalInverted: '#333639',
 
-    itemTextColorActiveHoverHorizontalInverted: '#525252',
-    itemIconColorActiveHoverHorizontalInverted: '#525252',
+    itemTextColorChildActiveHorizontalInverted: '#1f2225',
+    itemIconColorChildActiveHorizontalInverted: '#1f2225',
 
-    itemTextColorInverted: '#a3a3a3',
-    itemIconColorInverted: '#a3a3a3',
+    itemTextColorChildActiveHoverHorizontalInverted: '#333639',
+    itemIconColorChildActiveHoverHorizontalInverted: '#333639',
 
-    itemTextColorHoverInverted: '#a3a3a3',
-    itemIconColorHoverInverted: '#a3a3a3',
+    itemTextColorHoverInverted: '#333639',
+    itemIconColorHoverInverted: '#333639',
+    arrowColorHoverInverted: '#333639',
 
-    itemTextColorChildActiveHorizontalInverted: '#525252',
-    itemIconColorChildActiveHorizontalInverted: '#525252',
+    itemTextColorChildActiveInverted: 'var(--n-item-color-active)',
+    itemIconColorChildActiveHoverInverted: 'var(--n-item-color-active-hover)',
+    itemIconColorChildActiveInverted: 'var(--n-item-color-active)',
 
-    itemIconColorChildActiveHoverHorizontalInverted: '#525252',
-    itemTextColorChildActiveHoverHorizontalInverted: '#525252',
-
-    itemTextColorChildActiveHoverInverted: '#525252',
-    itemTextColorChildActiveInverted: '#525252',
-    itemIconColorChildActiveHoverInverted: '#525252',
-    itemIconColorChildActiveInverted: '#525252',
-
-    arrowColorInverted: '#a3a3a3',
-    arrowColorHoverInverted: '#a3a3a3',
-    arrowColorChildActiveInverted: '#525252',
-    arrowColorChildActiveHoverInverted: '#525252',
-    arrowColorActiveInverted: '#525252',
-    arrowColorActiveHoverInverted: '#525252'
+    arrowColorChildActiveInverted: 'var(--n-item-color-active)',
+    arrowColorChildActiveHoverInverted: 'var(--n-item-color-active-hover)',
+    arrowColorActiveInverted: 'var(--n-item-color-active)',
+    arrowColorActiveHoverInverted: 'var(--n-item-color-active-hover)'
   },
   Layout: {
     siderColor: 'white',
