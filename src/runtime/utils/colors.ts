@@ -11,9 +11,7 @@ interface Colors {
 }
 
 function generatePalette (mode: ColorMode, colors: Colors) {
-  const gray = '#bfbfbf'
   const theme = mode === 'light' ? 'default' : 'dark'
-  const neutral = theme === 'default' ? gray : colors.neutral
 
   return {
     primary: generate(colors.primary, { theme }),
@@ -21,8 +19,7 @@ function generatePalette (mode: ColorMode, colors: Colors) {
     warning: generate(colors.warning, { theme }),
     error: generate(colors.error, { theme }),
     info: generate(colors.info, { theme }),
-    neutral: generate(neutral, { theme }),
-    text: generate(gray, { theme })
+    neutral: generate(colors.neutral, { theme })
   }
 }
 
@@ -33,7 +30,7 @@ export function generateColorThemes (inputColors?: Partial<Colors>) {
     warning: '#faad14',
     error: '#f5222d',
     info: '#1677ff',
-    neutral: '#64748b',
+    neutral: '#6b7280',
     ...inputColors
   }
 
