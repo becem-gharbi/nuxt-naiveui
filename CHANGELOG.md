@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.12.1
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.12.0...v1.12.1)
+
+### 💅 Refactors
+
+- **theme-generator:** Ensure same contrast as the default theme ([#65](https://github.com/becem-gharbi/nuxt-naiveui/pull/65))
+
+### 📖 Documentation
+
+- Update icon size type ([90bda5f](https://github.com/becem-gharbi/nuxt-naiveui/commit/90bda5f))
+
+### ❤️ Contributors
+
+- Becem <becem.gharbi@live.com>
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.12.0
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.11.0...v1.12.0)
