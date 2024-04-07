@@ -19,7 +19,8 @@ import {
   useNaiveDevice,
   useNuxtApp,
   useAppConfig,
-  useAsyncData
+  watch,
+  useNuxtData
 } from '#imports'
 
 interface NaiveConfigProps
@@ -40,12 +41,11 @@ const themeConfig: ThemeConfig | undefined =
   (useAppConfig().naiveui as any)?.themeConfig ??
   (useRuntimeConfig().public.naiveui as any).themeConfig
 
-const { data: naiveTheme } = await useAsyncData<NaiveTheme>('naive-theme-config',
-  updateTheme,
-  {
-    watch: [colorMode]
-  }
-)
+const { data: naiveTheme } = useNuxtData<NaiveTheme>('naive-theme-config')
+
+naiveTheme.value ||= await updateTheme()
+
+watch(colorMode, () => updateTheme().then(t => (naiveTheme.value = t)))
 
 useHead(() => ({
   htmlAttrs: {
