@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.12.3
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.12.2...v1.12.3)
+
+### 🩹 Fixes
+
+- **colorMode:** Update theme on forced to non-forced navigation with no ssr ([d061eb5](https://github.com/becem-gharbi/nuxt-naiveui/commit/d061eb5))
+- **colorMode:** Update theme on prerendered pages ([2603677](https://github.com/becem-gharbi/nuxt-naiveui/commit/2603677))
+
+### 💅 Refactors
+
+- **default-theme:** Reduce borderColor opacity ([ca9efd7](https://github.com/becem-gharbi/nuxt-naiveui/commit/ca9efd7))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.12.2
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.12.1...v1.12.2)
