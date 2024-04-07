@@ -29,10 +29,6 @@ interface NaiveConfigProps
   themeConfig?: ThemeConfig;
 }
 
-interface NaiveTheme extends Theme {
-  isPrerendered?: boolean
-}
-
 const props = defineProps<NaiveConfigProps>()
 const { colorMode } = useNaiveColorMode()
 
@@ -41,7 +37,7 @@ const themeConfig: ThemeConfig | undefined =
   (useAppConfig().naiveui as any)?.themeConfig ??
   (useRuntimeConfig().public.naiveui as any).themeConfig
 
-const { data: naiveTheme } = useNuxtData<NaiveTheme>('naive-theme-config')
+const { data: naiveTheme } = useNuxtData<Theme>('naive-theme-config')
 
 naiveTheme.value ||= await updateTheme()
 
@@ -69,7 +65,7 @@ onMounted(() => {
 
   if (isPrerendered && naiveTheme.value) {
     // In order to update dom on pre-rendered pages
-    naiveTheme.value.isPrerendered = true
+    updateTheme().then(t => (naiveTheme.value = t))
   }
 })
 
