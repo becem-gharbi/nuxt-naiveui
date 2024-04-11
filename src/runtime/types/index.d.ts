@@ -45,6 +45,19 @@ export type ColorModePreference = "light" | "dark" | "system";
 
 export type ColorModeForce = ColorMode | false;
 
+type SpaLoadingTemplatesName =
+  | "pulse"
+  | "bar-scale"
+  | "dot-chase"
+  | "dot-scale"
+  | "dot-bounce"
+  | "dot-rotate"
+  | "dot-rotate-scale"
+  | "cube-rotate-scale"
+  | "plane-fold"
+  | "plane-wave"
+  | "plane-rotate";
+  
 export interface PublicConfig {
   /** @deprecated since version 1.12.0, instead use `naiveui.themeConfig` in `app.config` */
   themeConfig?: ThemeConfig;
@@ -53,18 +66,9 @@ export interface PublicConfig {
   iconSize: number | string;
   iconDownload: boolean;
   iconCollectionsUrl: string;
-  spaLoadingTemplate?:
-    | "pulse"
-    | "bar-scale"
-    | "dot-chase"
-    | "dot-scale"
-    | "dot-bounce"
-    | "dot-rotate"
-    | "dot-rotate-scale"
-    | "cube-rotate-scale"
-    | "plane-fold"
-    | "plane-wave"
-    | "plane-rotate";
+  spaLoadingTemplate?: {
+    name: SpaLoadingTemplatesName;
+  };
 }
 
 declare module "nuxt/schema" {

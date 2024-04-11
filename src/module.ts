@@ -190,7 +190,7 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     if (options.spaLoadingTemplate && typeof nuxt.options.spaLoadingTemplate !== 'string') {
-      const path = `build/templates/${options.spaLoadingTemplate}.html`
+      const path = `build/templates/${options.spaLoadingTemplate.name}.html`
       nuxt.options.spaLoadingTemplate = resolve(path)
     }
   }
