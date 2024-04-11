@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import type { ConfigProviderProps } from 'naive-ui'
-import type { ThemeConfig, Theme } from '../types'
+import type { ThemeConfig, Theme, PublicConfig } from '../types'
 import { defu } from 'defu'
 import {
   useHead,
@@ -31,11 +31,12 @@ interface NaiveConfigProps
 
 const props = defineProps<NaiveConfigProps>()
 const { colorMode } = useNaiveColorMode()
+const config = useRuntimeConfig().public.naiveui as PublicConfig
 
 const themeConfig: ThemeConfig | undefined =
   props.themeConfig ??
   (useAppConfig().naiveui as any)?.themeConfig ??
-  (useRuntimeConfig().public.naiveui as any).themeConfig
+  config.themeConfig
 
 const { data: naiveTheme } = useNuxtData<Theme>('naive-theme-config')
 
@@ -72,7 +73,12 @@ onMounted(() => {
 async function updateTheme () {
   const [deviceTheme, colorModeTheme] = await Promise.all([getDeviceTheme(), getColorModeTheme()])
   const sharedTheme = evalTheme(themeConfig?.shared)
-  return defu(sharedTheme, deviceTheme, colorModeTheme)
+  const theme = defu(sharedTheme, deviceTheme, colorModeTheme)
+  if (import.meta.client && config.spaLoadingTemplate) {
+    setLocalStorageItem('naive-body-bg-color', theme?.common?.bodyColor)
+    setLocalStorageItem('naive-primary-color', theme?.common?.primaryColor)
+  }
+  return theme
 }
 
 async function getColorModeTheme () {
@@ -123,5 +129,11 @@ function compileStyle (prop: string, value?: string) {
 
 function evalTheme<T extends object> (theme?: T | (() => T)) {
   return typeof theme === 'function' ? theme() : theme
+}
+
+function setLocalStorageItem (key: string, value?: string) {
+  if (import.meta.client) {
+    value ? localStorage.setItem(key, value) : localStorage.removeItem(key)
+  }
 }
 </script>

@@ -64,7 +64,8 @@ export default defineNuxtModule<ModuleOptions>({
           iconDownload: options.iconDownload,
           iconCollectionsUrl: options.iconCollectionsUrl,
           themeConfig: options.themeConfig,
-          iconSize: options.iconSize as any
+          iconSize: options.iconSize as any,
+          spaLoadingTemplate: options.spaLoadingTemplate
         }
       }
     })
@@ -186,6 +187,11 @@ export default defineNuxtModule<ModuleOptions>({
         config.plugins ||= []
         config.plugins.push(iconifyVitePlugin(nuxt.options.rootDir, options.iconCollectionsUrl))
       })
+    }
+
+    if (options.spaLoadingTemplate && typeof nuxt.options.spaLoadingTemplate !== 'string') {
+      const path = `build/templates/${options.spaLoadingTemplate}.html`
+      nuxt.options.spaLoadingTemplate = resolve(path)
     }
   }
 })
