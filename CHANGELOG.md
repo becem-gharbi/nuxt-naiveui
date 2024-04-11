@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.13.0
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.12.3...v1.13.0)
+
+### 🚀 Enhancements
+
+- Add spa loading templates ([#67](https://github.com/becem-gharbi/nuxt-naiveui/pull/67))
+
+### 📦 Build
+
+- **icons:** Resolve `public` dir relative to `srcDir` not `rootDir` ([a599da6](https://github.com/becem-gharbi/nuxt-naiveui/commit/a599da6))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v1.12.3
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.12.2...v1.12.3)
