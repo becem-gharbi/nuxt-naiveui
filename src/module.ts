@@ -1,4 +1,5 @@
 import { fileURLToPath } from 'url'
+import path from 'path'
 import {
   defineNuxtModule,
   addPlugin,
@@ -185,7 +186,8 @@ export default defineNuxtModule<ModuleOptions>({
     if (options?.iconDownload) {
       extendViteConfig((config) => {
         config.plugins ||= []
-        config.plugins.push(iconifyVitePlugin(nuxt.options.rootDir, options.iconCollectionsUrl))
+        const iconsDir = path.resolve(nuxt.options.srcDir, 'public/iconify')
+        config.plugins.push(iconifyVitePlugin(iconsDir, options.iconCollectionsUrl))
       })
     }
 

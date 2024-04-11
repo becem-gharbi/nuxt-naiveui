@@ -1,10 +1,9 @@
-import path from 'path'
 import type { Plugin } from 'vite'
 import { download, getSavedIcons, makeDir, removeSavedIcons, save } from './utils'
 
 const COLLECTIONS_URL = 'https://raw.githubusercontent.com/iconify/icon-sets/master/collections.json'
 
-export default function (rootDir = './', collectionsUrl = COLLECTIONS_URL): Plugin | undefined {
+export default function (path: string, collectionsUrl = COLLECTIONS_URL): Plugin | undefined {
   if (process.env.NODE_ENV === 'development') { return }
 
   // A regex to extract icon names from code. The match should:
@@ -17,9 +16,7 @@ export default function (rootDir = './', collectionsUrl = COLLECTIONS_URL): Plug
 
   const icons = new Set<string>()
 
-  const iconsDir = path.resolve(rootDir, 'public', 'iconify')
-
-  makeDir(iconsDir)
+  makeDir(path)
 
   return {
     name: 'iconify-download-icons',
@@ -48,18 +45,18 @@ export default function (rootDir = './', collectionsUrl = COLLECTIONS_URL): Plug
     },
 
     async buildEnd () {
-      const savedIcons = getSavedIcons(iconsDir)
+      const savedIcons = getSavedIcons(path)
 
       const unusedIcons = savedIcons.filter(i => !icons.has(i))
 
-      removeSavedIcons(unusedIcons, iconsDir)
+      removeSavedIcons(unusedIcons, path)
 
       const missingIcons = new Set<string>()
 
       icons.forEach(i => savedIcons.includes(i) || missingIcons.add(i))
 
       if (missingIcons.size) {
-        await download([...missingIcons.values()]).then(d => save(d, iconsDir))
+        await download([...missingIcons.values()]).then(d => save(d, path))
       }
 
       /* eslint-disable no-console */
