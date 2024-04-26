@@ -15,7 +15,6 @@ import { name, version } from '../package.json'
 import iconifyVitePlugin from './build/iconify'
 import type { PublicConfig } from './runtime/types'
 import { defu } from 'defu'
-export type { TabbarRoute } from './runtime/types'
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions extends PublicConfig { }
@@ -201,14 +200,21 @@ export default defineNuxtModule<ModuleOptions>({
       getContents: () => `
       import {RouteLocationRaw} from '#vue-router'
       export interface MenuLinkRoute {
-            label: string;
-            icon?: string;
-            to?: RouteLocationRaw;
-            /** @deprecated since version 1.11.0, instead use 'to' */
-            path?: RouteLocationRaw;
-            children?: MenuLinkRoute[];
-          }
-      `
+        label: string;
+        icon?: string;
+        to?: RouteLocationRaw;
+        /** @deprecated since version 1.11.0, instead use 'to' */
+        path?: RouteLocationRaw;
+        children?: MenuLinkRoute[];
+      }
+      export interface TabbarRoute {
+        label: string;
+        iconSelected: string;
+        iconUnselected: string;
+        to: RouteLocationRaw;
+        /** @deprecated since version 1.13.1, instead use 'to' */
+        path?: RouteLocationRaw;
+      }`
     })
   }
 })

@@ -12,13 +12,6 @@ export interface ThemeConfig {
   mobile?: Theme | (() => Theme);
 }
 
-export interface TabbarRoute {
-  label: string;
-  iconSelected: string;
-  iconUnselected: string;
-  path: string;
-}
-
 export type ColorMode = "light" | "dark";
 
 export type ColorModePreference = "light" | "dark" | "system";
