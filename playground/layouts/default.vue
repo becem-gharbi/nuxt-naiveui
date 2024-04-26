@@ -38,8 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import type { MenuLinkRoute } from '../../src/module'
-
+import type { MenuLinkRoute } from '#build/types/naiveui.d.ts'
 const navbarRoutes: MenuLinkRoute[] = [
   {
     label: 'Sample, this is a long long label',
