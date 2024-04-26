@@ -8,9 +8,9 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 import type { MenuProps, MenuOption } from 'naive-ui'
-import type { MenuLinkRoute } from '../types'
 import { NuxtLink, NaiveIcon } from '#components'
 import { computed, h, useRouter } from '#imports'
+import type { MenuLinkRoute } from '#build/types/naiveui'
 
 interface NaiveMenuLinkProps
     extends /* @vue-ignore */ Omit<MenuProps, 'options' | 'value'> {

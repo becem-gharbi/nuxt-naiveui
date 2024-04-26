@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import type { MenuLinkRoute } from '../types'
+import type { MenuLinkRoute } from '#build/types/naiveui'
 import { useRouter } from '#imports'
 
 withDefaults(

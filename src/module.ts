@@ -7,14 +7,14 @@ import {
   addImportsDir,
   addComponent,
   addImports,
-  extendViteConfig
+  extendViteConfig,
+  addTypeTemplate
 } from '@nuxt/kit'
 import naive from 'naive-ui'
 import { name, version } from '../package.json'
 import iconifyVitePlugin from './build/iconify'
 import type { PublicConfig } from './runtime/types'
 import { defu } from 'defu'
-export type { TabbarRoute, MenuLinkRoute } from './runtime/types'
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions extends PublicConfig { }
@@ -194,5 +194,27 @@ export default defineNuxtModule<ModuleOptions>({
     if (options.spaLoadingTemplate && typeof nuxt.options.spaLoadingTemplate !== 'string') {
       nuxt.options.spaLoadingTemplate = resolve(runtimeDir, `templates/${options.spaLoadingTemplate.name}.html`)
     }
+
+    addTypeTemplate({
+      filename: 'types/naiveui.d.ts',
+      getContents: () => `
+      import {RouteLocationRaw} from '#vue-router'
+      export interface MenuLinkRoute {
+        label: string;
+        icon?: string;
+        to?: RouteLocationRaw;
+        /** @deprecated since version 1.11.0, instead use 'to' */
+        path?: RouteLocationRaw;
+        children?: MenuLinkRoute[];
+      }
+      export interface TabbarRoute {
+        label: string;
+        iconSelected: string;
+        iconUnselected: string;
+        to: RouteLocationRaw;
+        /** @deprecated since version 1.13.1, instead use 'to' */
+        path?: RouteLocationRaw;
+      }`
+    })
   }
 })

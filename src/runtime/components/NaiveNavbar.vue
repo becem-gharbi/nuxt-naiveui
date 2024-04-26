@@ -111,8 +111,8 @@
 </template>
 
 <script setup lang="ts">
-import type { MenuLinkRoute } from '../types'
 import NaiveDrawerToggle from './internals/NaiveDrawerToggle.vue'
+import type { MenuLinkRoute } from '#build/types/naiveui'
 import {
   ref,
   computed,
