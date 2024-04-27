@@ -94,6 +94,9 @@ export default {
     headerColor: '#101014',
     footerColor: '#101014'
   },
+  Tabs: {
+    tabColorSegment: '#ffffff1a'
+  },
   IconWrapper: {
     color: 'transparent',
     iconColor: 'inherit'
