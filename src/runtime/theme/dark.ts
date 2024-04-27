@@ -66,8 +66,8 @@ export default {
     textColor1: '#ffffffe6',
 
     bodyColor: '#101014',
-    baseColor: '#000',
-    invertedColor: '#000',
+    baseColor: '#101014',
+    invertedColor: '#101014',
     tableColor: '#18181c',
     cardColor: '#18181c',
     tagColor: '#333333',
