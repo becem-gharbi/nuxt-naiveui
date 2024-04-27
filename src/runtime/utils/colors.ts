@@ -25,12 +25,12 @@ function generatePalette (mode: ColorMode, colors: Colors) {
 
 export function generateColorThemes (inputColors?: Partial<Colors>) {
   const colors = {
-    primary: '#1677ff',
-    success: '#52c41a',
-    warning: '#faad14',
-    error: '#f5222d',
-    info: '#1677ff',
-    neutral: '#6b7280',
+    primary: '#2080F0FF',
+    success: '#18A058FF',
+    warning: '#F0A020FF',
+    error: '#D03050FF',
+    info: '#2080F0FF',
+    neutral: '#4b5563',
     ...inputColors
   }
 
