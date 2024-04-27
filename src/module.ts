@@ -34,7 +34,7 @@ export default defineNuxtModule<ModuleOptions>({
     colorModePreferenceCookieName: 'naive_color_mode_preference',
     iconSize: 20,
     iconDownload: false,
-    iconCollectionsUrl: 'https://iconify-icon-sets.vercel.app',
+    iconCollectionsUrl: 'https://iconify-icon-sets.netlify.app',
     themeConfig: {}
   },
 
