@@ -1,4 +1,3 @@
-import { fileURLToPath } from 'url'
 import path from 'path'
 import {
   defineNuxtModule,
@@ -50,10 +49,9 @@ export default defineNuxtModule<ModuleOptions>({
 
   setup (options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
-    const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
 
     // Add assets
-    nuxt.options.css.push(resolve(runtimeDir, 'assets', 'style.css'))
+    nuxt.options.css.push(resolve('./runtime/assets/style.css'))
 
     // Pass module options to runtimeConfig object
     nuxt.options.runtimeConfig = defu(nuxt.options.runtimeConfig, {
@@ -72,56 +70,56 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     // Add plugins
-    addPlugin(resolve(runtimeDir, 'plugins', 'naive.server'))
-    addPlugin(resolve(runtimeDir, 'plugins', 'colorMode'))
+    addPlugin(resolve('./runtime/plugins/naive.server'))
+    addPlugin(resolve('./runtime/plugins/colorMode'))
 
     // Add composables directory
-    addImportsDir(resolve(runtimeDir, 'composables'))
+    addImportsDir(resolve('./runtime/composables'))
 
     // Add components
     addComponent({
       name: 'NaiveConfig',
-      filePath: resolve(runtimeDir, 'components', 'NaiveConfig.vue')
+      filePath: resolve('./runtime/components/NaiveConfig.vue')
     })
     addComponent({
       name: 'NaiveNavbar',
-      filePath: resolve(runtimeDir, 'components', 'NaiveNavbar.vue')
+      filePath: resolve('./runtime/components/NaiveNavbar.vue')
     })
     addComponent({
       name: 'NaiveColorModeSwitch',
-      filePath: resolve(runtimeDir, 'components', 'NaiveColorModeSwitch.vue')
+      filePath: resolve('./runtime/components/NaiveColorModeSwitch.vue')
     })
     addComponent({
       name: 'NaiveTabbar',
-      filePath: resolve(runtimeDir, 'components', 'NaiveTabbar.vue')
+      filePath: resolve('./runtime/components/NaiveTabbar.vue')
     })
     addComponent({
       name: 'NaiveMenuLink',
-      filePath: resolve(runtimeDir, 'components', 'NaiveMenuLink.vue')
+      filePath: resolve('./runtime/components/NaiveMenuLink.vue')
     })
     addComponent({
       name: 'NaiveLayoutSidebar',
-      filePath: resolve(runtimeDir, 'components', 'NaiveLayoutSidebar.vue')
+      filePath: resolve('./runtime/components/NaiveLayoutSidebar.vue')
     })
     addComponent({
       name: 'NaiveLayoutNavbar',
-      filePath: resolve(runtimeDir, 'components', 'NaiveLayoutNavbar.vue')
+      filePath: resolve('./runtime/components/NaiveLayoutNavbar.vue')
     })
     addComponent({
       name: 'NaiveDrawerLink',
-      filePath: resolve(runtimeDir, 'components', 'NaiveDrawerLink.client.vue')
+      filePath: resolve('./runtime/components/NaiveDrawerLink.client.vue')
     })
     addComponent({
       name: 'NaiveLoadingBar',
-      filePath: resolve(runtimeDir, 'components', 'NaiveLoadingBar.client.vue')
+      filePath: resolve('./runtime/components/NaiveLoadingBar.client.vue')
     })
     addComponent({
       name: 'NaiveNotification',
-      filePath: resolve(runtimeDir, 'components', 'NaiveNotification.client.vue')
+      filePath: resolve('./runtime/components/NaiveNotification.client.vue')
     })
     addComponent({
       name: 'NaiveIcon',
-      filePath: resolve(runtimeDir, 'components',
+      filePath: resolve('./runtime/components',
         options?.iconDownload ? 'NaiveIconOffline.vue' : 'NaiveIcon.vue')
     })
 
@@ -192,7 +190,7 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     if (options.spaLoadingTemplate && typeof nuxt.options.spaLoadingTemplate !== 'string') {
-      nuxt.options.spaLoadingTemplate = resolve(runtimeDir, `templates/${options.spaLoadingTemplate.name}.html`)
+      nuxt.options.spaLoadingTemplate = resolve(`./runtime/templates/${options.spaLoadingTemplate.name}.html`)
     }
 
     addTypeTemplate({
