@@ -1,6 +1,37 @@
 # Changelog
 
 
+## v1.13.1
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.13.0...v1.13.1)
+
+### 🩹 Fixes
+
+- **dark theme:** Change active tab opacity ([5109fe3](https://github.com/becem-gharbi/nuxt-naiveui/commit/5109fe3))
+- **dark theme:** Change alert background opacity ([9cdd652](https://github.com/becem-gharbi/nuxt-naiveui/commit/9cdd652))
+
+### 💅 Refactors
+
+- No significant change ([356ad3c](https://github.com/becem-gharbi/nuxt-naiveui/commit/356ad3c))
+- **theme generator:** Change default colors ([1a0256d](https://github.com/becem-gharbi/nuxt-naiveui/commit/1a0256d))
+
+### 📦 Build
+
+- **icons:** Change default collection url ([#70](https://github.com/becem-gharbi/nuxt-naiveui/pull/70))
+
+### 🌊 Types
+
+- Use `vue-router` route type in navigation components ([#69](https://github.com/becem-gharbi/nuxt-naiveui/pull/69))
+
+### 🏡 Chore
+
+- **playground:** Add components ([1f717d1](https://github.com/becem-gharbi/nuxt-naiveui/commit/1f717d1))
+
+### ❤️ Contributors
+
+- Becem <becem.gharbi@live.com>
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.13.0
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.12.3...v1.13.0)
