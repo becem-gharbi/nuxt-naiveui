@@ -5,8 +5,10 @@
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-[Naive UI](https://www.naiveui.com/en-US/os-theme) component library for Nuxt
+Unofficial [Naive UI](https://www.naiveui.com/en-US/os-theme) integration for Nuxt.
 
+> [!Note]
+> The official `naive-ui` module for Nuxt is recently created and can be found [here](https://github.com/07akioni/nuxtjs-naive-ui).
 
 ## Features
 
