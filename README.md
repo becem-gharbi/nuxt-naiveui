@@ -5,7 +5,7 @@
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-[Naive UI](https://www.naiveui.com/en-US/os-theme) component library for your Nuxt 3 project
+[Naive UI](https://www.naiveui.com/en-US/os-theme) component library for Nuxt
 
 
 ## Features

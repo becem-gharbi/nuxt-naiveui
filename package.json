@@ -1,7 +1,7 @@
 {
   "name": "@bg-dev/nuxt-naiveui",
   "version": "1.13.1",
-  "description": "Naive UI module for Nuxt 3",
+  "description": "Naive UI module for Nuxt",
   "homepage": "https://nuxt-naiveui.bg.tn",
   "author": "Becem Gharbi",
   "keywords": [
