@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.13.2
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.13.1...v1.13.2)
+
+### 📖 Documentation
+
+- Remove Nuxt version specification ([6c0bc52](https://github.com/becem-gharbi/nuxt-naiveui/commit/6c0bc52))
+- Mention the official module ([31933f1](https://github.com/becem-gharbi/nuxt-naiveui/commit/31933f1))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.13.1
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.13.0...v1.13.1)
