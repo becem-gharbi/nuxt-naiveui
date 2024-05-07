@@ -32,7 +32,8 @@ const props = defineProps<{
   iconColor?: string;
 }>()
 
-const sSize = computed(() => props.size ?? config.iconSize)
+const _sSize = computed(() => props.size ?? config.iconSize)
+const sSize = computed(() => typeof _sSize.value === 'string' ? _sSize.value : `${_sSize.value}px`)
 const sName = computed(() => props.name)
 const icon = ref()
 const key = ref(1)
