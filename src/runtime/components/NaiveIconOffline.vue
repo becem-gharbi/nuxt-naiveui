@@ -6,7 +6,12 @@
       :icon="icon"
       :width="sSize"
       :height="sSize"
-      :style="{ width: sSize, color: iconColor, backgroundColor: color, borderRadius: `${borderRadius}px` }"
+      :style="{
+        width: sSize,
+        color: iconColor,
+        backgroundColor: color,
+        borderRadius: borderRadius && `${borderRadius}px`
+      }"
     />
   </span>
 </template>
