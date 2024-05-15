@@ -2,21 +2,21 @@ import type { FormInst, FormRules } from 'naive-ui'
 import { ref, computed } from '#imports'
 import type { Ref, ComputedRef } from '#imports'
 
-export function useNaiveForm (model: Ref<any> = ref({})) {
+export function useNaiveForm(model: Ref<unknown> = ref({})) {
   const formRef: Ref<FormInst | null> = ref<FormInst | null>(null)
   const pending: Ref<boolean> = ref(false)
   const rules: Ref<FormRules> = ref<FormRules>({})
   const defaultModel = ref(JSON.parse(JSON.stringify(model.value)))
   const apiErrors: Ref<Record<string, boolean>> = ref<Record<string, boolean>>(
-    {}
+    {},
   )
   const edited: ComputedRef<boolean> = computed(
-    () => JSON.stringify(model.value) !== JSON.stringify(defaultModel.value)
+    () => JSON.stringify(model.value) !== JSON.stringify(defaultModel.value),
   )
 
-  function resetApiErrors () {
+  function resetApiErrors() {
     Object.keys(apiErrors.value).forEach(
-      key => (apiErrors.value[key] = false)
+      key => (apiErrors.value[key] = false),
     )
   }
 
@@ -25,9 +25,9 @@ export function useNaiveForm (model: Ref<any> = ref({})) {
    * @param callback should handle data fetching and on error sets apiErrors
    * @note apiErrors should be checked on validators
    */
-  function onSubmit (callback: () => Promise<void>): void {
+  function onSubmit(callback: () => Promise<void>): void {
     formRef.value
-      ?.validate((errors: any) => {
+      ?.validate((errors) => {
         if (!errors) {
           resetApiErrors()
           pending.value = true
@@ -44,11 +44,11 @@ export function useNaiveForm (model: Ref<any> = ref({})) {
       .catch(() => {})
   }
 
-  function reset () {
+  function reset() {
     model.value = JSON.parse(JSON.stringify(defaultModel.value))
   }
 
-  function updateResetValue () {
+  function updateResetValue() {
     defaultModel.value = JSON.parse(JSON.stringify(model.value))
   }
 

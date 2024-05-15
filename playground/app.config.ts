@@ -4,7 +4,7 @@ import { defineAppConfig } from '#imports'
 export default defineAppConfig({
   naiveui: {
     themeConfig: {
-      ...generateColorThemes()
-    }
-  }
+      ...generateColorThemes(),
+    },
+  },
 })

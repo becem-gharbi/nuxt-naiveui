@@ -7,7 +7,7 @@ export default {
     bodyColor: 'white',
     textColor1: '#262626',
     textColor2: '#525252',
-    textColor3: '#a3a3a3'
+    textColor3: '#a3a3a3',
   },
   Menu: {
     itemTextColorHorizontalInverted: '#787878',
@@ -40,24 +40,24 @@ export default {
     arrowColorChildActiveInverted: 'var(--n-item-color-active)',
     arrowColorChildActiveHoverInverted: 'var(--n-item-color-active-hover)',
     arrowColorActiveInverted: 'var(--n-item-color-active)',
-    arrowColorActiveHoverInverted: 'var(--n-item-color-active-hover)'
+    arrowColorActiveHoverInverted: 'var(--n-item-color-active-hover)',
   },
   Layout: {
     siderColor: 'white',
     headerColor: 'white',
-    footerColor: 'white'
+    footerColor: 'white',
   },
   IconWrapper: {
     color: 'transparent',
-    iconColor: 'inherit'
+    iconColor: 'inherit',
   },
   Input: {
-    lineHeightTextarea: '1.6'
+    lineHeightTextarea: '1.6',
   },
   LoadingBar: {
-    height: '3px'
+    height: '3px',
   },
   Form: {
-    feedbackPadding: '8px 0px 10px 0px'
-  }
+    feedbackPadding: '8px 0px 10px 0px',
+  },
 } as Theme

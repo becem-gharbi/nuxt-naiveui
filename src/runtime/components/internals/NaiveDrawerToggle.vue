@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 withDefaults(
-  defineProps<{ icon?: string, size?: number | string}>(),
-  { icon: 'ph:equals', size: 26 }
+  defineProps<{ icon?: string, size?: number | string }>(),
+  { icon: 'ph:equals', size: 26 },
 )
 </script>

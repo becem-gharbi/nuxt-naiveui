@@ -1,15 +1,15 @@
-import { defineAppConfig } from "#imports"
+import { defineAppConfig } from '#imports'
 
 export default defineAppConfig({
   docus: {
-    title: "Nuxt Naive UI",
+    title: 'Nuxt Naive UI',
     description:
-      "Naive UI module for Nuxt",
+      'Naive UI module for Nuxt',
     image:
-      "https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png",
+      'https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png',
     socials: {
       //  twitter: "nuxt_js",
-      github: "becem-gharbi/nuxt-Naiveui",
+      github: 'becem-gharbi/nuxt-Naiveui',
       // nuxt: {
       //   label: "Nuxt",
       //   icon: "simple-icons:nuxtdotjs",
@@ -39,4 +39,4 @@ export default defineAppConfig({
       fluid: true,
     },
   },
-});
+})

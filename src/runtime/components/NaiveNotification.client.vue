@@ -8,7 +8,7 @@ import type { NotificationOptions } from 'naive-ui'
 import { callOnce } from '#imports'
 
 interface CustomEvent extends Event {
-  detail: NotificationOptions;
+  detail: NotificationOptions
 }
 
 await callOnce(() => {

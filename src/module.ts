@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import {
   defineNuxtModule,
   addPlugin,
@@ -7,13 +7,13 @@ import {
   addComponent,
   addImports,
   extendViteConfig,
-  addTypeTemplate
+  addTypeTemplate,
 } from '@nuxt/kit'
 import naive from 'naive-ui'
+import { defu } from 'defu'
 import { name, version } from '../package.json'
 import iconifyVitePlugin from './build/iconify'
 import type { PublicConfig } from './runtime/types'
-import { defu } from 'defu'
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions extends PublicConfig { }
@@ -24,8 +24,8 @@ export default defineNuxtModule<ModuleOptions>({
     version,
     configKey: 'naiveui',
     compatibility: {
-      nuxt: '^3.10.0'
-    }
+      nuxt: '^3.10.0',
+    },
   },
 
   // Default configuration options of the Nuxt module
@@ -35,25 +35,26 @@ export default defineNuxtModule<ModuleOptions>({
     iconSize: 20,
     iconDownload: false,
     iconCollectionsUrl: 'https://iconify-icon-sets.netlify.app',
-    themeConfig: {}
+    themeConfig: {},
   },
 
   // Add types for volar
   hooks: {
     'prepare:types': ({ references }) => {
       references.push({
-        types: 'naive-ui/volar'
+        types: 'naive-ui/volar',
       })
-    }
+    },
   },
 
-  setup (options, nuxt) {
+  setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
 
     // Add assets
     nuxt.options.css.push(resolve('./runtime/assets/style.css'))
 
     // Pass module options to runtimeConfig object
+    // @ts-expect-error icon size can be number or string
     nuxt.options.runtimeConfig = defu(nuxt.options.runtimeConfig, {
       app: {},
       public: {
@@ -63,10 +64,10 @@ export default defineNuxtModule<ModuleOptions>({
           iconDownload: options.iconDownload,
           iconCollectionsUrl: options.iconCollectionsUrl,
           themeConfig: options.themeConfig,
-          iconSize: options.iconSize as any,
-          spaLoadingTemplate: options.spaLoadingTemplate
-        }
-      }
+          iconSize: options.iconSize,
+          spaLoadingTemplate: options.spaLoadingTemplate,
+        },
+      },
     })
 
     // Add plugins
@@ -79,59 +80,59 @@ export default defineNuxtModule<ModuleOptions>({
     // Add components
     addComponent({
       name: 'NaiveConfig',
-      filePath: resolve('./runtime/components/NaiveConfig.vue')
+      filePath: resolve('./runtime/components/NaiveConfig.vue'),
     })
     addComponent({
       name: 'NaiveNavbar',
-      filePath: resolve('./runtime/components/NaiveNavbar.vue')
+      filePath: resolve('./runtime/components/NaiveNavbar.vue'),
     })
     addComponent({
       name: 'NaiveColorModeSwitch',
-      filePath: resolve('./runtime/components/NaiveColorModeSwitch.vue')
+      filePath: resolve('./runtime/components/NaiveColorModeSwitch.vue'),
     })
     addComponent({
       name: 'NaiveTabbar',
-      filePath: resolve('./runtime/components/NaiveTabbar.vue')
+      filePath: resolve('./runtime/components/NaiveTabbar.vue'),
     })
     addComponent({
       name: 'NaiveMenuLink',
-      filePath: resolve('./runtime/components/NaiveMenuLink.vue')
+      filePath: resolve('./runtime/components/NaiveMenuLink.vue'),
     })
     addComponent({
       name: 'NaiveLayoutSidebar',
-      filePath: resolve('./runtime/components/NaiveLayoutSidebar.vue')
+      filePath: resolve('./runtime/components/NaiveLayoutSidebar.vue'),
     })
     addComponent({
       name: 'NaiveLayoutNavbar',
-      filePath: resolve('./runtime/components/NaiveLayoutNavbar.vue')
+      filePath: resolve('./runtime/components/NaiveLayoutNavbar.vue'),
     })
     addComponent({
       name: 'NaiveDrawerLink',
-      filePath: resolve('./runtime/components/NaiveDrawerLink.client.vue')
+      filePath: resolve('./runtime/components/NaiveDrawerLink.client.vue'),
     })
     addComponent({
       name: 'NaiveLoadingBar',
-      filePath: resolve('./runtime/components/NaiveLoadingBar.client.vue')
+      filePath: resolve('./runtime/components/NaiveLoadingBar.client.vue'),
     })
     addComponent({
       name: 'NaiveNotification',
-      filePath: resolve('./runtime/components/NaiveNotification.client.vue')
+      filePath: resolve('./runtime/components/NaiveNotification.client.vue'),
     })
     addComponent({
       name: 'NaiveIcon',
       filePath: resolve('./runtime/components',
-        options?.iconDownload ? 'NaiveIconOffline.vue' : 'NaiveIcon.vue')
+        options?.iconDownload ? 'NaiveIconOffline.vue' : 'NaiveIcon.vue'),
     })
 
     // Add imports for naive-ui components
     const naiveComponents = Object.keys(naive).filter(name =>
-      /^(N[A-Z]|n-[a-z])/.test(name)
+      /^(N[A-Z]|n-[a-z])/.test(name),
     )
 
     const naiveClientOnlyComponents = [
       'NDrawer',
       'NDrawerContent',
-      'NModal'
+      'NModal',
     ]
 
     naiveComponents.forEach((name) => {
@@ -139,7 +140,7 @@ export default defineNuxtModule<ModuleOptions>({
         export: name,
         name,
         filePath: 'naive-ui',
-        mode: naiveClientOnlyComponents.includes(name) ? 'client' : 'all'
+        mode: naiveClientOnlyComponents.includes(name) ? 'client' : 'all',
       })
     })
 
@@ -151,14 +152,14 @@ export default defineNuxtModule<ModuleOptions>({
       'useLoadingBar',
       'useDialogReactiveList',
       'useThemeVars',
-      'useModal'
+      'useModal',
     ]
 
     naiveComposables.forEach((name) => {
       addImports({
         name,
         as: name,
-        from: 'naive-ui'
+        from: 'naive-ui',
       })
     })
 
@@ -170,13 +171,14 @@ export default defineNuxtModule<ModuleOptions>({
         config.optimizeDeps.include ||= []
         config.optimizeDeps.include.push('naive-ui')
       })
-    } else {
+    }
+    else {
       nuxt.options.build.transpile.push(
         'naive-ui',
         'vueuc',
         '@css-render/vue3-ssr',
         '@juggle/resize-observer',
-        '@iconify/vue'
+        '@iconify/vue',
       )
     }
 
@@ -212,7 +214,7 @@ export default defineNuxtModule<ModuleOptions>({
         to: RouteLocationRaw;
         /** @deprecated since version 1.13.1, instead use 'to' */
         path?: RouteLocationRaw;
-      }`
+      }`,
     })
-  }
+  },
 })

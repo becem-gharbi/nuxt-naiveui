@@ -1,5 +1,5 @@
 <template>
-  <span :style="{display: 'inline-block', width: sSize, height: sSize}">
+  <span :style="{ display: 'inline-block', width: sSize, height: sSize }">
     <Icon
       v-if="icon"
       :key="key"
@@ -10,7 +10,7 @@
         width: sSize,
         color: iconColor,
         backgroundColor: color,
-        borderRadius: borderRadius && `${borderRadius}px`
+        borderRadius: borderRadius && `${borderRadius}px`,
       }"
     />
   </span>
@@ -25,11 +25,11 @@ import { computed, useRuntimeConfig, ref, watch, onMounted, useNuxtApp } from '#
 const config = useRuntimeConfig().public.naiveui as PublicConfig
 
 const props = defineProps<{
-  name: string;
-  size?: number | string;
-  color?: string;
-  borderRadius?: number;
-  iconColor?: string;
+  name: string
+  size?: number | string
+  color?: string
+  borderRadius?: number
+  iconColor?: string
 }>()
 
 const _sSize = computed(() => props.size ?? config.iconSize)
@@ -38,7 +38,6 @@ const sName = computed(() => props.name)
 const icon = ref()
 const key = ref(1)
 
-// eslint-disable-next-line no-console
 const load = (name: string) => loadIcon(name).catch(() => console.error(`[nuxt-naiveui] failed to load icon ${name}`))
 
 icon.value = await load(sName.value)
@@ -47,6 +46,8 @@ watch(sName, value => load(value).then(res => (icon.value = res)))
 
 onMounted(() => {
   const isPrerendered = typeof useNuxtApp().payload.prerenderedAt === 'number'
-  if (isPrerendered) { key.value++ }
+  if (isPrerendered) {
+    key.value++
+  }
 })
 </script>

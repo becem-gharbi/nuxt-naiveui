@@ -35,7 +35,7 @@
 import { definePageMeta, ref, useAsyncData } from '#imports'
 
 definePageMeta({
-  colorMode: 'light'
+  colorMode: 'light',
 })
 
 const showModal = ref(false)

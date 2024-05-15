@@ -13,33 +13,32 @@ import { computed, h, useRouter } from '#imports'
 import type { MenuLinkRoute } from '#build/types/naiveui'
 
 interface NaiveMenuLinkProps
-    extends /* @vue-ignore */ Omit<MenuProps, 'options' | 'value'> {
-    routes: MenuLinkRoute[];
-    /**
-    * Since v1.11.0, please refer to [#51](https://github.com/becem-gharbi/nuxt-naiveui/pull/51)
-    */
-    activeBy?: 'path' | 'name';
+  extends /* @vue-ignore */ Omit<MenuProps, 'options' | 'value'> {
+  routes: MenuLinkRoute[]
+  /**
+   * Since v1.11.0, please refer to [#51](https://github.com/becem-gharbi/nuxt-naiveui/pull/51)
+   */
+  activeBy?: 'path' | 'name'
 }
 
 const props = withDefaults(
   defineProps<NaiveMenuLinkProps>(),
   {
     routes: () => [],
-    activeBy: 'path'
-  }
+    activeBy: 'path',
+  },
 )
 
 const router = useRouter()
 
 if (!router.currentRoute.value) {
-  // eslint-disable-next-line no-console
   console.warn('[nuxt-naiveui] make sure to create page components when using `NaiveMenuLink`')
 }
 
 // The menu's active key
 const activeKey = computed(() => getActiveKey(router.currentRoute.value))
 
-function getActiveKey (activeRoute: typeof router.currentRoute.value) {
+function getActiveKey(activeRoute: typeof router.currentRoute.value) {
   if (props.activeBy === 'name') {
     return activeRoute.name?.toString()
   }
@@ -83,7 +82,7 @@ const menuOptions = computed<MenuOption[]>(() => {
         icon: route.icon
           ? () => h(NaiveIcon as Component, { name: route.icon })
           : undefined,
-        key
+        key,
       }
       if (route.children) {
         menuOption.children = cb(route.children)

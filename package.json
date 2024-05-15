@@ -44,18 +44,18 @@
     "@nuxt/kit": "^3.11.1",
     "defu": "^6.1.4",
     "js-cookie": "^3.0.5",
-    "naive-ui": "^2.38.1"
+    "naive-ui": "^2.38.2"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxt/eslint-config": "^0.3.12",
     "@nuxt/module-builder": "^0.5.5",
     "@nuxt/schema": "^3.11.1",
     "@nuxt/test-utils": "^3.12.0",
-    "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/js-cookie": "^3.0.6",
     "changelogen": "^0.5.5",
-    "eslint": "^8.57.0",
+    "eslint": "^9.2.0",
     "nuxt": "^3.11.1",
+    "typescript": "^5.4.5",
     "vitest": "^1.4.0"
   },
   "repository": {

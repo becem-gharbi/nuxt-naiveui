@@ -1,11 +1,13 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import { loadIcons, getIcon } from '@iconify/vue'
 import type { IconifyJSON, IconifyIcon, IconifyIconName } from '@iconify/vue'
 
 const download = (icons: string[]) => new Promise<IconifyJSON[]>((resolve, reject) => {
   loadIcons(icons, (loaded, missing, pending) => {
-    if (pending.length) { return }
+    if (pending.length) {
+      return
+    }
 
     const fullname = (e: IconifyIconName) => `${e.prefix}:${e.name}`
 
@@ -17,8 +19,8 @@ const download = (icons: string[]) => new Promise<IconifyJSON[]>((resolve, rejec
     const output = loaded.map(i => ({
       prefix: i.prefix,
       icons: {
-        [i.name]: getIcon(fullname(i)) as IconifyIcon
-      }
+        [i.name]: getIcon(fullname(i)) as IconifyIcon,
+      },
     }))
 
     resolve(output)

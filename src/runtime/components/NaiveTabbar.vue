@@ -39,13 +39,13 @@ import { NuxtLink, NaiveIcon } from '#components'
 
 const props = withDefaults(
   defineProps<{
-    routes: TabbarRoute[];
-    iconSize?: number | string;
+    routes: TabbarRoute[]
+    iconSize?: number | string
   }>(),
   {
     routes: () => [],
-    iconSize: 24
-  }
+    iconSize: 24,
+  },
 )
 
 const naiveTheme = useThemeVars()
@@ -56,7 +56,7 @@ const routesC = computed(() => props.routes.map(r => ({
   label: r.label,
   iconSelected: r.iconSelected,
   iconUnselected: r.iconUnselected,
-  to: router.resolve(r.to ?? r.path)
+  to: router.resolve(r.to ?? r.path),
 })))
 
 const backgroundColor = computed(() => naiveTheme.value.bodyColor)

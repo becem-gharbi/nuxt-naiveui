@@ -2,15 +2,15 @@ import { generate } from '@ant-design/colors'
 import type { ColorMode, Theme } from '../types'
 
 interface Colors {
-  primary: string;
-  success: string;
-  warning: string;
-  error: string;
-  info: string;
-  neutral: string;
+  primary: string
+  success: string
+  warning: string
+  error: string
+  info: string
+  neutral: string
 }
 
-function generatePalette (mode: ColorMode, colors: Colors) {
+function generatePalette(mode: ColorMode, colors: Colors) {
   const theme = mode === 'light' ? 'default' : 'dark'
 
   return {
@@ -19,11 +19,11 @@ function generatePalette (mode: ColorMode, colors: Colors) {
     warning: generate(colors.warning, { theme }),
     error: generate(colors.error, { theme }),
     info: generate(colors.info, { theme }),
-    neutral: generate(colors.neutral, { theme })
+    neutral: generate(colors.neutral, { theme }),
   }
 }
 
-export function generateColorThemes (inputColors?: Partial<Colors>) {
+export function generateColorThemes(inputColors?: Partial<Colors>) {
   const colors = {
     primary: '#2080F0FF',
     success: '#18A058FF',
@@ -31,23 +31,23 @@ export function generateColorThemes (inputColors?: Partial<Colors>) {
     error: '#D03050FF',
     info: '#2080F0FF',
     neutral: '#4b5563',
-    ...inputColors
+    ...inputColors,
   }
 
   return {
     light: () => generateColorThemeLight(colors),
-    dark: () => generateColorThemeDark(colors)
+    dark: () => generateColorThemeDark(colors),
   }
 }
 
-function generateColorThemeLight (colors: Colors) {
+function generateColorThemeLight(colors: Colors) {
   const palette = generatePalette('light', {
     primary: colors.primary,
     success: colors.success,
     warning: colors.warning,
     error: colors.error,
     info: colors.info,
-    neutral: colors.neutral
+    neutral: colors.neutral,
   })
 
   return {
@@ -73,19 +73,19 @@ function generateColorThemeLight (colors: Colors) {
       errorColor: palette.error[5],
       errorColorHover: palette.error[4],
       errorColorPressed: palette.error[6],
-      errorColorSuppl: palette.error[7]
-    }
+      errorColorSuppl: palette.error[7],
+    },
   } as Theme
 }
 
-function generateColorThemeDark (colors: Colors) {
+function generateColorThemeDark(colors: Colors) {
   const palette = generatePalette('dark', {
     primary: colors.primary,
     success: colors.success,
     warning: colors.warning,
     error: colors.error,
     info: colors.info,
-    neutral: colors.neutral
+    neutral: colors.neutral,
   })
 
   return {
@@ -123,21 +123,21 @@ function generateColorThemeDark (colors: Colors) {
       tagColor: palette.neutral[2],
       modalColor: palette.neutral[2],
 
-      popoverColor: palette.neutral[3]
+      popoverColor: palette.neutral[3],
     },
 
     Layout: {
       siderColor: palette.neutral[0],
       headerColor: palette.neutral[0],
-      footerColor: palette.neutral[0]
+      footerColor: palette.neutral[0],
     },
 
     Tooltip: {
-      color: palette.neutral[3]
+      color: palette.neutral[3],
     },
 
     Slider: {
-      indicatorColor: palette.neutral[3]
-    }
+      indicatorColor: palette.neutral[3],
+    },
   } as Theme
 }

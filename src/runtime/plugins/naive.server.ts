@@ -11,8 +11,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         const style = (/>(.*)/s.exec(block)?.[1] ?? '').trim()
         return {
           'cssr-id': id,
-          innerHTML: style
+          'innerHTML': style,
         }
-      })
+      }),
   })
 })

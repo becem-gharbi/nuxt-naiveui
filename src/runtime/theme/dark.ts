@@ -72,42 +72,42 @@ export default {
     cardColor: '#18181c',
     tagColor: '#333333',
     modalColor: '#2c2c32',
-    popoverColor: '#48484e'
+    popoverColor: '#48484e',
   },
   Skeleton: {
     color: '#ffffff1f',
-    colorEnd: '#ffffff2e'
+    colorEnd: '#ffffff2e',
   },
   Tag: {
-    colorBordered: '#00000000'
+    colorBordered: '#00000000',
   },
   Tooltip: {
     color: '#48484e',
-    textColor: '#ffffffe6'
+    textColor: '#ffffffe6',
   },
   Slider: {
     indicatorColor: '#48484e',
-    indicatorTextColor: '#ffffffe6'
+    indicatorTextColor: '#ffffffe6',
   },
   Layout: {
     siderColor: '#101014',
     headerColor: '#101014',
-    footerColor: '#101014'
+    footerColor: '#101014',
   },
   Tabs: {
-    tabColorSegment: '#ffffff1a'
+    tabColorSegment: '#ffffff1a',
   },
   IconWrapper: {
     color: 'transparent',
-    iconColor: 'inherit'
+    iconColor: 'inherit',
   },
   Input: {
-    lineHeightTextarea: '1.6'
+    lineHeightTextarea: '1.6',
   },
   LoadingBar: {
-    height: '3px'
+    height: '3px',
   },
   Form: {
-    feedbackPadding: '8px 0px 10px 0px'
-  }
+    feedbackPadding: '8px 0px 10px 0px',
+  },
 } as Theme

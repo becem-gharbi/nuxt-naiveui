@@ -39,16 +39,17 @@
 
 <script setup lang="ts">
 import type { MenuLinkRoute } from '#build/types/naiveui.d.ts'
+
 const navbarRoutes: MenuLinkRoute[] = [
   {
     label: 'Sample, this is a long long label',
     icon: 'ri:home-4-line',
-    to: '/'
+    to: '/',
   },
   {
     label: 'Computers',
     icon: 'material-symbols:computer-outline',
-    to: '/computers'
+    to: '/computers',
   },
   {
     label: 'Categories',
@@ -57,17 +58,17 @@ const navbarRoutes: MenuLinkRoute[] = [
       {
         label: 'Books',
         icon: 'material-symbols:menu-book-outline-rounded',
-        to: '/books'
-      }
-    ]
-  }
+        to: '/books',
+      },
+    ],
+  },
 ]
 
 const drawerRoutes: MenuLinkRoute[] = [
   {
     label: 'Sample, this is a long long label',
     icon: 'ri:home-4-line',
-    to: '/'
-  }
+    to: '/',
+  },
 ]
 </script>

@@ -17,7 +17,10 @@
 
       <slot />
 
-      <lazy-naive-menu-link mode="vertical" :routes="routes" />
+      <lazy-naive-menu-link
+        mode="vertical"
+        :routes="routes"
+      />
 
       <template #footer>
         <slot name="footer" />
@@ -32,19 +35,19 @@ import { useRouter } from '#imports'
 
 withDefaults(
   defineProps<{
-    show: boolean;
-    routes?: MenuLinkRoute[];
-    closable?: boolean;
-    placement?: 'top' | 'right' | 'bottom' | 'left';
-    width?: string | number;
+    show: boolean
+    routes?: MenuLinkRoute[]
+    closable?: boolean
+    placement?: 'top' | 'right' | 'bottom' | 'left'
+    width?: string | number
   }>(),
   {
     show: false,
     routes: () => [],
     closable: true,
     placement: 'left',
-    width: '100%'
-  }
+    width: '100%',
+  },
 )
 
 const emits = defineEmits(['update:show'])

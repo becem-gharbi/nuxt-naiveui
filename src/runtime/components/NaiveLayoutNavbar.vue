@@ -65,14 +65,14 @@ import { ref, useNaiveDevice } from '#imports'
 
 withDefaults(
   defineProps<{
-    toggleIcon?: string;
-    togglePlacement?: 'left' | 'right';
-    routes?: MenuLinkRoute[];
-    drawerRoutes?: MenuLinkRoute[];
-    drawerClosable?: boolean;
-    drawerWidth?: string | number;
-    nativeScrollbar?: boolean;
-    drawerPlacement?: 'top' | 'right' | 'bottom' | 'left';
+    toggleIcon?: string
+    togglePlacement?: 'left' | 'right'
+    routes?: MenuLinkRoute[]
+    drawerRoutes?: MenuLinkRoute[]
+    drawerClosable?: boolean
+    drawerWidth?: string | number
+    nativeScrollbar?: boolean
+    drawerPlacement?: 'top' | 'right' | 'bottom' | 'left'
   }>(),
   {
     toggleIcon: 'ph:equals',
@@ -82,8 +82,8 @@ withDefaults(
     drawerClosable: true,
     drawerWidth: '100%',
     nativeScrollbar: false,
-    drawerPlacement: 'left'
-  }
+    drawerPlacement: 'left',
+  },
 )
 
 const { isMobileOrTablet } = useNaiveDevice()

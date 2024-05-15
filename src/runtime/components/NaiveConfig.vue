@@ -9,8 +9,8 @@
 
 <script setup lang="ts">
 import type { ConfigProviderProps } from 'naive-ui'
-import type { ThemeConfig, Theme, PublicConfig } from '../types'
 import { defu } from 'defu'
+import type { ThemeConfig, Theme, PublicConfig } from '../types'
 import {
   useHead,
   useRuntimeConfig,
@@ -20,23 +20,23 @@ import {
   useNuxtApp,
   useAppConfig,
   watch,
-  useNuxtData
+  useNuxtData,
 } from '#imports'
 
 interface NaiveConfigProps
   extends /* @vue-ignore */ Omit<ConfigProviderProps, 'themeOverrides' | 'theme'> {
   /** @deprecated since version 1.12.0, instead use `naiveui.themeConfig` in `app.config` */
-  themeConfig?: ThemeConfig;
+  themeConfig?: ThemeConfig
 }
 
 const props = defineProps<NaiveConfigProps>()
 const { colorMode } = useNaiveColorMode()
 const config = useRuntimeConfig().public.naiveui as PublicConfig
 
-const themeConfig: ThemeConfig | undefined =
-  props.themeConfig ??
-  (useAppConfig().naiveui as any)?.themeConfig ??
-  config.themeConfig
+const themeConfig: ThemeConfig | undefined
+  = props.themeConfig
+  ?? (useAppConfig().naiveui)?.themeConfig
+  ?? config.themeConfig
 
 const { data: naiveTheme } = useNuxtData<Theme>('naive-theme-config')
 
@@ -46,7 +46,7 @@ watch(colorMode, () => updateTheme().then(t => (naiveTheme.value = t)))
 
 useHead(() => ({
   htmlAttrs: {
-    class: colorMode.value === 'dark' ? 'dark' : ''
+    class: colorMode.value === 'dark' ? 'dark' : '',
   },
   style: [
     {
@@ -55,10 +55,10 @@ useHead(() => ({
           compileStyle('color', naiveTheme.value?.common?.textColorBase),
           compileStyle('font-family', naiveTheme.value?.common?.fontFamily),
           compileStyle('font-size', naiveTheme.value?.common?.fontSize),
-          compileStyle('line-height', naiveTheme.value?.common?.lineHeight)
-        ].join(' ')}}`
-    }
-  ]
+          compileStyle('line-height', naiveTheme.value?.common?.lineHeight),
+        ].join(' ')}}`,
+    },
+  ],
 }))
 
 onMounted(() => {
@@ -70,7 +70,7 @@ onMounted(() => {
   }
 })
 
-async function updateTheme () {
+async function updateTheme() {
   const [deviceTheme, colorModeTheme] = await Promise.all([getDeviceTheme(), getColorModeTheme()])
   const sharedTheme = evalTheme(themeConfig?.shared)
   const theme = defu(sharedTheme, deviceTheme, colorModeTheme)
@@ -81,57 +81,63 @@ async function updateTheme () {
   return theme
 }
 
-async function getColorModeTheme () {
+async function getColorModeTheme() {
   if (colorMode.value === 'dark') {
     const darkTheme = evalTheme(themeConfig?.dark)
     if (darkTheme?.defaults === false) {
       return darkTheme
-    } else {
+    }
+    else {
       const defaultDarkTheme = await import('../theme/dark')
       return defu(darkTheme, defaultDarkTheme.default)
     }
-  } else {
+  }
+  else {
     const lightTheme = evalTheme(themeConfig?.light)
     if (lightTheme?.defaults === false) {
       return lightTheme
-    } else {
+    }
+    else {
       const defaultLightTheme = await import('../theme/light')
       return defu(lightTheme, defaultLightTheme.default)
     }
   }
 }
 
-async function getDeviceTheme () {
+async function getDeviceTheme() {
   const { isMobileOrTablet, isMobile } = useNaiveDevice()
 
   if (isMobileOrTablet) {
     const mobileOrTabletTheme = evalTheme(themeConfig?.mobileOrTablet)
     if (mobileOrTabletTheme?.defaults === false) {
       return mobileOrTabletTheme
-    } else {
+    }
+    else {
       const defaultMobileOrTabletTheme = await import('../theme/mobileOrTablet')
       return defu(mobileOrTabletTheme, defaultMobileOrTabletTheme.default)
     }
-  } else if (isMobile) {
+  }
+  else if (isMobile) {
     const mobileTheme = evalTheme(themeConfig?.mobile)
     if (mobileTheme?.defaults === false) {
       return mobileTheme
-    } else {
+    }
+    else {
       const defaultMobileOrTabletTheme = await import('../theme/mobileOrTablet')
       return defu(mobileTheme, defaultMobileOrTabletTheme.default)
     }
   }
 }
 
-function compileStyle (prop: string, value?: string) {
+function compileStyle(prop: string, value?: string) {
   return value && `${prop}: ${value} !important;`
 }
 
-function evalTheme<T extends object> (theme?: T | (() => T)) {
+function evalTheme<T extends object>(theme?: T | (() => T)) {
   return typeof theme === 'function' ? theme() : theme
 }
 
-function setLocalStorageItem (key: string, value?: string) {
+function setLocalStorageItem(key: string, value?: string) {
   if (import.meta.client) {
     value ? localStorage.setItem(key, value) : localStorage.removeItem(key)
   }

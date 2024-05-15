@@ -10,7 +10,7 @@
         width: sSize,
         color: iconColor,
         backgroundColor: color,
-        borderRadius: borderRadius && `${borderRadius}px`
+        borderRadius: borderRadius && `${borderRadius}px`,
       }"
     />
   </span>
@@ -20,18 +20,19 @@
 import { Icon } from '@iconify/vue/dist/offline'
 import { _api, loadIcon } from '@iconify/vue'
 import { getQuery, parseURL } from 'ufo'
-import type { PublicConfig } from '../types'
 import { defu } from 'defu'
+import type { IconifyJSON } from '@iconify/vue'
+import type { PublicConfig } from '../types'
 import { computed, useRuntimeConfig, ref, watch, onMounted, useNuxtApp, callOnce } from '#imports'
 
 const config = useRuntimeConfig().public.naiveui as PublicConfig
 
 const props = defineProps<{
-  name: string;
-  size?: number | string;
-  color?: string;
-  borderRadius?: number;
-  iconColor?: string;
+  name: string
+  size?: number | string
+  color?: string
+  borderRadius?: number
+  iconColor?: string
 }>()
 
 const _sSize = computed(() => props.size ?? config.iconSize)
@@ -41,10 +42,12 @@ const icon = ref()
 const key = ref(1)
 
 await callOnce(`naiveui:icon-key-${import.meta.server ? 0 : 1}`, () => {
-  if (process.dev) { return }
+  if (import.meta.dev) {
+    return
+  }
 
   const imports = import.meta.server
-    ? import.meta.glob('~/public/iconify/*/*.json', { import: 'default' })
+    ? import.meta.glob<IconifyJSON>('~/public/iconify/*/*.json', { import: 'default' })
     : {}
 
   _api.setFetch(async (req) => {
@@ -53,29 +56,34 @@ await callOnce(`naiveui:icon-key-${import.meta.server ? 0 : 1}`, () => {
     const icons = getQuery<{ icons: string }>(url).icons.split(',')
 
     const iconsData = import.meta.server
-      ? await Promise.all<any>(icons.map(i => imports[`/public/iconify/${prefix}/${i}.json`]()))
-      : await Promise.all(icons.map(i => $fetch(`/iconify/${prefix}/${i}.json`)))
+      ? await Promise.all(icons.map(i => imports[`/public/iconify/${prefix}/${i}.json`]()))
+      : await Promise.all(icons.map(i => $fetch<IconifyJSON>(`/iconify/${prefix}/${i}.json`)))
 
     const iconsDataMerged = defu({}, ...iconsData)
 
     return new Response(JSON.stringify(iconsDataMerged), {
       status: 200,
       headers: new Headers({
-        'Content-Type': 'application/json'
-      })
+        'Content-Type': 'application/json',
+      }),
     })
   })
 })
 
-// eslint-disable-next-line no-console
 const load = (name: string) => loadIcon(name).catch(() => console.error(`[nuxt-naiveui] failed to load icon ${name}`))
 
 icon.value = await load(sName.value)
 
-watch(sName, value => load(value).then(res => (icon.value = res)))
+watch(sName, (value) => {
+  load(value).then((res) => {
+    icon.value = res
+  })
+})
 
 onMounted(() => {
   const isPrerendered = typeof useNuxtApp().payload.prerenderedAt === 'number'
-  if (isPrerendered) { key.value++ }
+  if (isPrerendered) {
+    key.value++
+  }
 })
 </script>

@@ -9,7 +9,9 @@ export default eventHandler(async () => {
     .then(async (res) => {
       if (res.ok) {
         const data = await res.json()
-        Object.keys(data).forEach((key) => { data[key] = true })
+        Object.keys(data).forEach((key) => {
+          data[key] = true
+        })
         return data
       }
       throw fetchError

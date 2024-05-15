@@ -65,7 +65,7 @@
         mode="horizontal"
         :routes="routes"
         :style="{
-          justifyContent: menuPlacement
+          justifyContent: menuPlacement,
         }"
       />
     </div>
@@ -120,7 +120,7 @@ import {
   ref,
   computed,
   useRouter,
-  useNaiveDevice
+  useNaiveDevice,
 } from '#imports'
 
 const drawerActive = ref(false)
@@ -129,19 +129,19 @@ const { isMobileOrTablet } = useNaiveDevice()
 
 const props = withDefaults(
   defineProps<{
-    routes?: MenuLinkRoute[];
-    drawerRoutes?: MenuLinkRoute[];
-    menuToggleIcon?: string;
-    menuToggleIconSize?: number | string;
-    backIcon?: boolean;
-    backIconSize?: number | string;
-    menuInverted?: boolean;
-    menuPlacement?: 'right' | 'left' | 'center';
-    menuTogglePlacement?: 'right' | 'left';
-    drawerPlacement?: 'top' | 'right' | 'bottom' | 'left';
-    sticky?: boolean;
-    drawerClosable?: boolean;
-    drawerWidth?: string | number;
+    routes?: MenuLinkRoute[]
+    drawerRoutes?: MenuLinkRoute[]
+    menuToggleIcon?: string
+    menuToggleIconSize?: number | string
+    backIcon?: boolean
+    backIconSize?: number | string
+    menuInverted?: boolean
+    menuPlacement?: 'right' | 'left' | 'center'
+    menuTogglePlacement?: 'right' | 'left'
+    drawerPlacement?: 'top' | 'right' | 'bottom' | 'left'
+    sticky?: boolean
+    drawerClosable?: boolean
+    drawerWidth?: string | number
   }>(),
   {
     routes: () => [],
@@ -156,11 +156,11 @@ const props = withDefaults(
     backIcon: false,
     backIconSize: 26,
     drawerWidth: '100%',
-    drawerClosable: true
-  }
+    drawerClosable: true,
+  },
 )
 
 const flexInnerSides = computed(() =>
-  props.menuPlacement === 'center' ? 1 : 'inherit'
+  props.menuPlacement === 'center' ? 1 : 'inherit',
 )
 </script>
