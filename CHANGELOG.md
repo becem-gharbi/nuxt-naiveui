@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v1.13.3
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.13.2...v1.13.3)
+
+### 🩹 Fixes
+
+- **NaiveIcon:** Omit undefined `border-radius` ([e3edef6](https://github.com/becem-gharbi/nuxt-naiveui/commit/e3edef6))
+- **NaiveIcon:** Correctly set wrapper dimensions ([4277e49](https://github.com/becem-gharbi/nuxt-naiveui/commit/4277e49))
+- **NaiveNavbar:** Correctly center horizontal menu ([#72](https://github.com/becem-gharbi/nuxt-naiveui/pull/72))
+- **NaiveLayout:** Ensure `min-height` unit is `vh` when `dvh` not supported ([28c88fb](https://github.com/becem-gharbi/nuxt-naiveui/commit/28c88fb))
+
+### 🏡 Chore
+
+- **lint:** Migrate from `@nuxtjs/eslint-config-typescript` to `@nuxt/eslint-config` ([a55fea4](https://github.com/becem-gharbi/nuxt-naiveui/commit/a55fea4))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v1.13.2
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.13.1...v1.13.2)
