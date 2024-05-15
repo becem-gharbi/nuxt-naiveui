@@ -64,6 +64,9 @@
         :inverted="menuInverted"
         mode="horizontal"
         :routes="routes"
+        :style="{
+          justifyContent: menuPlacement
+        }"
       />
     </div>
 
