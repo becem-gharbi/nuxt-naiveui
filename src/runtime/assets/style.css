@@ -24,3 +24,8 @@ input:-webkit-autofill:focus {
 .n-input__textarea-mirror {
     min-height: var(--n-height);
 }
+
+.naive-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+}
