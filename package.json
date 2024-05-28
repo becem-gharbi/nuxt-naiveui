@@ -32,10 +32,10 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "release": "npm run typecheck && npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "release": "npm run test:headed && npm run typecheck && npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
-    "test": "vitest run",
-    "test:watch": "vitest watch",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
     "typecheck": "nuxi typecheck"
   },
   "dependencies": {
@@ -50,13 +50,13 @@
     "@nuxt/eslint-config": "^0.3.12",
     "@nuxt/module-builder": "^0.5.5",
     "@nuxt/schema": "^3.11.1",
-    "@nuxt/test-utils": "^3.12.0",
+    "@playwright/test": "^1.44.1",
     "@types/js-cookie": "^3.0.6",
+    "@types/node": "^20.12.12",
     "changelogen": "^0.5.5",
     "eslint": "^9.2.0",
     "nuxt": "^3.11.1",
-    "typescript": "^5.4.5",
-    "vitest": "^1.4.0"
+    "typescript": "^5.4.5"
   },
   "repository": {
     "url": "git+https://github.com/becem-gharbi/nuxt-naiveui.git"
@@ -64,5 +64,6 @@
   "publishConfig": {
     "access": "public",
     "tag": "latest"
-  }
+  },
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }

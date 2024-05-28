@@ -56,3 +56,7 @@ Temporary Items
 .apdisk
 
 playground/public/iconify
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

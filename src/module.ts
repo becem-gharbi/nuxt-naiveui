@@ -126,7 +126,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Add imports for naive-ui components
     const naiveComponents = Object.keys(naive).filter(name =>
-      /^(N[A-Z]|n-[a-z])/.test(name),
+      /^N[A-Z]|n-[a-z]/.test(name),
     )
 
     const naiveClientOnlyComponents = [

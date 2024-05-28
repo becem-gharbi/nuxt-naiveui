@@ -46,7 +46,7 @@ export default function (path: string, collectionsUrl = COLLECTIONS_URL): Plugin
     },
 
     transform(code) {
-      code.match(regex)?.forEach(m => icons.add(m.replace(/'|"|`/g, '')))
+      code.match(regex)?.forEach(m => icons.add(m.replace(/['"`]/g, '')))
       return { code, map: null }
     },
 
