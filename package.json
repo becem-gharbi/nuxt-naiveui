@@ -32,10 +32,9 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "release": "npm run test:headed && npm run typecheck && npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "release": "npm run test && npm run typecheck && npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
     "test": "playwright test",
-    "test:headed": "playwright test --headed",
     "typecheck": "nuxi typecheck"
   },
   "dependencies": {
