@@ -37,7 +37,7 @@ The documentation website can be found [here](https://nuxt-naiveui.bg.tn).
 
 ```bash
 # Install dependencies
-yarn install && cd playground && yarn install
+yarn install
 
 # Generate type stubs
 yarn dev:prepare
