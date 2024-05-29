@@ -28,14 +28,19 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build",
     "dev": "nuxi dev playground",
-    "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "release": "npm run test && npm run typecheck && npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
-    "lint": "eslint .",
+    "dev:build:ssr": "nuxi build playground",
+    "dev:build:spa": "cross-env NUXT_SSR=false nuxi build playground",
     "test": "playwright test",
-    "typecheck": "nuxi typecheck"
+    "test:prod:ssr": "cross-env NODE_ENV=production && npm run dev:build:ssr && npm run test",
+    "test:prod:spa": "cross-env NODE_ENV=production && npm run dev:build:spa && npm run test",
+    "test:prod": "npm run test:prod:ssr && npm run test:prod:spa",
+    "lint": "eslint .",
+    "typecheck": "nuxi typecheck",
+    "prepack": "nuxt-module-build",
+    "release:pre": "npm run typecheck && npm run lint && npm run prepack",
+    "release": "npm run release:pre && npm run test:prod && changelogen --release && npm publish && git push --follow-tags"
   },
   "dependencies": {
     "@ant-design/colors": "^7.0.2",
@@ -54,6 +59,7 @@
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^20.12.12",
     "changelogen": "^0.5.5",
+    "cross-env": "^7.0.3",
     "eslint": "^9.2.0",
     "nuxt": "^3.11.1",
     "typescript": "^5.4.5"
