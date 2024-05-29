@@ -25,7 +25,6 @@ test('should update state', async ({ browser }) => {
   expect(bgLocalStorage?.value).toBe('white')
 
   await context.close()
-  await browser.close()
 })
 
 test('should respect forced mode', async ({ page }) => {
