@@ -18,6 +18,10 @@
 
     <color-mode-select />
 
+    <n-button type="primary">
+      Button
+    </n-button>
+
     <slot />
   </div>
 </template>
