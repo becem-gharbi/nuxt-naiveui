@@ -1,8 +1,6 @@
 # NaiveNavbar
 
-This component provides responsive navigation bar.
-
-It has nested menu items wrapping `NuxtLink` for routing with prefetch.
+This component provides a responsive navigation bar. It has nested menu items wrapping `NuxtLink` for routing with prefetch.
 
 ```ts
 interface MenuLinkRoute {
@@ -13,8 +11,8 @@ interface MenuLinkRoute {
 }
 ```
 
-::: tip
-`MenuLinkRoute` type can be imported from `#build/types/naiveui`.
+::: tip Info
+`MenuLinkRoute` interface can be imported from `#build/types/naiveui`.
 :::
 
 ### Props

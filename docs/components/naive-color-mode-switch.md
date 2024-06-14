@@ -1,6 +1,6 @@
 # NaiveColorModeSwitch
 
-This component can be used to change colorMode preference.
+This component can be used to change color mode preference.
 
 ### Props
 

@@ -1,12 +1,12 @@
 # useNaiveColorMode
 
-This universal composable is intended for handling colorMode state and preference.
+This universal composable is intended for handling color mode state and preference.
 
-The colorMode state can either be `light` or `dark` and its exposed via `colorMode` property.
+The color mode can either be `light` or `dark` and is exposed via the `colorMode` state.
 
-The colorMode can be controlled in two ways:
+The color mode can be controlled in two ways:
 
-- Preference, the colorMode is set globally. The exposed `colorModePreference` property can be used for that with fallback to `naiveui.colorModePreference` config option.
+- Preference, the colorMode is set globally. The exposed `colorModePreference` property can be used for that with a fallback to `naiveui.colorModePreference` config option.
 
 ```ts
 const { colorModePreference } = useNaiveColorMode();
@@ -15,7 +15,7 @@ const { colorModePreference } = useNaiveColorMode();
 colorModePreference.set("dark");
 ```
 
-- Forced, the colorMode is set per-page. This can be usefull to force a colorMode on a particular page (e.g, setting light mode on landing page).
+- Forced, the color mode is set per-page. This can be useful to force a color mode on a particular page (e.g., setting light mode on the landing page).
 
 ```ts
 definePageMeta({ colorMode: "light" });

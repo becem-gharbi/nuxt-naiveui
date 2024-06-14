@@ -1,8 +1,10 @@
 # NaiveIcon
 
-This component is a wrapper of [Iconify Vue](https://iconify.design/getting-started/) which provides a collection of over 100 icon sets. FYI the module uses `Phosphor` icon set.
+This component is a wrapper of [Iconify Vue](https://iconify.design/getting-started/) which provides a collection of +100 icon sets. [Icônes](https://icones.js.org) can be used for exploration and instant search. 
 
-[Icônes](https://icones.js.org) can be used for exploration and instant search.
+::: tip Info
+The module uses the `Phosphor` icon set.
+:::
 
 ### Props
 
@@ -16,10 +18,10 @@ This component is a wrapper of [Iconify Vue](https://iconify.design/getting-star
 
 ### Offline
 
-By default icons are fetched at runtime from Iconify API. By setting `iconDownload` config option to `true`, icons can be downloaded and stored locally to `public/iconify` directory. This takes place only at production build. The advantages are:
+By default, icons are fetched at runtime from the Iconify API. By setting the `iconDownload` config option to `true`, icons can be downloaded and stored locally in the `public/iconify` directory. This takes place only at production build. The advantages are:
 
-- ✔️ On server side no need for network calls thus better loading time.
+- ✔️ On the server side no need for network calls thus better loading time.
 - ✔️ Takes benefit from Iconify client & server side caching (localStorage & memory).
 - ✔️ Build offline applications.
 
-In order for the module to find the used icons in your application, first it needs to collect all the existant icon sets. This takes place via a fetch request to `https://raw.githubusercontent.com/iconify/icon-sets/master/collections.json`. In case of network access limitations, it's possible to provide a custom proxy URL via `iconCollectionsUrl` config option.
+For the module to find the used icons in your application, first it needs to collect all the existing icon sets. This takes place via a fetch request to `https://raw.githubusercontent.com/iconify/icon-sets/master/collections.json`. In case of network access limitations, it's possible to provide a custom proxy URL via the `iconCollectionsUrl` config option.
