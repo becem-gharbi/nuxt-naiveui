@@ -40,7 +40,10 @@
     "typecheck": "nuxi typecheck",
     "prepack": "nuxt-module-build",
     "release:pre": "npm run typecheck && npm run lint && npm run prepack",
-    "release": "npm run release:pre && npm run test:prod && changelogen --release && npm publish && git push --follow-tags"
+    "release": "npm run release:pre && npm run test:prod && changelogen --release && npm publish && git push --follow-tags",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
     "@ant-design/colors": "^7.0.2",
@@ -62,7 +65,8 @@
     "cross-env": "^7.0.3",
     "eslint": "^9.2.0",
     "nuxt": "^3.11.1",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vitepress": "^1.2.3"
   },
   "repository": {
     "url": "git+https://github.com/becem-gharbi/nuxt-naiveui.git"

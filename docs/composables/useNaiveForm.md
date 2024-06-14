@@ -39,8 +39,16 @@ const model = ref({
 // The `edited` state indicates changes relative to the initial value.
 // `updateResetValue` will update the internal default value to the current model value
 
-const { formRef, rules, pending, apiErrors, onSubmit, edited, reset, updateResetValue } =
-  useNaiveForm(model);
+const {
+  formRef,
+  rules,
+  pending,
+  apiErrors,
+  onSubmit,
+  edited,
+  reset,
+  updateResetValue,
+} = useNaiveForm(model);
 
 // ApiErrors are reactive Record<string, boolean>.
 // It should be set on `handleSubmit` and checked on `rules` validators.

@@ -20,9 +20,9 @@ On setup the `themeConfig` is merged with built-in default themes. These [defaul
 
 The common theme properties are shared globally via `useThemeVars` naive-ui composable.
 
-::alert{type="warning"}
+::: warning Important
 Naive UI generates CSS using JS [(reference)](https://www.npmjs.com/package/css-render). This implementation **may cause an issue on pre-rendered Nuxt pages** because they are static (generated at build time). Thus a hydration mismatch may occur in this case.
-::
+:::
 
 ### Customization
 

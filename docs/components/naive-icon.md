@@ -8,11 +8,11 @@ This component is a wrapper of [Iconify Vue](https://iconify.design/getting-star
 
 | **Name**     | **Type**         | **Default**        | **Note**                        |
 | ------------ | ---------------- | ------------------ | ------------------------------- |
-| name         | string           | undefined          | This property is reactive       |
+| name         | string           |                    | This property is reactive       |
 | size         | number \| string | `naiveui.iconSize` |                                 |
-| iconColor    | string           | undefined          | Color of icon                   |
-| color        | string           | undefined          | Background color of the wrapper |
-| borderRadius | number           | undefined          | Border radius of the wrapper    |
+| iconColor    | string           |                    | Color of icon                   |
+| color        | string           |                    | Background color of the wrapper |
+| borderRadius | number           |                    | Border radius of the wrapper    |
 
 ### Offline
 

@@ -13,9 +13,9 @@ interface MenuLinkRoute {
 }
 ```
 
-::alert{type="info"}
+::: tip
 `MenuLinkRoute` type can be imported from `#build/types/naiveui`.
-::
+:::
 
 ### Props
 
