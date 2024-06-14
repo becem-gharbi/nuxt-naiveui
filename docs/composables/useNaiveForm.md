@@ -1,6 +1,6 @@
 # useNaiveForm
 
-This composable is intended to be used with `n-form` naive-ui component. It provides state management. It's better to explain it with an example.
+This composable is intended to be used with the `n-form` naive-ui component. It provides state management. It's better to explain it with an example.
 
 ```vue
 <template>
@@ -35,12 +35,20 @@ const model = ref({
 });
 
 // Pass the form `model`, this will take a snapshot of the initial value and compare it to its reactive value.
-// The `reset` function will reset the `model` to its initial value or the value after successfull submit.
+// The `reset` function will reset the `model` to its initial value or the value after successful submission.
 // The `edited` state indicates changes relative to the initial value.
 // `updateResetValue` will update the internal default value to the current model value
 
-const { formRef, rules, pending, apiErrors, onSubmit, edited, reset, updateResetValue } =
-  useNaiveForm(model);
+const {
+  formRef,
+  rules,
+  pending,
+  apiErrors,
+  onSubmit,
+  edited,
+  reset,
+  updateResetValue,
+} = useNaiveForm(model);
 
 // ApiErrors are reactive Record<string, boolean>.
 // It should be set on `handleSubmit` and checked on `rules` validators.

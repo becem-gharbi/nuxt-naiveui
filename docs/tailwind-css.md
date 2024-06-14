@@ -1,14 +1,10 @@
-# Integration
+# Tailwind CSS
 
-The module provides friendly TailwindCSS integration by resolving potential style conflicts.
-
-Please make sure to install [NuxtTailwind](https://tailwindcss.nuxtjs.org/) module.
+The module provides friendly TailwindCSS integration by resolving potential style conflicts. Please make sure to install the [Nuxt Tailwind](https://tailwindcss.nuxtjs.org/) module.
 
 #### Theme
 
-Please be aware this adds ~19.5KB (~3.5KB) to the client bundle size, [source](https://tailwindcss.nuxtjs.org/tailwind/config#referencing-in-the-application).
-
-::code-group
+::: code-group
 
 ```ts [nuxt.config.ts]
 tailwindcss: {
@@ -48,14 +44,15 @@ export default defineAppConfig({
 });
 ```
 
-::
+:::
 
 #### ColorMode
 
 ```ts [tailwind.config.ts]
+// tailwind.config.ts
 import type { Config } from "tailwindcss";
 
-export default <Config> {
-  darkMode: "class"
+export default<Config>{
+  darkMode: "class",
 };
 ```

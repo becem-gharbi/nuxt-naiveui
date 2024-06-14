@@ -1,6 +1,6 @@
 # NaiveTabbar
 
-This component can be used for mobile & tablet navigation.
+This component can be used for mobile and tablet navigation.
 
 ```ts
 interface TabbarRoute {
