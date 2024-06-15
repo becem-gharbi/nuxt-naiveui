@@ -2,6 +2,7 @@
   <n-layout class="naive-page">
     <n-layout-header
       bordered
+      v-bind="header"
       style="display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px;padding:0 16px;"
     >
       <naive-drawer-toggle
@@ -59,6 +60,7 @@
 </template>
 
 <script setup lang="ts">
+import type { LayoutHeaderProps } from 'naive-ui'
 import NaiveDrawerToggle from './internals/NaiveDrawerToggle.vue'
 import type { MenuLinkRoute } from '#build/types/naiveui'
 import { ref, useNaiveDevice } from '#imports'
@@ -73,6 +75,7 @@ withDefaults(
     drawerWidth?: string | number
     nativeScrollbar?: boolean
     drawerPlacement?: 'top' | 'right' | 'bottom' | 'left'
+    header?: LayoutHeaderProps
   }>(),
   {
     toggleIcon: 'ph:equals',
