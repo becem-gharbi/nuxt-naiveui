@@ -24,4 +24,12 @@ export default defineNuxtConfig({
   tailwindcss: {
     viewer: false,
   },
+
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        module: 'ESNext',
+      },
+    },
+  },
 })
