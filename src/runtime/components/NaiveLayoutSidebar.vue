@@ -32,6 +32,7 @@
         content-style="min-height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:8px;"
         :native-scrollbar="false"
         bordered
+        v-bind="sider"
       >
         <slot name="start" />
         <div style="flex: 1">
@@ -69,6 +70,7 @@
 </template>
 
 <script setup lang="ts">
+import type { LayoutSiderProps } from 'naive-ui'
 import NaiveDrawerToggle from './internals/NaiveDrawerToggle.vue'
 import type { MenuLinkRoute } from '#build/types/naiveui'
 import { ref, useNaiveDevice } from '#imports'
@@ -83,6 +85,7 @@ withDefaults(
     drawerClosable?: boolean
     drawerWidth?: string | number
     nativeScrollbar?: boolean
+    sider?: LayoutSiderProps
   }>(),
   {
     toggleIcon: 'ph:equals',

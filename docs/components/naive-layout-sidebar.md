@@ -13,16 +13,17 @@ interface MenuLinkRoute {
 
 ### Props
 
-| **Name**        | **Type**                       | **Default** | **Note**                               |
-| --------------- | ------------------------------ | ----------- | -------------------------------------- |
-| nativeScrollbar | boolean                        | false       |                                        |
-| routes          | MenuLinkRoute                  | \[ ]        | The routes for the sidebar             |
-| drawerRoutes    | MenuLinkRoute                  | \[ ]        | The routes for the drawer              |
-| drawerClosable  | boolean                        | true        | Whether the drawer content is closable |
-| drawerWidth     | string \| number               | 100%        |                                        |
-| drawerPlacement | top \| right \| bottom \| left | left        |                                        |
-| toggleIcon      | string                         | `ph:equals` |                                        |
-| togglePlacement | right \| left                  | right       |                                        |
+| **Name**        | **Type**                       | **Default** | **Note**                                                                                                    |
+| --------------- | ------------------------------ | ----------- | ----------------------------------------------------------------------------------------------------------- |
+| nativeScrollbar | boolean                        | false       |                                                                                                             |
+| routes          | MenuLinkRoute                  | \[ ]        | The routes for the sidebar                                                                                  |
+| drawerRoutes    | MenuLinkRoute                  | \[ ]        | The routes for the drawer                                                                                   |
+| drawerClosable  | boolean                        | true        | Whether the drawer content is closable                                                                      |
+| drawerWidth     | string \| number               | 100%        |                                                                                                             |
+| drawerPlacement | top \| right \| bottom \| left | left        |                                                                                                             |
+| toggleIcon      | string                         | `ph:equals` |                                                                                                             |
+| togglePlacement | right \| left                  | right       |                                                                                                             |
+| sider           | LayoutSiderProps               |             | Passed to `n-layout-sider`, [docs](https://www.naiveui.com/en-US/dark/components/layout#Layout-Sider-Props) |
 
 ### Slots
 
