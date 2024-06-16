@@ -41,16 +41,16 @@ test('should update theme', async ({ page }) => {
   await goto(page, '/color-mode')
 
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(255, 255, 255)')
-  await expect(page.locator('html')).toHaveAttribute('class', '')
+  await expect(page.locator('html')).toHaveClass('')
   await expect(page.getByRole('button', { name: 'Button' })).toHaveCSS('background-color', 'rgb(29, 78, 216)')
 
   await toggleToDark(page)
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(16, 16, 20)')
-  await expect(page.locator('html')).toHaveAttribute('class', 'dark')
+  await expect(page.locator('html')).toHaveClass('dark')
   await expect(page.getByRole('button', { name: 'Button' })).toHaveCSS('background-color', 'rgb(96, 165, 250)')
 
   await toggleToLight(page)
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(255, 255, 255)')
-  await expect(page.locator('html')).toHaveAttribute('class', '')
+  await expect(page.locator('html')).toHaveClass('')
   await expect(page.getByRole('button', { name: 'Button' })).toHaveCSS('background-color', 'rgb(29, 78, 216)')
 })
