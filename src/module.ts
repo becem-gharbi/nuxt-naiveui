@@ -54,6 +54,7 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.css.push(resolve('./runtime/assets/style.css'))
 
     // Pass module options to runtimeConfig object
+    // @ts-expect-error icon size can be number or string
     nuxt.options.runtimeConfig.public = defu(nuxt.options.runtimeConfig.public, {
       naiveui: {
         colorModePreference: options.colorModePreference,
