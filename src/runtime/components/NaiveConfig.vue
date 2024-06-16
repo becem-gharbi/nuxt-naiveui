@@ -74,9 +74,8 @@ async function updateTheme() {
   const [deviceTheme, colorModeTheme] = await Promise.all([getDeviceTheme(), getColorModeTheme()])
   const sharedTheme = evalTheme(themeConfig?.shared)
   const theme = defu(sharedTheme, deviceTheme, colorModeTheme)
-  if (import.meta.client && config.spaLoadingTemplate) {
-    setLocalStorageItem('naive-body-bg-color', theme?.common?.bodyColor)
-    setLocalStorageItem('naive-primary-color', theme?.common?.primaryColor)
+  if (config.spaLoadingTemplate) {
+    setLoadingTemplateTheme(theme)
   }
   return theme
 }
@@ -137,9 +136,13 @@ function evalTheme<T extends object>(theme?: T | (() => T)) {
   return typeof theme === 'function' ? theme() : theme
 }
 
-function setLocalStorageItem(key: string, value?: string) {
+function setLoadingTemplateTheme(theme?: Theme) {
   if (import.meta.client) {
-    value ? localStorage.setItem(key, value) : localStorage.removeItem(key)
+    const setLocalStorageItem = (key: string, value?: string) => {
+      value ? localStorage.setItem(key, value) : localStorage.removeItem(key)
+    }
+    setLocalStorageItem('naive-body-bg-color', theme?.common?.bodyColor)
+    setLocalStorageItem('naive-primary-color', theme?.common?.primaryColor)
   }
 }
 </script>
