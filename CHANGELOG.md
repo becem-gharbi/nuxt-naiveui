@@ -1,6 +1,54 @@
 # Changelog
 
 
+## v1.14.0
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.13.3...v1.14.0)
+
+### 🚀 Enhancements
+
+- **LayoutSidebar:** Add `sider` prop ([03664bf](https://github.com/becem-gharbi/nuxt-naiveui/commit/03664bf))
+- **LayoutNavbar:** Add `header` prop ([1985cc4](https://github.com/becem-gharbi/nuxt-naiveui/commit/1985cc4))
+
+### 🩹 Fixes
+
+- Fix undefined default options on `nuxt` v3.12 ([2ce6be6](https://github.com/becem-gharbi/nuxt-naiveui/commit/2ce6be6))
+
+### 💅 Refactors
+
+- **NaiveConfig:** Create `setLoadingTemplateTheme` ([0006d49](https://github.com/becem-gharbi/nuxt-naiveui/commit/0006d49))
+
+### 📖 Documentation
+
+- Migrate to `vitepress` ([#75](https://github.com/becem-gharbi/nuxt-naiveui/pull/75))
+
+### 🌊 Types
+
+- Fix typecheck ([9608120](https://github.com/becem-gharbi/nuxt-naiveui/commit/9608120))
+
+### 🏡 Chore
+
+- **lint:** Ensure components in kebab-case ([3e939e8](https://github.com/becem-gharbi/nuxt-naiveui/commit/3e939e8))
+- **playground:** Fix tsconfig ([00705fe](https://github.com/becem-gharbi/nuxt-naiveui/commit/00705fe))
+- Fix test scripts ([0e10cb9](https://github.com/becem-gharbi/nuxt-naiveui/commit/0e10cb9))
+
+### ✅ Tests
+
+- Add color mode tests ([bd571ca](https://github.com/becem-gharbi/nuxt-naiveui/commit/bd571ca))
+- Enable headed testing ([fa2d982](https://github.com/becem-gharbi/nuxt-naiveui/commit/fa2d982))
+- Enable headless testing ([8442381](https://github.com/becem-gharbi/nuxt-naiveui/commit/8442381))
+- Add spa only testing ([b57ac16](https://github.com/becem-gharbi/nuxt-naiveui/commit/b57ac16))
+- Run spa and ssr tests on CI workflow ([118fe5f](https://github.com/becem-gharbi/nuxt-naiveui/commit/118fe5f))
+- Add basic test for navigation components ([3da4661](https://github.com/becem-gharbi/nuxt-naiveui/commit/3da4661))
+- Add tests for device check ([59a9671](https://github.com/becem-gharbi/nuxt-naiveui/commit/59a9671))
+- Add tests for feedback components ([2e579b2](https://github.com/becem-gharbi/nuxt-naiveui/commit/2e579b2))
+- No change ([5be91f8](https://github.com/becem-gharbi/nuxt-naiveui/commit/5be91f8))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v1.13.3
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.13.2...v1.13.3)
