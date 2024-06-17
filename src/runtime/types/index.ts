@@ -1,6 +1,6 @@
 import type { GlobalThemeOverrides } from 'naive-ui'
 
-interface Theme extends GlobalThemeOverrides {
+export interface Theme extends GlobalThemeOverrides {
   defaults?: boolean
 }
 
