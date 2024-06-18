@@ -10,3 +10,9 @@ Nuxt Naive UI is an unofficial module for [Nuxt](https://nuxt.com/) that aims to
 ::: tip
 The official `naive-ui` module for Nuxt was recently created and can be found [here](https://github.com/07akioni/nuxtjs-naive-ui).
 :::
+
+## Contributors
+
+<a href="https://github.com/becem-gharbi/nuxt-naiveui/graphs/contributors" target="_blank">
+<img src="https://contrib.rocks/image?repo=becem-gharbi/nuxt-naiveui" />
+</a>
