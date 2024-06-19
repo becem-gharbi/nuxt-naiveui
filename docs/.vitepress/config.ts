@@ -51,7 +51,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/becem-gharbi/nuxt-auth' },
+      { icon: 'github', link: 'https://github.com/becem-gharbi/nuxt-naiveui' },
     ],
   },
 })
