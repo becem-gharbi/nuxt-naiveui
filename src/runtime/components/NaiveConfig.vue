@@ -1,5 +1,6 @@
 <template>
   <n-config-provider
+    :key="key"
     :theme-overrides="naiveTheme"
     inline-theme-disabled
   >
@@ -11,31 +12,30 @@
 import type { ConfigProviderProps } from 'naive-ui'
 import { defu } from 'defu'
 import type { ThemeConfig, Theme, PublicConfig } from '../types'
+import defaultDarkTheme from '../theme/dark'
+import defaultLightTheme from '../theme/light'
+import defaultMobileOrTabletTheme from '../theme/mobileOrTablet'
 import {
   useHead,
   useRuntimeConfig,
-  onMounted,
   useNaiveColorMode,
   useNaiveDevice,
-  useNuxtApp,
   useAppConfig,
-  watch,
-  useNuxtData,
+  computed,
+  ref,
+  onMounted,
+  useNuxtApp,
 } from '#imports'
 
 defineProps<Omit<ConfigProviderProps, 'themeOverrides' | 'theme'>>()
 
 const { colorMode } = useNaiveColorMode()
-const config = useRuntimeConfig().public.naiveui as PublicConfig
+const runtimeConfig = useRuntimeConfig().public.naiveui as PublicConfig
 const appConfig = useAppConfig().naiveui as { themeConfig?: ThemeConfig } | undefined
 
-const themeConfig = appConfig?.themeConfig
+const naiveTheme = computed(() => getTheme())
 
-const { data: naiveTheme } = useNuxtData<Theme>('naive-theme-config')
-
-naiveTheme.value ||= await updateTheme()
-
-watch(colorMode, () => updateTheme().then(t => (naiveTheme.value = t)))
+const key = ref(1)
 
 useHead(() => ({
   htmlAttrs: {
@@ -58,67 +58,67 @@ onMounted(() => {
   const isPrerendered = typeof useNuxtApp().payload.prerenderedAt === 'number'
 
   if (isPrerendered && naiveTheme.value) {
-    // In order to update dom on pre-rendered pages
-    updateTheme().then(t => (naiveTheme.value = t))
+    key.value++
   }
 })
 
-async function updateTheme() {
-  const [deviceTheme, colorModeTheme] = await Promise.all([getDeviceTheme(), getColorModeTheme()])
-  const sharedTheme = evalTheme(themeConfig?.shared)
+function getTheme() {
+  const deviceTheme = getDeviceTheme()
+  const colorModeTheme = getColorModeTheme()
+  const sharedTheme = getSharedTheme()
   const theme = defu(sharedTheme, deviceTheme, colorModeTheme)
-  if (config.spaLoadingTemplate) {
+  if (runtimeConfig.spaLoadingTemplate) {
     setLoadingTemplateTheme(theme)
   }
   return theme
 }
 
-async function getColorModeTheme() {
+function getColorModeTheme() {
   if (colorMode.value === 'dark') {
-    const darkTheme = evalTheme(themeConfig?.dark)
+    const darkTheme = evalTheme(appConfig?.themeConfig?.dark)
     if (darkTheme?.defaults === false) {
       return darkTheme
     }
     else {
-      const defaultDarkTheme = await import('../theme/dark')
-      return defu(darkTheme, defaultDarkTheme.default)
+      return defu(darkTheme, defaultDarkTheme)
     }
   }
   else {
-    const lightTheme = evalTheme(themeConfig?.light)
+    const lightTheme = evalTheme(appConfig?.themeConfig?.light)
     if (lightTheme?.defaults === false) {
       return lightTheme
     }
     else {
-      const defaultLightTheme = await import('../theme/light')
-      return defu(lightTheme, defaultLightTheme.default)
+      return defu(lightTheme, defaultLightTheme)
     }
   }
 }
 
-async function getDeviceTheme() {
+function getDeviceTheme() {
   const { isMobileOrTablet, isMobile } = useNaiveDevice()
 
   if (isMobileOrTablet) {
-    const mobileOrTabletTheme = evalTheme(themeConfig?.mobileOrTablet)
+    const mobileOrTabletTheme = evalTheme(appConfig?.themeConfig?.mobileOrTablet)
     if (mobileOrTabletTheme?.defaults === false) {
       return mobileOrTabletTheme
     }
     else {
-      const defaultMobileOrTabletTheme = await import('../theme/mobileOrTablet')
-      return defu(mobileOrTabletTheme, defaultMobileOrTabletTheme.default)
+      return defu(mobileOrTabletTheme, defaultMobileOrTabletTheme)
     }
   }
   else if (isMobile) {
-    const mobileTheme = evalTheme(themeConfig?.mobile)
+    const mobileTheme = evalTheme(appConfig?.themeConfig?.mobile)
     if (mobileTheme?.defaults === false) {
       return mobileTheme
     }
     else {
-      const defaultMobileOrTabletTheme = await import('../theme/mobileOrTablet')
-      return defu(mobileTheme, defaultMobileOrTabletTheme.default)
+      return defu(mobileTheme, defaultMobileOrTabletTheme)
     }
   }
+}
+
+function getSharedTheme() {
+  return evalTheme(appConfig?.themeConfig?.shared)
 }
 
 function compileStyle(prop: string, value?: string) {
