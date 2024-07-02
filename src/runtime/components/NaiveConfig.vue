@@ -34,10 +34,7 @@ const { colorMode } = useNaiveColorMode()
 const config = useRuntimeConfig().public.naiveui as PublicConfig
 const appConfig = useAppConfig().naiveui as { themeConfig?: ThemeConfig } | undefined
 
-const themeConfig: ThemeConfig | undefined
-  = props.themeConfig
-  ?? appConfig?.themeConfig
-  ?? config.themeConfig
+const themeConfig: ThemeConfig | undefined = props.themeConfig ?? appConfig?.themeConfig
 
 const { data: naiveTheme } = useNuxtData<Theme>('naive-theme-config')
 

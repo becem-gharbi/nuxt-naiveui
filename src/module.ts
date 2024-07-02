@@ -35,7 +35,6 @@ export default defineNuxtModule<ModuleOptions>({
     iconSize: 20,
     iconDownload: false,
     iconCollectionsUrl: 'https://iconify-icon-sets.netlify.app',
-    themeConfig: {},
   },
 
   // Add types for volar
@@ -61,7 +60,6 @@ export default defineNuxtModule<ModuleOptions>({
         colorModePreferenceCookieName: options.colorModePreferenceCookieName,
         iconDownload: options.iconDownload,
         iconCollectionsUrl: options.iconCollectionsUrl,
-        themeConfig: options.themeConfig,
         iconSize: options.iconSize,
         spaLoadingTemplate: options.spaLoadingTemplate,
       },

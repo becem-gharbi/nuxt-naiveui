@@ -32,8 +32,6 @@ type SpaLoadingTemplatesName =
   | 'plane-rotate'
 
 export interface PublicConfig {
-  /** @deprecated since version 1.12.0, instead use `naiveui.themeConfig` in `app.config` */
-  themeConfig?: ThemeConfig
   colorModePreference: ColorModePreference
   colorModePreferenceCookieName: string
   iconSize: number | string
