@@ -23,18 +23,13 @@ import {
   useNuxtData,
 } from '#imports'
 
-interface NaiveConfigProps
-  extends /* @vue-ignore */ Omit<ConfigProviderProps, 'themeOverrides' | 'theme'> {
-  /** @deprecated since version 1.12.0, instead use `naiveui.themeConfig` in `app.config` */
-  themeConfig?: ThemeConfig
-}
+defineProps<Omit<ConfigProviderProps, 'themeOverrides' | 'theme'>>()
 
-const props = defineProps<NaiveConfigProps>()
 const { colorMode } = useNaiveColorMode()
 const config = useRuntimeConfig().public.naiveui as PublicConfig
 const appConfig = useAppConfig().naiveui as { themeConfig?: ThemeConfig } | undefined
 
-const themeConfig: ThemeConfig | undefined = props.themeConfig ?? appConfig?.themeConfig
+const themeConfig = appConfig?.themeConfig
 
 const { data: naiveTheme } = useNuxtData<Theme>('naive-theme-config')
 
