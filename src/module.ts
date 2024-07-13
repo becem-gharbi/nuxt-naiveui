@@ -195,20 +195,16 @@ export default defineNuxtModule<ModuleOptions>({
       getContents: () => `
       import {RouteLocationRaw} from '#vue-router'
       export interface MenuLinkRoute {
-        label: string;
-        icon?: string;
-        to?: RouteLocationRaw;
-        /** @deprecated since version 1.11.0, instead use 'to' */
-        path?: RouteLocationRaw;
-        children?: MenuLinkRoute[];
+        label: string
+        icon?: string
+        to?: RouteLocationRaw
+        children?: MenuLinkRoute[]
       }
       export interface TabbarRoute {
-        label: string;
-        iconSelected: string;
-        iconUnselected: string;
-        to: RouteLocationRaw;
-        /** @deprecated since version 1.13.1, instead use 'to' */
-        path?: RouteLocationRaw;
+        label: string
+        iconSelected: string
+        iconUnselected: string
+        to: RouteLocationRaw
       }`,
     })
   },

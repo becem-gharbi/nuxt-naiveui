@@ -56,7 +56,7 @@ const routesC = computed(() => props.routes.map(r => ({
   label: r.label,
   iconSelected: r.iconSelected,
   iconUnselected: r.iconUnselected,
-  to: router.resolve(r.to ?? r.path),
+  to: router.resolve(r.to),
 })))
 
 const backgroundColor = computed(() => naiveTheme.value.bodyColor)

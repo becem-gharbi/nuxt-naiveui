@@ -48,8 +48,7 @@ function getActiveKey(activeRoute: typeof router.currentRoute.value) {
 
   const cb = (routes: MenuLinkRoute[]) => {
     for (const route of routes) {
-      const to = route.to ?? route.path
-      const path = to && router.resolve(to).path
+      const path = route.to && router.resolve(route.to).path
       if (path && activePath === path) {
         activeKey = path
         break
@@ -70,14 +69,13 @@ function getActiveKey(activeRoute: typeof router.currentRoute.value) {
 const menuOptions = computed<MenuOption[]>(() => {
   const cb = (routes: MenuLinkRoute[]) =>
     routes.map((route) => {
-      const to = route.to ?? route.path
-      const name = to && router.resolve(to).name?.toString()
-      const path = to && router.resolve(to).path
+      const name = route.to && router.resolve(route.to).name?.toString()
+      const path = route.to && router.resolve(route.to).path
       const key = (props.activeBy === 'name' ? name : path) ?? route.label
 
       const menuOption: MenuOption = {
-        label: to
-          ? () => h(NuxtLink, { to }, { default: () => route.label })
+        label: route.to
+          ? () => h(NuxtLink, { to: route.to }, { default: () => route.label })
           : route.label,
         icon: route.icon
           ? () => h(NaiveIcon as Component, { name: route.icon })
