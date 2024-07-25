@@ -24,7 +24,7 @@ export default defineNuxtModule<ModuleOptions>({
     version,
     configKey: 'naiveui',
     compatibility: {
-      nuxt: '^3.10.0',
+      nuxt: '>=3.10.0',
     },
   },
 
