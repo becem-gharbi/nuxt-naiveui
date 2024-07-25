@@ -55,11 +55,13 @@ const save = (iconsJSON: IconifyJSON[], iconsDir: string) => {
 const removeSavedIcons = (icons: string[], iconsDir: string) => {
   icons.forEach((icon) => {
     const [prefix, name] = icon.split(':')
-    const dirPath = path.resolve(iconsDir, prefix)
-    const filePath = path.resolve(dirPath, `${name}.json`)
-    fs.rmSync(filePath)
-    if (fs.readdirSync(dirPath).length === 0) {
-      fs.rmdirSync(dirPath)
+    if (prefix && name) {
+      const dirPath = path.resolve(iconsDir, prefix)
+      const filePath = path.resolve(dirPath, `${name}.json`)
+      fs.rmSync(filePath)
+      if (fs.readdirSync(dirPath).length === 0) {
+        fs.rmdirSync(dirPath)
+      }
     }
   })
 }

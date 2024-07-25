@@ -10,7 +10,7 @@ test('should update state', async ({ browser }) => {
   await expect(page.getByTestId('color-mode-value')).toHaveText('dark')
 
   let storage = await context.storageState()
-  let bgLocalStorage = storage.origins[0].localStorage.find(e => e.name === 'naive-body-bg-color')
+  let bgLocalStorage = storage.origins[0]?.localStorage.find(e => e.name === 'naive-body-bg-color')
   let bgCookie = storage.cookies.find(e => e.name === 'naive_color_mode_preference')
   expect(bgCookie?.value).toBe('dark')
   expect(bgLocalStorage?.value).toBe('rgb(16, 16, 20)')
@@ -19,7 +19,7 @@ test('should update state', async ({ browser }) => {
   await expect(page.getByTestId('color-mode-value')).toHaveText('light')
 
   storage = await context.storageState()
-  bgLocalStorage = storage.origins[0].localStorage.find(e => e.name === 'naive-body-bg-color')
+  bgLocalStorage = storage.origins[0]?.localStorage.find(e => e.name === 'naive-body-bg-color')
   bgCookie = storage.cookies.find(e => e.name === 'naive_color_mode_preference')
   expect(bgCookie?.value).toBe('light')
   expect(bgLocalStorage?.value).toBe('white')
