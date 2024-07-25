@@ -181,7 +181,7 @@ export default defineNuxtModule<ModuleOptions>({
     if (options?.iconDownload) {
       extendViteConfig((config) => {
         config.plugins ||= []
-        const iconsDir = path.resolve(nuxt.options.srcDir, 'public/iconify')
+        const iconsDir = path.resolve(nuxt.options.rootDir, 'public/iconify')
         config.plugins.push(iconifyVitePlugin(iconsDir, options.iconCollectionsUrl))
       })
     }
