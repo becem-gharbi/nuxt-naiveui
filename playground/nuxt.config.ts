@@ -1,6 +1,10 @@
 export default defineNuxtConfig({
   ssr: process.env.NUXT_SSR !== 'false',
 
+  future: {
+    compatibilityVersion: 4,
+  },
+
   devtools: {
     enabled: false,
   },
