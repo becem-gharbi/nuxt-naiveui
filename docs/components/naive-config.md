@@ -14,7 +14,7 @@ interface ThemeConfig {
 }
 ```
 
-On setup, the `themeConfig` is merged with built-in default themes. These [defaults](https://github.com/becem-gharbi/nuxt-naiveui/tree/main/src/runtime/theme) are loaded dynamically based on the current color mode and device type. To disable a default theme, `defaults` property can be set to `false`.
+On setup, the `themeConfig` is merged with built-in default themes. These [defaults](https://github.com/becem-gharbi/nuxt-naiveui/tree/main/src/runtime/theme) are loaded based on the current color mode and device type. To disable a default theme, `defaults` property can be set to `false`.
 
 The common theme properties are shared globally via the `useThemeVars` naive-ui composable.
 
