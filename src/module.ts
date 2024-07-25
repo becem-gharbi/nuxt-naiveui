@@ -207,5 +207,9 @@ export default defineNuxtModule<ModuleOptions>({
         to: RouteLocationRaw
       }`,
     })
+
+    nuxt.options.alias = defu(nuxt.options.alias, {
+      '#naive-utils': resolve('./runtime/utils'),
+    })
   },
 })
