@@ -15,7 +15,7 @@
       <div style="flex: 1">
         <lazy-naive-menu-link
           v-if="!isMobileOrTablet"
-          class="notMobileOrTablet"
+          class="naive-not-mobile-or-tablet"
           :routes="routes"
           mode="horizontal"
         />

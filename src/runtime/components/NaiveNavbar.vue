@@ -27,7 +27,7 @@
     >
       <n-button
         v-if="backIcon"
-        class="mobileOrTablet"
+        class="naive-mobile-or-tablet"
         text
         aria-label="back-btn"
         :focusable="false"
@@ -54,7 +54,7 @@
 
     <div
       v-if="!isMobileOrTablet"
-      class="notMobileOrTablet"
+      class="naive-not-mobile-or-tablet"
       :style="{
         flexGrow: 1,
         textAlign: menuPlacement,

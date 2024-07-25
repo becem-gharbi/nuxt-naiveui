@@ -3,13 +3,13 @@
 }
 
 @media screen and (min-width: 768px) {
-    .mobileOrTablet {
+    .naive-mobile-or-tablet {
         display: none !important;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .notMobileOrTablet {
+    .naive-not-mobile-or-tablet {
         display: none !important;
     }
 }

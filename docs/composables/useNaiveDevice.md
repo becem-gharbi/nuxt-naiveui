@@ -5,4 +5,4 @@ It can be helpful to lazy load components based on the device type to minimize p
 
 The exposed properties are `isMobileOrTablet` and `isMobile`.
 
-In the case of pre-rendering, it's recommended to be aware of hydration mismatch issues. In such a case, it's recommended to use these global CSS classes `mobileOrTablet` and `notMobileOrTablet` for responsive behavior.
+In the case of pre-rendering, it's recommended to be aware of hydration mismatch issues. In such a case, it's recommended to use these global CSS classes `naive-mobile-or-tablet` and `naive-not-mobile-or-tablet` for responsive behavior.

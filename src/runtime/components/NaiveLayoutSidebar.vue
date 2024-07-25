@@ -28,7 +28,7 @@
     >
       <n-layout-sider
         v-if="!isMobileOrTablet"
-        class="notMobileOrTablet"
+        class="naive-not-mobile-or-tablet"
         content-style="min-height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:8px;"
         :native-scrollbar="false"
         bordered
