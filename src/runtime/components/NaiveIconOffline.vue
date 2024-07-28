@@ -43,16 +43,16 @@ const key = ref(1)
 
 if (!import.meta.dev) {
   await callOnce(`naiveui:icon-key-${import.meta.server ? 'server' : 'client'}`, () => {
-    const imports = import.meta.server
-      ? import.meta.glob<IconifyJSON>('~~/public/iconify/*/*.json', { import: 'default' })
-      : {}
+    const imports = import.meta.server && import.meta.glob<IconifyJSON>('~~/public/iconify/*/*.json', { import: 'default' })
 
     _api.setFetch(async (req) => {
       const url = req.toString()
       const prefix = parseURL(url).pathname.split('/').pop()!.replace('.json', '')
       const icons = getQuery<{ icons: string }>(url).icons.split(',')
 
-      const iconsData = import.meta.server
+      // On server-side, icons are imported from `public` dir respecting different dir structures.
+      // On client-side, icons are fetched as static content.
+      const iconsData = imports
         ? await Promise.all(icons.map(i => (imports[`../public/iconify/${prefix}/${i}.json`] ?? imports[`/public/iconify/${prefix}/${i}.json`])!()))
         : await Promise.all(icons.map(i => $fetch<IconifyJSON>(`/iconify/${prefix}/${i}.json`)))
 
