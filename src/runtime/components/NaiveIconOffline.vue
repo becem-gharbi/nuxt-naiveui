@@ -48,7 +48,7 @@ if (!import.meta.dev) {
       const prefix = parseURL(url).pathname.split('/').pop()!.replace('.json', '')
       const icons = getQuery<{ icons: string }>(url).icons.split(',')
 
-      const iconsData = await Promise.all(icons.map(i => $fetch<IconifyJSON>(`/iconify/${prefix}/${i}.json`)))
+      const iconsData = await Promise.all<IconifyJSON>(icons.map(i => fetch(`/iconify/${prefix}/${i}.json`).then(r => r.json())))
 
       const iconsDataMerged = defu({}, ...iconsData)
 
