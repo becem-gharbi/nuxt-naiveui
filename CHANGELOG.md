@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.0.0-beta.3
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-beta.2...v2.0.0-beta.3)
+
+### 💅 Refactors
+
+- **NaiveIcon:** No significant change ([3495f90](https://github.com/becem-gharbi/nuxt-naiveui/commit/3495f90))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v2.0.0-beta.2
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-beta.0...v2.0.0-beta.2)
