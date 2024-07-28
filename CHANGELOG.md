@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v2.0.0-beta.2
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-beta.0...v2.0.0-beta.2)
+
+### 🩹 Fixes
+
+- **NaiveIcon:** Fix ssr loading on Netlify ([b554666](https://github.com/becem-gharbi/nuxt-naiveui/commit/b554666))
+
+### 💅 Refactors
+
+- **NaiveIcon:** Change key of `callOnce` ([4365b48](https://github.com/becem-gharbi/nuxt-naiveui/commit/4365b48))
+
+### 🏡 Chore
+
+- Bump version ([fe7dbbf](https://github.com/becem-gharbi/nuxt-naiveui/commit/fe7dbbf))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v2.0.0-beta.0
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.14.0...v2.0.0-beta.0)
