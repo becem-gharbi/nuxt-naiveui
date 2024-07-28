@@ -42,7 +42,7 @@ const icon = ref()
 const key = ref(1)
 
 if (!import.meta.dev) {
-  await callOnce(`naiveui:icon-key-${import.meta.server ? 0 : 1}`, () => {
+  await callOnce(`naiveui:icon-key-${import.meta.server ? 'server' : 'client'}`, () => {
     _api.setFetch(async (req) => {
       const url = req.toString()
       const prefix = parseURL(url).pathname.split('/').pop()!.replace('.json', '')
