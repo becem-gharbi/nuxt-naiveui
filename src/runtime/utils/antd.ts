@@ -23,7 +23,7 @@ function generatePalette(mode: ColorMode, colors: Colors) {
   }
 }
 
-export function generateColorThemes(inputColors?: Partial<Colors>) {
+export function generateAntdColorThemes(inputColors?: Partial<Colors>) {
   const colors = {
     primary: '#2080F0FF',
     success: '#18A058FF',
