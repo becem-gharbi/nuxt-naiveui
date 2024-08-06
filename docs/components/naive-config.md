@@ -24,15 +24,15 @@ Naive UI generates CSS using JS [(reference)](https://www.npmjs.com/package/css-
 
 ### Customization
 
-To automatically generate color themes without granular customization, it's recommended to use the `generateColorThemes` utility.
+To automatically generate color themes without granular customization, it's recommended to use the `generateTailwindColorThemes` utility based on Tailwind CSS [default color palette](https://tailwindcss.com/docs/customizing-colors) or the `generateAntdColorThemes` utility based on Ant Design [color palette generator](https://ant.design/docs/spec/colors#palette-generation-tool).
 
 ```ts [app.config.ts]
-import { generateColorThemes } from "@bg-dev/nuxt-naiveui/utils";
+import { generateTailwindColorThemes } from "#naive-utils";
 
 export default defineAppConfig({
   naiveui: {
     themeConfig: {
-      ...generateColorThemes({ primary: "#722ed1" }),
+      ...generateTailwindColorThemes(),
     },
   },
 });
