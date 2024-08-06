@@ -1,6 +1,6 @@
 {
   "name": "@bg-dev/nuxt-naiveui",
-  "version": "2.0.0-beta.3",
+  "version": "2.0.0-beta.4",
   "description": "Unofficial Naive UI module for Nuxt",
   "homepage": "https://nuxt-naiveui.bg.tn",
   "author": "Becem Gharbi",
@@ -36,7 +36,7 @@
     "typecheck": "nuxi typecheck",
     "prepack": "nuxt-module-build",
     "release:pre": "npm run typecheck && npm run lint && npm run prepack",
-    "release": "npm run release:pre && npm run test:prod && changelogen --r 2.0.0-beta.3 --publishTag v2 --release && npm publish && git push --follow-tags",
+    "release": "npm run release:pre && npm run test:prod && changelogen --r 2.0.0-beta.4 --publishTag v2 --release && npm publish && git push --follow-tags",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"

@@ -1,6 +1,38 @@
 # Changelog
 
 
+## v2.0.0-beta.4
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-beta.3...v2.0.0-beta.4)
+
+### 🚀 Enhancements
+
+- Add `generateTailwindColorThemes` utility to generate color themes ([3f291b0](https://github.com/becem-gharbi/nuxt-naiveui/commit/3f291b0))
+
+### 🩹 Fixes
+
+- **useNaiveForm:** Restore validation on `reset` ([3014659](https://github.com/becem-gharbi/nuxt-naiveui/commit/3014659))
+
+### 📖 Documentation
+
+- **NaiveConfig:** Update theme customization ([3db65c8](https://github.com/becem-gharbi/nuxt-naiveui/commit/3db65c8))
+
+### 🏡 Chore
+
+- **playground:** Add `show` page ([1ac0279](https://github.com/becem-gharbi/nuxt-naiveui/commit/1ac0279))
+- ⚠️  Rename `generateColorThemes` to `generateAntdColorThemes` ([c5c848d](https://github.com/becem-gharbi/nuxt-naiveui/commit/c5c848d))
+- **playground:** Use tailwind color themes ([ee29308](https://github.com/becem-gharbi/nuxt-naiveui/commit/ee29308))
+- **playground:** Add `form` page ([4b83a74](https://github.com/becem-gharbi/nuxt-naiveui/commit/4b83a74))
+- **playground:** Revert app.config changes ([684ff77](https://github.com/becem-gharbi/nuxt-naiveui/commit/684ff77))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Rename `generateColorThemes` to `generateAntdColorThemes` ([c5c848d](https://github.com/becem-gharbi/nuxt-naiveui/commit/c5c848d))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v2.0.0-beta.3
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-beta.2...v2.0.0-beta.3)
