@@ -4,39 +4,24 @@ The module provides friendly TailwindCSS integration by resolving potential styl
 
 #### Theme
 
-::: code-group
-
 ```ts [nuxt.config.ts]
-tailwindcss: {
-  exposeConfig: {
-    write: true,
-  }
-}
-```
+import colors from "tailwindcss/colors";
 
-```ts [app.config.ts]
-import { _colors, _fontFamily } from "#tailwind-config/theme.mjs";
-
-export default defineAppConfig({
+export default defineNuxtConfig({
   naiveui: {
     themeConfig: {
-      shared: {
-        common: {
-          fontFamily: _fontFamily.sans.join(", "),
-        },
-      },
       light: {
         common: {
-          primaryColor: _colors.blue[600],
-          primaryColorHover: _colors.blue[500],
-          primaryColorPressed: _colors.blue[700],
+          primaryColor: colors.blue[600],
+          primaryColorHover: colors.blue[500],
+          primaryColorPressed: colors.blue[700],
         },
       },
       dark: {
         common: {
-          primaryColor: _colors.blue[500],
-          primaryColorHover: _colors.blue[400],
-          primaryColorPressed: _colors.blue[600],
+          primaryColor: colors.blue[500],
+          primaryColorHover: colors.blue[400],
+          primaryColorPressed: colors.blue[600],
         },
       },
     },
@@ -44,15 +29,13 @@ export default defineAppConfig({
 });
 ```
 
-:::
-
 #### ColorMode
 
 ```ts [tailwind.config.ts]
 // tailwind.config.ts
 import type { Config } from "tailwindcss";
 
-export default<Config>{
+export default <Config>{
   darkMode: "class",
 };
 ```

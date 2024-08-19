@@ -35,8 +35,8 @@ export function generateAntdColorThemes(inputColors?: Partial<Colors>) {
   }
 
   return {
-    light: () => generateColorThemeLight(colors),
-    dark: () => generateColorThemeDark(colors),
+    light: generateColorThemeLight(colors),
+    dark: generateColorThemeDark(colors),
   }
 }
 
