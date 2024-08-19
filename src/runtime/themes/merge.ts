@@ -10,5 +10,6 @@ export function mergeThemeConfig(themeConfig?: ThemeConfig): ThemeConfig {
     light: themeConfig?.light?.defaults === false ? themeConfig.light : defu(themeConfig?.light, defaultLightTheme),
     mobileOrTablet: themeConfig?.mobileOrTablet?.defaults === false ? themeConfig.mobileOrTablet : defu(themeConfig?.mobileOrTablet, defaultMobileOrTabletTheme),
     mobile: themeConfig?.mobile,
+    shared: themeConfig?.shared,
   }
 }
