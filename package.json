@@ -19,7 +19,7 @@
     },
     "./utils": {
       "types": "./dist/runtime/utils/index.d.ts",
-      "import": "./dist/runtime/utils/index.mjs"
+      "import": "./dist/runtime/utils/index.js"
     }
   },
   "main": "./dist/module.cjs",
