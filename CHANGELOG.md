@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v2.0.0-rc.1
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-beta.4...v2.0.0-rc.1)
+
+### 🔥 Performance
+
+- Generate theme config at build ([#78](https://github.com/becem-gharbi/nuxt-naiveui/pull/78))
+
+### 💅 Refactors
+
+- Adjust modal and popover colors on tailwind theme generator ([c4fdccd](https://github.com/becem-gharbi/nuxt-naiveui/commit/c4fdccd))
+- Change color variants of `generateTailwindColorThemes` ([14726e1](https://github.com/becem-gharbi/nuxt-naiveui/commit/14726e1))
+
+### 📖 Documentation
+
+- Add V2 upgrade guide ([ee53e2c](https://github.com/becem-gharbi/nuxt-naiveui/commit/ee53e2c))
+
+### 🏡 Chore
+
+- Change release tag to `latest` ([149db49](https://github.com/becem-gharbi/nuxt-naiveui/commit/149db49))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v2.0.0-beta.4
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-beta.3...v2.0.0-beta.4)

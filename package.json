@@ -1,6 +1,6 @@
 {
   "name": "@bg-dev/nuxt-naiveui",
-  "version": "2.0.0-beta.4",
+  "version": "2.0.0-rc.1",
   "description": "Unofficial Naive UI module for Nuxt",
   "homepage": "https://nuxt-naiveui.bg.tn",
   "author": "Becem Gharbi",
