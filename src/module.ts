@@ -14,6 +14,9 @@ import { defu } from 'defu'
 import { name, version } from '../package.json'
 import iconifyVitePlugin from './build/iconify'
 import type { PublicConfig } from './runtime/types'
+import defaultLightTheme from './runtime/theme/light'
+import defaultDarkTheme from './runtime/theme/dark'
+import defaultMobileOrTabletTheme from './runtime/theme/mobileOrTablet'
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions extends PublicConfig { }
@@ -35,6 +38,11 @@ export default defineNuxtModule<ModuleOptions>({
     iconSize: 20,
     iconDownload: false,
     iconCollectionsUrl: 'https://iconify-icon-sets.netlify.app',
+    themeConfig: {
+      dark: defaultDarkTheme,
+      light: defaultLightTheme,
+      mobileOrTablet: defaultMobileOrTabletTheme,
+    },
   },
 
   // Add types for volar
@@ -62,6 +70,7 @@ export default defineNuxtModule<ModuleOptions>({
         iconCollectionsUrl: options.iconCollectionsUrl,
         iconSize: options.iconSize,
         spaLoadingTemplate: options.spaLoadingTemplate,
+        themeConfig: options.themeConfig,
       },
     })
 
