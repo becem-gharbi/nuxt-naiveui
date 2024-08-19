@@ -11,16 +11,12 @@
 <script setup lang="ts">
 import type { ConfigProviderProps } from 'naive-ui'
 import { defu } from 'defu'
-import type { ThemeConfig, Theme, PublicConfig } from '../types'
-import defaultDarkTheme from '../theme/dark'
-import defaultLightTheme from '../theme/light'
-import defaultMobileOrTabletTheme from '../theme/mobileOrTablet'
+import type { Theme, PublicConfig } from '../types'
 import {
   useHead,
   useRuntimeConfig,
   useNaiveColorMode,
   useNaiveDevice,
-  useAppConfig,
   computed,
   ref,
   onMounted,
@@ -31,10 +27,8 @@ defineProps<Omit<ConfigProviderProps, 'themeOverrides' | 'theme'>>()
 
 const { colorMode } = useNaiveColorMode()
 const runtimeConfig = useRuntimeConfig().public.naiveui as PublicConfig
-const appConfig = useAppConfig().naiveui as { themeConfig?: ThemeConfig } | undefined
-
+const deviceTheme = getDeviceTheme()
 const naiveTheme = computed(() => getTheme())
-
 const key = ref(1)
 
 useHead(() => ({
@@ -63,70 +57,27 @@ onMounted(() => {
 })
 
 function getTheme() {
-  const deviceTheme = getDeviceTheme()
-  const colorModeTheme = getColorModeTheme()
-  const sharedTheme = getSharedTheme()
-  const theme = defu(sharedTheme, deviceTheme, colorModeTheme)
+  const colorModeTheme = colorMode.value === 'dark' ? runtimeConfig.themeConfig.dark : runtimeConfig.themeConfig.light
+  const theme = defu(runtimeConfig.themeConfig.shared, deviceTheme, colorModeTheme)
   if (runtimeConfig.spaLoadingTemplate) {
     setLoadingTemplateTheme(theme)
   }
   return theme
 }
 
-function getColorModeTheme() {
-  if (colorMode.value === 'dark') {
-    const darkTheme = evalTheme(appConfig?.themeConfig?.dark)
-    if (darkTheme?.defaults === false) {
-      return darkTheme
-    }
-    else {
-      return defu(darkTheme, defaultDarkTheme)
-    }
-  }
-  else {
-    const lightTheme = evalTheme(appConfig?.themeConfig?.light)
-    if (lightTheme?.defaults === false) {
-      return lightTheme
-    }
-    else {
-      return defu(lightTheme, defaultLightTheme)
-    }
-  }
-}
-
 function getDeviceTheme() {
   const { isMobileOrTablet, isMobile } = useNaiveDevice()
 
   if (isMobileOrTablet) {
-    const mobileOrTabletTheme = evalTheme(appConfig?.themeConfig?.mobileOrTablet)
-    if (mobileOrTabletTheme?.defaults === false) {
-      return mobileOrTabletTheme
-    }
-    else {
-      return defu(mobileOrTabletTheme, defaultMobileOrTabletTheme)
-    }
+    return runtimeConfig.themeConfig.mobileOrTablet
   }
   else if (isMobile) {
-    const mobileTheme = evalTheme(appConfig?.themeConfig?.mobile)
-    if (mobileTheme?.defaults === false) {
-      return mobileTheme
-    }
-    else {
-      return defu(mobileTheme, defaultMobileOrTabletTheme)
-    }
+    return defu(runtimeConfig.themeConfig.mobile, runtimeConfig.themeConfig.mobileOrTablet)
   }
-}
-
-function getSharedTheme() {
-  return evalTheme(appConfig?.themeConfig?.shared)
 }
 
 function compileStyle(prop: string, value?: string) {
   return value && `${prop}: ${value} !important;`
-}
-
-function evalTheme<T extends object>(theme?: T | (() => T)) {
-  return typeof theme === 'function' ? theme() : theme
 }
 
 function setLoadingTemplateTheme(theme?: Theme) {

@@ -120,9 +120,9 @@ function generateColorThemeDark(colors: Colors) {
       cardColor: NEUTRALS[colors.neutral][1],
 
       tagColor: NEUTRALS[colors.neutral][2],
-      modalColor: NEUTRALS[colors.neutral][2],
+      modalColor: NEUTRALS[colors.neutral][1],
 
-      popoverColor: NEUTRALS[colors.neutral][3],
+      popoverColor: NEUTRALS[colors.neutral][2],
     },
 
     Layout: {

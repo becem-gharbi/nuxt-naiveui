@@ -14,6 +14,7 @@ import { defu } from 'defu'
 import { name, version } from '../package.json'
 import iconifyVitePlugin from './build/iconify'
 import type { PublicConfig } from './runtime/types'
+import { mergeThemeConfig } from './runtime/themes/merge'
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions extends PublicConfig { }
@@ -35,6 +36,7 @@ export default defineNuxtModule<ModuleOptions>({
     iconSize: 20,
     iconDownload: false,
     iconCollectionsUrl: 'https://iconify-icon-sets.netlify.app',
+    themeConfig: {},
   },
 
   // Add types for volar
@@ -62,6 +64,7 @@ export default defineNuxtModule<ModuleOptions>({
         iconCollectionsUrl: options.iconCollectionsUrl,
         iconSize: options.iconSize,
         spaLoadingTemplate: options.spaLoadingTemplate,
+        themeConfig: mergeThemeConfig(options.themeConfig),
       },
     })
 
@@ -206,10 +209,6 @@ export default defineNuxtModule<ModuleOptions>({
         iconUnselected: string
         to: RouteLocationRaw
       }`,
-    })
-
-    nuxt.options.alias = defu(nuxt.options.alias, {
-      '#naive-utils': resolve('./runtime/utils'),
     })
   },
 })
