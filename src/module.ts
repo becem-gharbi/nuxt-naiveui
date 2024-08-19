@@ -14,6 +14,7 @@ import { defu } from 'defu'
 import { name, version } from '../package.json'
 import iconifyVitePlugin from './build/iconify'
 import type { PublicConfig } from './runtime/types'
+import { mergeThemeConfig } from './runtime/themes/merge'
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions extends PublicConfig { }
@@ -24,7 +25,7 @@ export default defineNuxtModule<ModuleOptions>({
     version,
     configKey: 'naiveui',
     compatibility: {
-      nuxt: '^3.10.0',
+      nuxt: '>=3.10.0',
     },
   },
 
@@ -61,9 +62,9 @@ export default defineNuxtModule<ModuleOptions>({
         colorModePreferenceCookieName: options.colorModePreferenceCookieName,
         iconDownload: options.iconDownload,
         iconCollectionsUrl: options.iconCollectionsUrl,
-        themeConfig: options.themeConfig,
         iconSize: options.iconSize,
         spaLoadingTemplate: options.spaLoadingTemplate,
+        themeConfig: mergeThemeConfig(options.themeConfig),
       },
     })
 
@@ -183,7 +184,7 @@ export default defineNuxtModule<ModuleOptions>({
     if (options?.iconDownload) {
       extendViteConfig((config) => {
         config.plugins ||= []
-        const iconsDir = path.resolve(nuxt.options.srcDir, 'public/iconify')
+        const iconsDir = path.resolve(nuxt.options.rootDir, 'public/iconify')
         config.plugins.push(iconifyVitePlugin(iconsDir, options.iconCollectionsUrl))
       })
     }
@@ -197,20 +198,16 @@ export default defineNuxtModule<ModuleOptions>({
       getContents: () => `
       import {RouteLocationRaw} from '#vue-router'
       export interface MenuLinkRoute {
-        label: string;
-        icon?: string;
-        to?: RouteLocationRaw;
-        /** @deprecated since version 1.11.0, instead use 'to' */
-        path?: RouteLocationRaw;
-        children?: MenuLinkRoute[];
+        label: string
+        icon?: string
+        to?: RouteLocationRaw
+        children?: MenuLinkRoute[]
       }
       export interface TabbarRoute {
-        label: string;
-        iconSelected: string;
-        iconUnselected: string;
-        to: RouteLocationRaw;
-        /** @deprecated since version 1.13.1, instead use 'to' */
-        path?: RouteLocationRaw;
+        label: string
+        iconSelected: string
+        iconUnselected: string
+        to: RouteLocationRaw
       }`,
     })
   },

@@ -46,6 +46,8 @@ export function useNaiveForm(model: Ref<unknown> = ref({})) {
 
   function reset() {
     model.value = JSON.parse(JSON.stringify(defaultModel.value))
+    resetApiErrors()
+    formRef.value?.restoreValidation()
   }
 
   function updateResetValue() {

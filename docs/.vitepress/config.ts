@@ -48,6 +48,13 @@ export default defineConfig({
         text: 'Tailwind CSS',
         link: 'tailwind-css',
       },
+      {
+        text: 'Upgrades',
+        base: '/upgrades',
+        items: [
+          { text: 'v2', link: '/v2' },
+        ],
+      },
     ],
 
     socialLinks: [

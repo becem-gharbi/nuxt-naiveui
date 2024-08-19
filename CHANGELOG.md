@@ -1,6 +1,126 @@
 # Changelog
 
 
+## v2.0.0-beta.4
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-beta.3...v2.0.0-beta.4)
+
+### 🚀 Enhancements
+
+- Add `generateTailwindColorThemes` utility to generate color themes ([3f291b0](https://github.com/becem-gharbi/nuxt-naiveui/commit/3f291b0))
+
+### 🩹 Fixes
+
+- **useNaiveForm:** Restore validation on `reset` ([3014659](https://github.com/becem-gharbi/nuxt-naiveui/commit/3014659))
+
+### 📖 Documentation
+
+- **NaiveConfig:** Update theme customization ([3db65c8](https://github.com/becem-gharbi/nuxt-naiveui/commit/3db65c8))
+
+### 🏡 Chore
+
+- **playground:** Add `show` page ([1ac0279](https://github.com/becem-gharbi/nuxt-naiveui/commit/1ac0279))
+- ⚠️  Rename `generateColorThemes` to `generateAntdColorThemes` ([c5c848d](https://github.com/becem-gharbi/nuxt-naiveui/commit/c5c848d))
+- **playground:** Use tailwind color themes ([ee29308](https://github.com/becem-gharbi/nuxt-naiveui/commit/ee29308))
+- **playground:** Add `form` page ([4b83a74](https://github.com/becem-gharbi/nuxt-naiveui/commit/4b83a74))
+- **playground:** Revert app.config changes ([684ff77](https://github.com/becem-gharbi/nuxt-naiveui/commit/684ff77))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Rename `generateColorThemes` to `generateAntdColorThemes` ([c5c848d](https://github.com/becem-gharbi/nuxt-naiveui/commit/c5c848d))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
+## v2.0.0-beta.3
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-beta.2...v2.0.0-beta.3)
+
+### 💅 Refactors
+
+- **NaiveIcon:** No significant change ([3495f90](https://github.com/becem-gharbi/nuxt-naiveui/commit/3495f90))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
+## v2.0.0-beta.2
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-beta.0...v2.0.0-beta.2)
+
+### 🩹 Fixes
+
+- **NaiveIcon:** Fix ssr loading on Netlify ([b554666](https://github.com/becem-gharbi/nuxt-naiveui/commit/b554666))
+
+### 💅 Refactors
+
+- **NaiveIcon:** Change key of `callOnce` ([4365b48](https://github.com/becem-gharbi/nuxt-naiveui/commit/4365b48))
+
+### 🏡 Chore
+
+- Bump version ([fe7dbbf](https://github.com/becem-gharbi/nuxt-naiveui/commit/fe7dbbf))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
+## v2.0.0-beta.0
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.14.0...v2.0.0-beta.0)
+
+### 🚀 Enhancements
+
+- **NaiveConfig:** Enable `reactive themeConfig` ([e353a1c](https://github.com/becem-gharbi/nuxt-naiveui/commit/e353a1c))
+- Allow compatibility with `nuxt` v4 ([d1b7eab](https://github.com/becem-gharbi/nuxt-naiveui/commit/d1b7eab))
+
+### 🔥 Performance
+
+- **NaiveIcon:** Remove extra imports ([e64c847](https://github.com/becem-gharbi/nuxt-naiveui/commit/e64c847))
+
+### 🩹 Fixes
+
+- Resolve `public` directory relative to `rootDir` ([edc0919](https://github.com/becem-gharbi/nuxt-naiveui/commit/edc0919))
+
+### 📖 Documentation
+
+- List contributors ([9d88da4](https://github.com/becem-gharbi/nuxt-naiveui/commit/9d88da4))
+- Fix github link ([ce7c316](https://github.com/becem-gharbi/nuxt-naiveui/commit/ce7c316))
+- **NaiveConfig:** Remove dynamic imports of default themes ([e6c1263](https://github.com/becem-gharbi/nuxt-naiveui/commit/e6c1263))
+
+### 🌊 Types
+
+- Fix typecheck in development ([72c83e6](https://github.com/becem-gharbi/nuxt-naiveui/commit/72c83e6))
+- **NaiveConfig:** Assert `appConfig` type ([fdeaba4](https://github.com/becem-gharbi/nuxt-naiveui/commit/fdeaba4))
+- Solve typecheck issues ([7096a44](https://github.com/becem-gharbi/nuxt-naiveui/commit/7096a44))
+
+### 🏡 Chore
+
+- ⚠️  Remove `themeConfig` from `runtimeConfig` ([84d354d](https://github.com/becem-gharbi/nuxt-naiveui/commit/84d354d))
+- **NaiveConfig:** ⚠️  Remove `themeConfig` prop ([c2a61ba](https://github.com/becem-gharbi/nuxt-naiveui/commit/c2a61ba))
+- ⚠️  Remove `path` from `MenuLinkRoute` and `TabbarRoute` ([fff716b](https://github.com/becem-gharbi/nuxt-naiveui/commit/fff716b))
+- **playground:** Upgrade to `nuxt` v4 ([aeb6c35](https://github.com/becem-gharbi/nuxt-naiveui/commit/aeb6c35))
+- **styles:** ⚠️  Rename `mobileOrTablet` and `notMobileOrTablet` classes ([ba00bbe](https://github.com/becem-gharbi/nuxt-naiveui/commit/ba00bbe))
+- Prepare v2 beta release ([2c2e87b](https://github.com/becem-gharbi/nuxt-naiveui/commit/2c2e87b))
+- ⚠️  Rename `@bg-dev/nuxt-naiveui/utils` to `#naive-utils` ([5c98da9](https://github.com/becem-gharbi/nuxt-naiveui/commit/5c98da9))
+
+### ✅ Tests
+
+- Add `icon` test suite ([e46e443](https://github.com/becem-gharbi/nuxt-naiveui/commit/e46e443))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Remove `themeConfig` from `runtimeConfig` ([84d354d](https://github.com/becem-gharbi/nuxt-naiveui/commit/84d354d))
+- **NaiveConfig:** ⚠️  Remove `themeConfig` prop ([c2a61ba](https://github.com/becem-gharbi/nuxt-naiveui/commit/c2a61ba))
+- ⚠️  Remove `path` from `MenuLinkRoute` and `TabbarRoute` ([fff716b](https://github.com/becem-gharbi/nuxt-naiveui/commit/fff716b))
+- **styles:** ⚠️  Rename `mobileOrTablet` and `notMobileOrTablet` classes ([ba00bbe](https://github.com/becem-gharbi/nuxt-naiveui/commit/ba00bbe))
+- ⚠️  Rename `@bg-dev/nuxt-naiveui/utils` to `#naive-utils` ([5c98da9](https://github.com/becem-gharbi/nuxt-naiveui/commit/5c98da9))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v1.14.0
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v1.13.3...v1.14.0)

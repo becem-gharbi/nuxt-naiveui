@@ -5,11 +5,11 @@ export interface Theme extends GlobalThemeOverrides {
 }
 
 export interface ThemeConfig {
-  shared?: Theme | (() => Theme)
-  light?: Theme | (() => Theme)
-  dark?: Theme | (() => Theme)
-  mobileOrTablet?: Theme | (() => Theme)
-  mobile?: Theme | (() => Theme)
+  shared?: Theme
+  light?: Theme
+  dark?: Theme
+  mobileOrTablet?: Theme
+  mobile?: Theme
 }
 
 export type ColorMode = 'light' | 'dark'
@@ -32,8 +32,6 @@ type SpaLoadingTemplatesName =
   | 'plane-rotate'
 
 export interface PublicConfig {
-  /** @deprecated since version 1.12.0, instead use `naiveui.themeConfig` in `app.config` */
-  themeConfig?: ThemeConfig
   colorModePreference: ColorModePreference
   colorModePreferenceCookieName: string
   iconSize: number | string
@@ -42,12 +40,5 @@ export interface PublicConfig {
   spaLoadingTemplate?: {
     name: SpaLoadingTemplatesName
   }
-}
-
-declare module 'nuxt/schema' {
-  interface AppConfigInput {
-    naiveui?: {
-      themeConfig?: ThemeConfig
-    }
-  }
+  themeConfig: ThemeConfig
 }

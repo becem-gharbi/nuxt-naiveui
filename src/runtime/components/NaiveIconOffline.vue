@@ -41,34 +41,32 @@ const sName = computed(() => props.name)
 const icon = ref()
 const key = ref(1)
 
-await callOnce(`naiveui:icon-key-${import.meta.server ? 0 : 1}`, () => {
-  if (import.meta.dev) {
-    return
-  }
+if (!import.meta.dev) {
+  await callOnce(`naiveui:icon-key-${import.meta.server ? 'server' : 'client'}`, () => {
+    const imports = import.meta.server && import.meta.glob<IconifyJSON>('~~/public/iconify/*/*.json', { import: 'default' })
 
-  const imports = import.meta.server
-    ? import.meta.glob<IconifyJSON>('~/public/iconify/*/*.json', { import: 'default' })
-    : {}
+    _api.setFetch(async (req) => {
+      const url = req.toString()
+      const prefix = parseURL(url).pathname.split('/').pop()!.replace('.json', '')
+      const icons = getQuery<{ icons: string }>(url).icons.split(',')
 
-  _api.setFetch(async (req) => {
-    const url = req.toString()
-    const prefix = parseURL(url).pathname.split('/').pop()!.replace('.json', '')
-    const icons = getQuery<{ icons: string }>(url).icons.split(',')
+      // On server-side, icons are imported from `public` dir respecting different dir structures.
+      // On client-side, icons are fetched as static content.
+      const iconsData = imports
+        ? await Promise.all(icons.map(i => (imports[`../public/iconify/${prefix}/${i}.json`] ?? imports[`/public/iconify/${prefix}/${i}.json`])!()))
+        : await Promise.all(icons.map(i => $fetch<IconifyJSON>(`/iconify/${prefix}/${i}.json`)))
 
-    const iconsData = import.meta.server
-      ? await Promise.all(icons.map(i => imports[`/public/iconify/${prefix}/${i}.json`]()))
-      : await Promise.all(icons.map(i => $fetch<IconifyJSON>(`/iconify/${prefix}/${i}.json`)))
+      const iconsDataMerged = defu({}, ...iconsData)
 
-    const iconsDataMerged = defu({}, ...iconsData)
-
-    return new Response(JSON.stringify(iconsDataMerged), {
-      status: 200,
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
+      return new Response(JSON.stringify(iconsDataMerged), {
+        status: 200,
+        headers: new Headers({
+          'Content-Type': 'application/json',
+        }),
+      })
     })
   })
-})
+}
 
 const load = (name: string) => loadIcon(name).catch(() => console.error(`[nuxt-naiveui] failed to load icon ${name}`))
 

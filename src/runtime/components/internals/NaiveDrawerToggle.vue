@@ -1,6 +1,6 @@
 <template>
   <n-button
-    class="mobileOrTablet"
+    class="naive-mobile-or-tablet"
     text
     aria-label="drawer-toggle-btn"
     :focusable="false"
