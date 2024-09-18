@@ -16,6 +16,10 @@ import iconifyVitePlugin from './build/iconify'
 import type { PublicConfig } from './runtime/types'
 import { mergeThemeConfig } from './runtime/themes/merge'
 
+export type {
+  ThemeConfig,
+} from './runtime/types'
+
 // Module options TypeScript inteface definition
 export interface ModuleOptions extends PublicConfig { }
 
