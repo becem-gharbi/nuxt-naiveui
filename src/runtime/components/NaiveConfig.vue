@@ -23,7 +23,9 @@ import {
   useNuxtApp,
 } from '#imports'
 
-defineProps<Omit<ConfigProviderProps, 'themeOverrides' | 'theme'>>()
+// Vue should treat the props as fallthrough attributes
+type Props = /* @vue-ignore */ Omit<ConfigProviderProps, 'themeOverrides' | 'theme'>
+defineProps<Props>()
 
 const { colorMode } = useNaiveColorMode()
 const runtimeConfig = useRuntimeConfig().public.naiveui as PublicConfig
@@ -38,12 +40,12 @@ useHead(() => ({
   style: [
     {
       children: `body {${[
-          compileStyle('background-color', naiveTheme.value?.common?.bodyColor),
-          compileStyle('color', naiveTheme.value?.common?.textColorBase),
-          compileStyle('font-family', naiveTheme.value?.common?.fontFamily),
-          compileStyle('font-size', naiveTheme.value?.common?.fontSize),
-          compileStyle('line-height', naiveTheme.value?.common?.lineHeight),
-        ].join(' ')}}`,
+        compileStyle('background-color', naiveTheme.value?.common?.bodyColor),
+        compileStyle('color', naiveTheme.value?.common?.textColorBase),
+        compileStyle('font-family', naiveTheme.value?.common?.fontFamily),
+        compileStyle('font-size', naiveTheme.value?.common?.fontSize),
+        compileStyle('line-height', naiveTheme.value?.common?.lineHeight),
+      ].join(' ')}}`,
     },
   ],
 }))
