@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v2.0.0-rc.2
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-rc.1...v2.0.0-rc.2)
+
+### 🩹 Fixes
+
+- **NaiveConfig:** Ensure props are passed to `n-config-provider` ([3dac422](https://github.com/becem-gharbi/nuxt-naiveui/commit/3dac422))
+
+### 🏡 Chore
+
+- Note non-compatibility with nuxt@3.13.2 ([#81](https://github.com/becem-gharbi/nuxt-naiveui/pull/81))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v2.0.0-rc.1
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-beta.4...v2.0.0-rc.1)
