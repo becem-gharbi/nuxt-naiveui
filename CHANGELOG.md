@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.0.0-rc.3
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-rc.2...v2.0.0-rc.3)
+
+### 🩹 Fixes
+
+- Allow compatiblity with latest nuxt version ([5da32e1](https://github.com/becem-gharbi/nuxt-naiveui/commit/5da32e1))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v2.0.0-rc.2
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-rc.1...v2.0.0-rc.2)
