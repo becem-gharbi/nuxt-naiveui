@@ -18,14 +18,6 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-07-25',
 
-  typescript: {
-    tsConfig: {
-      compilerOptions: {
-        module: 'ESNext',
-      },
-    },
-  },
-
   naiveui: {
     colorModePreference: 'light',
     iconDownload: true,
