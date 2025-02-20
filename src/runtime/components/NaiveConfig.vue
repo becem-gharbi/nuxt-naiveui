@@ -85,7 +85,10 @@ function compileStyle(prop: string, value?: string) {
 function setLoadingTemplateTheme(theme?: Theme) {
   if (import.meta.client) {
     const setLocalStorageItem = (key: string, value?: string) => {
-      value ? localStorage.setItem(key, value) : localStorage.removeItem(key)
+      if (value)
+        localStorage.setItem(key, value)
+      else
+        localStorage.removeItem(key)
     }
     setLocalStorageItem('naive-body-bg-color', theme?.common?.bodyColor)
     setLocalStorageItem('naive-primary-color', theme?.common?.primaryColor)

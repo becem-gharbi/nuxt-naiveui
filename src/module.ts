@@ -17,6 +17,7 @@ import type { PublicConfig } from './runtime/types'
 import { mergeThemeConfig } from './runtime/themes/merge'
 
 // Module options TypeScript inteface definition
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface ModuleOptions extends PublicConfig { }
 
 export default defineNuxtModule<ModuleOptions>({

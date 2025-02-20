@@ -1,9 +1,6 @@
 export default defineNuxtConfig({
-  ssr: process.env.NUXT_SSR !== 'false',
 
-  future: {
-    compatibilityVersion: 4,
-  },
+  modules: ['../src/module', '@nuxtjs/tailwindcss'], ssr: process.env.NUXT_SSR !== 'false',
 
   devtools: {
     enabled: false,
@@ -15,7 +12,19 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['../src/module', '@nuxtjs/tailwindcss'],
+  future: {
+    compatibilityVersion: 4,
+  },
+
+  compatibilityDate: '2024-07-25',
+
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        module: 'ESNext',
+      },
+    },
+  },
 
   naiveui: {
     colorModePreference: 'light',
@@ -41,14 +50,4 @@ export default defineNuxtConfig({
   tailwindcss: {
     viewer: false,
   },
-
-  typescript: {
-    tsConfig: {
-      compilerOptions: {
-        module: 'ESNext',
-      },
-    },
-  },
-
-  compatibilityDate: '2024-07-25',
 })
