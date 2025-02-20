@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v2.0.0-rc.4
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-rc.3...v2.0.0-rc.4)
+
+### 🩹 Fixes
+
+- Avoid transpiling `@juggle/resize-observer` ([25cb0dc](https://github.com/becem-gharbi/nuxt-naiveui/commit/25cb0dc))
+
+### 🏡 Chore
+
+- **lint:** Fix ([e5c6594](https://github.com/becem-gharbi/nuxt-naiveui/commit/e5c6594))
+- Refresh lockfile ([2788362](https://github.com/becem-gharbi/nuxt-naiveui/commit/2788362))
+- Bump version ([043a39c](https://github.com/becem-gharbi/nuxt-naiveui/commit/043a39c))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v2.0.0-rc.3
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-rc.2...v2.0.0-rc.3)
