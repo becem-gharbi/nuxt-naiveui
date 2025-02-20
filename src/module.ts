@@ -164,7 +164,6 @@ export default defineNuxtModule<ModuleOptions>({
 
     // https://www.naiveui.com/en-US/os-theme/docs/ssr
     if (process.env.NODE_ENV === 'development') {
-      nuxt.options.build.transpile.push('@juggle/resize-observer')
       extendViteConfig((config) => {
         config.optimizeDeps ||= {}
         config.optimizeDeps.include ||= []
@@ -176,7 +175,6 @@ export default defineNuxtModule<ModuleOptions>({
         'naive-ui',
         'vueuc',
         '@css-render/vue3-ssr',
-        '@juggle/resize-observer',
         '@iconify/vue',
       )
     }
