@@ -35,7 +35,7 @@ import { useRouter } from '#imports'
 
 withDefaults(
   defineProps<{
-    show: boolean
+    show?: boolean
     routes?: MenuLinkRoute[]
     closable?: boolean
     placement?: 'top' | 'right' | 'bottom' | 'left'

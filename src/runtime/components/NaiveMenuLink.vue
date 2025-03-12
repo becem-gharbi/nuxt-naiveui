@@ -14,7 +14,7 @@ import type { MenuLinkRoute } from '#build/types/naiveui'
 
 interface NaiveMenuLinkProps
   extends /* @vue-ignore */ Omit<MenuProps, 'options' | 'value'> {
-  routes: MenuLinkRoute[]
+  routes?: MenuLinkRoute[]
   /**
    * Since v1.11.0, please refer to [#51](https://github.com/becem-gharbi/nuxt-naiveui/pull/51)
    */
