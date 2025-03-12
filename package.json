@@ -40,7 +40,7 @@
     "typecheck": "nuxi typecheck",
     "prepack": "nuxt-module-build",
     "release:pre": "npm run typecheck && npm run lint && npm run prepack",
-    "release": "npm run release:pre && npm run test:prod && changelogen --r 2.0.0-rc.4 --release && npm publish && git push --follow-tags",
+    "release": "npm run release:pre && npm run test:prod && changelogen --r 2.0.0-rc.5 --release && npm publish && git push --follow-tags",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
