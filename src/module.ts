@@ -162,21 +162,26 @@ export default defineNuxtModule<ModuleOptions>({
       })
     })
 
-    // https://www.naiveui.com/en-US/os-theme/docs/ssr
     if (process.env.NODE_ENV === 'development') {
+      // Fix `vueuc` imports
+      nuxt.options.build.transpile.push('naive-ui')
+
+      // Fix transpilation of `@juggle/resize-observer`
       extendViteConfig((config) => {
-        config.optimizeDeps ||= {}
-        config.optimizeDeps.include ||= []
-        config.optimizeDeps.include.push('naive-ui')
+        config.plugins ||= []
+        config.plugins.push({
+          name: 'fix-transpile-juggle-resize-observer',
+          enforce: 'pre',
+          transform(code, id) {
+            if (id.includes('@juggle/resize-observer/lib/algorithms/calculateBoxSize.js')) {
+              return code.replace('global.navigator && global.navigator.userAgent', 'global.navigator?.userAgent')
+            }
+          },
+        })
       })
     }
     else {
-      nuxt.options.build.transpile.push(
-        'naive-ui',
-        'vueuc',
-        '@css-render/vue3-ssr',
-        '@iconify/vue',
-      )
+      nuxt.options.build.transpile.push('naive-ui', 'vueuc', '@css-render/vue3-ssr', '@iconify/vue')
     }
 
     // https://github.com/becem-gharbi/iconify-offline-nuxt
