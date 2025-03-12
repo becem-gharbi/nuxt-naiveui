@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v2.0.0-rc.5
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-rc.4...v2.0.0-rc.5)
+
+### 🩹 Fixes
+
+- Transpile `vueuc` to avoid import issues on nuxt@3.16 ([c0b913e](https://github.com/becem-gharbi/nuxt-naiveui/commit/c0b913e))
+- Fix global styles on nuxt@3.16 ([3348689](https://github.com/becem-gharbi/nuxt-naiveui/commit/3348689))
+
+### 🏡 Chore
+
+- Bump version ([e87f7b3](https://github.com/becem-gharbi/nuxt-naiveui/commit/e87f7b3))
+- **lint:** Fix ([f20fb74](https://github.com/becem-gharbi/nuxt-naiveui/commit/f20fb74))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v2.0.0-rc.4
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-rc.3...v2.0.0-rc.4)
