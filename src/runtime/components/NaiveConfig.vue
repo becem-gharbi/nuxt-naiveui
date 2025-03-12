@@ -37,17 +37,15 @@ useHead(() => ({
   htmlAttrs: {
     class: colorMode.value === 'dark' ? 'dark' : '',
   },
-  style: [
-    {
-      children: `body {${[
-        compileStyle('background-color', naiveTheme.value?.common?.bodyColor),
-        compileStyle('color', naiveTheme.value?.common?.textColorBase),
-        compileStyle('font-family', naiveTheme.value?.common?.fontFamily),
-        compileStyle('font-size', naiveTheme.value?.common?.fontSize),
-        compileStyle('line-height', naiveTheme.value?.common?.lineHeight),
-      ].join(' ')}}`,
+  bodyAttrs: {
+    style: {
+      'background-color': naiveTheme.value?.common?.bodyColor,
+      'color': naiveTheme.value?.common?.textColorBase,
+      'font-family': naiveTheme.value?.common?.fontFamily,
+      'font-size': naiveTheme.value?.common?.fontSize,
+      'line-height': naiveTheme.value?.common?.lineHeight,
     },
-  ],
+  },
 }))
 
 onMounted(() => {
@@ -76,10 +74,6 @@ function getDeviceTheme() {
   else if (isMobile) {
     return defu(runtimeConfig.themeConfig.mobile, runtimeConfig.themeConfig.mobileOrTablet)
   }
-}
-
-function compileStyle(prop: string, value?: string) {
-  return value && `${prop}: ${value} !important;`
 }
 
 function setLoadingTemplateTheme(theme?: Theme) {
