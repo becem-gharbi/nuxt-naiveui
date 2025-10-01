@@ -1,6 +1,30 @@
 # Changelog
 
 
+## v2.0.0
+
+[compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-rc.5...v2.0.0)
+
+### 🚀 Enhancements
+
+- Support `light-only` and `dark-only` color mode preferences ([91be1a7](https://github.com/becem-gharbi/nuxt-naiveui/commit/91be1a7))
+
+### 🩹 Fixes
+
+- **NaiveTabbar:** Make `routes` prop optional ([6486f3e](https://github.com/becem-gharbi/nuxt-naiveui/commit/6486f3e))
+
+### 📖 Documentation
+
+- Mention `light-only` and `dark-only` color modes ([5caaaf0](https://github.com/becem-gharbi/nuxt-naiveui/commit/5caaaf0))
+
+### 🏡 Chore
+
+- **package.json:** Correct exports ([a703867](https://github.com/becem-gharbi/nuxt-naiveui/commit/a703867))
+
+### ❤️ Contributors
+
+- Becem <becem.gharbi@live.com>
+
 ## v2.0.0-rc.5
 
 [compare changes](https://github.com/becem-gharbi/nuxt-naiveui/compare/v2.0.0-rc.4...v2.0.0-rc.5)
