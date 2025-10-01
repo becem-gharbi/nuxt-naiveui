@@ -39,7 +39,7 @@ import { NuxtLink, NaiveIcon } from '#components'
 
 const props = withDefaults(
   defineProps<{
-    routes: TabbarRoute[]
+    routes?: TabbarRoute[]
     iconSize?: number | string
   }>(),
   {
