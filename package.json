@@ -13,17 +13,22 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
     },
     "./utils": {
       "types": "./dist/runtime/utils/index.d.ts",
       "import": "./dist/runtime/utils/index.js"
     }
   },
-  "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
@@ -66,7 +71,8 @@
     "eslint": "^9.36.0",
     "nuxt": "^4.1.2",
     "typescript": "^5.9.3",
-    "vitepress": "^1.6.4"
+    "vitepress": "^1.6.4",
+    "vue-tsc": "^3.1.0"
   },
   "repository": {
     "url": "git+https://github.com/becem-gharbi/nuxt-naiveui.git"
