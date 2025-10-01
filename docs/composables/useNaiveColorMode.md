@@ -1,5 +1,9 @@
 # useNaiveColorMode
 
+::: warning Note
+In case the color mode preference is `light-only` or `dark-only` this composable is not usable.
+:::
+
 This universal composable is intended for handling color mode state and preference.
 
 The color mode can either be `light` or `dark` and is exposed via the `colorMode` state.

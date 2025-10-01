@@ -1,5 +1,9 @@
 # NaiveColorModeSwitch
 
+::: warning Note
+In case the color mode preference is `light-only` or `dark-only` this component is not usable.
+:::
+
 This component can be used to change color mode preference.
 
 ### Props

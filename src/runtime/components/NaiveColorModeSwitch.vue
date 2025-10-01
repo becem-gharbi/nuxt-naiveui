@@ -3,6 +3,7 @@
     text
     aria-label="color-mode-switch"
     :focusable="false"
+    :disabled="disabled"
     @click="toggleColorMode"
   >
     <naive-icon :name="icon" />
@@ -31,6 +32,8 @@ const preference = computed({
   set: value => colorModePreference.set(value),
 })
 
+const disabled = computed(() => preference.value === 'light-only' || preference.value === 'dark-only')
+
 const icon = computed(() => {
   switch (preference.value) {
     case 'light':
@@ -39,6 +42,10 @@ const icon = computed(() => {
       return props.iconDark
     case 'system':
       return props.iconSystem
+    case 'light-only':
+      return props.iconLight
+    case 'dark-only':
+      return props.iconDark
     default:
       return 'ph:dots-three'
   }

@@ -3,7 +3,6 @@ import {
   defineNuxtModule,
   addPlugin,
   createResolver,
-  addImportsDir,
   addComponent,
   addImports,
   extendViteConfig,
@@ -65,63 +64,36 @@ export default defineNuxtModule<ModuleOptions>({
         iconCollectionsUrl: options.iconCollectionsUrl,
         iconSize: options.iconSize,
         spaLoadingTemplate: options.spaLoadingTemplate,
-        themeConfig: mergeThemeConfig(options.themeConfig),
+        themeConfig: mergeThemeConfig(options.colorModePreference, options.themeConfig),
       },
     })
 
+    const colorModeStatic = options.colorModePreference == 'light-only' || options.colorModePreference == 'dark-only'
+
     // Add plugins
     addPlugin(resolve('./runtime/plugins/naive.server'))
-    addPlugin(resolve('./runtime/plugins/colorMode'))
+    if (colorModeStatic == false)
+      addPlugin(resolve('./runtime/plugins/colorMode'))
 
     // Add composables directory
-    addImportsDir(resolve('./runtime/composables'))
+    addImports({ name: 'useNaiveColorMode', from: resolve('./runtime/composables/useNaiveColorMode') })
+    addImports({ name: 'useNaiveDevice', from: resolve('./runtime/composables/useNaiveDevice') })
+    addImports({ name: 'useNaiveForm', from: resolve('./runtime/composables/useNaiveForm') })
+    addImports({ name: 'useNaiveLoadingBar', from: resolve('./runtime/composables/useNaiveLoadingBar') })
+    addImports({ name: 'useNaiveNotification', from: resolve('./runtime/composables/useNaiveNotification') })
 
     // Add components
-    addComponent({
-      name: 'NaiveConfig',
-      filePath: resolve('./runtime/components/NaiveConfig.vue'),
-    })
-    addComponent({
-      name: 'NaiveNavbar',
-      filePath: resolve('./runtime/components/NaiveNavbar.vue'),
-    })
-    addComponent({
-      name: 'NaiveColorModeSwitch',
-      filePath: resolve('./runtime/components/NaiveColorModeSwitch.vue'),
-    })
-    addComponent({
-      name: 'NaiveTabbar',
-      filePath: resolve('./runtime/components/NaiveTabbar.vue'),
-    })
-    addComponent({
-      name: 'NaiveMenuLink',
-      filePath: resolve('./runtime/components/NaiveMenuLink.vue'),
-    })
-    addComponent({
-      name: 'NaiveLayoutSidebar',
-      filePath: resolve('./runtime/components/NaiveLayoutSidebar.vue'),
-    })
-    addComponent({
-      name: 'NaiveLayoutNavbar',
-      filePath: resolve('./runtime/components/NaiveLayoutNavbar.vue'),
-    })
-    addComponent({
-      name: 'NaiveDrawerLink',
-      filePath: resolve('./runtime/components/NaiveDrawerLink.client.vue'),
-    })
-    addComponent({
-      name: 'NaiveLoadingBar',
-      filePath: resolve('./runtime/components/NaiveLoadingBar.client.vue'),
-    })
-    addComponent({
-      name: 'NaiveNotification',
-      filePath: resolve('./runtime/components/NaiveNotification.client.vue'),
-    })
-    addComponent({
-      name: 'NaiveIcon',
-      filePath: resolve('./runtime/components',
-        options?.iconDownload ? 'NaiveIconOffline.vue' : 'NaiveIcon.vue'),
-    })
+    addComponent({ name: 'NaiveColorModeSwitch', filePath: resolve('./runtime/components/NaiveColorModeSwitch.vue') })
+    addComponent({ name: 'NaiveConfig', filePath: resolve('./runtime/components', colorModeStatic ? 'NaiveConfigStatic.vue' : 'NaiveConfig.vue') })
+    addComponent({ name: 'NaiveIcon', filePath: resolve('./runtime/components', options?.iconDownload ? 'NaiveIconOffline.vue' : 'NaiveIcon.vue') })
+    addComponent({ name: 'NaiveNavbar', filePath: resolve('./runtime/components/NaiveNavbar.vue') })
+    addComponent({ name: 'NaiveTabbar', filePath: resolve('./runtime/components/NaiveTabbar.vue') })
+    addComponent({ name: 'NaiveMenuLink', filePath: resolve('./runtime/components/NaiveMenuLink.vue') })
+    addComponent({ name: 'NaiveLayoutSidebar', filePath: resolve('./runtime/components/NaiveLayoutSidebar.vue') })
+    addComponent({ name: 'NaiveLayoutNavbar', filePath: resolve('./runtime/components/NaiveLayoutNavbar.vue') })
+    addComponent({ name: 'NaiveDrawerLink', filePath: resolve('./runtime/components/NaiveDrawerLink.client.vue') })
+    addComponent({ name: 'NaiveLoadingBar', filePath: resolve('./runtime/components/NaiveLoadingBar.client.vue') })
+    addComponent({ name: 'NaiveNotification', filePath: resolve('./runtime/components/NaiveNotification.client.vue') })
 
     // Add imports for naive-ui components
     const naiveComponents = Object.keys(naive).filter(name =>

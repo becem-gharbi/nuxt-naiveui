@@ -14,22 +14,22 @@ export interface ThemeConfig {
 
 export type ColorMode = 'light' | 'dark'
 
-export type ColorModePreference = 'light' | 'dark' | 'system'
+export type ColorModePreference = 'light' | 'dark' | 'system' | 'light-only' | 'dark-only'
 
 export type ColorModeForce = ColorMode | false
 
-type SpaLoadingTemplatesName =
-  | 'pulse'
-  | 'bar-scale'
-  | 'dot-chase'
-  | 'dot-scale'
-  | 'dot-bounce'
-  | 'dot-rotate'
-  | 'dot-rotate-scale'
-  | 'cube-rotate-scale'
-  | 'plane-fold'
-  | 'plane-wave'
-  | 'plane-rotate'
+type SpaLoadingTemplatesName
+  = | 'pulse'
+    | 'bar-scale'
+    | 'dot-chase'
+    | 'dot-scale'
+    | 'dot-bounce'
+    | 'dot-rotate'
+    | 'dot-rotate-scale'
+    | 'cube-rotate-scale'
+    | 'plane-fold'
+    | 'plane-wave'
+    | 'plane-rotate'
 
 export interface PublicConfig {
   colorModePreference: ColorModePreference

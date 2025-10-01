@@ -45,11 +45,16 @@ export function useNaiveColorMode() {
     },
   }
 
-  const colorModePreferenceState = useState<ColorModePreference>('naive-color-mode-preference')
+  const colorModePreferenceState = useState<ColorModePreference>('naive-color-mode-preference', () => config.colorModePreference)
 
   const colorModePreference = {
     get: () => colorModePreferenceState.value,
     set(value: ColorModePreference) {
+      if (colorModePreferenceState.value === 'dark-only' || colorModePreferenceState.value === 'light-only') {
+        console.warn(`[nuxt-naiveui] Color mode preference is \`${colorModePreferenceState.value}\` and cannot be changed at runtime.`)
+        return
+      }
+
       colorModePreferenceState.value = value
 
       // No need to create cookie if preference is the default
@@ -57,12 +62,15 @@ export function useNaiveColorMode() {
         colorModePreferenceCookie.value = value
       }
 
-      if (colorModeForced.value) {
+      if (colorModeForced.value)
         colorMode.value = colorModeForced.value
+      else if (value == 'system') {
+        colorMode.value = detectPreferedColorMode()
       }
-      else {
-        colorMode.value = value === 'system' ? detectPreferedColorMode() : value
-      }
+      else if (value === 'dark')
+        colorMode.value = 'dark'
+      else if (value === 'light')
+        colorMode.value = 'light'
     },
     sync() {
       this.set(colorModePreferenceCookie.value as ColorModePreference || config.colorModePreference)
