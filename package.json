@@ -46,27 +46,27 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "@ant-design/colors": "^7.2.0",
-    "@iconify/vue": "^4.3.0",
+    "@ant-design/colors": "^7.2.1",
+    "@iconify/vue": "^5.0.0",
     "@nuxt/kit": "^4.1.2",
     "defu": "^6.1.4",
     "js-cookie": "^3.0.5",
-    "naive-ui": "^2.41.0"
+    "naive-ui": "^2.43.1"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^1.2.0",
-    "@nuxt/module-builder": "^0.8.4",
+    "@nuxt/eslint-config": "^1.9.0",
+    "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.1.2",
-    "@nuxtjs/tailwindcss": "^6.13.2",
-    "@playwright/test": "^1.51.0",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@playwright/test": "^1.55.1",
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^22.13.10",
-    "changelogen": "^0.6.1",
-    "cross-env": "^7.0.3",
-    "eslint": "^9.22.0",
+    "@types/node": "^24.6.1",
+    "changelogen": "^0.6.2",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.36.0",
     "nuxt": "^4.1.2",
-    "typescript": "^5.8.2",
-    "vitepress": "^1.6.3"
+    "typescript": "^5.9.3",
+    "vitepress": "^1.6.4"
   },
   "repository": {
     "url": "git+https://github.com/becem-gharbi/nuxt-naiveui.git"
